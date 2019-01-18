@@ -3,13 +3,13 @@ This project is for SOEN 341 class which is given at Concordia University. The g
 
 This team is composed of the following 10 members:
 
-Amanda Kolopanis
-Celestino Ballesteros Rodriguez
-Hassan Sarhan
-Lentzkie Mac Ernst Sanon
-Loujain Al-Nakeeb
-Marc-Andre Lauzier
-Mugisha Kakou	
-Neeham Khalid
-Oussama Zouhadi
-Zohal Mir
+- Amanda Kolopanis
+- Celestino Ballesteros Rodriguez
+- Hassan Sarhan
+- Lentzkie Mac Ernst Sanon
+- Loujain Al-Nakeeb
+- Marc-Andre Lauzier
+- Mugisha Kakou	
+- Neeham Khalid
+- Oussama Zouhadi
+- Zohal Mir
