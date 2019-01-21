@@ -15,3 +15,6 @@ This project is for SOEN 341 class which is given at Concordia University. The g
 - Zohal Mir
 
 ## Languages and tools that will be used:
+
+
+## Additional information:
