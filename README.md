@@ -14,7 +14,7 @@ This project is for SOEN 341 class which is given at Concordia University. The g
 - Mugisha Kakou	- @MelaninedUnicorn
 - Neeham Khalid
 - Oussama Zouhadi
-- Zohal Mir
+- Zohal Mir @zohalmir
 
 ## Languages and tools that will be used:
 
