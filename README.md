@@ -16,4 +16,6 @@ This project is for SOEN 341 class which is given at Concordia University. The g
 - Oussama Zouhadi
 - Zohal Mir @zohalmir
 
+Testing the fetch feature to my branch :)
+
 ## Languages and tools that will be used:
