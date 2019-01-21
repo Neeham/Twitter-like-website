@@ -18,6 +18,4 @@ This project is for SOEN 341 class which is given at Concordia University. The g
 
 Working directly on the master branch, test to fetch onto my own branch.
 
-Well, testing again (New pull request)
-
 ## Languages and tools that will be used:
