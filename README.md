@@ -8,7 +8,7 @@ This project is for SOEN 341 class which is given at Concordia University. The g
 - Hassan Sarhan @h-sarhan
 - Lentzkie Sanon @LentzSn
 - Loujain Al-Nakeeb
-- Marc-Andre Lauzier                --> Hey Guys! First Branch/Commit Test (NodeBeast)
+- Marc-Andre Lauzier                --> Hey Guys! First Branch/Commit Test
 - Mugisha Kakou	
 - Neeham Khalid @neeham
 - Mugisha Kakou	- @MelaninedUnicorn
