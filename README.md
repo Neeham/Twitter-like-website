@@ -16,6 +16,4 @@ This project is for SOEN 341 class which is given at Concordia University. The g
 - Oussama Zouhadi
 - Zohal Mir @zohalmir
 
-Working directly on the master branch, test to fetch onto my own branch.
-
 ## Languages and tools that will be used:
