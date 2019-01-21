@@ -8,6 +8,10 @@ This project is for SOEN 341 class which is given at Concordia University. The g
 - Hassan Sarhan @h-sarhan
 - Lentzkie Mac Ernst Sanon
 - Loujain Al-Nakeeb
+
+- Marc-Andre Lauzier                --> Hey Guys! First Branch/Commit Test
+- Mugisha Kakou	
+======
 - Marc-Andre Lauzier
 - Mugisha Kakou
 - Neeham Khalid @neeham
