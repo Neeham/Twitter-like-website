@@ -9,7 +9,7 @@ This project is for SOEN 341 class which is given at Concordia University. The g
 - Lentzkie Mac Ernst Sanon
 - Loujain Al-Nakeeb
 - Marc-Andre Lauzier
-- Mugisha Kakou	
+- Mugisha Kakou	- @MelaninedUnicorn
 - Neeham Khalid
 - Oussama Zouhadi
 - Zohal Mir
