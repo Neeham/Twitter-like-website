@@ -5,7 +5,7 @@ This project is for SOEN 341 class which is given at Concordia University. The g
 
 - Amanda Kolopanis
 - Celestino Ballesteros Rodriguez
-- Hassan Sarhan
+- Hassan Sarhan @h-sarhan
 - Lentzkie Mac Ernst Sanon
 - Loujain Al-Nakeeb
 - Marc-Andre Lauzier
