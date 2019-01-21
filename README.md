@@ -3,12 +3,14 @@ This project is for SOEN 341 class which is given at Concordia University. The g
 
 ## This team :family: is composed of the following 10 members:
 
-- Amanda Kolopanis
+- Amanda Kolopanis @Amanda-Kolopa
 - Celestino Ballesteros Rodriguez
 - Hassan Sarhan @h-sarhan
 - Lentzkie Mac Ernst Sanon
 - Loujain Al-Nakeeb
 - Marc-Andre Lauzier
+- Mugisha Kakou
+- Neeham Khalid @neeham
 - Mugisha Kakou	- @MelaninedUnicorn
 - Neeham Khalid
 - Oussama Zouhadi
