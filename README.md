@@ -9,9 +9,11 @@ This project is for SOEN 341 class which is given at Concordia University. The g
 - Lentzkie Mac Ernst Sanon
 - Loujain Al-Nakeeb
 - Marc-Andre Lauzier
-- Mugisha Kakou	
-- Neeham Khalid
+- Mugisha Kakou
+- Neeham Khalid @neeham
 - Oussama Zouhadi
 - Zohal Mir
 
 ## Languages and tools that will be used:
+
+## Additional information:
