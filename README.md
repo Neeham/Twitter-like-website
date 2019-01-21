@@ -9,7 +9,7 @@ This project is for SOEN 341 class which is given at Concordia University. The g
 - Lentzkie Sanon @LentzSn
 - Loujain Al-Nakeeb @Loujain-Al-Nakeeb
 - Marc-Andre Lauzier                --> Hey Guys! First Branch/Commit Test
-- Mugisha Kakou	
+- Mugisha Kakou
 - Neeham Khalid @neeham
 - Mugisha Kakou	- @MelaninedUnicorn
 - Neeham Khalid
@@ -17,6 +17,3 @@ This project is for SOEN 341 class which is given at Concordia University. The g
 - Zohal Mir @zohalmir
 
 ## Languages and tools that will be used:
-
-
-## Additional information:
