@@ -4,9 +4,7 @@ This project is for SOEN 341 class which is given at Concordia University. The g
 ## This team :family: is composed of the following 10 members:
 
 - Amanda Kolopanis @Amanda-Kolopa
-- Celestino Ballesteros Rodriguez
 - Hassan Sarhan @h-sarhan
-- Lentzkie Sanon @LentzSn
 - Loujain Al-Nakeeb @Loujain-Al-Nakeeb
 - Marc-Andre Lauzier                --> Hey Guys! First Branch/Commit Test
 - Mugisha Kakou
