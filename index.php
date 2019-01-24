@@ -8,10 +8,10 @@
 <h2>This is a Heading! <br><br> Also this is the page people will land on by default aka the index page!</h1>
 <h1>Today we are: <?php echo date("l - F d, Y")?></h1>
 </body>
-Bla bla Bla! <br><br>
+Bla<br><br>
 </html>
 
-<h1 style="color:Tomato;">YO ME! WHATS <br>UPPP!!</h1>
+
 <form>
   First name:<br>
   <input type="text" name="firstname"><br>
