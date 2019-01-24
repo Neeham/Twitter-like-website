@@ -11,7 +11,13 @@
 Bla bla Bla! <br><br>
 </html>
 
-
+<h1 style="color:Tomato;">YO ME! WHATS <br>UPPP!!</h1>
+<form>
+  First name:<br>
+  <input type="text" name="firstname"><br>
+  Last name:<br>
+  <input type="text" name="lastname">
+</form>
 <?php
 echo "Git, GitHub, Xampp, mySQL Database setup + html code and PHP code (server side) testing <br><br>";
 $num = 3;
