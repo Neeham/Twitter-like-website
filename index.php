@@ -8,10 +8,16 @@
 <h2>This is a Heading! <br><br> Also this is the page people will land on by default aka the index page!</h1>
 <h1>Today we are: <?php echo date("l - F d, Y")?></h1>
 </body>
-Bla bla Bla!<br><br>
+Bla<br><br>
 </html>
 
 
+<form>
+  First name:<br>
+  <input type="text" name="firstname"><br>
+  Last name:<br>
+  <input type="text" name="lastname">
+</form>
 <?php
 echo "Git, GitHub, Xampp, mySQL Database setup + html code and PHP code (server side) testing <br><br>";
 $num = 3;
