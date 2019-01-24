@@ -12,4 +12,4 @@ This project is for SOEN 341 class which is given at Concordia University. The g
 - Oussama Zouhadi @oussamus
 - Zohal Mir @zohalmir
 
-## Languages and tools that will be used:
+## Languages and tools that will be used (This will be updated later on):
