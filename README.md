@@ -6,10 +6,10 @@ This project is for SOEN 341 class which is given at Concordia University. The g
 - Amanda Kolopanis @Amanda-Kolopa
 - Hassan Sarhan @h-sarhan
 - Loujain Al-Nakeeb @Loujain-Al-Nakeeb
-- Marc-Andre Lauzier
+- Marc-Andre Lauzier @
 - Mugisha Kakou @MelaninedUnicorn
 - Neeham Khalid @neeham
-- Oussama Zouhadi
+- Oussama Zouhadi @oussamus
 - Zohal Mir @zohalmir
 
 ## Languages and tools that will be used (This will be updated later on):
