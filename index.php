@@ -11,7 +11,7 @@
 Bla bla Bla! <br><br>
 </html>
 
-<h1 style="color:Tomato;">YO ME! WHATS <br>UPPP!!</h1>
+
 <form>
   First name:<br>
   <input type="text" name="firstname"><br>
