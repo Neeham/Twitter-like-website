@@ -1,6 +1,6 @@
-<?php
-//Database Connection
-$host = "dallas136.arvixeshared.com";
+ <?php
+ //Database connection
+$host = "localhost:3306";
 $dbname = "neeham_twitter";
 $user = "neeham_Soen341";
 $pass = "Soen341";
