@@ -1,6 +1,7 @@
  <?php
- /*
-$host = "localhost:3306"; //put link of my remote database server if everyone agrees!
+ //Database connection
+
+$host = "localhost:3306";
 $dbname = "neeham_twitter";
 $user = "neeham_Soen341";
 $pass = "Soen341";
@@ -10,5 +11,5 @@ try {
 } catch (PDOException $e) {
     echo "ERROR: ".$e->getMessage();
 
-} */
+}
 ?>
