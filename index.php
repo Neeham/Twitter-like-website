@@ -11,9 +11,6 @@
 Bla<br><br>
 </html>
 
-HI!
-
-
 <form>
   First name:<br>
   <input type="text" name="firstname"><br>
