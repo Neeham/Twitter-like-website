@@ -13,8 +13,4 @@ This project is for SOEN 341 class which is given at Concordia University. The g
 - Zohal Mir @Zohalmir
 
 ## Languages and tools that will be used (This will be updated later on):
-> PHP
-> HTML
-> CSS
-> JAVASCRIPT
-> BOOTSTRAP
+> PHP, HTML, CSS, JAVASCRIPT, BOOTSTRAP
