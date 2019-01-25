@@ -1,0 +1,19 @@
+						Meeting#1 Jan 20th @ 7PM
+-Team met by group voice call, everyone introduced themselves
+-Initiated the first pull requests 
+-Helped one another to understand and to use GitHub
+-Helped each other to clone, commit, branch and pull request as well as accepting a pull request from others. 
+
+-Brainstormed ideas on extra twitter functionality:
+	-Sketching in the app and sending the images
+	-notifications for likes and follow
+	-Hashtags 
+	-Editing
+	-Image upload (drag and drop)
+	-Gifs - posting
+	-Links
+	-Private threads
+	-Email confirmation and security verification
+	-Editing the posts
+
+-Concluded meeting with the understanding that everyone who has not yet done a pull request & accepting a pull request should make their first github as soon as possible.
