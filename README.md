@@ -4,12 +4,12 @@ This project is for SOEN 341 class which is given at Concordia University. The g
 ## This team :family: is composed of the following 8 members:
 
 - Amanda Kolopanis @Amanda-Kolopa -
-- Hassan Sarhan @h-sarhan
+- Hassan Sarhan @H-sarhan
 - Loujain Al-Nakeeb @Loujain-Al-Nakeeb
 - Marc-Andre Lauzier @NodeBeast - lauzier.ma@gmail.com (Frontend)
 - Mugisha Kakou @MelaninedUnicorn
-- Neeham Khalid @neeham - Neehamk@gmail.com (Backend)
-- Oussama Zouhadi @oussamus
-- Zohal Mir @zohalmir
+- Neeham Khalid @Neeham - Neehamk@gmail.com (Backend)
+- Oussama Zouhadi @Oussamus
+- Zohal Mir @Zohalmir
 
 ## Languages and tools that will be used (This will be updated later on):
