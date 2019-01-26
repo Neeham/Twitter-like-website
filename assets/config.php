@@ -1,5 +1,5 @@
- <?php
- //Database connection
+<?php
+//Database connection
 $host = "localhost:3306";
 $dbname = "neeham_twitter";
 $user = "neeham_Soen341";
