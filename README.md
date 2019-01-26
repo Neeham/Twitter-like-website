@@ -11,7 +11,7 @@ Loujain Al-Nakeeb | Loujain-Al-Nakeeb | @ | Frontend
 Marc-Andre Lauzier | NodeBeast | lauzier.ma@gmail.com |Frontend
 Mugisha Kakou | MelaninedUnicorn | @ | Backend
 Neeham Khalid | Neeham | Neehamk@gmail.com | Backend
-Oussama Zouhadi | Oussamus | Oussamus_84@hotmail.com | Frontend
+Oussama Zouhadi | Oussamus | Oussamus_84@hotmail.com | Backend
 Zohal Mir | Zohalmir | @ | Frontend
 
 ## Languages and tools that will be used:
