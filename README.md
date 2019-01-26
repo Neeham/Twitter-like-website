@@ -14,7 +14,7 @@ Neeham Khalid | Neeham | Neehamk@gmail.com | Backend
 Oussama Zouhadi | Oussamus | @ | Frontend
 Zohal Mir | Zohalmir | @ | Frontend
 
-## Languages and tools that will be used (26 Janvier 2019):
+## Languages and tools that will be used:
 * PHP
 * HTML
 * CSS
