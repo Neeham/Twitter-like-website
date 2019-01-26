@@ -9,12 +9,12 @@ Amanda Kolopanis | Amanda-Kolopa | @ | Backend
 Hassan Sarhan | H-sarhan | @ | Frontend
 Loujain Al-Nakeeb | Loujain-Al-Nakeeb | @ | Frontend
 Marc-Andre Lauzier | NodeBeast | lauzier.ma@gmail.com |Frontend
-Mugisha Kakou | MelaninedUnicorn | @ | Backend
+Mugisha Kakou | @MelaninedUnicorn | joycechristiane23@gmail.com | Backend
 Neeham Khalid | Neeham | Neehamk@gmail.com | Backend
-Oussama Zouhadi | Oussamus | @ | Frontend
+Oussama Zouhadi | Oussamus | Oussamus_84@hotmail.com | Frontend
 Zohal Mir | Zohalmir | @ | Frontend
 
-## Languages and tools that will be used (26 Janvier 2019):
+## Languages and tools that will be used:
 * PHP
 * HTML
 * CSS
