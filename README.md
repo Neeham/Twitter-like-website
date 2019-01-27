@@ -5,7 +5,7 @@ This project is for SOEN 341 class which is given at Concordia University. The g
 
 Name | GitHub Username | Email Address | Frontend / Backend
 ------------ | ------------- | ------------- | -------------
-Amanda Kolopanis | Amanda-Kolopa | @ | Backend
+Amanda Kolopanis | Amanda-Kolopa | amandakolopa@gmail.com | Backend
 Hassan Sarhan | H-sarhan | hasoun7772@gmail.com | Frontend
 Loujain Al-Nakeeb | Loujain-Al-Nakeeb | @ | Frontend
 Marc-Andre Lauzier | NodeBeast | lauzier.ma@gmail.com |Frontend
