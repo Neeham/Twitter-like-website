@@ -7,7 +7,7 @@ Name | GitHub Username | Email Address | Frontend / Backend
 ------------ | ------------- | ------------- | -------------
 Amanda Kolopanis | Amanda-Kolopa | amandakolopa@gmail.com | Backend
 Hassan Sarhan | H-sarhan | hasoun7772@gmail.com | Frontend
-Loujain Al-Nakeeb | Loujain-Al-Nakeeb | @ | Frontend
+Loujain Al-Nakeeb | Loujain-Al-Nakeeb | loujain_alnakeeb@hotmail.com | Frontend
 Marc-Andre Lauzier | NodeBeast | lauzier.ma@gmail.com |Frontend
 Mugisha Kakou | MelaninedUnicorn | joycechristiane23@gmail.com | Backend
 Neeham Khalid | Neeham | Neehamk@gmail.com | Backend
