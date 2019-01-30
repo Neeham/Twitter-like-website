@@ -1,5 +1,5 @@
 .bg-purp {
-	background-color: #686fd3;
+	background-color: #f9ee00;
 }
 
 .profile-picture {
@@ -7,7 +7,6 @@
 	width: 150px;
 	height: 150px;
 	border-radius: 50%;
-
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
