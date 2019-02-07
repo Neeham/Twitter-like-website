@@ -6,17 +6,16 @@
 //Variable
 $table = array(); //Array holding all the tables found in our database
 
-//Storing all the tables found on the Database into an array caled table
+//Storing all the tables found on the Database into an array called table
 $sql = "SHOW TABLES";
-$result = $conn->query($sql);
-$row = $result->fetch_assoc();
+$result = mysqli_query($conn,$sql);
 while ($row = mysqli_fetch_row($result)) {
-   $table[] = $row[0];
+    $table[] = $row[0];
 }
 
 //*************************** Printing all the Table and it's data found on the Database ***************************
 $j = 0;
-while ($j <= 2) {
+while ($j < sizeof($table)) {
 echo "<br>";
 echo "Table Name: {$table[$j]}";
 
@@ -63,10 +62,10 @@ function verify($password, $hashedPassword) {
 $pass = '1234qwe'; //hardcoding a password :P
 $secured_password = generateHash($pass); //hashing the password
 $sql = "INSERT INTO User (firstName,lastName,username,password,email) VALUES ('Neeham','Khalid','Neeham','$secured_password','Neehamk@gmail.com')";
-$row = $conn->query($sql);
+$result = mysqli_query($conn,$sql);
 */
 
-/* Verifying if user exists (login page)
+/* Verifying if user exists (login page) *Make sure to verify that username does not already exist in the Database :P*
 */
 
 /* Updating Database (change email/pass etc...)
@@ -74,4 +73,6 @@ $row = $conn->query($sql);
 
 /* Deleting from datbase (deleting an account or tweet etc..)
 */
+
+mysqli_close($conn);
 ?>
