@@ -1,15 +1,13 @@
-// ################################# Modify this according to new DB #################################
-
 <?php
 session_start();
-include '/assets/config.php';
+include '../assets/config.php';
 
-/**
+/*
 $pass = '1234qwe';
 $secured_password = generateHash($pass);
-$sql = "INSERT INTO user (first,last,uID,pwd,email,telephone,accesslvl) VALUES ('Neeham','Khalid','Neeham','$secured_password','Neehamk@gmail.com','5149655050','3')";
+$sql = "INSERT INTO user (first,last,username,password,email,telephone,accesslvl) VALUES ('Neeham','Khalid','Neeham','$secured_password','Neehamk@gmail.com','5149655050','3')";
 $result = $conn->query($sql);
-**/
+*/
 
 //Function to Encrypte a Password
 function generateHash($password) {
@@ -30,27 +28,26 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 
 
-$sql = "SELECT uID, pwd, accesslvl FROM user WHERE uID = '$username'";
+$sql = "SELECT username, password FROM User WHERE username = '$username'";
 $result = $conn->query($sql);
 if ($row = $result->fetch_assoc()){
 
-	$DBPass = $row['pwd'];
+	$DBPass = $row['password'];
 
  if (verify($password, $DBPass)){
-	$_SESSION["session_user"]=$row['uID'];
-	$_SESSION["session_access"]=$row['accesslvl'];
-	header("Location: http://www.34rgc.com/dev-34/home/panel/activity");
+	$_SESSION["session_user"]=$row['username'];
+	header("Location: http://www.haxstar.com");
 	exit;
 
 }
 else {
-$conn->close();
-header("Location: http://www.34rgc.com/dev-34/home/login?errorPass");
+mysqli_close($conn);
+header("Location: http://www.haxstar.com/pages/login?error");
 }
 }
 else {
-$conn->close();
-header("Location: http://www.34rgc.com/dev-34/home/login?errorUser");
+mysqli_close($conn);
+header("Location: http://www.haxstar.com/pages/login?error");
 }
 }
 
@@ -61,23 +58,21 @@ header("Location: http://www.34rgc.com/dev-34/home/login?errorUser");
 if(isset($_POST['register'])) {
 $fName = $_POST['first'];
 $lName = $_POST['last'];
-$email = $_POST['email'];
-$tele = $_POST['telephone'];
 $username = $_POST['username'];
 $pass = $_POST['password'];
-$access = $_POST['access'];
+$email = $_POST['email'];
 
-$sql = "SELECT * FROM user WHERE uID = '$username'";
+$sql = "SELECT * FROM user WHERE username = '$username'";
 $result = $conn->query($sql);
-$uidcheck = mysqli_num_rows($result);
-if($uidcheck > 0) {
-header("Location: http://www.34rgc.com/dev-34/home/panel/manage?error");
+$usernamecheck = mysqli_num_rows($result);
+if($usernamecheck > 0) { //Checking if username already exists
+header("Location: http://www.haxstar.com/pages/login?errorNameExists");
 exit;
 } else {
 	$secured_password = generateHash($pass);
-$sql = "INSERT INTO user (first,last,uID,pwd,email,telephone,accesslvl) VALUES ('$fName','$lName','$username','$secured_password','$email','$tele','$access')";
+$sql = "INSERT INTO user (first,last,username,password,email) VALUES ('$fName','$lName','$username','$secured_password','$email')";
 $result = $conn->query($sql);
-header("Location: http://www.34rgc.com/dev-34/home/panel/manage?success");
+header("Location: http://www.haxstar.com");
 exit;
 }
 }
