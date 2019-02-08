@@ -36,7 +36,7 @@ if ($row = $result->fetch_assoc()){
 
  if (verify($password, $DBPass)){
 	$_SESSION["session_user"]=$row['username'];
-	header("Location: http://www.haxstar.com");
+	header("Location: http://www.haxstar.com/pages/login");
 	exit;
 
 }

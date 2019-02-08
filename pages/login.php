@@ -1,11 +1,12 @@
 <?php
+include '../pages/navbar.php';
 include '../assets/alert.php';
 
-if(isset($_GET['error'])) {
-	  echo alert('error','Please verify Username and Password.');
+if (isset($_GET['error'])) {
+    echo alert('error', 'Please verify Username and Password.');
 }
-if(isset($_GET['errorNameExists'])) {
-	  echo alert('error','The username already exists. Please choose another username.');
+if (isset($_GET['errorNameExists'])) {
+    echo alert('error', 'The username already exists. Please choose another username.');
 }
 ?>
 
