@@ -13,6 +13,13 @@ while ($row = mysqli_fetch_row($result)) {
     $table[] = $row[0];
 }
 
+/* this is the query to insert into database, if you uncomment and land on this page, it will execute the query :P (Register user)
+$pass = '1234qwe'; //hardcoding a password :P
+$secured_password = generateHash($pass); //hashing the password
+$sql = "INSERT INTO User (firstName,lastName,username,password,email) VALUES ('Neeham','Khalid','Neeham','$secured_password','Neehamk@gmail.com')";
+$result = mysqli_query($conn,$sql);
+*/
+
 //*************************** Printing all the Table and it's data found on the Database ***************************
 $j = 0;
 while ($j < sizeof($table)) {
@@ -57,13 +64,6 @@ function generateHash($password) {
 function verify($password, $hashedPassword) {
     return crypt($password, $hashedPassword) == $hashedPassword;
 }
-
-/* this is the query to insert into database, if you uncomment and land on this page, it will execute the query :P (Register user)
-$pass = '1234qwe'; //hardcoding a password :P
-$secured_password = generateHash($pass); //hashing the password
-$sql = "INSERT INTO User (firstName,lastName,username,password,email) VALUES ('Neeham','Khalid','Neeham','$secured_password','Neehamk@gmail.com')";
-$result = mysqli_query($conn,$sql);
-*/
 
 /* Verifying if user exists (login page) *Make sure to verify that username does not already exist in the Database :P*
 */
