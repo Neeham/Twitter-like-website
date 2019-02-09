@@ -18,5 +18,6 @@ Zohal Mir | zohalmir | zohalmir9@gmail.com | Frontend
 * PHP
 * HTML
 * CSS
-* JAVASCRIPT
 * BOOTSTRAP
+* JAVASCRIPT
+* MySQL Database
