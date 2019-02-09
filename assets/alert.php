@@ -8,16 +8,6 @@ background-color: #FF0000;
 </style>
 
 <?php }
-
-else if ($type == "errorNameExists") { ?>
-	<style>
-.modal-header {
-background-color: #FF0000;
-}
-</style>
-
-<?php }
-
 else if ($type == "success") {?>
       <style>
 .modal-header {
@@ -51,6 +41,6 @@ background-color: #00CF37;
   <script type=text/javascript>
 $('#myModal').modal('show');
 </script>
- <?php
+<?php
   }
-  ?>
+?>
