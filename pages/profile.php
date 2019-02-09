@@ -4,6 +4,13 @@
 <?php
 include '../repeated/header.php';
 include '../repeated/navbar.php';
+include '../assets/alert.php';
+if (isset($_GET['errorInsert'])) {
+echo alert('error', 'Something went wrong (not entered in database). Please try again.');
+}
+if (isset($_GET['successInsert'])) {
+echo alert('success', 'Your Quack is posted!');
+}
 ?>
   <body id="profile">
 
@@ -14,9 +21,22 @@ include '../repeated/navbar.php';
       <p>What's up frontend! Here are some links that will help you guys get started ^_^ </p>
       <p>Learning html/css: https://www.w3schools.com/html/html5_intro.asp</p>
       <p>Link to learning bootstrap: https://www.w3schools.com/bootstrap4/bootstrap_grid_basic.asp</p>
+
+      <body id="postQuack">
+        <form class="form-postQuack" action="../assets/query" method="post">
+
+        <h2 class="form-postQuack-heading">
+          <?php echo _("Quack it up! (can change this)")?>
+        </h2>
+
+        <input type="text" class="form-control" name="tweet" placeholder="<?php echo _("Write your Quack here")?>" required="" autofocus /><br>
+
+        <button class="btn btn-lg btn-warning btn-block" name="postQuackBtn" type="submit">
+          <button onclick="location.href = 'https://haxstar.com/assets/debug.php';" class="btn btn-lg btn-primary btn-block" name="postQuackBtn"><?php echo _("Post Quack")?></button><br>
+        </button><br>
+      </form>
+    </body>
     </div>
-
-
     <?php include '../repeated/footer.php';?>
   </body>
 </html>
