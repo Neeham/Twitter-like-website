@@ -14,19 +14,23 @@ else if ($type == "success") {?>
 background-color: #00CF37;
 }
 <?php } ?>
+
 </style>
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
+  <div class="modal" tabindex="-1" id="myModal" role="dialog">
+    <div class="modal-dialog" role="document">
 
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+
           <?php if ($type == "error") { ?>
           <h4 class="modal-title"><?php echo _("Error")?></h4>
           <?php } else if ($type == "success") {?>
 		  <h4 class="modal-title"><?php echo _("Success")?></h4>
           <?php } ?>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
         </div>
         <div class="modal-body">
           <p><?php echo $msg ?></p>
@@ -38,6 +42,8 @@ background-color: #00CF37;
 
     </div>
   </div>
+
+
   <script type=text/javascript>
 $('#myModal').modal('show');
 </script>
