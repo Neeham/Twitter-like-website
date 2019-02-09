@@ -71,7 +71,7 @@ exit;
 
 
 
-// ################################# Post a Quack #################################
+// ################################# Post a Quack #################################  (check if char count is over 255)
 
 if(isset($_POST['postQuackBtn'])) {
 
@@ -98,14 +98,14 @@ if(isset($_POST['postQuackBtn'])) {
   $result = $conn->query($sql);
 
   //check if the Quack is inserted into the database
-  if($result)
+  if(!$result)
   {
-    //the Quack is inserted into the database
-    header("Location: http://www.haxstar.com/pages/profile?successInsert");
-    exit;
-  } else {
     //the Quack is not inserted into the database
     header("Location: http://www.haxstar.com/pages/profile?errorInsert");
+    exit;
+  } else {
+    //the Quack is inserted into the database
+    header("Location: http://www.haxstar.com/pages/profile");
     exit;
   }
 }

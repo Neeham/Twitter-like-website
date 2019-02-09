@@ -8,9 +8,6 @@ include '../assets/alert.php';
 if (isset($_GET['errorInsert'])) {
 echo alert('error', 'Something went wrong (not entered in database). Please try again.');
 }
-if (isset($_GET['successInsert'])) {
-echo alert('success', 'Your Quack is posted!');
-}
 ?>
   <body id="profile">
 
@@ -26,16 +23,19 @@ echo alert('success', 'Your Quack is posted!');
         <form class="form-postQuack" action="../assets/query" method="post">
 
         <h2 class="form-postQuack-heading">
-          <?php echo _("Quack it up! (can change this)")?>
+          <?php echo _("Post a Quack")?>
         </h2>
 
         <input type="text" class="form-control" name="tweet" placeholder="<?php echo _("Write your Quack here")?>" required="" autofocus /><br>
 
         <button class="btn btn-lg btn-warning btn-block" name="postQuackBtn" type="submit">
-          <button onclick="location.href = 'https://haxstar.com/assets/debug.php';" class="btn btn-lg btn-primary btn-block" name="postQuackBtn"><?php echo _("Post Quack")?></button><br>
+          <button onclick="location.href = 'https://haxstar.com/assets/debug.php';" class="btn btn-lg btn-primary btn-block" name="postQuackBtn"><?php echo _("Quack")?></button><br>
         </button><br>
       </form>
     </body>
+
+<?php //DISPLAY YOUR QUACKS HERE!!  ?>
+
     </div>
     <?php include '../repeated/footer.php';?>
   </body>
