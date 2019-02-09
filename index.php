@@ -1,3 +1,11 @@
+<?php
+session_start();
+if(isset($_SESSION["session_user"])){
+header('Location: https://www.haxstar.com/pages/feed');
+exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php
