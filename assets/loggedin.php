@@ -1,7 +1,7 @@
 <?php
 session_start();
-session_unset();
-session_destroy();
+if(!isset($_SESSION["session_user"])){
 header('Location: https://www.haxstar.com');
 exit();
+}
 ?>
