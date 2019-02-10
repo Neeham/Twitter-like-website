@@ -1,5 +1,5 @@
 <head>
-  <title><?php echo _("Quacker")?></title>
+  <title><?php echo _("Quacker") ?></title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="apple-touch-icon" sizes="180x180" href="https://haxstar.com/images/favicon/apple-touch-icon.png?v=1.1">
@@ -12,7 +12,7 @@
   <meta name="msapplication-config" content="https://haxstar.com/images/favicon/browserconfig.xml?v=1.1">
   <meta name="theme-color" content="#ffffff">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="https://haxstar.com/css/custom.css?v=1.1">
+  <link rel="stylesheet" type="text/css" href="https://haxstar.com/css/custom.css?v=1.2">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
