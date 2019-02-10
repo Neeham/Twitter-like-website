@@ -9,6 +9,9 @@ include '../assets/query.php';
 if (isset($_GET['errorInsert'])) {
 echo alert('error', 'Something went wrong (not entered in database). Please try again.');
 }
+if (isset($_GET['successfulInsert'])) {
+echo alert('success', 'Your Quack has successfully been posted! Happy Quacking!');
+}
 ?>
   <body id="profile">
     <div class="container">
@@ -25,7 +28,7 @@ echo alert('error', 'Something went wrong (not entered in database). Please try 
         </h2><br>
         <input type="text" class="form-control" name="tweet" maxlength="255" placeholder="<?php echo _("*Write your Quack here")?>" required="" autofocus />
         <?php echo _("*255 Maximum Character Length")?><br><br>
-          <button onclick="location.href = 'https://haxstar.com/pages/profile.php';" class="btn btn-lg btn-primary btn-block" name="postQuackBtn"><?php echo _("*Quack")?></button><br>
+        <button class="btn btn-lg btn-primary btn-block" name="postQuackBtn" type="submit"><?php echo _("*Quack")?></button><br>
         </button><br>
       </form>
     </body>
