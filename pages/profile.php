@@ -1,4 +1,3 @@
-<?php include '../assets/loggedin.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
