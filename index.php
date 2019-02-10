@@ -19,7 +19,6 @@ echo alert('error', 'Please verify Username and Password.');
   <div class = "container-fluid">
     <form class="form-signin" action="../assets/query" method="post">
       <h2 class="form-signin-heading"> <?php echo _("Please Login")?><br><br></h2>
-      <p style="color:red;">Hint :p <br>The username is: Neeham<br>The password is: 1234qwe</p><br><br>
       <input type="text" class="form-control" name="username" placeholder="<?php echo _("Name")?>" required="" autofocus /><br>
       <input type="password" class="form-control" name="password" placeholder="<?php echo _("Password")?>" required=""/><br><br>
       <button class="btn btn-lg btn-primary btn-block" name="login" type="submit"><?php echo _("Login")?></button><br>
