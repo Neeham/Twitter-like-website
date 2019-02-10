@@ -71,10 +71,12 @@ exit;
 
 
 
-// ################################# Post a Quack #################################  (check if char count is over 255)
+// ################################# Post a Quack ######################################
 
+//if the post button is clicked
 if(isset($_POST['postQuackBtn'])) {
 
+  //get the input from the textbox
   $inputText = $_POST['tweet'];
 
   //get the username of the currently logged in user through session
@@ -100,7 +102,7 @@ if(isset($_POST['postQuackBtn'])) {
   //check if the Quack is inserted into the database
   if(!$result)
   {
-    //the Quack is not inserted into the database
+    //the Quack is not inserted into the database (can elaborate on types of errors)
     header("Location: http://www.haxstar.com/pages/profile?errorInsert");
     exit;
   } else {
@@ -109,6 +111,5 @@ if(isset($_POST['postQuackBtn'])) {
     exit;
   }
 }
-
 mysqli_close($conn);
 ?>
