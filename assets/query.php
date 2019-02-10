@@ -26,17 +26,17 @@ if ($row = $result->fetch_assoc()){
 
 	$DBPass = $row['password'];
 
- if (verify($password, $DBPass)){
+ if (verify($password, $DBPass)){ //Username found, checking if password matches
 	$_SESSION["session_user"]=$row['username'];
 	header("Location: http://www.haxstar.com/pages/feed");
 	exit;
 
 }
-else {
+else { //password does not match
 header("Location: http://www.haxstar.com/?error");
 }
 }
-else {
+else { //username not found
 header("Location: http://www.haxstar.com/?error");
 }
 }
@@ -56,8 +56,8 @@ $usernamecheck = mysqli_num_rows($result);
 if($usernamecheck > 0) { //Checking if username already exists
 header("Location: http://www.haxstar.com/pages/register?errorNameExists");
 exit;
-} else {
-	$secured_password = generateHash($pass);
+} else { //Uername does not exists therefore it will create a new account.
+$secured_password = generateHash($pass);
 $sql = "INSERT INTO User (firstName,lastName,username,password,email) VALUES ('$fName','$lName','$username','$secured_password','$email')";
 $result = $conn->query($sql);
 header("Location: http://www.haxstar.com/pages/feed");
@@ -100,14 +100,13 @@ if(isset($_POST['postQuackBtn'])) {
   $result = $conn->query($sql);
 
   //check if the Quack is inserted into the database
-  if(!$result)
-  {
+  if(!$result) {
     //the Quack is not inserted into the database (can elaborate on types of errors)
     header("Location: http://www.haxstar.com/pages/profile?errorInsert");
     exit;
   } else {
     //the Quack is inserted into the database
-    header("Location: http://www.haxstar.com/pages/profile");
+    header("Location: http://www.haxstar.com/pages/profile?successfulInsert");
     exit;
   }
 }
