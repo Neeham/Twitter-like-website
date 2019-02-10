@@ -2,7 +2,7 @@
 <phpunit colors="true">
   <!--
     <testsuites>
-        <testsuite name="Your application name">
+        <testsuite name="Qucker Test">
             <directory>./tests/</directory>
         </testsuite>
     </testsuites>
