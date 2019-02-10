@@ -36,7 +36,10 @@ echo alert('success', 'Your Quack has successfully been posted! Happy Quacking!'
     <h3 class="form-viewQuacks-heading">
       <?php echo _("*Your Latest Quacks")?>
     </h3>
-      <?php //create method call to display user's Quacks ?>
+      <?php //create method call to display user's Quacks
+
+      echo printQuacks(); //giving error
+      ?>
     </div>
     <?php include '../repeated/footer.php';?>
   </body>
