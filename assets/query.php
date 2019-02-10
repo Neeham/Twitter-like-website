@@ -69,5 +69,47 @@ exit;
 
 // ################################# Delete an Account #################################
 
+
+
+// ################################# Post a Quack ######################################
+
+//if the post button is clicked
+if(isset($_POST['postQuackBtn'])) {
+
+  //get the input from the textbox
+  $inputText = $_POST['tweet'];
+
+  //get the username of the currently logged in user through session
+  $loggedInUser = $_SESSION["session_user"];
+
+  //get the corresponding userID from the username
+  $sql = "SELECT userID FROM User WHERE username = '$loggedInUser'";
+  $result = $conn->query($sql);
+
+  //put the userID in a variable fetchedUserID
+  if ($row = $result->fetch_assoc())
+  {
+    $fetchedUserID = $row['userID'];
+  }
+
+  //get current date and time
+  $currentDateTime = date('Y-m-d H:i:s');
+
+  //insert the logged in user's ID, the Quack, and the timestamp
+  $sql = "INSERT INTO Tweet (userID,tweet,date) VALUES ('$fetchedUserID','$inputText','$currentDateTime')";
+  $result = $conn->query($sql);
+
+  //check if the Quack is inserted into the database
+  if(!$result)
+  {
+    //the Quack is not inserted into the database (can elaborate on types of errors)
+    header("Location: http://www.haxstar.com/pages/profile?errorInsert");
+    exit;
+  } else {
+    //the Quack is inserted into the database
+    header("Location: http://www.haxstar.com/pages/profile");
+    exit;
+  }
+}
 mysqli_close($conn);
 ?>
