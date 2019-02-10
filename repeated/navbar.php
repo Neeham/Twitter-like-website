@@ -1,4 +1,7 @@
-<?php session_start();?>
+<?php
+include '../assets/loggedin.php';
+session_start();
+?>
 <nav class="navbar navbar-expand-sm bg-warning navbar-light">
   <a class="navbar-brand" href="https://www.haxstar.com/pages/feed"><img src="https://haxstar.com/images/logo/duck.png" height="35px"/></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
