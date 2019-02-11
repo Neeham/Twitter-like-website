@@ -1,11 +1,13 @@
-<?php include '../assets/loggedin.php';?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
+include '../assets/loggedin.php';
 include '../repeated/header.php';
 include '../repeated/navbar.php';
 ?>
 
+<!-- <body id="feed">  //trying to fix conflicts, if this is needed can uncomment -->
+  
 <head>
   <link rel="stylesheet" type="text/css" href="./feed.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
@@ -13,8 +15,6 @@ include '../repeated/navbar.php';
 </head>
 
 <body id="feed-bg">
-
-
   <div class="container">
     <div class="row">
       <div class="col-lg-8">
@@ -86,14 +86,8 @@ include '../repeated/navbar.php';
 
           </div>
         </div>
-      </div>
-    </div>
-
-
-
 
     <?php include '../repeated/footer.php';?>
-
     <script src="../js/feed.js"></script>
 </body>
 
