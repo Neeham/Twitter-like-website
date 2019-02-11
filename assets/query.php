@@ -103,6 +103,9 @@ if (isset($_POST['register'])) {
 //if the post button is clicked
 if (isset($_POST['postQuackBtn'])) {
 
+    //get current date and time
+    $currentDateTime = date('Y-m-d H:i:s');
+
     //get the input from the textbox
     $inputText = $_POST['tweet'];
 
@@ -114,9 +117,6 @@ if (isset($_POST['postQuackBtn'])) {
     if ($row = $result->fetch_assoc()) {
         //put the userID in a variable fetchedUserID
         $fetchedUserID = $row['userID'];
-
-        //get current date and time
-        $currentDateTime = date('Y-m-d H:i:s');
 
         //insert the logged in user's ID, the Quack, and the timestamp
         $sql    = "INSERT INTO Tweet (userID,tweet,date) VALUES ('$fetchedUserID','$inputText','$currentDateTime')";
