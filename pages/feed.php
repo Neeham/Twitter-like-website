@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-include '../repeated/header.php';
-include '../repeated/navbar.php';
+include $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
+include $_SERVER['DOCUMENT_ROOT'].'/repeated/navbar.php';
 ?>
 
   <body id="feed">
@@ -15,6 +15,6 @@ include '../repeated/navbar.php';
     </div>
 
 
-    <?php include '../repeated/footer.php';?>
+    <?php include $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php';?>
   </body>
 </html>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-include '../repeated/header.php';
-include '../repeated/navbar.php';
-include '../assets/alert.php';
-include '../assets/query.php';
+include $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
+include $_SERVER['DOCUMENT_ROOT'].'/repeated/navbar.php';
+include $_SERVER['DOCUMENT_ROOT'].'/assets/alert.php';
+include $_SERVER['DOCUMENT_ROOT'].'/assets/query.php';
 if (isset($_GET['errorInsert'])) {
     echo alert('error', 'Something went wrong (not entered in database). Please try again.');
 }
@@ -15,7 +15,7 @@ if (isset($_GET['successfulInsert'])) {
 <body id="profile">
    <div class="container">
       <div class="row">
-         <div class="col-md-3 center-block"><a href="https://www.w3schools.com/html/html5_intro.asp">Learning how to html/css.</a></div>
+         <div class="col-md-3 center-block"><br><br>Quack gang! These are some helpful link for you to get started:<br><br><a href="https://www.w3schools.com/html/html5_intro.asp">Learn how to html/css.</a><br><br>P.S. Good job work everyone! <3</div>
          <div class="col-md-6 center-block" style="background-color:lavenderblush;">
             <form class="form-group" action="../assets/query" method="post">
                <h2> <label for="tweet">*Post a Quack</label> </h2>
@@ -25,12 +25,18 @@ if (isset($_GET['successfulInsert'])) {
                </button>
             </form>
          </div>
-         <div class="col-md-3 center-block"><a href="https://www.w3schools.com/bootstrap4/bootstrap_grid_basic.asp">Learning how bootstrap works.</a></div>
+         <div class="col-md-3 center-block"><br><br>Quack Gang! These are some helpful link for you to get started:<br><br><a href="https://www.w3schools.com/bootstrap4/bootstrap_grid_basic.asp">Learn how bootstrap works.</a><br><br>P.S. Good job work everyone! <3</div>
       </div>
-      <h3> <?php echo _("*Your Latest Quacks")?> </h3>
-      <!-- //create method call to display user's Quack -->
-      <?php echo printQuacks(); ?>  <!-- //giving error -->
+      <div class="row">
+         <div class="col-md-3 center-block"></div>
+          <div class="col-md-6 center-block">
+            <h3> <?php echo _("*Your Latest Quacks")?> </h3>
+            <!-- //create method call to display user's Quack -->
+            <?php echo printQuacks(); ?>  <!-- //giving error -->
+          </div>
+           <div class="col-md-3 center-block"></div>
+    </div>
    </div>
-   <?php include '../repeated/footer.php';?>
+   <?php include $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php';?>
 </body>
 </html>

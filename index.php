@@ -9,8 +9,8 @@ exit();
 <!DOCTYPE html>
 <html lang="en">
 <?php
-include './repeated/header.php';
-include './assets/alert.php';
+include $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
+include $_SERVER['DOCUMENT_ROOT'].'/assets/alert.php';
 if (isset($_GET['error'])) {
     echo alert('error', 'Please verify Username and Password.');
 }
@@ -31,6 +31,6 @@ if (isset($_GET['error'])) {
          <div class="col-md-4 center-block"></div>
       </div>
    </div>
-   <?php include './repeated/footer.php';?>
+   <?php include $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php';?>
 </body>
 </html>
