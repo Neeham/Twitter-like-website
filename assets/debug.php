@@ -8,10 +8,27 @@ Backend: You can see what's going on in the database whenever you perform databa
 */
 ?>
 
-<?php include '../assets/config.php'; ?>
+<?php
+include '../repeated/header.php';
+include '../assets/config.php';
+?>
+<style>
+body {
+  background-color: black;
+}
+</style>
+<div class="container">
+<div class="spinner-grow text-muted"></div>
+<div class="spinner-grow text-primary"></div>
+<div class="spinner-grow text-success"></div>
+<div class="spinner-grow text-info"></div>
+<div class="spinner-grow text-warning"></div>
+<div class="spinner-grow text-danger"></div>
+<div class="spinner-grow text-secondary"></div>
+<div class="spinner-grow text-dark"></div>
+<div class="spinner-grow text-light"></div>
 <h1 style="color:red;"> Welcome! - Here we will debug our Database :)</h1>
-<h3 style="color:blue;">Here is what I found on the database:</h3>
-
+<h2 style="color:blue;">Here are the tables and their content I found on the Database:</h2>
 <?php
 //Variable
 $table = array(); //Array holding all the tables found in our database
@@ -27,12 +44,13 @@ while ($row = mysqli_fetch_row($result)) {
 $j = 0;
 while ($j < sizeof($table)) {
 echo "<br>";
-echo "Table Name: {$table[$j]}";
+echo "<h3> Table: {$table[$j]} </h3>";
 
 $sql = "SELECT * FROM $table[$j]";
 $result = $conn->query($sql);
-
-echo "<table border='1'>";
+?>
+<table class="table table-dark table-striped table-hover">
+<?php
 $i = 0;
 while($row = $result->fetch_assoc())
 {
@@ -56,3 +74,4 @@ $j++;
 
 mysqli_close($conn);
 ?>
+</div>
