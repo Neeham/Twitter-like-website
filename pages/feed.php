@@ -65,28 +65,31 @@ include '../repeated/navbar.php';
           <div class="card-text">
             <ul class="list-group ">
               <li class="list-group-item follow-suggestion">
-                <a href="#">
-                  <h6>
-                    <img src="https://randomuser.me/api/portraits/women/77.jpg" /> Ann Marie
-                    <button class="btn btn-green btn-sm float-right follow mx-1"><i class="fas fa-check"></i></button>
-                  </h6>
-                </a>
+
+                <h6><a href="#">
+                    <img src="https://randomuser.me/api/portraits/women/77.jpg" /> Ann Marie</a>
+                  <button class="btn btn-outline-success btn-sm float-right follow mx-1">
+                    <i class="fas fa-check"></i> Follow</button>
+                </h6>
+
               </li>
               <li class="list-group-item follow-suggestion">
-                <a href="#">
-                  <h6>
-                    <img src="https://randomuser.me/api/portraits/men/94.jpg" /> Marc Anthony
-                    <button class="btn btn-green btn-sm float-right follow mx-1"><i class="fas fa-check"></i></button>
-                  </h6>
-                </a>
+
+                <h6><a href="#">
+                    <img src="https://randomuser.me/api/portraits/men/94.jpg" /> Marc Anthony</a>
+                  <button class="btn btn-outline-success btn-sm float-right follow mx-1">
+                    <i class="fas fa-check"></i> Follow</button>
+                </h6>
+
               </li>
               <li class="list-group-item follow-suggestion">
-                <a href="#">
-                  <h6>
-                    <img src="https://randomuser.me/api/portraits/men/89.jpg" /> John Shepherd
-                    <button class="btn btn-green btn-sm float-right follow mx-1"><i class="fas fa-check"></i></button>
-                  </h6>
-                </a>
+
+                <h6><a href="#">
+                    <img src="https://randomuser.me/api/portraits/men/89.jpg" /> John Shepherd</a>
+                  <button class="btn btn-outline-success btn-sm float-right follow mx-1">
+                    <i class="fas fa-check"></i> Follow</button>
+                </h6>
+
               </li>
             </ul>
 
