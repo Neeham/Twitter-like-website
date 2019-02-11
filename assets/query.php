@@ -2,8 +2,8 @@
 session_start();
 //get the user ID and username of the currently logged in user through session
 $loggedInUserID = $_SESSION["session_id"];
-$loggedInUser   = $_SESSION["session_user"];
-include '../assets/config.php';
+$loggedInUser = $_SESSION["session_user"];
+include $_SERVER['DOCUMENT_ROOT'].'/assets/config.php';
 
 //Function to Encrypte a Password
 function generateHash($password)
@@ -103,6 +103,9 @@ if (isset($_POST['register'])) {
 //if the post button is clicked
 if (isset($_POST['postQuackBtn'])) {
 
+    //get current date and time
+    $currentDateTime = date('Y-m-d H:i:s');
+
     //get the input from the textbox
     $inputText = $_POST['tweet'];
 
@@ -114,9 +117,6 @@ if (isset($_POST['postQuackBtn'])) {
     if ($row = $result->fetch_assoc()) {
         //put the userID in a variable fetchedUserID
         $fetchedUserID = $row['userID'];
-
-        //get current date and time
-        $currentDateTime = date('Y-m-d H:i:s');
 
         //insert the logged in user's ID, the Quack, and the timestamp
         $sql    = "INSERT INTO Tweet (userID,tweet,date) VALUES ('$fetchedUserID','$inputText','$currentDateTime')";
@@ -138,21 +138,33 @@ if (isset($_POST['postQuackBtn'])) {
     }
 }
 
-// ################################# Display Logged In User's Quacks ###################################### (In Progress)
+// ################################# Display Logged In User's Quacks ######################################
 
 function printQuacks()
 {
-    //$sql = "SELECT tweet FROM Tweet WHERE userID = '$loggedInUserID' ORDER BY date DESC";
-    $sql    = "SELECT tweet FROM Tweet WHERE userID = '1'";
+  $userIDLoggedIn = $GLOBALS['loggedInUserID']; //This is the issue (It won't take directly the global value unless it's assigned to a local variable within the loop)
+  include $_SERVER['DOCUMENT_ROOT'].'/assets/config.php'; //This is the issue (for some reason have to include config again)
+    $sql    = "SELECT tweet FROM Tweet WHERE userID = '$userIDLoggedIn' ORDER BY date DESC";
     $result = mysqli_query($conn, $sql);
     if ($result->num_rows > 0) {
-        echo 'PASS';
         // output data of each row
-        while ($row = $result->fetch_assoc()) {
-            echo $row["tweet"]. "<br>";
+    ?>
+          <table class="table table-striped">
+    <?php
+        while($row = $result->fetch_assoc())
+        {
+          echo "<tr>";
+          foreach ($row as $value) {
+            echo "<td>" . $value . "</td>";
+          }
+          echo "</tr>";
+          ?> <tr> <!-- Using these 3 lines of code to add a blank row between each rows of data! -->
+            <td> <br> </td>
+          </tr> <?php
         }
+        echo "</table>";
     } else {
-        echo 'FAIL';
+        echo 'FAIL - Nothing to show here: Query failed from the Database';
     }
 }
 
