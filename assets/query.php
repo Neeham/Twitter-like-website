@@ -158,6 +158,9 @@ function printQuacks()
             echo "<td>" . $value . "</td>";
           }
           echo "</tr>";
+          ?> <tr> <!-- Using these 3 lines of code to add a blank row between each rows of data! -->
+            <td> <br> </td>
+          </tr> <?php
         }
         echo "</table>";
     } else {
