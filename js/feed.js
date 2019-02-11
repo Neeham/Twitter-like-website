@@ -22,19 +22,32 @@ function createQuack() {
   var li = document.createElement("li");
   li.setAttribute('class', "list-group-item quack");
   li.innerHTML = `
-  <div class="media">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt="" />
-    <div class="media-body mx-2">
+    <div class="media">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt="" />
+      <div class="media-body mx-2">
         <h5><a href="#">@YOUR_NAME</a></h5>
         ${quackBox.value} <br />
-    <button class="btn float-right btn-danger like mx-1">
-      <i class="fas fa-heart"></i>
-    </button>
-  </div>
-</div>`
-  quackList.insertBefore(li, document.getElementById("divider"));
+        <button class="btn float-right btn-danger like mx-1">
+          <i class="fas fa-heart"></i>
+        </button>
+      </div>
+    </div>`;
+  quackList.insertBefore(li, document.querySelector(".quack"));
   quackBox.value = "";
-
-
-
+  setCounter();
 }
+
+$(document).ready(function (e) {
+
+  $('.emoji-field').emojiPicker({
+    width: '300px',
+    height: '200px',
+    button: false
+  });
+
+
+  $('#emoji-button').click(function (e) {
+    e.preventDefault();
+    $('#quack-box').emojiPicker('toggle');
+  })
+})
