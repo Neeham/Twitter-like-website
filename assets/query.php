@@ -138,20 +138,28 @@ if (isset($_POST['postQuackBtn'])) {
     }
 }
 
-// ################################# Display Logged In User's Quacks ###################################### (In Progress)
+// ################################# Display Logged In User's Quacks ######################################
 
 function printQuacks()
 {
   $userIDLoggedIn = $GLOBALS['loggedInUserID']; //This is the issue (It won't take directly the global value unless it's assigned to a local variable within the loop)
   include $_SERVER['DOCUMENT_ROOT'].'/assets/config.php'; //This is the issue (for some reason have to include config again)
     $sql    = "SELECT tweet FROM Tweet WHERE userID = '$userIDLoggedIn' ORDER BY date DESC";
-    //$sql    = "SELECT tweet FROM Tweet WHERE userID = '1' ORDER BY date DESC";
     $result = mysqli_query($conn, $sql);
     if ($result->num_rows > 0) {
         // output data of each row
-        while ($row = $result->fetch_assoc()) {
-            echo $row["tweet"]. "<br>";
+    ?>
+          <table class="table table-striped">
+    <?php
+        while($row = $result->fetch_assoc())
+        {
+          echo "<tr>";
+          foreach ($row as $value) {
+            echo "<td>" . $value . "</td>";
+          }
+          echo "</tr>";
         }
+        echo "</table>";
     } else {
         echo 'FAIL - Nothing to show here: Query failed from the Database';
     }
