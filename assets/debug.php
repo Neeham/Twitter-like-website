@@ -14,7 +14,7 @@ include '../assets/config.php';
 ?>
 <style>
 body {
-  background-color: black;
+  background-color: pink;
 }
 </style>
 <div class="container">
