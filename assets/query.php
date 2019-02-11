@@ -2,7 +2,7 @@
 session_start();
 //get the user ID and username of the currently logged in user through session
 $loggedInUserID = $_SESSION["session_id"];
-$loggedInUser   = $_SESSION["session_user"];
+$loggedInUser = $_SESSION["session_user"];
 include $_SERVER['DOCUMENT_ROOT'].'/assets/config.php';
 
 //Function to Encrypte a Password
@@ -142,8 +142,10 @@ if (isset($_POST['postQuackBtn'])) {
 
 function printQuacks()
 {
-    //$sql = "SELECT tweet FROM Tweet WHERE userID = '$loggedInUserID' ORDER BY date DESC";
-    $sql    = "SELECT tweet FROM Tweet WHERE userID = '1' ORDER BY date DESC";
+  $userIDLoggedIn = $GLOBALS['loggedInUserID']; //This is the issue (It won't take directly the global value unless it's assigned to a local variable within the loop)
+  include $_SERVER['DOCUMENT_ROOT'].'/assets/config.php'; //This is the issue (for some reason have to include config again)
+    $sql    = "SELECT tweet FROM Tweet WHERE userID = '$userIDLoggedIn' ORDER BY date DESC";
+    //$sql    = "SELECT tweet FROM Tweet WHERE userID = '1' ORDER BY date DESC";
     $result = mysqli_query($conn, $sql);
     if ($result->num_rows > 0) {
         // output data of each row
