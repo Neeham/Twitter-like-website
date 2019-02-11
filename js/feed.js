@@ -6,8 +6,8 @@ const quackList = document.getElementById("quack-list");
 //Function to count the number of characters in the text field
 function setCounter() {
 
-    let counter = quackBox.value.length;
-    quackLimit.innerHTML = counter + "/255"
+  let counter = quackBox.value.length;
+  quackLimit.innerHTML = counter + "/255"
 
 }
 
@@ -17,11 +17,11 @@ quackButton.addEventListener("click", createQuack);
 //Function to post a new Quack
 function createQuack() {
 
-    console.log("1");
-    //Create a new list item to add to list of quacks
-    var li = document.createElement("li");
-    li.setAttribute('class', "list-group-item quack");
-    li.innerHTML = `
+
+  //Create a new list item to add to list of quacks
+  var li = document.createElement("li");
+  li.setAttribute('class', "list-group-item quack");
+  li.innerHTML = `
   <div class="media">
     <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt="" />
     <div class="media-body mx-2">
@@ -32,8 +32,8 @@ function createQuack() {
     </button>
   </div>
 </div>`
-    quackList.appendChild(li);
-    quackBox.value = "";
+  quackList.insertBefore(li, document.getElementById("divider"));
+  quackBox.value = "";
 
 
 

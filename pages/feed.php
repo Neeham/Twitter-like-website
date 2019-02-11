@@ -7,7 +7,7 @@ include '../repeated/navbar.php';
 ?>
 
 <!-- <body id="feed">  //trying to fix conflicts, if this is needed can uncomment -->
-  
+
 <head>
   <link rel="stylesheet" type="text/css" href="./feed.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
@@ -31,6 +31,7 @@ include '../repeated/navbar.php';
         <div class="card my-3">
           <div class="card-header text-center">Your Feed</div>
           <ul class="list-group" id="quack-list">
+            <div id="divider"></div>
             <li class="list-group-item quack">
               <div class="media">
                 <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="" />
@@ -87,8 +88,8 @@ include '../repeated/navbar.php';
           </div>
         </div>
 
-    <?php include '../repeated/footer.php';?>
-    <script src="../js/feed.js"></script>
+        <?php include '../repeated/footer.php';?>
+        <script src="../js/feed.js"></script>
 </body>
 
 </html>
