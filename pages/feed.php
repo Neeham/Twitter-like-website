@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-include '../assets/loggedin.php';
-include '../repeated/header.php';
-include '../repeated/navbar.php';
+
+include $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
+include $_SERVER['DOCUMENT_ROOT'].'/repeated/navbar.php';
 ?>
 
 <!-- <body id="feed">  //trying to fix conflicts, if this is needed can uncomment -->
@@ -86,9 +86,9 @@ include '../repeated/navbar.php';
 
           </div>
         </div>
-
-    <?php include '../repeated/footer.php';?>
+    <?php include $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php';?>
+  </body>
+</html>
     <script src="../js/feed.js"></script>
 </body>
-
 </html>

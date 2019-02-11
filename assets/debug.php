@@ -9,8 +9,8 @@ Backend: You can see what's going on in the database whenever you perform databa
 ?>
 
 <?php
-include '../repeated/header.php';
-include '../assets/config.php';
+include $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
+include $_SERVER['DOCUMENT_ROOT'].'/assets/config.php';
 ?>
 <style>
 body {
