@@ -1,0 +1,37 @@
+textarea{
+    resize: none;
+}
+body{
+    min-height: 400px;
+   margin-bottom: 100px;
+}
+#quack-button, #image-upload-button, #emoji-button, .reply{
+    background-color: #FF5722;
+    color: white;
+}
+#feed-bg{
+
+    background-color:#e6ecf0;
+}
+.card-header{
+    background-color: #FFA000;
+}
+.quack, .follow-suggestion{
+    background-color: #FFC107;
+}
+.media img {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
+
+.btn-green{
+    background-color: #7EEB00;
+    color:white;
+}
+
+h6 img {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+}
