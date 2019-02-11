@@ -20,7 +20,7 @@ if (isset($_GET['errorNameExists'])) {
             <input type="text" class="form-control" name="lastname" placeholder="<?php echo _("Last Name")?>" required=""/><br>
             <input type="text" class="form-control" name="username" placeholder="<?php echo _("User Name")?>" required=""/><br>
             <input type="password" class="form-control" name="password" placeholder="<?php echo _("Password")?>" required=""/><br>
-            <input type="text" class="form-control" name="email" placeholder="<?php echo _("Email Address")?>" required=""/><br><br>
+            <input type="email" class="form-control" name="email" placeholder="<?php echo _("Email Address")?>" required=""/><br><br>
             <button class="btn btn-lg btn-warning btn-block" name="register" type="submit">
             <?php echo _("Register")?>
             </button><br>
