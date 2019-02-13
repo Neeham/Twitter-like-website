@@ -2,8 +2,8 @@
 session_start();
 //get the user ID and username of the currently logged in user through session
 $loggedInUserID = $_SESSION["session_id"];
-$loggedInUser = $_SESSION["session_user"];
-include $_SERVER['DOCUMENT_ROOT'].'/assets/config.php';
+$loggedInUser   = $_SESSION["session_user"];
+include $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
 
 //Function to Encrypte a Password
 function generateHash($password)
@@ -22,26 +22,36 @@ function verify($password, $hashedPassword)
 
 // ################################# VERIFY LOGIN #################################
 if (isset($_POST['login'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = mysql_escape_string($_POST['username']);
+    $password = mysql_escape_string($_POST['password']);
 
-    $sql    = "SELECT userID, username, password FROM User WHERE username = '$username'";
+    $sql    = "SELECT userID, username, password, emailVerification FROM User WHERE username = '$username'";
     $result = $conn->query($sql);
     if ($row = $result->fetch_assoc()) {
 
         $DBPass = $row['password'];
+        $email  = $row['emailVerification'];
 
         if (verify($password, $DBPass)) { //Username found, checking if password matches
-            $_SESSION["session_user"] = $row['username'];
-            $_SESSION["session_id"]   = $row['userID'];
-            header("Location: http://www.haxstar.com/pages/feed");
-            exit;
+            $_SESSION["session_user"]      = $row['username'];
+            $_SESSION["session_id"]        = $row['userID'];
+            $_SESSION["session_activated"] = $row['emailVerification'];
+
+            if ($row['emailVerification'] == 0) { //Verifying email/activation
+                header("Location: https://www.haxstar.com/?verifyEmail");
+                exit;
+            } else {
+                header("Location: https://www.haxstar.com/pages/feed");
+                exit;
+            }
 
         } else { //password does not match
-            header("Location: http://www.haxstar.com/?error");
+            header("Location: https://www.haxstar.com/?error");
+            exit;
         }
     } else { //username not found
-        header("Location: http://www.haxstar.com/?error");
+        header("Location: https://www.haxstar.com/?error");
+        exit;
     }
 }
 
@@ -71,23 +81,47 @@ return $row[0];
 // ################################# Register an Account #################################
 
 if (isset($_POST['register'])) {
-    $fName    = $_POST['firstname'];
-    $lName    = $_POST['lastname'];
-    $username = $_POST['username'];
-    $pass     = $_POST['password'];
-    $email    = $_POST['email'];
+    $fName    = mysql_escape_string($_POST['firstname']);
+    $lName    = mysql_escape_string($_POST['lastname']);
+    $username = mysql_escape_string($_POST['username']);
+    $pass     = mysql_escape_string($_POST['password']);
+    $email    = mysql_escape_string($_POST['email']);
+    $hash     = md5(rand(0, 1000));
 
-    $sql           = "SELECT * FROM User WHERE username = '$username'";
-    $result        = $conn->query($sql);
-    $usernamecheck = mysqli_num_rows($result);
-    if ($usernamecheck > 0) { //Checking if username already exists
-        header("Location: http://www.haxstar.com/pages/register?errorNameExists");
-        exit;
+    $sql    = "SELECT * FROM User WHERE (username = '$username' or email = '$email')";
+    $result = $conn->query($sql);
+    if ($row = $result->fetch_assoc()) {
+        if (strcasecmp($username, $row['username']) == 0) { //Checking if username already exists, case insensitive
+            header("Location: https://www.haxstar.com/pages/register?errorNameExists");
+            exit;
+        } else if (strcasecmp($email, $row['email']) == 0) { //Checking if email already exists, case insensitive
+            header("Location: https://www.haxstar.com/pages/register?errorEmailExists");
+            exit;
+        }
     } else { //Uername does not exists therefore it will create a new account.
+        //global $fName, $lName, $username, $pass, $email, $hash;
         $secured_password = generateHash($pass);
-        $sql              = "INSERT INTO User (firstName,lastName,username,password,email) VALUES ('$fName','$lName','$username','$secured_password','$email')";
+        $sql              = "INSERT INTO User (firstName,lastName,username,password,email,hash) VALUES ('$fName','$lName','$username','$secured_password','$email', '$hash')";
         $result           = $conn->query($sql);
-        header("Location: http://www.haxstar.com/pages/feed");
+
+        $to      = $email; //Sending email to user
+        $subject = 'Quacker - Signup | Verification'; //subject of the email
+        $message = '
+
+    Hello ' . $fName . ',
+
+    Thank you for signing up with Quacker!
+    Your account has been created! Please activate your account by pressing the url below.
+
+    Please click this link to activate your account:
+    https://www.haxstar.com/assets/verify.php?email=' . $email . '&hash=' . $hash . '
+
+    ';
+
+        $headers = 'From:no-reply@haxstar.com' . "\r\n"; //header
+        mail($to, $subject, $message, $headers); //sending email
+
+        header("Location: https://www.haxstar.com/?verifyEmail");
         exit;
     }
 }
@@ -107,7 +141,7 @@ if (isset($_POST['postQuackBtn'])) {
     $currentDateTime = date('Y-m-d H:i:s');
 
     //get the input from the textbox
-    $inputText = $_POST['tweet'];
+    $inputText = mysql_escape_string($_POST['tweet']);
 
     //get the corresponding userID from the username
     $sql    = "SELECT userID FROM User WHERE username = '$loggedInUser'";
@@ -125,15 +159,15 @@ if (isset($_POST['postQuackBtn'])) {
         //check if the Quack is inserted into the database
         if (!$result) {
             //the Quack is not inserted into the database (can elaborate on types of errors)
-            header("Location: http://www.haxstar.com/pages/profile?errorInsert");
+            header("Location: https://www.haxstar.com/pages/profile?errorInsert");
             exit;
         } else {
             //the Quack is inserted into the database
-            header("Location: http://www.haxstar.com/pages/profile?successfulInsert");
+            header("Location: https://www.haxstar.com/pages/profile?successfulInsert");
             exit;
         }
     } else { //if database didn't return userID
-        header("Location: http://www.haxstar.com/pages/profile?errorInsert");
+        header("Location: https://www.haxstar.com/pages/profile?errorInsert");
         exit;
     }
 }
@@ -142,23 +176,22 @@ if (isset($_POST['postQuackBtn'])) {
 
 function printQuacks()
 {
-  $userIDLoggedIn = $GLOBALS['loggedInUserID']; //This is the issue (It won't take directly the global value unless it's assigned to a local variable within the loop)
-  include $_SERVER['DOCUMENT_ROOT'].'/assets/config.php'; //This is the issue (for some reason have to include config again)
+    $userIDLoggedIn = $GLOBALS['loggedInUserID']; //This is the issue (It won't take directly the global value unless it's assigned to a local variable within the loop)
+    include $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //This is the issue (for some reason have to include config again)
     $sql    = "SELECT tweet FROM Tweet WHERE userID = '$userIDLoggedIn' ORDER BY date DESC";
     $result = mysqli_query($conn, $sql);
     if ($result->num_rows > 0) {
         // output data of each row
-    ?>
-          <table class="table table-striped">
+?>
+      <table class="table table-striped">
     <?php
-        while($row = $result->fetch_assoc())
-        {
-          echo "<tr>";
-          foreach ($row as $value) {
-            echo "<td>" . $value . "</td>";
-          }
-          echo "</tr>";
-          ?> <tr> <!-- Using these 3 lines of code to add a blank row between each rows of data! -->
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            foreach ($row as $value) {
+                echo "<td>" . $value . "</td>";
+            }
+            echo "</tr>";
+?> <tr> <!-- Using these 3 lines of code to add a blank row between each rows of data! -->
             <td> <br> </td>
           </tr> <?php
         }

@@ -1,5 +1,5 @@
 <?php
-include '../assets/loggedin.php';
+include $_SERVER['DOCUMENT_ROOT'].'/assets/loggedin.php';
 session_start();
 ?>
 <nav class="navbar navbar-expand-sm bg-warning navbar-light">
