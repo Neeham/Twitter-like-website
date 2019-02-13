@@ -3,12 +3,6 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
 include $_SERVER['DOCUMENT_ROOT'].'/assets/alert.php';
-if (isset($_GET['errorNameExists'])) {
-    echo alert('error', 'The username already exists. Please choose another username.');
-}
-if (isset($_GET['errorEmailExists'])) {
-    echo alert('error', 'The email address already exists. Please login or contact the support team in order to reset your password.');
-}
 ?>
 <body id="register">
    <div class = "container-fluid">
