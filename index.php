@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION["session_user"])){
+if(isset($_SESSION["session_user"])  && $_SESSION['session_activated'] == 1){
 header('Location: https://www.haxstar.com/pages/feed');
 exit();
 }
@@ -13,6 +13,15 @@ include $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
 include $_SERVER['DOCUMENT_ROOT'].'/assets/alert.php';
 if (isset($_GET['error'])) {
     echo alert('error', 'Please verify Username and Password.');
+}
+if (isset($_GET['verifyEmail'])) {
+    echo alert('warning', 'Please verify your email in order to activate your account. Contact the support team if you are having any difficulties :)');
+}
+if (isset($_GET['activationError'])) {
+    echo alert('error', 'Invalid URL or email has already been verified.');
+}
+if (isset($_GET['emailVerified'])) {
+    echo alert('success', 'Thank you for verifying your email! You may login!');
 }
 ?>
 <body id="login">

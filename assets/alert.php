@@ -1,21 +1,32 @@
 <?php
 function alert($type, $msg){
 if ($type == "error") { ?>
+
 <style>
 .modal-header {
 background-color: #FF0000;
 }
 </style>
-
 <?php }
+
 else if ($type == "success") {?>
-      <style>
+<style>
 .modal-header {
 background-color: #00CF37;
 }
-<?php } ?>
-
 </style>
+<?php }
+
+else if ($type == "warning") {?>
+<style>
+.modal-header {
+background-color: #ffa500;
+}
+</style>
+<?php }
+
+?>
+
   <div class="modal" tabindex="-1" id="myModal" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -24,6 +35,8 @@ background-color: #00CF37;
           <h4 class="modal-title"><?php echo _("Error")?></h4>
           <?php } else if ($type == "success") {?>
 		  			<h4 class="modal-title"><?php echo _("Success")?></h4>
+          <?php } else if ($type == "warning") {?>
+		  			<h4 class="modal-title"><?php echo _("Warning")?></h4>
           <?php } ?>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
