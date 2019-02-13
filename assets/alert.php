@@ -27,7 +27,7 @@ background-color: #ffa500;
 
 ?>
 
-  <div class="modal" tabindex="-1" id="myModal" role="dialog">
+  <div class="modal fade" tabindex="-1" id="myModal" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -38,7 +38,7 @@ background-color: #ffa500;
           <?php } else if ($type == "warning") {?>
 		  			<h4 class="modal-title"><?php echo _("Warning")?></h4>
           <?php } ?>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick="location.href=window.location.pathname">
 						<span aria-hidden="true">&times;</span>
 					</button>
         </div>
@@ -46,7 +46,7 @@ background-color: #ffa500;
           <p><?php echo $msg ?></p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal"><?php echo _("Close")?></button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" onClick="location.href=window.location.pathname"><?php echo _("Close")?></button>
         </div>
       </div>
     </div>
