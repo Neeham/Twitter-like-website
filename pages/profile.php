@@ -5,12 +5,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
 include $_SERVER['DOCUMENT_ROOT'].'/repeated/navbar.php';
 include $_SERVER['DOCUMENT_ROOT'].'/assets/alert.php';
 include $_SERVER['DOCUMENT_ROOT'].'/assets/query.php';
-if (isset($_GET['errorInsert'])) {
-    echo alert('error', 'Something went wrong (not entered in database). Please try again.');
-}
-if (isset($_GET['successfulInsert'])) {
-    echo alert('success', 'Your Quack has successfully been posted! Happy Quacking!');
-}
 ?>
 <body id="profile">
    <div class="container">
