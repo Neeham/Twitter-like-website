@@ -4,7 +4,7 @@
       <li class="nav-item active">Copyright by the Quack Gang © - <?PHP echo date("Y");?></li>
     </ul>
     <ul class="navbar-nav">
-      <li class="nav-item"><img src="https://haxstar.com/images/logo/duck.png" height="35px"/></li>
+      <li class="nav-item"><img src="https://haxstar.com/images/annimation/Quack.gif" height="35px"/></li>
     </ul>
   </div>
 </nav>

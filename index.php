@@ -18,7 +18,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/alert.php';
          <div class="col-md-4 center-block" style="background-color:lavenderblush;">
             <form class="form-signin" action="../assets/query" method="post">
                <h2 class="form-signin-heading"> <?php echo _("Please Login")?><br><br></h2>
-               <input type="text" class="form-control" name="username" placeholder="<?php echo _("Name")?>" required="" autofocus /><br>
+               <input type="text" class="form-control" name="username" placeholder="<?php echo _("Username")?>" required="" autofocus /><br>
                <input type="password" class="form-control" name="password" placeholder="<?php echo _("Password")?>" required=""/><br><br>
                <button class="btn btn-lg btn-primary btn-block" name="login" type="submit"><?php echo _("Login")?></button><br>
             </form>
