@@ -12,7 +12,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/query.php';
          <div class="col-md-6 center-block" style="background-color:lavenderblush;">
             <form class="form-group" action="../assets/query" method="post">
                <h2> <label for="tweet">*Post a Quack</label> </h2>
-               <textarea class="form-control" rows="4" name="tweet" maxlength="255" placeholder="<?php echo _("*Write your Quack here")?>"></textarea>
+               <textarea class="form-control" rows="4" name="tweet" maxlength="255" required placeholder="<?php echo _("*Write your Quack here")?>"></textarea>
                <br>
                <button class="btn btn-lg btn-primary btn-block" name="postQuackBtn" type="submit"><?php echo _("*Quack")?></button><br>
                </button>
