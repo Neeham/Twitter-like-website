@@ -9,7 +9,6 @@ exit();
 <html lang="en">
 <?php
 include $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
-include $_SERVER['DOCUMENT_ROOT'].'/assets/alert.php';
 ?>
 <body id="login">
    <div class = "container-fluid">
