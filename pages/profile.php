@@ -3,7 +3,6 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
 include $_SERVER['DOCUMENT_ROOT'].'/repeated/navbar.php';
-include $_SERVER['DOCUMENT_ROOT'].'/assets/alert.php';
 include $_SERVER['DOCUMENT_ROOT'].'/assets/query.php';
 ?>
 <body id="profile">
