@@ -10,6 +10,7 @@ exit();
 <?php
 include $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
 ?>
+Potatoe
 <body id="login">
    <div class = "container-fluid">
       <div class="row">
