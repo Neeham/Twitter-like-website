@@ -3,7 +3,6 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
 include $_SERVER['DOCUMENT_ROOT'].'/repeated/navbar.php';
-include $_SERVER['DOCUMENT_ROOT'].'/assets/alert.php';
 include $_SERVER['DOCUMENT_ROOT'].'/assets/query.php';
 ?>
 <body id="profile">
@@ -13,23 +12,16 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/query.php';
          <div class="col-md-6 center-block" style="background-color:lavenderblush;">
             <form class="form-group" action="../assets/query" method="post">
                <h2> <label for="tweet">*Post a Quack</label> </h2>
-               <textarea class="form-control" rows="4" name="tweet" maxlength="255" placeholder="<?php echo _("*Write your Quack here")?>"></textarea>
+               <textarea class="form-control" rows="4" name="tweet" maxlength="255" required placeholder="<?php echo _("*Write your Quack here")?>"></textarea>
                <br>
                <button class="btn btn-lg btn-primary btn-block" name="postQuackBtn" type="submit"><?php echo _("*Quack")?></button><br>
                </button>
             </form>
+            <h3> <?php echo _("*Your Latest Quacks")?> </h3>
+            <?php echo printQuacks(); ?>
          </div>
          <div class="col-md-3 center-block"><br><br>Quack Gang! These are some helpful link for you to get started:<br><br><a href="https://www.w3schools.com/bootstrap4/bootstrap_grid_basic.asp">Learn how bootstrap works.</a><br><br>P.S. Good job work everyone! <3</div>
       </div>
-      <div class="row">
-         <div class="col-md-3 center-block"></div>
-          <div class="col-md-6 center-block">
-            <h3> <?php echo _("*Your Latest Quacks")?> </h3>
-            <!-- //create method call to display user's Quack -->
-            <?php echo printQuacks(); ?>  <!-- //giving error -->
-          </div>
-           <div class="col-md-3 center-block"></div>
-    </div>
    </div>
    <?php include $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php';?>
 </body>
