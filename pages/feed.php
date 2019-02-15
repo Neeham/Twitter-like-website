@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-
-include $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
-include $_SERVER['DOCUMENT_ROOT'].'/repeated/navbar.php';
+include '../repeated/header.php';
+include '../repeated/navbar.php';
 ?>
+
+<!-- <body id="feed">  //trying to fix conflicts, if this is needed can uncomment -->
 
 <head>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
@@ -20,7 +21,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/repeated/navbar.php';
 <body id="feed-bg">
   <div class="container">
     <div class="row">
-      <div class="col-lg-8">
+      <div class="col-md-8">
         <div class="form-group">
           <textarea class="form-control my-2 emoji-field" id="quack-box" rows="3" maxlength="255"
             placeholder="Write your thoughts..." oninput="setCounter()"></textarea>
@@ -56,7 +57,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/repeated/navbar.php';
         </div>
 
       </div>
-      <div class="col-lg-4 d-none d-lg-block " id="follower-suggestions">
+      <div class="col-md-4" id="follower-suggestions">
         <div class="card my-1">
           <div class="card-header">You May Like</div>
 
@@ -93,9 +94,9 @@ include $_SERVER['DOCUMENT_ROOT'].'/repeated/navbar.php';
 
           </div>
         </div>
-    <?php include $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php';?>
-  </body>
-</html>
-    <script src="../js/feed.js"></script>
+
+        <?php include '../repeated/footer.php';?>
+        <script src="../js/feed.js"></script>
 </body>
+
 </html>
