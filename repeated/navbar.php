@@ -1,6 +1,6 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'].'/assets/loggedin.php';
-session_start();
+  require $_SERVER['DOCUMENT_ROOT'].'/assets/loggedin.php';
+  session_start();
 ?>
 <nav class="navbar navbar-expand-sm bg-warning navbar-light">
   <a class="navbar-brand" href="https://www.haxstar.com/pages/feed"><img src="https://haxstar.com/images/logo/duck.png" height="35px"/></a>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-include $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
-include $_SERVER['DOCUMENT_ROOT'].'/repeated/navbar.php';
-include $_SERVER['DOCUMENT_ROOT'].'/assets/query.php';
+  require $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
+  require $_SERVER['DOCUMENT_ROOT'].'/repeated/navbar.php';
+  require $_SERVER['DOCUMENT_ROOT'].'/assets/query.php';
 ?>
 <body id="profile">
    <div class="container">
@@ -18,11 +18,11 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/query.php';
                </button>
             </form>
             <h3> <?php echo _("*Your Latest Quacks")?> </h3>
-            <?php echo printQuacks(); ?>
+            <?php printQuacks(); ?>
          </div>
          <div class="col-md-3 center-block"><br><br>Quack Gang! These are some helpful link for you to get started:<br><br><a href="https://www.w3schools.com/bootstrap4/bootstrap_grid_basic.asp">Learn how bootstrap works.</a><br><br>P.S. Good job work everyone! <3</div>
       </div>
    </div>
-   <?php include $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php';?>
+   <?php require $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php';?>
 </body>
 </html>
