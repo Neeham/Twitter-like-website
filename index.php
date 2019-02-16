@@ -1,14 +1,14 @@
 <?php
 session_start();
-if(isset($_SESSION["session_user"])  && $_SESSION['session_activated'] == 1){
-header('Location: https://www.haxstar.com/pages/feed');
-exit();
+if (isset($_SESSION["session_user"]) && $_SESSION['session_activated'] == 1) {
+    header('Location: https://www.haxstar.com/pages/feed');
+    exit();
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
-include $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
+require $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
 ?>
 
 <body id="login">
@@ -39,6 +39,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
          <div class="col-md-4 center-block"></div>
       </div>
    </div>
-   <?php include $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php';?>
+   <?php require $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php';?>
 </body>
 </html>
