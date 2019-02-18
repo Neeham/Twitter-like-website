@@ -99,7 +99,6 @@ if (isset($_POST['register'])) {
             exit;
         }
     } else { //Uername does not exists therefore it will create a new account.
-        //global $fName, $lName, $username, $pass, $email, $hash;
         $secured_password = generateHash($pass);
         $sql = "INSERT INTO User (firstName,lastName,username,password,email,hash) VALUES ('$fName','$lName','$username','$secured_password','$email', '$hash')";
         $result = $conn->query($sql);
