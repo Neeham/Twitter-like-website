@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-  require  $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
-  require  $_SERVER['DOCUMENT_ROOT'].'/repeated/navbar.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/repeated/header.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php';
 ?>
 
-<script src="../js/feed.js"></script>
+
 
 <!-- <body id="feed">  //trying to fix conflicts, if this is needed can uncomment -->
 
@@ -96,7 +96,8 @@
 
           </div>
         </div>
-      <?php require  $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php';?>
+      <?php require $_SERVER['DOCUMENT_ROOT'] . '/repeated/footer.php';?>
+      <script src="../js/feed.js"></script>
 </body>
 
 </html>
