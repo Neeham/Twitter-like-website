@@ -12,9 +12,7 @@
       <li class="nav-item">
         <a class="nav-link" href="https://www.haxstar.com/pages/profile">My Profile</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="https://www.haxstar.com/assets/logout">Log out</a>
-      </li>
+
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Drop Down Menu</a>
         <div class="dropdown-menu">
@@ -22,7 +20,12 @@
           <a class="dropdown-item" href="#">Option 2</a>
           <a class="dropdown-item" href="#">Option 3</a>
         </div>
+
       </li>
+      <li class="nav-item float-right">
+        <a class="nav-link" href="https://www.haxstar.com/assets/logout">Log out</a>
+      </li>
+
     </ul>
   </div>
 </nav>
