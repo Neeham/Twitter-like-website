@@ -172,8 +172,7 @@ if (isset($_POST['postQuackBtn'])) {
 
 // ################################# Display Logged In User's Quacks ######################################
 
-function printQuacks()
-{
+function printQuacks() {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //This is the issue (for some reason have to include config again)
     $sql = "SELECT tweet FROM Tweet WHERE userID = '{$GLOBALS['loggedInUserID']}' ORDER BY date DESC";
     $result = mysqli_query($conn, $sql);
@@ -190,7 +189,7 @@ while ($row = $result->fetch_assoc()) {
             echo "<li class=\"list-group-item quack\">";
             foreach ($row as $value) {
                 echo "<div class=\"mx-2\">";
-                echo "<h5><a href=\"#\">@USER_NAME</a></h5>";
+                echo "<h5><a href=\"#\">@{$GLOBALS['loggedInUser']}</a></h5>";
                 echo "$value";
                 echo "</div></li>";
             }
