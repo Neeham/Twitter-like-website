@@ -26,7 +26,7 @@ session_start();
         </div>
 
       </li>
-      <li class="nav-item float-right">
+      <li class="nav-item">
         <a class="nav-link" href="https://www.haxstar.com/assets/logout">Log out</a>
       </li>
 
