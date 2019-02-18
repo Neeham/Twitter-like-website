@@ -154,7 +154,7 @@ function printQuacks()
 while ($row = $result->fetch_assoc()) {
             echo "<li class=\"list-group-item quack\">";
             foreach ($row as $value) {
-                echo "<div class=\"mx-2\">";
+                echo "<div class=\"mx-2 \">";
                 echo "<h5><a href=\"#\">@USER_NAME</a></h5>";
                 echo "$value";
                 echo "</div></li>";
