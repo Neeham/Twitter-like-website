@@ -7,13 +7,34 @@ require $_SERVER['DOCUMENT_ROOT'].'/assets/query.php';
 ?>
 <body id="profile">
   <div class="container">
-
     <div class="row">
+
+      <!--Your Profile-->
+      <div class="col-lg-3" id="your-profile">
+        <div class="card">
+          <div class="card-header"><h2>Your Profile</h2></div>
+          <div class="card-text">
+          <ul class="list-group ">
+
+            <li class="list-group-item follow-suggestion">
+              <h1><a href="#">
+                <img src="https://randomuser.me/api/portraits/women/50.jpg" id="#"/>FooBar McBuggy</a>
+              </h1></br>
+              <h3>Email:</h3></br>
+                <p>buggy@iLoveToBug.com</p>
+              <h3>Followers:</h3></br>
+                <p>2</p>
+              <h3>Following:</h3></br>
+                <p>98 others</p>
+            </ul>
+          </div>
+        </div>
+      </div>
 
       <div class="col-md-6 center-block" style="background-color:lavenderblush;">
         <form class="form-group" action="../assets/query" method="post">
-          <h2> <label for="tweet">*Post a Quack</label> </h2>
-          <textarea class="form-control" rows="4" name="tweet" maxlength="255" required placeholder="<?php echo _("*Write your Quack here")?>"></textarea>
+          <h2> <label for="tweet">Post a Quack</label> </h2>
+          <textarea class="form-control" rows="4" name="tweet" maxlength="255" required placeholder="<?php echo _("Quack it")?>"></textarea>
           <br>
           <button class="btn btn-lg btn-primary btn-block" name="postQuackBtn" type="submit"><?php echo _("*Quack")?></button><br>
         </button>
@@ -22,18 +43,19 @@ require $_SERVER['DOCUMENT_ROOT'].'/assets/query.php';
       <?php printQuacks(); ?>
     </div>
 
+    <!--Following & Followers-->
+    <div class="col-md-3 " >
 
-    <!--MARC changes-->
-    <div class="col-md-4" >
-      <div class="card my-1" id="followers">
-        <div class="card-header">Followers</div>
+      <!--FOLLOWING-->
+      <div class="card my-1" id="following">
+        <div class="card-header">Following</div>
 
         <div class="card-text">
           <ul class="list-group ">
             <li class="list-group-item follow-suggestion">
 
               <h6><a href="#">
-                <img src="https://randomuser.me/api/portraits/women/77.jpg" /> Ann Marie</a>
+                <img src="https://randomuser.me/api/portraits/women/74.jpg" /> Bobby Lynch</a>
                 <button class="btn btn-outline-success btn-sm float-right follow mx-1">
                   <i class="fas fa-check"></i> Follow</button>
                 </h6>
@@ -42,7 +64,7 @@ require $_SERVER['DOCUMENT_ROOT'].'/assets/query.php';
               <li class="list-group-item follow-suggestion">
 
                 <h6><a href="#">
-                  <img src="https://randomuser.me/api/portraits/men/94.jpg" /> Marc Anthony</a>
+                  <img src="https://randomuser.me/api/portraits/men/99.jpg" /> Veronica Bugs</a>
                   <button class="btn btn-outline-success btn-sm float-right follow mx-1">
                     <i class="fas fa-check"></i> Follow</button>
                   </h6>
@@ -51,7 +73,7 @@ require $_SERVER['DOCUMENT_ROOT'].'/assets/query.php';
                 <li class="list-group-item follow-suggestion">
 
                   <h6><a href="#">
-                    <img src="https://randomuser.me/api/portraits/men/89.jpg" /> John Shepherd</a>
+                    <img src="https://randomuser.me/api/portraits/men/81.jpg" />Baby Big Jr.</a>
                     <button class="btn btn-outline-success btn-sm float-right follow mx-1">
                       <i class="fas fa-check"></i> Follow</button>
                     </h6>
@@ -63,8 +85,8 @@ require $_SERVER['DOCUMENT_ROOT'].'/assets/query.php';
             </div>
 
 
-            <div class="card my-1" id="following">
-              <div class="card-header">Following</div>
+            <div class="card my-1" id="followers">
+              <div class="card-header">Followers</div>
 
               <div class="card-text">
                 <ul class="list-group ">
@@ -96,14 +118,16 @@ require $_SERVER['DOCUMENT_ROOT'].'/assets/query.php';
 
                         </li>
                       </ul>
-
                     </div>
                   </div>
+
+
                 </div> <!--end of Marc changes-->
 
-        </div> <!--End row-->
-      </div> <!--Container-->
+              </div> <!--End row-->
+            </div> <!--Container-->
 
-      <?php require $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php';?>
-    </body>
-    </html>
+            <?php require $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php';?>
+            <script src="../js/feed.js"></script>
+          </body>
+          </html>
