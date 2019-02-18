@@ -2,8 +2,8 @@
 session_start();
 //get the user ID and username of the currently logged in user through session
 $loggedInUserID = $_SESSION["session_id"];
-$loggedInUser   = $_SESSION["session_user"];
-require $_SERVER['DOCUMENT_ROOT'].'/assets/config.php';
+$loggedInUser = $_SESSION["session_user"];
+require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
 
 //Function to Encrypte a Password
 function generateHash($password)
@@ -25,16 +25,16 @@ if (isset($_POST['login'])) {
     $username = mysql_escape_string($_POST['username']);
     $password = mysql_escape_string($_POST['password']);
 
-    $sql    = "SELECT userID, username, password, emailVerification FROM User WHERE username = '$username'";
+    $sql = "SELECT userID, username, password, emailVerification FROM User WHERE username = '$username'";
     $result = $conn->query($sql);
     if ($row = $result->fetch_assoc()) {
 
         $DBPass = $row['password'];
-        $email  = $row['emailVerification'];
+        $email = $row['emailVerification'];
 
         if (verify($password, $DBPass)) { //Username found, checking if password matches
-            $_SESSION["session_user"]      = $row['username'];
-            $_SESSION["session_id"]        = $row['userID'];
+            $_SESSION["session_user"] = $row['username'];
+            $_SESSION["session_id"] = $row['userID'];
             $_SESSION["session_activated"] = $row['emailVerification'];
 
             if ($row['emailVerification'] == 0) { //Verifying email/activation
@@ -75,20 +75,20 @@ $row = mysql_fetch_row($result);
 
 echo $row[0]; //UserID
 return $row[0];
-*/
+ */
 //}
 
 // ################################# Register an Account #################################
 
 if (isset($_POST['register'])) {
-    $fName    = mysql_escape_string($_POST['firstname']);
-    $lName    = mysql_escape_string($_POST['lastname']);
+    $fName = mysql_escape_string($_POST['firstname']);
+    $lName = mysql_escape_string($_POST['lastname']);
     $username = mysql_escape_string($_POST['username']);
-    $pass     = mysql_escape_string($_POST['password']);
-    $email    = mysql_escape_string($_POST['email']);
-    $hash     = md5(rand(0, 1000));
+    $pass = mysql_escape_string($_POST['password']);
+    $email = mysql_escape_string($_POST['email']);
+    $hash = md5(rand(0, 1000));
 
-    $sql    = "SELECT * FROM User WHERE (username = '$username' or email = '$email')";
+    $sql = "SELECT * FROM User WHERE (username = '$username' or email = '$email')";
     $result = $conn->query($sql);
     if ($row = $result->fetch_assoc()) {
         if (strcasecmp($username, $row['username']) == 0) { //Checking if username already exists, case insensitive
@@ -101,10 +101,10 @@ if (isset($_POST['register'])) {
     } else { //Uername does not exists therefore it will create a new account.
         //global $fName, $lName, $username, $pass, $email, $hash;
         $secured_password = generateHash($pass);
-        $sql              = "INSERT INTO User (firstName,lastName,username,password,email,hash) VALUES ('$fName','$lName','$username','$secured_password','$email', '$hash')";
-        $result           = $conn->query($sql);
+        $sql = "INSERT INTO User (firstName,lastName,username,password,email,hash) VALUES ('$fName','$lName','$username','$secured_password','$email', '$hash')";
+        $result = $conn->query($sql);
 
-        $to      = $email; //Sending email to user
+        $to = $email; //Sending email to user
         $subject = 'Quacker - Signup | Verification'; //subject of the email
         $message = '
 
@@ -130,8 +130,6 @@ if (isset($_POST['register'])) {
 
 // ################################# Delete an Account #################################
 
-
-
 // ################################# Post a Quack ######################################
 
 //if the post button is clicked
@@ -144,7 +142,7 @@ if (isset($_POST['postQuackBtn'])) {
     $inputText = mysql_escape_string($_POST['tweet']);
 
     //get the corresponding userID from the username
-    $sql    = "SELECT userID FROM User WHERE username = '$loggedInUser'";
+    $sql = "SELECT userID FROM User WHERE username = '$loggedInUser'";
     $result = $conn->query($sql);
 
     //if the database returned a result (userID)
@@ -153,7 +151,7 @@ if (isset($_POST['postQuackBtn'])) {
         $fetchedUserID = $row['userID'];
 
         //insert the logged in user's ID, the Quack, and the timestamp
-        $sql    = "INSERT INTO Tweet (userID,tweet,date) VALUES ('$fetchedUserID','$inputText','$currentDateTime')";
+        $sql = "INSERT INTO Tweet (userID,tweet,date) VALUES ('$fetchedUserID','$inputText','$currentDateTime')";
         $result = $conn->query($sql);
 
         //check if the Quack is inserted into the database
@@ -174,25 +172,33 @@ if (isset($_POST['postQuackBtn'])) {
 
 // ################################# Display Logged In User's Quacks ######################################
 
-function printQuacks() {
-    require $_SERVER['DOCUMENT_ROOT'].'/assets/config.php'; //This is the issue (for some reason have to include config again)
-    $sql    = "SELECT tweet FROM Tweet WHERE userID = '{$GLOBALS['loggedInUserID']}' ORDER BY date DESC";
+function printQuacks()
+{
+    require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //This is the issue (for some reason have to include config again)
+    $sql = "SELECT tweet FROM Tweet WHERE userID = '{$GLOBALS['loggedInUserID']}' ORDER BY date DESC";
     $result = mysqli_query($conn, $sql);
     if ($result->num_rows > 0) {
         // output data of each row
-?>
-      <table class="table table-striped">
+        ?>
+      <!-- <table class="table table-striped"> !-->
+      <div class="card my-3">
+          <div class="card-header text-center">Your Feed</div>
+          <ul class="list-group" id="quack-list">
+
     <?php
-        while ($row = $result->fetch_assoc()) {
-            echo "<tr>";
+while ($row = $result->fetch_assoc()) {
+            echo "<li class=\"list-group-item quack\">";
             foreach ($row as $value) {
-                echo "<td>" . $value . "</td>";
+                echo "<div class=\"mx-2\">";
+                echo "<h5><a href=\"#\">@USER_NAME</a></h5>";
+                echo "$value";
+                echo "</div></li>";
             }
-            echo "</tr>";
-?> <tr> <!-- Using these 3 lines of code to add a blank row between each rows of data! -->
+            echo "</ul></div>";
+            ?> <tr> <!-- Using these 3 lines of code to add a blank row between each rows of data! -->
             <td> <br> </td>
           </tr> <?php
-        }
+}
         echo "</table>";
     } else {
         echo 'FAIL - Nothing to show here: Query failed from the Database';
