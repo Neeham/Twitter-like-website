@@ -99,8 +99,7 @@ require $_SERVER['DOCUMENT_ROOT'].'/assets/query.php';
 
                     </div>
                   </div>
-                  </div>
-                 <!--end of Marc changes-->
+                </div> <!--end of Marc changes-->
 
         </div> <!--End row-->
       </div> <!--Container-->
