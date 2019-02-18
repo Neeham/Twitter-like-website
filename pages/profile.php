@@ -105,5 +105,6 @@ require $_SERVER['DOCUMENT_ROOT'].'/assets/query.php';
       </div> <!--Container-->
 
       <?php require $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php';?>
+      <script src="../js/feed.js"></script>
     </body>
     </html>
