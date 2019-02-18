@@ -182,26 +182,25 @@ function printQuacks()
         ?>
       <!-- <table class="table table-striped"> !-->
       <div class="card my-3">
-          <div class="card-header text-center">Your Feed</div>
+
           <ul class="list-group" id="quack-list">
 
     <?php
 while ($row = $result->fetch_assoc()) {
-            echo "<li class=\"list-group-item quack\">";
+
             foreach ($row as $value) {
+                echo "<li class=\"list-group-item quack\">";
                 echo "<div class=\"mx-2\">";
                 echo "<h5><a href=\"#\">@USER_NAME</a></h5>";
                 echo "$value";
                 echo "</div></li>";
             }
             echo "</ul></div>";
-            ?> <tr> <!-- Using these 3 lines of code to add a blank row between each rows of data! -->
-            <td> <br> </td>
-          </tr> <?php
+            ?>  <?php
 }
-        echo "</table>";
+
     } else {
-        echo 'FAIL - Nothing to show here: Query failed from the Database';
+        echo 'Post a quack to see it appear here';
     }
 }
 
