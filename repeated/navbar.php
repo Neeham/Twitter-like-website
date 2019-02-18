@@ -22,9 +22,10 @@
         </div>
 
       </li>
-      <li class="nav-item">
+      <li class="nav-item float-right">
         <a class="nav-link" href="https://www.haxstar.com/assets/logout">Log out</a>
       </li>
+
     </ul>
   </div>
 </nav>
