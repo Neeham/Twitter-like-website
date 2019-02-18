@@ -10,6 +10,7 @@ if (isset($_SESSION["session_user"]) && $_SESSION['session_activated'] == 1) {
 <?php
 require $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
 ?>
+
 <body id="login">
    <div class = "container-fluid">
       <div class="row">
