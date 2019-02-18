@@ -62,6 +62,8 @@ This file already includes the header code (see line #4).
         </div>
 
       </div>
+
+
       <div class="col-md-4" id="follower-suggestions">
         <div class="card my-1">
           <div class="card-header">You May Like</div>
@@ -99,8 +101,8 @@ This file already includes the header code (see line #4).
 
           </div>
         </div>
-      <?php require $_SERVER['DOCUMENT_ROOT'] . '/repeated/footer.php';?>
-      <script src="../js/feed.js"></script>
+      </div>
+      <?php require  $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php';?>
 </body>
 
 </html>
