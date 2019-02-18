@@ -9,12 +9,15 @@ require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php';
 
 <!-- <body id="feed">  //trying to fix conflicts, if this is needed can uncomment -->
 
+<!--
+whoever wrote this head part, please remove this and copy paste the content under repeated/header.
+This file already includes the header code (see line #4).
+-->
 <head>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="../css/emojipicker/jquery.emojipicker.css">
   <script type="text/javascript" src="../js/emojipicker/jquery.emojipicker.js"></script>
-
   <!-- Emoji Data -->
   <link rel="stylesheet" type="text/css" href="../css/emojipicker/jquery.emojipicker.a.css">
   <script type="text/javascript" src="../js/emojipicker/jquery.emojis.js"></script>
