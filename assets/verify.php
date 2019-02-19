@@ -13,10 +13,10 @@ if (isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && 
         //update emailVerification to 1 and redirect to homepage with success
         $sql    = "UPDATE User SET emailVerification = '1' WHERE (email = '$email' AND hash ='$hash' AND emailVerification = '0')";
         $result = $conn->query($sql);
-        header("Location: https://www.haxstar.com/?emailVerified");
+        header("Location: https://www.haxstar.com/?error=emailVerified");
         exit;
     } else {
-        header("Location: https://www.haxstar.com/?activationError");
+        header("Location: https://www.haxstar.com/?error=activationError");
         exit;
     }
 }

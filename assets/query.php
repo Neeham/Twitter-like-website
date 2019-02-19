@@ -62,18 +62,18 @@ if (isset($_POST['login'])) {
             $_SESSION["session_id"] = $row['userID'];
             $_SESSION["session_activated"] = $row['emailVerification'];
             if ($row['emailVerification'] == 0) { //Verifying email/activation
-                header("Location: https://www.haxstar.com/?verifyEmail");
+                header("Location: https://www.haxstar.com/?error=verifyEmail");
                 exit;
             } else {
                 header("Location: https://www.haxstar.com/pages/feed");
                 exit;
             }
         } else { //password does not match
-            header("Location: https://www.haxstar.com/?error");
+            header("Location: https://www.haxstar.com/?error=error");
             exit;
         }
     } else { //username not found
-        header("Location: https://www.haxstar.com/?error");
+        header("Location: https://www.haxstar.com/?error=error");
         exit;
     }
 }
@@ -107,10 +107,10 @@ if (isset($_POST['register'])) {
     $result = $conn->query($sql);
     if ($row = $result->fetch_assoc()) {
         if (strcasecmp($username, $row['username']) == 0) { //Checking if username already exists, case insensitive
-            header("Location: https://www.haxstar.com/pages/register?errorNameExists");
+            header("Location: https://www.haxstar.com/pages/register?error=errorNameExists");
             exit;
         } else if (strcasecmp($email, $row['email']) == 0) { //Checking if email already exists, case insensitive
-            header("Location: https://www.haxstar.com/pages/register?errorEmailExists");
+            header("Location: https://www.haxstar.com/pages/register?error=errorEmailExists");
             exit;
         }
     } else { //Uername does not exists therefore it will create a new account.
@@ -128,7 +128,7 @@ if (isset($_POST['register'])) {
     ';
         $headers = 'From:no-reply@haxstar.com' . "\r\n"; //header
         mail($to, $subject, $message, $headers); //sending email
-        header("Location: https://www.haxstar.com/?verifyEmail");
+        header("Location: https://www.haxstar.com/?error=verifyEmail");
         exit;
     }
 }
@@ -154,15 +154,15 @@ if (isset($_POST['postQuackBtn'])) {
         //check if the Quack is inserted into the database
         if (!$result) {
             //the Quack is not inserted into the database (can elaborate on types of errors)
-            header("Location: https://www.haxstar.com/pages/profile?errorInsert");
+            header("Location: https://www.haxstar.com/pages/profile?error=errorInsert");
             exit;
         } else {
             //the Quack is inserted into the database
-            header("Location: https://www.haxstar.com/pages/profile?successfulInsert");
+            header("Location: https://www.haxstar.com/pages/profile?error=successfulInsert");
             exit;
         }
     } else { //if database didn't return userID
-        header("Location: https://www.haxstar.com/pages/profile?errorInsert");
+        header("Location: https://www.haxstar.com/pages/profile?error=errorInsert");
         exit;
     }
 }
