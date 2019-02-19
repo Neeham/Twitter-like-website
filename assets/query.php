@@ -15,14 +15,20 @@ DEMO:
 
 I log in: https://haxstar.com/pages/profile/?profile=Neeham, I go under my profile it shows my Quacks
 If I click on the name of someone who I am following ex: I am following Loujan then this is what the URL looking like:
-https://haxstar.com/pages/profile/?profile=Neeham&Lookup=Loujan
+https://haxstar.com/pages/profile/?profile=Neeham&lookup=Loujan
 
 The way this page will run:
-If (Profile & lookup exists in the URL) {
-then display quack of the user Loujan
+If (isset($_GET['profile']) && !empty($_GET['profile']) AND isset($_GET['lookup']) && !empty($_GET['lookup'])) {
+  // run query to check if lookup user exists in the DB
+  if (Lookup user exists in DB) {
+    then display quack of the user Loujan by sending name Loujan to a function called displayQuack
+  }
+  else {
+  Display appropriate error.
+  }
 }
 else {
-display quack of the user profile
+display quack of the profile parameter  (the sessions that's logged in) by sending name of logged in session to a function called displayQuack
 }
 */
 session_start();
@@ -57,18 +63,18 @@ if (isset($_POST['login'])) {
             $_SESSION["session_id"] = $row['userID'];
             $_SESSION["session_activated"] = $row['emailVerification'];
             if ($row['emailVerification'] == 0) { //Verifying email/activation
-                header("Location: https://www.haxstar.com/?verifyEmail");
+                header("Location: https://www.haxstar.com/?error=verifyEmail");
                 exit;
             } else {
                 header("Location: https://www.haxstar.com/pages/feed");
                 exit;
             }
         } else { //password does not match
-            header("Location: https://www.haxstar.com/?error");
+            header("Location: https://www.haxstar.com/?error=error");
             exit;
         }
     } else { //username not found
-        header("Location: https://www.haxstar.com/?error");
+        header("Location: https://www.haxstar.com/?error=error");
         exit;
     }
 }
@@ -102,10 +108,10 @@ if (isset($_POST['register'])) {
     $result = $conn->query($sql);
     if ($row = $result->fetch_assoc()) {
         if (strcasecmp($username, $row['username']) == 0) { //Checking if username already exists, case insensitive
-            header("Location: https://www.haxstar.com/pages/register?errorNameExists");
+            header("Location: https://www.haxstar.com/pages/register?error=errorNameExists");
             exit;
         } else if (strcasecmp($email, $row['email']) == 0) { //Checking if email already exists, case insensitive
-            header("Location: https://www.haxstar.com/pages/register?errorEmailExists");
+            header("Location: https://www.haxstar.com/pages/register?error=errorEmailExists");
             exit;
         }
     } else { //Uername does not exists therefore it will create a new account.
@@ -123,7 +129,7 @@ if (isset($_POST['register'])) {
     ';
         $headers = 'From:no-reply@haxstar.com' . "\r\n"; //header
         mail($to, $subject, $message, $headers); //sending email
-        header("Location: https://www.haxstar.com/?verifyEmail");
+        header("Location: https://www.haxstar.com/?error=verifyEmail");
         exit;
     }
 }
@@ -149,15 +155,15 @@ if (isset($_POST['postQuackBtn'])) {
         //check if the Quack is inserted into the database
         if (!$result) {
             //the Quack is not inserted into the database (can elaborate on types of errors)
-            header("Location: https://www.haxstar.com/pages/profile?errorInsert");
+            header("Location: https://www.haxstar.com/pages/profile?error=errorInsert");
             exit;
         } else {
             //the Quack is inserted into the database
-            header("Location: https://www.haxstar.com/pages/profile?successfulInsert");
+            header("Location: https://www.haxstar.com/pages/profile?error=successfulInsert");
             exit;
         }
     } else { //if database didn't return userID
-        header("Location: https://www.haxstar.com/pages/profile?errorInsert");
+        header("Location: https://www.haxstar.com/pages/profile?error=errorInsert");
         exit;
     }
 }
