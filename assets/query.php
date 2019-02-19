@@ -15,10 +15,11 @@ DEMO:
 
 I log in: https://haxstar.com/pages/profile/?profile=Neeham, I go under my profile it shows my Quacks
 If I click on the name of someone who I am following ex: I am following Loujan then this is what the URL looking like:
-https://haxstar.com/pages/profile/?profile=Neeham&Lookup=Loujan
+https://haxstar.com/pages/profile/?profile=Neeham&lookup=Loujan
 
 The way this page will run:
-If (Profile & lookup exists in the URL) {
+If (isset($_GET['profile']) && !empty($_GET['profile']) AND isset($_GET['lookup']) && !empty($_GET['lookup'])) {
+  // run query to check if lookup user exists in the DB
   if (Lookup user exists in DB) {
     then display quack of the user Loujan
   }
@@ -27,7 +28,7 @@ If (Profile & lookup exists in the URL) {
   }
 }
 else {
-display quack of the user profile
+display quack of the profile parameter  (the sessions that's logged in)
 }
 */
 session_start();
