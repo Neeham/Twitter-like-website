@@ -21,14 +21,14 @@ The way this page will run:
 If (isset($_GET['profile']) && !empty($_GET['profile']) AND isset($_GET['lookup']) && !empty($_GET['lookup'])) {
   // run query to check if lookup user exists in the DB
   if (Lookup user exists in DB) {
-    then display quack of the user Loujan
+    then display quack of the user Loujan by sending name Loujan to a function called displayQuack
   }
   else {
   Display appropriate error.
   }
 }
 else {
-display quack of the profile parameter  (the sessions that's logged in)
+display quack of the profile parameter  (the sessions that's logged in) by sending name of logged in session to a function called displayQuack
 }
 */
 session_start();
