@@ -1,22 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-include '../repeated/header.php';
-include '../repeated/navbar.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/repeated/header.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php';
 ?>
+
+
 
 <!-- <body id="feed">  //trying to fix conflicts, if this is needed can uncomment -->
 
-<head>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
-    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="../css/emojipicker/jquery.emojipicker.css">
-  <script type="text/javascript" src="../js/emojipicker/jquery.emojipicker.js"></script>
 
-  <!-- Emoji Data -->
-  <link rel="stylesheet" type="text/css" href="../css/emojipicker/jquery.emojipicker.a.css">
-  <script type="text/javascript" src="../js/emojipicker/jquery.emojis.js"></script>
-</head>
 
 <body id="feed-bg">
   <div class="container">
@@ -57,6 +50,8 @@ include '../repeated/navbar.php';
         </div>
 
       </div>
+
+
       <div class="col-md-4" id="follower-suggestions">
         <div class="card my-1">
           <div class="card-header">You May Like</div>
@@ -94,9 +89,12 @@ include '../repeated/navbar.php';
 
           </div>
         </div>
+      </div>
 
-        <?php include '../repeated/footer.php';?>
-        <script src="../js/feed.js"></script>
+      <?php require  $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php';?>
+      <!--This script tag has to be at the end of the body tag because the feed.js file
+      has to run after the html elements are loaded-->
+      <script type="text/javascript" src="../js/feed.js"></script>
 </body>
 
 </html>

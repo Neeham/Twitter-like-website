@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-include $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
+  require $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
 ?>
 <body id="register">
    <div class = "container-fluid">
@@ -25,6 +25,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
       </div>
       <div class="col-md-4 center-block"></div>
    </div>
-   <?php include $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php';?>
+   <?php require $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php';?>
 </body>
 </html>
