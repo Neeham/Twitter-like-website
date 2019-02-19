@@ -19,7 +19,12 @@ https://haxstar.com/pages/profile/?profile=Neeham&Lookup=Loujan
 
 The way this page will run:
 If (Profile & lookup exists in the URL) {
-then display quack of the user Loujan
+  if (Lookup user exists in DB) {
+    then display quack of the user Loujan
+  }
+  else {
+  Display appropriate error.
+  }
 }
 else {
 display quack of the user profile
