@@ -1,4 +1,30 @@
 <?php
+
+/*
+Here is the plan for future, these query will run based on what is sent to the query of the url
+ex: here is the 2 possible types of URL that will exists:
+https://haxstar.com/pages/profile?profile=Neeham  //This means I am only on my profile where profile = session name of the logged in user
+https://haxstar.com/pages/profile?profile=Neeham&lookup=Amanda //This means I am looking at someone elses profile ex: Amanda
+If the user does not exist an error will be displayed: Page does not exist or invalid URL.
+
+Situation: When you click on my profile if Lookup is not in the URL then it will show the logged in session profile
+if Lookup exist then it will check if Amanda exists on the DB if it does it will show their profile
+If ot an appropriate error will be displayed (Profile not found or invalid URL)
+
+DEMO:
+
+I log in: https://haxstar.com/pages/profile/?profile=Neeham, I go under my profile it shows my Quacks
+If I click on the name of someone who I am following ex: I am following Loujan then this is what the URL looking like:
+https://haxstar.com/pages/profile/?profile=Neeham&Lookup=Loujan
+
+The way this page will run:
+If (Profile & lookup exists in the URL) {
+then display quack of the user Loujan
+}
+else {
+display quack of the user profile
+}
+*/
 session_start();
 //get the user ID and username of the currently logged in user through session
 $loggedInUserID = $_SESSION["session_id"];
