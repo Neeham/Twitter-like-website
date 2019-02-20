@@ -15,12 +15,8 @@
   <link rel="stylesheet" type="text/css" href="https://haxstar.com/css/custom.css?v=1.2">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="https://haxstar.com/css/emojipicker/jquery.emojipicker.css">
-  <link rel="stylesheet" type="text/css" href="https://haxstar.com/css/emojipicker/jquery.emojipicker.a.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="https://haxstar.com/js/emojipicker/jquery.emojipicker.js"></script>
-  <script type="text/javascript" src="https://haxstar.com/js/emojipicker/jquery.emojis.js"></script>
-  <?php require $_SERVER['DOCUMENT_ROOT'].'/assets/alert.php'; ?>
+
+  <?php require $_SERVER['DOCUMENT_ROOT'] . '/assets/alert.php';?>
 </head>

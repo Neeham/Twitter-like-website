@@ -16,11 +16,10 @@ require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php';
     <div class="row">
       <div class="col-md-8">
         <div class="form-group">
-          <textarea class="form-control my-2 emoji-field" id="quack-box" rows="3" maxlength="255"
-            placeholder="Write your thoughts..." oninput="setCounter()"></textarea>
+          <textarea class="form-control my-2" id="quack-box" rows="3" maxlength="255"
+            placeholder="Write your thoughts..." oninput="setCounter()" data-emoji-picker="true"></textarea>
           <span class="my-2" id="quack-limit">0/255</span>
           <button class="btn float-right mx-1" id="quack-button">Quack!</button>
-          <button class="btn btn-light float-right mx-1" id="emoji-button">😂<i class="fas fa-caret-up"></i></button>
           <button class="btn btn-light float-right mx-1 " id="image-upload-button"> <i
               class="fas fa-image"></i></button>
 
@@ -91,10 +90,14 @@ require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php';
         </div>
       </div>
 
-      <?php require  $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php';?>
-      <!--This script tag has to be at the end of the body tag because the feed.js file
-      has to run after the html elements are loaded-->
-      <script type="text/javascript" src="../js/feed.js"></script>
+      <?php require $_SERVER['DOCUMENT_ROOT'] . '/repeated/footer.php';?>
+      <!--These scripts tag have to run after the html elements have been loaded-->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+      <script type="text/javascript" src="https://haxstar.com/js/feed.js?v=1.2"></script>
+
+
 </body>
 
 </html>
