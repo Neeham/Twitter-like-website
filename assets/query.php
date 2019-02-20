@@ -5,6 +5,14 @@ $loggedInUserID = $_SESSION["session_id"];
 $loggedInUser = $_SESSION["session_user"];
 require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
 
+//Storing all the registered users into an array, would need this for navbar searching user up
+$users = array();
+$sql = "SELECT username FROM User";
+$result = mysqli_query($conn,$sql);
+while ($row = mysqli_fetch_row($result)) {
+    $users[] = $row[0];
+}
+
 //Function to Encrypte a Password
 function generateHash($password)
 {
