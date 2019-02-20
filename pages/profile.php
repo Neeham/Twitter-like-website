@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-require $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
-require $_SERVER['DOCUMENT_ROOT'].'/repeated/navbar.php';
-require $_SERVER['DOCUMENT_ROOT'].'/assets/query.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/repeated/header.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
 ?>
 
 <body id="profile">
@@ -37,15 +37,16 @@ require $_SERVER['DOCUMENT_ROOT'].'/assets/query.php';
       <div class="col-md-6 center-block" style="background-color:lavenderblush;">
         <form class="form-group" action="../assets/query" method="post">
           <h2> <label for="tweet">Post a Quack</label> </h2>
-          <textarea class="form-control" rows="4" name="tweet" maxlength="255" required
-            placeholder="<?php echo _("Quack it")?>"></textarea>
+          <textarea class="form-control" id = "quack-box" oninput = "setCounter()" rows="4" name="tweet" maxlength="255" required
+            placeholder="<?php echo _("Quack it") ?>"></textarea>
           <br>
+          <span class="my-2" id="quack-limit">0/255</span>
           <button class="btn btn-lg btn-primary btn-block" name="postQuackBtn"
-            type="submit"><?php echo _("*Quack")?></button><br>
+            type="submit"><?php echo _("*Quack") ?></button><br>
           </button>
         </form>
-        <h3> <?php echo _("*Your Latest Quacks")?> </h3>
-        <?php printQuacks(); ?>
+        <h3> <?php echo _("*Your Latest Quacks") ?> </h3>
+        <?php printQuacks();?>
       </div>
 
       <!--Following & Followers-->
@@ -135,7 +136,7 @@ require $_SERVER['DOCUMENT_ROOT'].'/assets/query.php';
   </div>
   <!--Container-->
 
-  <?php require $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php';?>
+  <?php require $_SERVER['DOCUMENT_ROOT'] . '/repeated/footer.php';?>
   <script src="https://www.haxstar.com/js/profile.js"></script>
 </body>
 
