@@ -9,7 +9,7 @@ body{
     background-color: #FF5722;
     color: white;
 }
-#feed-bg{
+#feed-bg, #register, #profile, #login{
 
     background-color:#e6ecf0;
 }

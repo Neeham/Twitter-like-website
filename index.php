@@ -15,7 +15,7 @@ require $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
    <div class = "container-fluid">
       <div class="row">
          <div class="col-md-4 center-block"></div>
-         <div class="col-md-4 center-block" style="background-color:lavenderblush;">
+         <div class="col-md-4 center-block" style="background-color:#FFA000;">
             <form class="form-signin" action="../assets/query" method="post">
                <h2 class="form-signin-heading"> <?php echo _("Please Login")?><br><br></h2>
                <input type="text" class="form-control" name="username" placeholder="<?php echo _("Username")?>" required="" autofocus /><br>
