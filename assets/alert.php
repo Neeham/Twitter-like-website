@@ -87,11 +87,14 @@ if (basename($_SERVER['PHP_SELF'], '.php') == "feed") {
 if (basename($_SERVER['PHP_SELF'], '.php') == "profile") {
 
     if ($_GET['Alert'] == 'errorInsert') {
-        echo alert('Alert', 'Database Error', 'Something went wrong (not entered in database). Please try again.');
+        echo alert('error', 'Database Error', 'Something went wrong (not entered in database). Please try again.');
     }
     if ($_GET['Alert'] == 'successfulInsert') {
         echo alert('success', 'Woohoo', 'Your Quack has successfully been posted! Happy Quacking!');
    }
+   if ($_GET['Alert'] == 'invalidURL') {
+       echo alert('error', 'Invalid URL', 'The URL is invalid. You have been redirected to your profile.');
+  }
 }
 
 //register pages
