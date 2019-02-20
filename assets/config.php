@@ -1,3 +1,6 @@
+
+
+
 <?php
 $host = "localhost";
 $dbname = "neeham_twitter";
