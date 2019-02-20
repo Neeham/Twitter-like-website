@@ -43,53 +43,51 @@ require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php';
           </div>
 
         </div>
+      </div>
 
+      <div class="col-md-4" id="follower-suggestions">
+        <div class="card my-1">
+          <div class="card-header">You May Like</div>
 
-        <div class="col-md-4" id="follower-suggestions">
-          <div class="card my-1">
-            <div class="card-header">You May Like</div>
+          <div class="card-text">
+            <ul class="list-group ">
+              <li class="list-group-item follow-suggestion">
 
-            <div class="card-text">
-              <ul class="list-group ">
-                <li class="list-group-item follow-suggestion">
+                <h6><a href="#">
+                    <img src="https://randomuser.me/api/portraits/women/77.jpg" /> Ann Marie</a>
+                  <button class="btn btn-outline-success btn-sm float-right follow mx-1">
+                    <i class="fas fa-check"></i> Follow</button>
+                </h6>
 
-                  <h6><a href="#">
-                      <img src="https://randomuser.me/api/portraits/women/77.jpg" /> Ann Marie</a>
-                    <button class="btn btn-outline-success btn-sm float-right follow mx-1">
-                      <i class="fas fa-check"></i> Follow</button>
-                  </h6>
+              </li>
+              <li class="list-group-item follow-suggestion">
 
-                </li>
-                <li class="list-group-item follow-suggestion">
+                <h6><a href="#">
+                    <img src="https://randomuser.me/api/portraits/men/94.jpg" /> Marc Anthony</a>
+                  <button class="btn btn-outline-success btn-sm float-right follow mx-1">
+                    <i class="fas fa-check"></i> Follow</button>
+                </h6>
 
-                  <h6><a href="#">
-                      <img src="https://randomuser.me/api/portraits/men/94.jpg" /> Marc Anthony</a>
-                    <button class="btn btn-outline-success btn-sm float-right follow mx-1">
-                      <i class="fas fa-check"></i> Follow</button>
-                  </h6>
+              </li>
+              <li class="list-group-item follow-suggestion">
 
-                </li>
-                <li class="list-group-item follow-suggestion">
+                <h6><a href="#">
+                    <img src="https://randomuser.me/api/portraits/men/89.jpg" /> John Shepherd</a>
+                  <button class="btn btn-outline-success btn-sm float-right follow mx-1">
+                    <i class="fas fa-check"></i> Follow</button>
+                </h6>
 
-                  <h6><a href="#">
-                      <img src="https://randomuser.me/api/portraits/men/89.jpg" /> John Shepherd</a>
-                    <button class="btn btn-outline-success btn-sm float-right follow mx-1">
-                      <i class="fas fa-check"></i> Follow</button>
-                  </h6>
+              </li>
+            </ul>
 
-                </li>
-              </ul>
-
-            </div>
           </div>
         </div>
+      </div>
 
-        <?php require $_SERVER['DOCUMENT_ROOT'] . '/repeated/footer.php';?>
-        <!--These scripts tag have to run after the html elements have been loaded-->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-          integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-          crossorigin="anonymous"></script>
-        <script type="text/javascript" src="https://haxstar.com/js/feed.js?v=1.2"></script>
+      <?php require $_SERVER['DOCUMENT_ROOT'] . '/repeated/footer.php';?>
+      <!--These scripts tag have to run after the html elements have been loaded-->
+
+      <script type="text/javascript" src="https://haxstar.com/js/feed.js?v=1.2"></script>
 
 
 </body>
