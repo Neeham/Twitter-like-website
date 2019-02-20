@@ -62,16 +62,16 @@ $('#myModal').modal('show');
 //ndex page
 if (basename($_SERVER['PHP_SELF'], '.php') == "index") {
 
-    if ($_GET['error'] == 'error') {
+    if ($_GET['Alert'] == 'credentialError') {
         echo alert('error', 'Credentials', 'Please verify Username and Password.');
     }
-    if ($_GET['error'] == 'verifyEmail') {
+    if ($_GET['Alert'] == 'verifyEmail') {
         echo alert('warning', 'Email Verification', 'Please verify your email in order to activate your account. Contact the support team if you are having any difficulties :)');
     }
-    if ($_GET['error'] == 'activationError') {
+    if ($_GET['Alert'] == 'activationError') {
         echo alert('error', 'Error', 'Invalid URL or email has already been verified.');
     }
-    if ($_GET['error'] == 'emailVerified') {
+    if ($_GET['Alert'] == 'emailVerified') {
         echo alert('success', 'Verified!', 'Thank you for verifying your email! You may login!');
     }
 }
@@ -83,10 +83,10 @@ if (basename($_SERVER['PHP_SELF'], '.php') == "feed") {
 //profile page
 if (basename($_SERVER['PHP_SELF'], '.php') == "profile") {
 
-    if ($_GET['error'] == 'errorInsert') {
-        echo alert('error', 'Database Error', 'Something went wrong (not entered in database). Please try again.');
+    if ($_GET['Alert'] == 'errorInsert') {
+        echo alert('Alert', 'Database Error', 'Something went wrong (not entered in database). Please try again.');
     }
-    if ($_GET['error'] == 'successfulInsert') {
+    if ($_GET['Alert'] == 'successfulInsert') {
         echo alert('success', 'Woohoo', 'Your Quack has successfully been posted! Happy Quacking!');
    }
 }
@@ -94,10 +94,10 @@ if (basename($_SERVER['PHP_SELF'], '.php') == "profile") {
 //register pages
 if (basename($_SERVER['PHP_SELF'], '.php') == "register") {
 
-    if ($_GET['error'] == 'errorNameExists') {
+    if ($_GET['Alert'] == 'errorNameExists') {
         echo alert('error', 'Username Already Exists', 'The username already exists. Please choose another username.');
     }
-    if ($_GET['error'] == 'errorEmailExists') {
+    if ($_GET['Alert'] == 'errorEmailExists') {
         echo alert('error', 'Email Address Already Exists', 'The email address already exists. Please login or contact the support team in order to reset your password.');
     }
 }

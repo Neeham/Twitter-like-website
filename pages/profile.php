@@ -137,7 +137,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
   <!--Container-->
 
   <?php require $_SERVER['DOCUMENT_ROOT'] . '/repeated/footer.php';?>
-  <script src="https://www.haxstar.com/js/profile.js"></script>
+  <script src="https://www.haxstar.com/js/profile.js"></script> <!--This should be part of repeated/header code. -->
 </body>
 
 </html>
