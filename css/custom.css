@@ -25,9 +25,15 @@ body{
 	border-radius: 50%;
 }
 
-
 h6 img {
 	width: 30px;
 	height: 30px;
 	border-radius: 50%;
+}
+
+/* Fixing the position for anything that uses class sticky with a div tag*/
+div.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }

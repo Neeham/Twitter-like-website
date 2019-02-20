@@ -62,16 +62,16 @@ $('#myModal').modal('show');
 //ndex page
 if (basename($_SERVER['PHP_SELF'], '.php') == "index") {
 
-    if (isset($_GET['error'])) {
+    if ($_GET['error'] == 'error') {
         echo alert('error', 'Credentials', 'Please verify Username and Password.');
     }
-    if (isset($_GET['verifyEmail'])) {
+    if ($_GET['error'] == 'verifyEmail') {
         echo alert('warning', 'Email Verification', 'Please verify your email in order to activate your account. Contact the support team if you are having any difficulties :)');
     }
-    if (isset($_GET['activationError'])) {
+    if ($_GET['error'] == 'activationError') {
         echo alert('error', 'Error', 'Invalid URL or email has already been verified.');
     }
-    if (isset($_GET['emailVerified'])) {
+    if ($_GET['error'] == 'emailVerified') {
         echo alert('success', 'Verified!', 'Thank you for verifying your email! You may login!');
     }
 }
@@ -83,10 +83,10 @@ if (basename($_SERVER['PHP_SELF'], '.php') == "feed") {
 //profile page
 if (basename($_SERVER['PHP_SELF'], '.php') == "profile") {
 
-    if (isset($_GET['errorInsert'])) {
+    if ($_GET['error'] == 'errorInsert') {
         echo alert('error', 'Database Error', 'Something went wrong (not entered in database). Please try again.');
     }
-    if (isset($_GET['successfulInsert'])) {
+    if ($_GET['error'] == 'successfulInsert') {
         echo alert('success', 'Woohoo', 'Your Quack has successfully been posted! Happy Quacking!');
    }
 }
@@ -94,10 +94,10 @@ if (basename($_SERVER['PHP_SELF'], '.php') == "profile") {
 //register pages
 if (basename($_SERVER['PHP_SELF'], '.php') == "register") {
 
-    if (isset($_GET['errorNameExists'])) {
+    if ($_GET['error'] == 'errorNameExists') {
         echo alert('error', 'Username Already Exists', 'The username already exists. Please choose another username.');
     }
-    if (isset($_GET['errorEmailExists'])) {
+    if ($_GET['error'] == 'errorEmailExists') {
         echo alert('error', 'Email Address Already Exists', 'The email address already exists. Please login or contact the support team in order to reset your password.');
     }
 }

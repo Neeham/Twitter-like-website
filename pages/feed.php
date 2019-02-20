@@ -1,26 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-
-include $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
-include $_SERVER['DOCUMENT_ROOT'].'/repeated/navbar.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/repeated/header.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php';
 ?>
 
-<head>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
-    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="../css/emojipicker/jquery.emojipicker.css">
-  <script type="text/javascript" src="../js/emojipicker/jquery.emojipicker.js"></script>
 
-  <!-- Emoji Data -->
-  <link rel="stylesheet" type="text/css" href="../css/emojipicker/jquery.emojipicker.a.css">
-  <script type="text/javascript" src="../js/emojipicker/jquery.emojis.js"></script>
-</head>
+
+<!-- <body id="feed">  //trying to fix conflicts, if this is needed can uncomment -->
+
+
 
 <body id="feed-bg">
   <div class="container">
     <div class="row">
-      <div class="col-lg-8">
+      <div class="col-md-8">
         <div class="form-group">
           <textarea class="form-control my-2 emoji-field" id="quack-box" rows="3" maxlength="255"
             placeholder="Write your thoughts..." oninput="setCounter()"></textarea>
@@ -56,7 +50,9 @@ include $_SERVER['DOCUMENT_ROOT'].'/repeated/navbar.php';
         </div>
 
       </div>
-      <div class="col-lg-4 d-none d-lg-block " id="follower-suggestions">
+
+
+      <div class="col-md-4" id="follower-suggestions">
         <div class="card my-1">
           <div class="card-header">You May Like</div>
 
@@ -93,9 +89,12 @@ include $_SERVER['DOCUMENT_ROOT'].'/repeated/navbar.php';
 
           </div>
         </div>
-    <?php include $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php';?>
-  </body>
-</html>
-    <script src="../js/feed.js"></script>
+      </div>
+
+      <?php require  $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php';?>
+      <!--This script tag has to be at the end of the body tag because the feed.js file
+      has to run after the html elements are loaded-->
+      <script type="text/javascript" src="../js/feed.js"></script>
 </body>
+
 </html>
