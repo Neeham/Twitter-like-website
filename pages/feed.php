@@ -32,9 +32,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php';
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                     Quasi enim minima odio, inventore sint sunt nulla adipisci
                     iure sit dolor. <br />
-                    <button class="btn btn-primary float-right reply mx-1">
-                      Reply <i class=" fas fa-reply"></i>
-                    </button>
+
                     <button class="btn float-right btn-danger like mx-1">
                       <i class="fas fa-heart"></i>
                     </button>
