@@ -10,20 +10,22 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
     <div class="row">
 
       <!--Your Profile-->
-      <div class="col-lg-3" id="your-profile">
+      <div class=" col-lg-3" id="your-profile">
         <div class="card">
-          <div class="card-header">
+          <div class="text-center card-header">
             <h2>Your Profile</h2>
           </div>
-          <div class="card-text">
+          <div class="text-center  card-text">
             <ul class="list-group ">
 
               <li class="list-group-item follow-suggestion"> <!-- where is the closing for this tag? -->
                 <h1>
                     <img src="https://randomuser.me/api/portraits/women/50.jpg" id="#" /><?php printQuacks('name');?></a>
                 </h1></br>
-  <!-- Need a button here, upon click it will run follow query the button will then change to following - Need to hide the button here when the person visit their own profile -->
-              </br></br>
+                <!-- Need a button here, upon click it will run follow query the button will then change to following - Need to hide the button here when the person visit their own profile -->
+                <button class="btn btn-outline-success btn-sm follow mx-1 profile-follow d-hidden">
+                <i class="fas fa-check"></i> Follow</button>
+                </br></br>
                 <h3>Email:</h3></br>
                 <p><?php printQuacks('email');?></p>
                 <h3>Followers:</h3></br>
@@ -36,7 +38,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
       </div>
 
       <div class="col-md-6 center-block" style="background-color:lavenderblush;">
-        
+
         <h3> <?php echo _("*Your Latest Quacks") ?> </h3>
         <?php printQuacks('post');?>
       </div>
@@ -129,7 +131,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
   <!--Container-->
 
   <?php require $_SERVER['DOCUMENT_ROOT'] . '/repeated/footer.php';?>
-  <script src="https://www.haxstar.com/js/profile.js"></script> <!--This should be part of repeated/header code. -->
+  <script src="https://www.haxstar.com/js/profile.js?v=1.1"></script>
  </body>
 
 </html>
