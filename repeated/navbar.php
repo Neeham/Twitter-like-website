@@ -30,32 +30,6 @@ session_start();
   </div>
 </nav>
 
-
-<script>
-$(document).ready(function(){
-     $('#userfields').keyup(function(){
-          var query = $(this).val();
-          if(query != '') {
-               $.ajax({
-                    url:"../assets/query",
-                    method:"POST",
-                    data:{searchUser:query},
-                    success:function(data) {
-                         $('#userList').fadeIn();
-                         $('#userList').html(data);
-                    }
-               });
-          }
-     });
-     $(document).on('click', 'li', function(){
-          $('#userfields').val($(this).text());
-          var user = document.getElementById("userfields").value;
-          window.location.href = '<?PHP echo 'https://www.haxstar.com/pages/profile?Login='.$_SESSION["session_user"].'&Lookup='?>'+user;
-          $('#userList').fadeOut();
-     });
-});
-</script>
-
 <!-- Pop up for Searching a User -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -76,3 +50,29 @@ $(document).ready(function(){
     </div>
   </div>
 </div>
+
+<!-- Search the database for users -->
+<script>
+$(document).ready(function(){
+     $('#userfields').keyup(function(){
+          var query = $(this).val();
+          if(query != '') {
+               $.ajax({
+                    url:"../assets/query",
+                    method:"POST",
+                    data:{searchUser:query},
+                    success:function(data) {
+                         $('#userList').fadeIn();
+                         $('#userList').html(data);
+                    }
+               });
+          }
+     });
+     $(document).on('click', '#userList li', function(){
+          $('#userfields').val($(this).text());
+          var user = document.getElementById("userfields").value;
+          window.location.href = '<?PHP echo 'https://www.haxstar.com/pages/profile?Login='.$_SESSION["session_user"].'&Lookup='?>'+user;
+          $('#userList').fadeOut();
+     });
+});
+</script>
