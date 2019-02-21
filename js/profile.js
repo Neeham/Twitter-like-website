@@ -2,6 +2,8 @@
 const followButtons = document.getElementsByClassName("follow");
 const quackBox = document.getElementById("quack-box");
 const quackLimit = document.getElementById("quack-limit");
+const profileFollowButton = document.querySelector(".profile-follow");
+
 //Makes the follow buttons toggleable
 for (let followButton of followButtons) {
     followButton.addEventListener("click", () => {
@@ -16,7 +18,17 @@ for (let followButton of followButtons) {
         }
     })
 }
+//Makes the follow button hidden on own profile page
 
+function profileFollowHide(){
+  if(document.URL.includes("Lookup")){
+    profileFollowButton.classList = "btn btn-outline-success btn-sm follow mx-1 profile-follow";
+
+  }
+  else{
+    profileFollowButton.classList = "btn btn-outline-success btn-sm follow mx-1 profile-follow d-none";
+  }
+}
 //Function to count the number of characters in the text field
 function setCounter() {
 
@@ -24,3 +36,5 @@ function setCounter() {
     quackLimit.innerHTML = counter + "/255"
 
 }
+//Loads at the start of a website
+profileFollowHide();
