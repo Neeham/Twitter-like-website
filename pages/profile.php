@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . '/repeated/header.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
 ?>
@@ -21,14 +20,14 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
 
               <li class="list-group-item follow-suggestion">
                 <h1><a href="#">
-                    <img src="https://randomuser.me/api/portraits/women/50.jpg" id="#" />FooBar McBuggy</a>
+                    <img src="https://randomuser.me/api/portraits/women/50.jpg" id="#" /><?php printQuacks('name');?></a>
                 </h1></br>
                 <h3>Email:</h3></br>
-                <p>buggy@iLoveToBug.com</p>
+                <p><?php printQuacks('email');?></p>
                 <h3>Followers:</h3></br>
-                <p>2</p>
+                <p><?php printQuacks('followerCount');?></p> <!-- Work in progress -->
                 <h3>Following:</h3></br>
-                <p>98 others</p>
+                <p><?php printQuacks('followingCount');?></p> <!-- Work in progress -->
             </ul>
           </div>
         </div>
@@ -46,7 +45,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
           </button>
         </form>
         <h3> <?php echo _("*Your Latest Quacks") ?> </h3>
-        <?php printQuacks();?>
+        <?php printQuacks('post');?>
       </div>
 
       <!--Following & Followers-->
@@ -137,7 +136,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
   <!--Container-->
 
   <?php require $_SERVER['DOCUMENT_ROOT'] . '/repeated/footer.php';?>
-  <script src="https://www.haxstar.com/js/profile.js"></script>
+  <script src="https://www.haxstar.com/js/profile.js"></script> <!--This should be part of repeated/header code. -->
 </body>
 
 </html>

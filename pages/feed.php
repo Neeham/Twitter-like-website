@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . '/repeated/header.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php';
 ?>
 
@@ -47,7 +46,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php';
 
       <div class="col-md-4" id="follower-suggestions">
         <div class="card my-1">
-          <div class="card-header">Following</div>
+          <div class="card-header">You May Like</div>
 
           <div class="card-text">
             <ul class="list-group ">
@@ -82,51 +81,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php';
 
           </div>
         </div>
-
-        <div class="card my-1">
-          <div class="card-header">Follower(s)</div>
-
-          <div class="card-text">
-            <ul class="list-group ">
-              <li class="list-group-item follow-suggestion">
-
-                <h6><a href="#">
-                    <img src="https://randomuser.me/api/portraits/women/77.jpg" /> Ann Marie</a>
-                  <button class="btn btn-outline-success btn-sm float-right follow mx-1">
-                    <i class="fas fa-check"></i> Follow</button>
-                </h6>
-
-              </li>
-              <li class="list-group-item follow-suggestion">
-
-                <h6><a href="#">
-                    <img src="https://randomuser.me/api/portraits/men/94.jpg" /> Marc Anthony</a>
-                  <button class="btn btn-outline-success btn-sm float-right follow mx-1">
-                    <i class="fas fa-check"></i> Follow</button>
-                </h6>
-
-              </li>
-              <li class="list-group-item follow-suggestion">
-
-                <h6><a href="#">
-                    <img src="https://randomuser.me/api/portraits/men/89.jpg" /> John Shepherd</a>
-                  <button class="btn btn-outline-success btn-sm float-right follow mx-1">
-                    <i class="fas fa-check"></i> Follow</button>
-                </h6>
-
-              </li>
-            </ul>
-
-          </div>
-        </div>
-        </div>
-
-        </div>
-
-
-    </div>
-
-
+      </div>
 
       <?php require $_SERVER['DOCUMENT_ROOT'] . '/repeated/footer.php';?>
       <!--These scripts tag have to run after the html elements have been loaded-->

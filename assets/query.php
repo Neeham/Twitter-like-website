@@ -1,41 +1,23 @@
 <?php
-
-/*
-Here is the plan for future, these query will run based on what is sent to the query of the url
-ex: here is the 2 possible types of URL that will exists:
-https://haxstar.com/pages/profile?profile=Neeham  //This means I am only on my profile where profile = session name of the logged in user
-https://haxstar.com/pages/profile?profile=Neeham&lookup=Amanda //This means I am looking at someone elses profile ex: Amanda
-If the user does not exist an error will be displayed: Page does not exist or invalid URL.
-
-Situation: When you click on my profile if Lookup is not in the URL then it will show the logged in session profile
-if Lookup exist then it will check if Amanda exists on the DB if it does it will show their profile
-If ot an appropriate error will be displayed (Profile not found or invalid URL)
-
-DEMO:
-
-I log in: https://haxstar.com/pages/profile/?profile=Neeham, I go under my profile it shows my Quacks
-If I click on the name of someone who I am following ex: I am following Loujan then this is what the URL looking like:
-https://haxstar.com/pages/profile/?profile=Neeham&lookup=Loujan
-
-The way this page will run:
-If (isset($_GET['profile']) && !empty($_GET['profile']) AND isset($_GET['lookup']) && !empty($_GET['lookup'])) {
-// run query to check if lookup user exists in the DB
-if (Lookup user exists in DB) {
-then display quack of the user Loujan by sending name Loujan to a function called displayQuack
-}
-else {
-Display appropriate error.
-}
-}
-else {
-display quack of the profile parameter  (the sessions that's logged in) by sending name of logged in session to a function called displayQuack
-}
- */
 session_start();
 //get the user ID and username of the currently logged in user through session
 $loggedInUserID = $_SESSION["session_id"];
 $loggedInUser = $_SESSION["session_user"];
 require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
+
+//Storing all the registered users into an array, would need this for navbar searching user up
+if(isset($_POST["searchUser"])) {
+     $output = '';
+     $sql = "SELECT * FROM User WHERE username LIKE '%".$_POST["searchUser"]."%'";
+     $result = mysqli_query($conn, $sql);
+     $output = '<ul class="list-unstyled">';
+          while($row = mysqli_fetch_array($result)) {
+               $output .= '<li>'.$row["username"].'</li>';
+          }
+     $output .= '</ul>';
+     echo $output;
+}
+
 //Function to Encrypte a Password
 function generateHash($password)
 {
@@ -63,18 +45,18 @@ if (isset($_POST['login'])) {
             $_SESSION["session_id"] = $row['userID'];
             $_SESSION["session_activated"] = $row['emailVerification'];
             if ($row['emailVerification'] == 0) { //Verifying email/activation
-                header("Location: https://www.haxstar.com/?error=verifyEmail");
+                header("Location: https://www.haxstar.com/?Alert=verifyEmail");
                 exit;
             } else {
-                header("Location: https://www.haxstar.com/pages/feed");
+                header("Location: https://www.haxstar.com/pages/feed?Login=".$_SESSION["session_user"]);
                 exit;
             }
         } else { //password does not match
-            header("Location: https://www.haxstar.com/?error=error");
+            header("Location: https://www.haxstar.com/?Alert=credentialError");
             exit;
         }
     } else { //username not found
-        header("Location: https://www.haxstar.com/?error=error");
+        header("Location: https://www.haxstar.com/?Alert=credentialError");
         exit;
     }
 }
@@ -108,10 +90,10 @@ if (isset($_POST['register'])) {
     $result = $conn->query($sql);
     if ($row = $result->fetch_assoc()) {
         if (strcasecmp($username, $row['username']) == 0) { //Checking if username already exists, case insensitive
-            header("Location: https://www.haxstar.com/pages/register?error=errorNameExists");
+            header("Location: https://www.haxstar.com/pages/register?Alert=errorNameExists");
             exit;
         } else if (strcasecmp($email, $row['email']) == 0) { //Checking if email already exists, case insensitive
-            header("Location: https://www.haxstar.com/pages/register?error=errorEmailExists");
+            header("Location: https://www.haxstar.com/pages/register?Alert=errorEmailExists");
             exit;
         }
     } else { //Uername does not exists therefore it will create a new account.
@@ -125,16 +107,20 @@ if (isset($_POST['register'])) {
     Thank you for signing up with Quacker!
     Your account has been created! Please activate your account by pressing the url below.
     Please click this link to activate your account:
-    https://www.haxstar.com/assets/verify.php?email=' . $email . '&hash=' . $hash . '
+    https://www.haxstar.com/assets/verify?Email=' . $email . '&Hash=' . $hash . '
     ';
         $headers = 'From:no-reply@haxstar.com' . "\r\n"; //header
         mail($to, $subject, $message, $headers); //sending email
-        header("Location: https://www.haxstar.com/?error=verifyEmail");
+        header("Location: https://www.haxstar.com/?Alert=verifyEmail");
         exit;
     }
 }
 // ################################# Update an Account #################################
 // ################################# Delete an Account #################################
+
+
+
+
 // ################################# Post a Quack ######################################
 //if the post button is clicked
 if (isset($_POST['postQuackBtn'])) {
@@ -155,50 +141,133 @@ if (isset($_POST['postQuackBtn'])) {
         //check if the Quack is inserted into the database
         if (!$result) {
             //the Quack is not inserted into the database (can elaborate on types of errors)
-            header("Location: https://www.haxstar.com/pages/profile?error=errorInsert");
+            header("Location: https://www.haxstar.com/pages/profile?Login=".$_SESSION["session_user"]."&Alert=errorInsert");
             exit;
         } else {
             //the Quack is inserted into the database
-            header("Location: https://www.haxstar.com/pages/profile?error=successfulInsert");
+            header("Location: https://www.haxstar.com/pages/profile?Login=".$_SESSION["session_user"]."&Alert=successfulInsert");
             exit;
         }
     } else { //if database didn't return userID
-        header("Location: https://www.haxstar.com/pages/profile?error=errorInsert");
+        header("Location: https://www.haxstar.com/pages/profile?Login=".$_SESSION["session_user"]."&Alert=errorInsert");
         exit;
     }
 }
+
+
 // ################################# Display Logged In User's Quacks ######################################
-function printQuacks()
+function printQuacks($type) { //This function will take param and will do if else based on the following: name, email, post, follower count, following count
+require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //This is the issue (for some reason have to include config again)
+
+  If (isset($_GET['Login']) && !empty($_GET['Login']) AND isset($_GET['Lookup']) && !empty($_GET['Lookup'])) {
+    $following = mysql_escape_string($_GET['Lookup']);
+    $sql = "SELECT userID FROM User WHERE username = '$following'";
+    $result = $conn->query($sql);
+      if ($row = $result->fetch_assoc()) {
+        if ($type == 'name') {
+          printName($row['userID']);
+        }
+        if ($type == 'email') {
+          printEmail($row['userID']);
+        }
+        if ($type == 'post') {
+            printPost($row['userID']);
+          }
+          if ($type == 'followerCount') {
+            printFollowerCount($row['userID']);
+          }
+          if ($type == 'followingCount') {
+            printFollowingCount($row['userID']);
+          }
+        } else {
+          header("Location: https://www.haxstar.com/pages/profile?Login=".$_SESSION["session_user"]."&Alert=invalidURL");  //NEED TO FIX THIS
+          exit;
+        }
+      } else {
+          if ($type == 'name') {
+            printName($GLOBALS['loggedInUserID']);
+          }
+          if ($type == 'email') {
+            printEmail($GLOBALS['loggedInUserID']);
+          }
+          if ($type == 'post') {
+            printPost($GLOBALS['loggedInUserID']);
+          }
+          if ($type == 'followerCount') {
+            printFollowerCount($GLOBALS['loggedInUserID']);
+          }
+          if ($type == 'followingCount') {
+            printFollowingCount($GLOBALS['loggedInUserID']);
+          }
+        }
+      }
+
+function printName($userID) {
+  require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //This is the issue (for some reason have to include config again)
+  $sql = "SELECT firstName, lastName FROM User WHERE userID = '$userID'";
+  $result = mysqli_query($conn, $sql);
+  if ($row = $result->fetch_assoc()) {
+    echo $row['firstName'];
+    }
+}
+
+function printEmail($userID) {
+  require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //This is the issue (for some reason have to include config again)
+  $sql = "SELECT email FROM User WHERE userID = '$userID'";
+  $result = mysqli_query($conn, $sql);
+  if ($row = $result->fetch_assoc()) {
+    echo $row['email'];
+    }
+}
+
+function printFollowerCount($userID) {
+  require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //This is the issue (for some reason have to include config again)
+  $sql = "SELECT COUNT(follower) as Sum FROM Follow WHERE follower = '$userID'";
+  $result = mysqli_query($conn, $sql);
+  if ($row = $result->fetch_assoc()) {
+    echo $row['Sum'];
+    }
+}
+
+function printFollowingCount($userID) {
+  require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //This is the issue (for some reason have to include config again)
+  $sql = "SELECT COUNT(following) as Sum FROM Follow WHERE following = '$userID'";
+  $result = mysqli_query($conn, $sql);
+  if ($row = $result->fetch_assoc()) {
+    echo $row['Sum'];
+    }
+}
+
+function printPost($userID)
 {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //This is the issue (for some reason have to include config again)
-    $sql = "SELECT tweet FROM Tweet WHERE userID = '{$GLOBALS['loggedInUserID']}' ORDER BY date DESC";
+    $sql    = "SELECT tweet FROM Tweet WHERE userID = '$userID' ORDER BY date DESC";
     $result = mysqli_query($conn, $sql);
+
     if ($result->num_rows > 0) {
         // output data of each row
-        ?>
-      <!-- <table class="table table-striped"> !-->
-      <div class="card my-3">
-          <div class="card-header text-center">Your Feed</div>
-          <ul class="list-group" id="quack-list">
+?>
+   <!-- <table class="table table-striped"> !-->
+    <div class="card my-3">
+        <div class="card-header text-center">Your Feed</div>
+        <ul class="list-group" id="quack-list">
 
-    <?php
-while ($row = $result->fetch_assoc()) {
+  <?php
+        while ($row = $result->fetch_assoc()) {
             echo "<li class=\"list-group-item quack\">";
             foreach ($row as $value) {
                 echo "<div class=\"mx-2 \">";
-                echo "<h5><a href=\"#\">@{$GLOBALS['loggedInUser']}</a> <span class=\"float-right\"><button class=\"btn btn-danger delete-button\"><i class=\"fas fa-times\"></i> Delete</button></span></h5>";
-
+                //echo "<h5><span class=\"float-right\"><button class=\"btn btn-danger delete-button\"><i class=\"fas fa-times\"></i> Delete</button></span></h5>";
                 echo "$value";
                 echo "</div></li>";
             }
-
-            ?>  <?php
-}
+        }
         echo "</ul></div>";
-    } else {
-        echo 'FAIL - Nothing to show here: Query failed from the Database';
     }
 }
+
+
+
 //last statement of the code which is to close the database.
 mysqli_close($conn);
 ?>
