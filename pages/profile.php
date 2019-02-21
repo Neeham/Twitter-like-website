@@ -18,16 +18,18 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
           <div class="card-text">
             <ul class="list-group ">
 
-              <li class="list-group-item follow-suggestion">
+              <li class="list-group-item follow-suggestion"> <!-- where is the closing for this tag? -->
                 <h1>
                     <img src="https://randomuser.me/api/portraits/women/50.jpg" id="#" /><?php printQuacks('name');?></a>
                 </h1></br>
+  <!-- Need a button here, upon click it will run follow query the button will then change to following - Need to hide the button here when the person visit their own profile -->
+              </br></br>
                 <h3>Email:</h3></br>
                 <p><?php printQuacks('email');?></p>
                 <h3>Followers:</h3></br>
-                <p><?php printQuacks('followerCount');?></p> <!-- Work in progress -->
+                <p><?php printQuacks('followerCount');?></p>
                 <h3>Following:</h3></br>
-                <p><?php printQuacks('followingCount');?></p> <!-- Work in progress -->
+                <p><?php printQuacks('followingCount');?></p>
             </ul>
           </div>
         </div>
