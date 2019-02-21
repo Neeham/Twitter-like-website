@@ -21,11 +21,14 @@ session_start();
       </li>
     </ul>
     <ul class = "navbar-nav ml-auto">
+      <li class = "nav-item">
+      <button type="button" class="btn btn-info my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal">Search a User</button>
+      </li>
       <li class="nav-item ">
-          <a class="nav-link" href="https://www.haxstar.com/assets/logout">Log out</a>
+          <a class="nav-link p-0" href="https://www.haxstar.com/assets/logout"><button class="Logout-button btn btn-danger mx-2 my-2 my-sm-0">Log out</button></a>
         </li>
       </ul>
-      <button type="button" class="btn btn-info my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal">Search a User</button>
+
     </div>
   </div>
 </nav>
