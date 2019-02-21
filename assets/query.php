@@ -179,6 +179,12 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //This is the issue (f
           if ($type == 'followingCount') {
             printFollowingCount($row['userID']);
           }
+          if ($type == 'followUSer') {
+            followUser($row['userID']);
+          }
+          if ($type == 'unfollowUSer') {
+            unfollowUser($row['userID']);
+          }
         } else {
           header("Location: https://www.haxstar.com/pages/profile?Login=".$_SESSION["session_user"]."&Alert=invalidURL");  //NEED TO FIX THIS
           exit;
@@ -236,6 +242,18 @@ function printFollowingCount($userID) {
   if ($row = $result->fetch_assoc()) {
     echo $row['Sum'];
     }
+}
+
+function followUser($userID) {
+  require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //This is the issue (for some reason have to include config again)
+  $sql = "INSERT INTO Follow (follower,following) VALUES ('{$GLOBALS['loggedInUserID']}','$userID')";
+  $result = $conn->query($sql);
+}
+
+function unfollowUser($userID) {
+  require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //This is the issue (for some reason have to include config again)
+  $sql = "DELETE FROM Follow WHERE follower = '{$GLOBALS['loggedInUserID']}' AND following = '$userID'";
+  $result = $conn->query($sql);
 }
 
 function printPost($userID)
