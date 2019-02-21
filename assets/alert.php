@@ -1,5 +1,5 @@
 <?php
-function alert($type, $title ,$msg){
+function alert($type, $title ,$msg) {
 
 $currentURL = 'https://'. $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; //The current URL of the page
 $modifyURL = modify_url($currentURL, 'Alert'); //Modify the URL to remote the Alert parameter (This URL will be called when Alert is closed)
@@ -31,7 +31,7 @@ background-color: #ffa500;
 
 ?>
 
-<div class="modal fade" tabindex="-1" id="myModal" role="dialog">
+<div class="modal fade" tabindex="-1" id="message" role="dialog">
    <div class="modal-dialog" role="document">
       <div class="modal-content">
          <div class="modal-header">
@@ -56,8 +56,8 @@ background-color: #ffa500;
    </div>
 </div>
 
-  <script type=text/javascript>
-$('#myModal').modal('show');
+<script type=text/javascript>
+$('#message').modal('show');
 </script>
 <?php
 } //Ending of alert function
