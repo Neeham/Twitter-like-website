@@ -6,11 +6,16 @@ $loggedInUser = $_SESSION["session_user"];
 require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
 
 //Storing all the registered users into an array, would need this for navbar searching user up
-$users = array();
-$sql = "SELECT username FROM User";
-$result = mysqli_query($conn,$sql);
-while ($row = mysqli_fetch_row($result)) {
-    $users[] = $row[0];
+if(isset($_POST["searchUser"])) {
+     $output = '';
+     $sql = "SELECT * FROM User WHERE username LIKE '%".$_POST["searchUser"]."%'";
+     $result = mysqli_query($conn, $sql);
+     $output = '<ul class="list-unstyled">';
+          while($row = mysqli_fetch_array($result)) {
+               $output .= '<li>'.$row["username"].'</li>';
+          }
+     $output .= '</ul>';
+     echo $output;
 }
 
 //Function to Encrypte a Password

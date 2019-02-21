@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . '/repeated/header.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
 ?>

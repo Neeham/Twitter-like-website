@@ -1,5 +1,6 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/assets/loggedin.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/repeated/header.php';
 session_start();
 ?>
 <nav class="navbar navbar-expand-sm bg-warning navbar-light">
@@ -18,16 +19,60 @@ session_start();
       <li class="nav-item">
         <a class="nav-link" href="https://www.haxstar.com/pages/feed?Login=<?php echo $_SESSION["session_user"]?>">Feed</a>
       </li>
-
     </ul>
     <ul class = "navbar-nav ml-auto">
       <li class="nav-item ">
           <a class="nav-link" href="https://www.haxstar.com/assets/logout">Log out</a>
         </li>
       </ul>
+      <button type="button" class="btn btn-info my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal">Search a User</button>
     </div>
-
-  </div>
-  </div>
   </div>
 </nav>
+
+
+<script>
+$(document).ready(function(){
+     $('#userfields').keyup(function(){
+          var query = $(this).val();
+          if(query != '') {
+               $.ajax({
+                    url:"../assets/query",
+                    method:"POST",
+                    data:{searchUser:query},
+                    success:function(data) {
+                         $('#userList').fadeIn();
+                         $('#userList').html(data);
+                    }
+               });
+          }
+     });
+     $(document).on('click', 'li', function(){
+          $('#userfields').val($(this).text());
+          var user = document.getElementById("userfields").value;
+          window.location.href = '<?PHP echo 'https://www.haxstar.com/pages/profile?Login='.$_SESSION["session_user"].'&Lookup='?>'+user;
+          $('#userList').fadeOut();
+     });
+});
+</script>
+
+<!-- Pop up for Searching a User -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Username Lookup</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input type="text" name="userfields" id="userfields" class="form-control" placeholder="Search User" />
+        <div id="userList"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

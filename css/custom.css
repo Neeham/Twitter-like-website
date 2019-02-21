@@ -37,3 +37,11 @@ div.sticky {
   position: sticky;
   top: 0;
 }
+
+#userList ul{
+     background-color:#FFFFE0;
+     cursor:pointer;
+}
+#userList li{
+     padding:12px;
+}
