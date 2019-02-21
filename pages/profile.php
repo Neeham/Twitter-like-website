@@ -19,7 +19,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
             <ul class="list-group ">
 
               <li class="list-group-item follow-suggestion">
-                <h1><a href="#">
+                <h1>
                     <img src="https://randomuser.me/api/portraits/women/50.jpg" id="#" /><?php printQuacks('name');?></a>
                 </h1></br>
                 <h3>Email:</h3></br>

@@ -12,7 +12,7 @@
   <meta name="msapplication-config" content="https://haxstar.com/images/favicon/browserconfig.xml?v=1.1">
   <meta name="theme-color" content="#ffffff">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="https://haxstar.com/css/custom.css?v=1.5">
+  <link rel="stylesheet" type="text/css" href="https://haxstar.com/css/custom.css?v=1.6">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

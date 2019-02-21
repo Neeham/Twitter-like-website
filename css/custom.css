@@ -31,13 +31,6 @@ h6 img {
 	border-radius: 50%;
 }
 
-/* Fixing the position for anything that uses class sticky with a div tag*/
-div.sticky {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-}
-
 #userList ul{
      background-color:#FFFFE0;
      cursor:pointer;
