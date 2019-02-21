@@ -18,12 +18,13 @@ session_start();
       <li class="nav-item">
         <a class="nav-link" href="https://www.haxstar.com/pages/feed">Feed</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="https://www.haxstar.com/assets/logout">Log out</a>
-      </li>
-
 
     </ul>
+    <ul class = "navbar-nav ml-auto">
+      <li class="nav-item ">
+          <a class="nav-link" href="https://www.haxstar.com/assets/logout">Log out</a>
+        </li>
+      </ul>
     </div>
 
   </div>

@@ -19,18 +19,18 @@ https://haxstar.com/pages/profile/?profile=Neeham&lookup=Loujan
 
 The way this page will run:
 If (isset($_GET['profile']) && !empty($_GET['profile']) AND isset($_GET['lookup']) && !empty($_GET['lookup'])) {
-  // run query to check if lookup user exists in the DB
-  if (Lookup user exists in DB) {
-    then display quack of the user Loujan by sending name Loujan to a function called displayQuack
-  }
-  else {
-  Display appropriate error.
-  }
+// run query to check if lookup user exists in the DB
+if (Lookup user exists in DB) {
+then display quack of the user Loujan by sending name Loujan to a function called displayQuack
+}
+else {
+Display appropriate error.
+}
 }
 else {
 display quack of the profile parameter  (the sessions that's logged in) by sending name of logged in session to a function called displayQuack
 }
-*/
+ */
 session_start();
 //get the user ID and username of the currently logged in user through session
 $loggedInUserID = $_SESSION["session_id"];
@@ -168,7 +168,8 @@ if (isset($_POST['postQuackBtn'])) {
     }
 }
 // ################################# Display Logged In User's Quacks ######################################
-function printQuacks() {
+function printQuacks()
+{
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //This is the issue (for some reason have to include config again)
     $sql = "SELECT tweet FROM Tweet WHERE userID = '{$GLOBALS['loggedInUserID']}' ORDER BY date DESC";
     $result = mysqli_query($conn, $sql);
@@ -185,7 +186,7 @@ while ($row = $result->fetch_assoc()) {
             echo "<li class=\"list-group-item quack\">";
             foreach ($row as $value) {
                 echo "<div class=\"mx-2 \">";
-                echo "<h5><a href=\"#\">@{$GLOBALS['loggedInUser']}</a></h5>";
+                echo "<h5><a href=\"#\">@{$GLOBALS['loggedInUser']}</a> <span class=\"float-right\"><button class=\"btn btn-danger delete-button\"><i class=\"fas fa-times\"></i> Delete</button></span></h5>";
 
                 echo "$value";
                 echo "</div></li>";
