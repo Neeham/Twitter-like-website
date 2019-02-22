@@ -32,6 +32,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
                 <p><?php printQuacks('followerCount');?></p>
                 <h3>Following:</h3></br>
                 <p><?php printQuacks('followingCount');?></p>
+              </li>
             </ul>
           </div>
         </div>

@@ -2,6 +2,7 @@
 <html lang="en">
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
 ?>
 
 
@@ -28,22 +29,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php';
           <div class="card my-3">
             <div class="card-header text-center">Your Feed</div>
             <ul class="list-group" id="quack-list">
-
-              <li class="list-group-item quack">
-                <div class="media">
-                  <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="" />
-                  <div class="media-body mx-2">
-                    <h5><a href="#">USERNAME HERE</a></h5>
-                      RUN THE QUERY HERE
-                      I got the query working, just have to implement it.
-                    <br />
-
-                    <button class="btn float-right btn-danger like mx-1">
-                      <i class="fas fa-heart"></i>
-                    </button>
-                  </div>
-                </div>
-              </li>
+              <?php printFeed();?>
             </ul>
           </div>
 

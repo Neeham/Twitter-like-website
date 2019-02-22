@@ -5,7 +5,7 @@ $loggedInUserID = $_SESSION["session_id"];
 $loggedInUser = $_SESSION["session_user"];
 require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
 
-//Storing all the registered users into an array, would need this for navbar searching user up
+// ################################# Searching a User #################################
 if(isset($_POST["searchUser"])) {
      $output = '';
      $sql = "SELECT * FROM User WHERE username LIKE '%".$_POST["searchUser"]."%'";
@@ -18,19 +18,6 @@ if(isset($_POST["searchUser"])) {
      echo $output;
 }
 
-//Function to Encrypte a Password
-function generateHash($password)
-{
-    if (defined("CRYPT_BLOWFISH") && CRYPT_BLOWFISH) {
-        $salt = '$2y$11$' . substr(md5(uniqid(rand(), true)), 0, 22);
-        return crypt($password, $salt);
-    }
-}
-//Function to Decrypte a Password
-function verify($password, $hashedPassword)
-{
-    return crypt($password, $hashedPassword) == $hashedPassword;
-}
 // ################################# VERIFY LOGIN #################################
 if (isset($_POST['login'])) {
     $username = mysql_escape_string($_POST['username']);
@@ -60,24 +47,7 @@ if (isset($_POST['login'])) {
         exit;
     }
 }
-// ################################# Get UserID From Username ################################# (not working)
-//function to return the userID of a logged in username
-//function getUserID(){
-//tried making it, kept getting sql error
-//Could not run query: Access denied for user 'root'@'localhost' (using password: NO)
-/*
-//get the username of the currently logged in user through session
-//get the corresponding userID from the username
-$result = mysql_query("SELECT userID FROM User WHERE username = '$loggedInUser'");
-if (!$result) {
-echo 'Could not run query: ' . mysql_error();
-exit;
-}
-$row = mysql_fetch_row($result);
-echo $row[0]; //UserID
-return $row[0];
- */
-//}
+
 // ################################# Register an Account #################################
 if (isset($_POST['register'])) {
     $fName = mysql_escape_string($_POST['firstname']);
@@ -115,11 +85,38 @@ if (isset($_POST['register'])) {
         exit;
     }
 }
-// ################################# Update an Account #################################
-// ################################# Delete an Account #################################
 
+//Function to Encrypte a Password
+function generateHash($password) {
+    if (defined("CRYPT_BLOWFISH") && CRYPT_BLOWFISH) {
+        $salt = '$2y$11$' . substr(md5(uniqid(rand(), true)), 0, 22);
+        return crypt($password, $salt);
+    }
+}
+//Function to Decrypte a Password
+function verify($password, $hashedPassword) {
+    return crypt($password, $hashedPassword) == $hashedPassword;
+}
 
-
+// ################################# Display Quack on Feed ######################################
+function printFeed() {
+    require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
+    $sql    = "SELECT u.firstName AS displayName, u.userName AS username, t.tweet as tweets FROM Tweet t INNER JOIN User u ON u.userID = t.userID WHERE u.userID = '{$GLOBALS['loggedInUserID']}' OR EXISTS (SELECT 1 FROM Follow f WHERE f.follower = '{$GLOBALS['loggedInUserID']}' AND f.following = t.userID) ORDER BY t.date DESC";
+    $result = mysqli_query($conn, $sql);
+        while ($row = $result->fetch_assoc()) {
+          ?>
+          <li class="list-group-item quack">
+              <div class="media-body mx-2">
+                <h5><a href="<?PHP echo "https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$row['username']}" ?>"><?PHP echo $row['displayName']; ?></a></h5>
+                      <?PHP echo $row['tweets']; ?>
+                <br/>
+                <button class="btn float-right btn-danger like mx-1">
+                  <i class="fas fa-heart"></i>
+                </button>
+              </div>
+          </li> <?PHP
+        }
+}
 
 // ################################# Post a Quack ######################################
 //if the post button is clicked
@@ -155,15 +152,19 @@ if (isset($_POST['postQuackBtn'])) {
 }
 
 
-// ################################# Display Logged In User's Quacks ######################################
+// ################################# Display Quacks under profile ######################################
 function printQuacks($type) { //This function will take param and will do if else based on the following: name, email, post, follower count, following count
-require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //This is the issue (for some reason have to include config again)
+require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
 
   If (isset($_GET['Login']) && !empty($_GET['Login']) AND isset($_GET['Lookup']) && !empty($_GET['Lookup'])) {
     $following = mysql_escape_string($_GET['Lookup']);
     $sql = "SELECT userID FROM User WHERE username = '$following'";
     $result = $conn->query($sql);
       if ($row = $result->fetch_assoc()) {
+        if ($following == $GLOBALS['loggedInUser']) { //If the lookup user is the person itself, redirect to their profile without lookup in url
+          echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}';</script>";
+        }
+
         if ($type == 'name') {
           printName($row['userID']);
         }
@@ -186,8 +187,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //This is the issue (f
             unfollowUser($row['userID']);
           }
         } else {
-          header("Location: https://www.haxstar.com/pages/profile?Login=".$_SESSION["session_user"]."&Alert=invalidURL");  //NEED TO FIX THIS
-          exit;
+          echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Alert=invalidURL';</script>";
         }
       } else {
           if ($type == 'name') {
@@ -209,7 +209,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //This is the issue (f
       }
 
 function printName($userID) {
-  require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //This is the issue (for some reason have to include config again)
+  require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
   $sql = "SELECT firstName, lastName FROM User WHERE userID = '$userID'";
   $result = mysqli_query($conn, $sql);
   if ($row = $result->fetch_assoc()) {
@@ -218,7 +218,7 @@ function printName($userID) {
 }
 
 function printEmail($userID) {
-  require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //This is the issue (for some reason have to include config again)
+  require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
   $sql = "SELECT email FROM User WHERE userID = '$userID'";
   $result = mysqli_query($conn, $sql);
   if ($row = $result->fetch_assoc()) {
@@ -227,7 +227,7 @@ function printEmail($userID) {
 }
 
 function printFollowerCount($userID) {
-  require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //This is the issue (for some reason have to include config again)
+  require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
   $sql = "SELECT COUNT(follower) as Sum FROM Follow WHERE follower = '$userID'";
   $result = mysqli_query($conn, $sql);
   if ($row = $result->fetch_assoc()) {
@@ -236,7 +236,7 @@ function printFollowerCount($userID) {
 }
 
 function printFollowingCount($userID) {
-  require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //This is the issue (for some reason have to include config again)
+  require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
   $sql = "SELECT COUNT(following) as Sum FROM Follow WHERE following = '$userID'";
   $result = mysqli_query($conn, $sql);
   if ($row = $result->fetch_assoc()) {
@@ -245,27 +245,22 @@ function printFollowingCount($userID) {
 }
 
 function followUser($userID) {
-  require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //This is the issue (for some reason have to include config again)
+  require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
   $sql = "INSERT INTO Follow (follower,following) VALUES ('{$GLOBALS['loggedInUserID']}','$userID')";
   $result = $conn->query($sql);
 }
 
 function unfollowUser($userID) {
-  require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //This is the issue (for some reason have to include config again)
+  require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
   $sql = "DELETE FROM Follow WHERE follower = '{$GLOBALS['loggedInUserID']}' AND following = '$userID'";
   $result = $conn->query($sql);
 }
 
-function printPost($userID)
-{
-    require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php'; //This is the issue (for some reason have to include config again)
+function printPost($userID) {
+    require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
     $sql    = "SELECT tweet FROM Tweet WHERE userID = '$userID' ORDER BY date DESC";
     $result = mysqli_query($conn, $sql);
-
-    if ($result->num_rows > 0) {
-        // output data of each row
 ?>
-   <!-- <table class="table table-striped"> !-->
     <div class="card my-3">
         <div class="card-header text-center">Your Feed</div>
         <ul class="list-group" id="quack-list">
@@ -281,19 +276,7 @@ function printPost($userID)
             }
         }
         echo "</ul></div>";
-    }
 }
-
-/* The query for displaying quacks on the feed page
-SELECT u.firstName, u.lastName, t.tweet, t.date
-FROM Tweet t
-INNER JOIN User u ON u.userID = t.userID
-WHERE u.userID = '1'
-OR EXISTS (
-SELECT 1 FROM Follow f WHERE f.follower = '1' AND f.following = t.userID
-)
-ORDER BY t.date DESC
-*/
 
 //last statement of the code which is to close the database.
 mysqli_close($conn);
