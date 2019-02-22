@@ -141,15 +141,15 @@ if (isset($_POST['postQuackBtn'])) {
         //check if the Quack is inserted into the database
         if (!$result) {
             //the Quack is not inserted into the database (can elaborate on types of errors)
-            header("Location: https://www.haxstar.com/pages/profile?Login=".$_SESSION["session_user"]."&Alert=errorInsert");
+            header("Location: https://www.haxstar.com/pages/feed?Login=".$_SESSION["session_user"]."&Alert=errorInsert");
             exit;
         } else {
             //the Quack is inserted into the database
-            header("Location: https://www.haxstar.com/pages/profile?Login=".$_SESSION["session_user"]."&Alert=successfulInsert");
+            header("Location: https://www.haxstar.com/pages/feed?Login=".$_SESSION["session_user"]."&Alert=successfulInsert");
             exit;
         }
     } else { //if database didn't return userID
-        header("Location: https://www.haxstar.com/pages/profile?Login=".$_SESSION["session_user"]."&Alert=errorInsert");
+        header("Location: https://www.haxstar.com/pages/feed?Login=".$_SESSION["session_user"]."&Alert=errorInsert");
         exit;
     }
 }
@@ -284,7 +284,16 @@ function printPost($userID)
     }
 }
 
-
+/* The query for displaying quacks on the feed page
+SELECT u.firstName, u.lastName, t.tweet, t.date
+FROM Tweet t
+INNER JOIN User u ON u.userID = t.userID
+WHERE u.userID = '1'
+OR EXISTS (
+SELECT 1 FROM Follow f WHERE f.follower = '1' AND f.following = t.userID
+)
+ORDER BY t.date DESC
+*/
 
 //last statement of the code which is to close the database.
 mysqli_close($conn);

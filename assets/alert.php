@@ -82,10 +82,6 @@ if (basename($_SERVER['PHP_SELF'], '.php') == "index") {
 //feed page
 if (basename($_SERVER['PHP_SELF'], '.php') == "feed") {
 
-}
-//profile page
-if (basename($_SERVER['PHP_SELF'], '.php') == "profile") {
-
     if ($_GET['Alert'] == 'errorInsert') {
         echo alert('error', 'Database Error', 'Something went wrong (not entered in database). Please try again.');
     }
@@ -95,6 +91,10 @@ if (basename($_SERVER['PHP_SELF'], '.php') == "profile") {
    if ($_GET['Alert'] == 'invalidURL') {
        echo alert('error', 'Invalid URL', 'The URL is invalid. You have been redirected to your profile.');
   }
+}
+//profile page
+if (basename($_SERVER['PHP_SELF'], '.php') == "profile") {
+  
 }
 
 //register pages
