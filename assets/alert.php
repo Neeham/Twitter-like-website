@@ -88,13 +88,12 @@ if (basename($_SERVER['PHP_SELF'], '.php') == "feed") {
     if ($_GET['Alert'] == 'successfulInsert') {
         echo alert('success', 'Woohoo', 'Your Quack has successfully been posted! Happy Quacking!');
    }
-   if ($_GET['Alert'] == 'invalidURL') {
-       echo alert('error', 'Invalid URL', 'The URL is invalid. You have been redirected to your profile.');
-  }
 }
 //profile page
 if (basename($_SERVER['PHP_SELF'], '.php') == "profile") {
-  
+  if ($_GET['Alert'] == 'invalidURL') {
+      echo alert('error', 'Invalid URL', 'The URL is invalid. You have been redirected to your profile.');
+ }
 }
 
 //register pages
