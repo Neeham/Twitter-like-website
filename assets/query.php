@@ -284,7 +284,16 @@ function printPost($userID)
     }
 }
 
-
+/* The query for displaying quacks on the feed page
+SELECT u.firstName, u.lastName, t.tweet, t.date
+FROM Tweet t
+INNER JOIN User u ON u.userID = t.userID
+WHERE u.userID = '1'
+OR EXISTS (
+SELECT 1 FROM Follow f WHERE f.follower = '1' AND f.following = t.userID
+)
+ORDER BY t.date DESC
+*/
 
 //last statement of the code which is to close the database.
 mysqli_close($conn);

@@ -33,10 +33,10 @@ require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php';
                 <div class="media">
                   <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="" />
                   <div class="media-body mx-2">
-                    <h5><a href="#">@JStrong</a></h5>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Quasi enim minima odio, inventore sint sunt nulla adipisci
-                    iure sit dolor. <br />
+                    <h5><a href="#">USERNAME HERE</a></h5>
+                      RUN THE QUERY HERE
+                      I got the query working, just have to implement it.
+                    <br />
 
                     <button class="btn float-right btn-danger like mx-1">
                       <i class="fas fa-heart"></i>
