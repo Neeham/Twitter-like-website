@@ -213,7 +213,7 @@ function printName($userID) {
   $sql = "SELECT firstName, lastName FROM User WHERE userID = '$userID'";
   $result = mysqli_query($conn, $sql);
   if ($row = $result->fetch_assoc()) {
-    echo $row['firstName'];
+    echo $row['firstName']. " " .$row['lastName'];
     }
 }
 
