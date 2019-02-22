@@ -23,7 +23,7 @@ printQuacks('checkURL');//Check here if URL even make sense in order to redirect
                     <img src="https://randomuser.me/api/portraits/women/50.jpg" id="#" /><?php printQuacks('name');?></a>
                 </h1></br>
                 <!-- Need a button here, upon click it will run follow query the button will then change to following - Need to hide the button here when the person visit their own profile -->
-                <button class="btn btn-outline-success btn-sm follow mx-1 profile-follow d-hidden">
+                <button class="btn btn-outline-success btn-sm follow mx-1 profile-follow d-none">
                 <i class="fas fa-check"></i> Follow</button>
                 </br></br>
                 <h3>Email:</h3></br>
