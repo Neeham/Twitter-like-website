@@ -1,52 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . '/repeated/header.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
+printQuacks('checkURL');//Check here if URL even make sense in order to redirect before running any html code
 ?>
-
 <body id="profile">
   <div class="container">
     <div class="row">
 
       <!--Your Profile-->
-      <div class="col-lg-3" id="your-profile">
+      <div class=" col-lg-3" id="your-profile">
         <div class="card">
-          <div class="card-header">
+          <div class="text-center card-header">
             <h2>Your Profile</h2>
           </div>
-          <div class="card-text">
+          <div class="text-center  card-text">
             <ul class="list-group ">
 
-              <li class="list-group-item follow-suggestion">
-                <h1><a href="#">
-                    <img src="https://randomuser.me/api/portraits/women/50.jpg" id="#" />FooBar McBuggy</a>
+              <li class="list-group-item follow-suggestion"> <!-- where is the closing for this tag? -->
+                <h1>
+                    <img src="https://randomuser.me/api/portraits/women/50.jpg" id="#" /><?php printQuacks('name');?></a>
                 </h1></br>
+                <!-- Need a button here, upon click it will run follow query the button will then change to following - Need to hide the button here when the person visit their own profile -->
+                <button class="btn btn-outline-success btn-sm follow mx-1 profile-follow d-none">
+                <i class="fas fa-check"></i> Follow</button>
+                </br></br>
                 <h3>Email:</h3></br>
-                <p>buggy@iLoveToBug.com</p>
+                <p><?php printQuacks('email');?></p>
                 <h3>Followers:</h3></br>
-                <p>2</p>
+                <p><?php printQuacks('followerCount');?></p>
                 <h3>Following:</h3></br>
-                <p>98 others</p>
+                <p><?php printQuacks('followingCount');?></p>
+              </li>
             </ul>
           </div>
         </div>
       </div>
 
       <div class="col-md-6 center-block" style="background-color:lavenderblush;">
-        <form class="form-group" action="../assets/query" method="post">
-          <h2> <label for="tweet">Post a Quack</label> </h2>
-          <textarea class="form-control" id = "quack-box" oninput = "setCounter()" rows="4" name="tweet" maxlength="255" required
-            placeholder="<?php echo _("Quack it") ?>"></textarea>
-          <br>
-          <span class="my-2" id="quack-limit">0/255</span>
-          <button class="btn btn-lg btn-primary btn-block" name="postQuackBtn"
-            type="submit"><?php echo _("*Quack") ?></button><br>
-          </button>
-        </form>
+
         <h3> <?php echo _("*Your Latest Quacks") ?> </h3>
-        <?php printQuacks();?>
+        <?php printQuacks('post');?>
       </div>
 
       <!--Following & Followers-->
@@ -137,7 +132,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
   <!--Container-->
 
   <?php require $_SERVER['DOCUMENT_ROOT'] . '/repeated/footer.php';?>
-  <script src="https://www.haxstar.com/js/profile.js"></script>
-</body>
+  <script src="https://www.haxstar.com/js/profile.js?v=1.1"></script>
+ </body>
 
 </html>
