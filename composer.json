@@ -1,0 +1,16 @@
+{
+    "name": "travis/twitter-like-website",
+    "type": "library",
+    "description": "Testing Purposes",
+    "homepage": "https://github.com/Neeham/Twitter-like-website",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Amanda-Kolopa",
+            "homepage": "https://github.com/Amanda-Kolopa"
+        }
+    ],
+    "require": {
+        "php": ">=5.6"
+    }
+}
