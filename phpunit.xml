@@ -3,7 +3,7 @@
      backupStaticAttributes="false"
 
      cacheTokens="false"
-     colors="false"
+     colors="true"
      convertErrorsToExceptions="true"
      convertNoticesToExceptions="true"
      convertWarningsToExceptions="true"
@@ -23,7 +23,7 @@
     >
 
     <testsuites>
-        <testsuite name="AllTests">
+        <testsuite name="Tests">
         <directory>.</directory>
         </testsuite>
     </testsuites>
@@ -37,13 +37,5 @@
                 <file></file>
             </exclude>
         </blacklist>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php"></directory>
-            <file></file>
-            <exclude>
-                <directory suffix=".php"></directory>
-                <file></file>
-            </exclude>
-        </whitelist>
     </filter>
 </phpunit>
