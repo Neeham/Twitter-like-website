@@ -9,9 +9,19 @@ if (isset($_SESSION["session_user"]) && $_SESSION['session_activated'] == 1) {
 <html lang="en">
 <?php
 require $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
+
 ?>
 
+
 <body id="login">
+  <nav class="navbar navbar-expand-sm bg-warning navbar-light">
+    <a class="navbar-brand" href="#">
+      <img src="https://haxstar.com/images/logo/duck.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      <img src="https://haxstar.com/images/logo/Quacker.png" width="140" height="30" class="d-inline-block align-top" alt="">
+
+    </a>
+  </nav>
+
    <div class = "container-fluid">
       <div class="row">
          <div class="col-md-4 center-block"></div>
