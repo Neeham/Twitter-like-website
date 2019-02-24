@@ -1,12 +1,19 @@
 <?php
-include('../pages/feed.php');
 class SampleTest extends \PHPUnit_Framework_TestCase
 {
-  public function testToGetTheTextareaContent()
+  public $object = '';
+
+  public function SampleTest()
+  {
+    global $object;
+    $this->object = new \tests\ObjectTest;
+  }
+
+  public function testGetTheContentFromFeed()
   {
     //$this->assertTrue(true); //checks with assetsTrue to see if param is true
 
-     $object = new \tests\ObjectTest;
+     //$object = new \tests\ObjectTest;
 
 
      $object->getUsernameOfLoggedInUser();

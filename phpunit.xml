@@ -9,7 +9,7 @@
      forceCoversAnnotation="false"
      mapTestClassNameToCoveredClassName="false"
      printerClass="PHPUnit_TextUI_ResultPrinter"
-
+     bootstrap="./vendor/autoload.php"
      processIsolation="false"
      stopOnError="false"
      stopOnFailure="false"
@@ -22,8 +22,8 @@
     >
 
     <testsuites>
-        <testsuite name="Tests Update">
-        <directory>.</directory>
+        <testsuite name="Tests">
+        <directory suffix="SampleTest.php">Tests</directory>
         </testsuite>
     </testsuites>
 
