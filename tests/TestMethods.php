@@ -1,12 +1,14 @@
 <?php
 
-class SampleTest extends \PHPUnit_Framework_TestCase
+class TestMethods extends \PHPUnit_Framework_TestCase
 {
-  public function testObjectTestConnection()
+  public function testToGetTheTextareaContent()
   {
     //$this->assertTrue(true); //checks with assetsTrue to see if param is true
 
     $object = new \tests\ObjectTest;
+
+    $object->setInputText('Testing 101');
 
     $object->getInputText();
 
