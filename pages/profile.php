@@ -18,13 +18,13 @@ printQuacks('checkURL');//Check here if URL even make sense in order to redirect
           <div class="text-center  card-text">
             <ul class="list-group ">
 
-              <li class="list-group-item follow-suggestion"> <!-- where is the closing for this tag? -->
+              <li class="list-group-item follow-suggestion">
                 <h1>
-                    <img src="https://randomuser.me/api/portraits/women/50.jpg" id="#" /><?php printQuacks('name');?></a>
+                    <img src="../images/users/default_duck.jpg" id="default_duck" /><?php printQuacks('name');?></a>
                 </h1></br>
                 <!-- Need a button here, upon click it will run follow query the button will then change to following - Need to hide the button here when the person visit their own profile -->
                 <button class="btn btn-outline-success btn-sm follow mx-1 profile-follow d-none">
-                <i class="fas fa-check"></i> Follow</button>
+                <i class="fas fa-check"></i>Follow</button>
                 </br></br>
                 <h3>Email:</h3></br>
                 <p><?php printQuacks('email');?></p>
@@ -38,8 +38,8 @@ printQuacks('checkURL');//Check here if URL even make sense in order to redirect
         </div>
       </div>
 
-      <div class="col-md-6 center-block" style="background-color:lavenderblush;">
-        <h3> <?php echo _("*Your Latest Quacks") ?> </h3>
+      <div class="col-md-6 center-block" style="background-color:#c7ff4c;">
+        <h3> <?php echo _("Your Latest Quacks") ?> </h3>
         <?php printQuacks('post');?>
       </div>
 
@@ -47,7 +47,7 @@ printQuacks('checkURL');//Check here if URL even make sense in order to redirect
       <div class="col-md-3 "> <!--Following & Followers-->
 
         <div class="card my-1" id="following">   <!--FOLLOWING-->
-          <div class="card-header">Following</div>
+          <div class="card-header text-center">Following</div>
 
           <div class="card-text">
             <ul class="list-group ">
@@ -85,7 +85,7 @@ printQuacks('checkURL');//Check here if URL even make sense in order to redirect
 
 
         <div class="card my-1" id="followers">
-          <div class="card-header">Followers</div>
+          <div class="card-header text-center">Followers</div>
 
           <div class="card-text">
             <ul class="list-group ">
