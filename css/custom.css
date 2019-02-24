@@ -3,19 +3,25 @@ textarea{
 }
 body{
     min-height: 400px;
-   margin-bottom: 100px;
-}
-#your-profile{
-  border-radius: 20px;
+    margin-bottom: 100px;
 }
 
+#your-profile{
+  border-radius: 8px;
+  border: 0px;
+}
+#profile_row{
+  padding: 5px;
+  margin: 5px;
+}
 #profile_container{
-  padding-top: 4px;
-  padding-left: 1px;
-  padding-right: 1px;
+  border-top: 4px;
+  padding-left: 0px;
+  padding-right: 0px;
   margin-left: 1px;
   margin-right: 1px;
 }
+
 #quack-button, #image-upload-button, #emoji-button, .reply{
     background-color: #FF5722;
     color: white;

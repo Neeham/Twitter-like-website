@@ -7,13 +7,12 @@ printQuacks('checkURL');//Check here if URL even make sense in order to redirect
 ?>
 <body id="profile">
   <div class="container" id="profile_container">
-    <div class="row">
+    <div class="row" id="profile_row">
 
-      <!--Your Profile-->
-      <div class=" col-lg-3" id="your-profile">
+      <div class="col-lg-3" id="your-profile">   <!--Your Profile-->
         <div class="card">
           <div class="text-center card-header">
-            <h2>Your Profile</h2>
+            <h3>Your Profile</h3>
           </div>
           <div class="text-center  card-text">
             <ul class="list-group ">
@@ -28,9 +27,9 @@ printQuacks('checkURL');//Check here if URL even make sense in order to redirect
                 </br></br>
                 <h3>Email:</h3></br>
                 <p><?php printQuacks('email');?></p>
-                <h3>Followers:</h3></br>
+                <h5>Followers:</h5></br>
                 <p><?php printQuacks('followerCount');?></p>
-                <h3>Following:</h3></br>
+                <h5>Following:</h5></br>
                 <p><?php printQuacks('followingCount');?></p>
               </li>
             </ul>
@@ -38,7 +37,7 @@ printQuacks('checkURL');//Check here if URL even make sense in order to redirect
         </div>
       </div>
 
-      <div class="col-md-6 center-block" style="background-color:#c7ff4c;">
+      <div class="col-md-6 center-block text-center" style="background-color:yellow; border-radius: 6px; padding: 0px; margin: 0px;">
         <h3> <?php echo _("Your Latest Quacks") ?> </h3>
         <?php printQuacks('post');?>
       </div>
