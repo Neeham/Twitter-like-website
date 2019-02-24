@@ -7,7 +7,8 @@ namespace tests;
 
 class ObjectTest
 {
-  public $localVariable = '';
+
+  protected $localVariable = '';
 
   public function getUsernameOfLoggedInUser()
   {
