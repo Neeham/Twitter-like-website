@@ -3,15 +3,15 @@
 //This is the page that Travis CI reference for success or fail
 
 namespace tests;
-//include 'http://www.haxstar.com/pages/feed.php';  //worked but gave warning for not opening, need a better solution to link to feed without server
 
 class ObjectTest
 {
-
+  //global variable used to get/set methods
   protected $localVariable = '';
 
   public function getUsernameOfLoggedInUser()
   {
+    //global is required in order to associate with class $localVariable
     global $localVariable;
 
     return $this->localVariable;

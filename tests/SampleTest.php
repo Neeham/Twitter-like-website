@@ -1,25 +1,25 @@
 <?php
-
+require $_SERVER['DOCUMENT_ROOT'] . '/pages/feed.php';
 class SampleTest extends \PHPUnit_Framework_TestCase
 {
   public function testToGetTheTextareaContent()
   {
     //$this->assertTrue(true); //checks with assetsTrue to see if param is true
 
-    $object = new \tests\ObjectTest;
+     $object = new \tests\ObjectTest;
 
 
-    $object->getUsernameOfLoggedInUser();
+     $object->getUsernameOfLoggedInUser();
 
-    echo "getUsernameofLoggedInUser: ".$object;
+     echo "getUsernameofLoggedInUser: ".$object;
 
-    $object->setUsernameOfLoggedInUser('Testing 101');
+     $object->setUsernameOfLoggedInUser('Testing 101');
 
-    echo "setUsernameofLoggedInUser: ".$object;
+     echo "setUsernameofLoggedInUser: ".$object;
 
 
 
-    $this->assertNotNull($object);    //will check if the input text is empty or not (this will display through Travis CI )
+     $this->assertNotNull($object);    //will check if the input text is empty or not (this will display through Travis CI )
   }
 }
 
