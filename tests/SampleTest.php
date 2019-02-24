@@ -2,6 +2,9 @@
 
 require "vendor/autoload.php";
 
+$testingVendor = $_POST['tweet'];
+
+
 class SampleTest extends \PHPUnit_Framework_TestCase
 {
   public $object = '';
