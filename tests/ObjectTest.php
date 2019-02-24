@@ -5,17 +5,17 @@ namespace tests;
 class ObjectTest
 {
 
-  public $localUsernameFromTextarea = '';
+  public $localVariable = 'Hello !';
 
 
   public function getUsernameOfLoggedInUser()
   {
-    return 'Testing: ' + $localUsernameFromTextarea;
+    return $localVariable;
   }
 
   public function setUsernameOfLoggedInUser($givenUsernameFromTextarea)
   {
-    $this->$localUsernameFromTextarea = $givenUsernameFromTextarea;
+    $this->$localVariable = $givenUsernameFromTextarea;
 
   }
 }

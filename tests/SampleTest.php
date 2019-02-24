@@ -4,13 +4,20 @@ class SampleTest extends \PHPUnit_Framework_TestCase
 {
   public function testToGetTheTextareaContent()
   {
-    $this->assertTrue(true); //checks with assetsTrue to see if param is true
+    //$this->assertTrue(true); //checks with assetsTrue to see if param is true
 
     $object = new \tests\ObjectTest;
+    
+
+    $object->getUsernameOfLoggedInUser();
+
+    echo "getUsernameofLoggedInUser: " + $object;
 
     $object->setUsernameOfLoggedInUser('Testing 101');
 
-    $object->getUsernameOfLoggedInUser();
+    echo "setUsernameofLoggedInUser: " + $object;
+
+
 
     $this->assertNotNull($object);    //will check if the input text is empty or not (this will display through Travis CI )
   }
