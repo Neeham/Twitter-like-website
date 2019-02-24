@@ -7,15 +7,15 @@ class SampleTest extends \PHPUnit_Framework_TestCase
     //$this->assertTrue(true); //checks with assetsTrue to see if param is true
 
     $object = new \tests\ObjectTest;
-    
+
 
     $object->getUsernameOfLoggedInUser();
 
-    echo "getUsernameofLoggedInUser: " + $object;
+    echo "getUsernameofLoggedInUser: ".$object;
 
     $object->setUsernameOfLoggedInUser('Testing 101');
 
-    echo "setUsernameofLoggedInUser: " + $object;
+    echo "setUsernameofLoggedInUser: ".$object;
 
 
 
