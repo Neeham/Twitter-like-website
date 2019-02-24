@@ -20,7 +20,7 @@ printQuacks('checkURL');//Check here if URL even make sense in order to redirect
 
               <li class="list-group-item follow-suggestion">
                 <h1>
-                    <img src="../images/users/default_duck.jpg" id="default_duck" /><?php printQuacks('name');?></a>
+                    <img src="../images/users/default_duck.jpg" class="rounded-circle" id="default_duck" /><?php printQuacks('name');?></a>
                 </h1></br>
                 <!-- Need a button here, upon click it will run follow query the button will then change to following - Need to hide the button here when the person visit their own profile -->
                 <button class="btn btn-outline-success btn-sm follow mx-1 profile-follow d-none">
