@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit
      backupStaticAttributes="false"
-
+     bootstrap="vendor/autoload.php"
      cacheTokens="false"
      colors="true"
      convertErrorsToExceptions="true"
@@ -23,7 +23,7 @@
     >
 
     <testsuites>
-        <testsuite name="Tests">
+        <testsuite name="Tests Update">
         <directory>.</directory>
         </testsuite>
     </testsuites>
@@ -37,6 +37,6 @@
                 <file></file>
             </exclude>
         </blacklist>
-      
+
     </filter>
 </phpunit>
