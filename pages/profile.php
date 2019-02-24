@@ -36,18 +36,17 @@ printQuacks('checkURL');//Check here if URL even make sense in order to redirect
             </ul>
           </div>
         </div>
-      </div></br>
+      </div>
 
       <div class="col-md-6 center-block" style="background-color:lavenderblush;">
         <h3> <?php echo _("*Your Latest Quacks") ?> </h3>
         <?php printQuacks('post');?>
       </div>
 
-      <!--Following & Followers-->
-      <div class="col-md-3 ">
 
-        <!--FOLLOWING-->
-        <div class="card my-1" id="following">
+      <div class="col-md-3 "> <!--Following & Followers-->
+
+        <div class="card my-1" id="following">   <!--FOLLOWING-->
           <div class="card-header">Following</div>
 
           <div class="card-text">
@@ -81,6 +80,10 @@ printQuacks('checkURL');//Check here if URL even make sense in order to redirect
                 </ul>
               </div>
             </div>
+
+          </br>
+
+
         <div class="card my-1" id="followers">
           <div class="card-header">Followers</div>
 
@@ -119,7 +122,6 @@ printQuacks('checkURL');//Check here if URL even make sense in order to redirect
 
 
       </div>
-      <!--end of Marc changes-->
 
     </div>
     <!--End row-->
