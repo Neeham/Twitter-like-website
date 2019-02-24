@@ -1,5 +1,5 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . '/pages/feed.php';
+include('../pages/feed.php');
 class SampleTest extends \PHPUnit_Framework_TestCase
 {
   public function testToGetTheTextareaContent()
