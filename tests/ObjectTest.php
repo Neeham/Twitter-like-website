@@ -11,11 +11,14 @@ class ObjectTest
 
   public function getUsernameOfLoggedInUser()
   {
+    global $localVariable;
+
     return $this->$localVariable;
   }
 
   public function setUsernameOfLoggedInUser($givenUsernameFromTextarea)
   {
+      global $localVariable;
       $this->$localVariable = $givenUsernameFromTextarea;
       return $this->$localVariable;
 
@@ -23,6 +26,7 @@ class ObjectTest
 
   public function __toString()
   {
+    global $localVariable;
     return $this->$localVariable;
   }
 }
