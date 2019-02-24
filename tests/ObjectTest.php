@@ -8,7 +8,7 @@ class ObjectTest
   protected $localUsernameFromTextarea;
 
 
-  public function getInputText()
+  public function getUsernameOfLoggedInUser()
   {
     return 'Testing: ' + $localUsernameFromTextarea;
   }

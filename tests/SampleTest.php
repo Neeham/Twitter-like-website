@@ -8,9 +8,9 @@ class SampleTest extends \PHPUnit_Framework_TestCase
 
     $object = new \tests\ObjectTest;
 
-    $object->setInputText('Testing 101');
+    $object->setUsernameOfLoggedInUser('Testing 101');
 
-    $object->getInputText();
+    $object->getUsernameOfLoggedInUser();
 
     $this->assertNotNull($object);    //will check if the input text is empty or not (this will display through Travis CI )
   }
