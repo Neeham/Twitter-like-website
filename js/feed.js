@@ -5,6 +5,9 @@ const quackButton = document.getElementById("quack-button");
 const quackList = document.getElementById("quack-list");
 const followButtons = document.getElementsByClassName("follow");
 
+
+
+
 //Function to count the number of characters in the text field
 function setCounter() {
 
@@ -56,18 +59,3 @@ for (let followButton of followButtons) {
   })
 }
 
-// Emoji picker setup
-$(document).ready(function () {
-
-  $('.emoji-field').emojiPicker({
-    width: '300px',
-    height: '200px',
-    button: false
-  });
-
-
-  $('#emoji-button').click(function (e) {
-    e.preventDefault();
-    $('#quack-box').emojiPicker('toggle');
-  })
-})

@@ -9,7 +9,7 @@ body{
     background-color: #FF5722;
     color: white;
 }
-#feed-bg{
+#feed-bg, #register, #profile, #login{
 
     background-color:#e6ecf0;
 }
@@ -31,9 +31,10 @@ h6 img {
 	border-radius: 50%;
 }
 
-/* Fixing the position for anything that uses class sticky with a div tag*/
-div.sticky {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
+#userList ul{
+     background-color:#FFFFE0;
+     cursor:pointer;
+}
+#userList li{
+     padding:12px;
 }

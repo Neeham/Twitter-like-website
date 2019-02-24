@@ -16,8 +16,9 @@ Zohal Mir | zohalmir | zohalmir9@gmail.com | Frontend
 
 ## Languages and tools that will be used:
 * PHP
-* HTML
 * CSS
+* HTML
+* AJAX
 * BOOTSTRAP
 * JAVASCRIPT
 * MySQL Database
