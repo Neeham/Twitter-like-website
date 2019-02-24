@@ -17,6 +17,11 @@ class ObjectTest
       return 'Hi from set';
 
   }
+
+  public function __toString()
+  {
+    return 'Testing toString';
+  }
 }
 
  ?>
