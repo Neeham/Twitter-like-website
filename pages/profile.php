@@ -36,7 +36,7 @@ printQuacks('checkURL');//Check here if URL even make sense in order to redirect
             </ul>
           </div>
         </div>
-      </div>
+      </div></br>
 
       <div class="col-md-6 center-block" style="background-color:lavenderblush;">
         <h3> <?php echo _("*Your Latest Quacks") ?> </h3>
