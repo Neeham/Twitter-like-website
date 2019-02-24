@@ -5,7 +5,7 @@ namespace tests;
 class ObjectTest
 {
 
-  protected $localUsernameFromTextarea = null;
+  public $localUsernameFromTextarea;
 
 
   public function getUsernameOfLoggedInUser()
