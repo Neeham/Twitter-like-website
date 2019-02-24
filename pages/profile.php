@@ -39,7 +39,6 @@ printQuacks('checkURL');//Check here if URL even make sense in order to redirect
       </div>
 
       <div class="col-md-6 center-block" style="background-color:lavenderblush;">
-
         <h3> <?php echo _("*Your Latest Quacks") ?> </h3>
         <?php printQuacks('post');?>
       </div>
@@ -75,17 +74,13 @@ printQuacks('checkURL');//Check here if URL even make sense in order to redirect
 
                 <h6><a href="#">
                     <img src="https://randomuser.me/api/portraits/men/81.jpg" />Baby Big Jr.</a>
-                  <button class="btn btn-outline-success btn-sm float-right follow mx-1">
-                    <i class="fas fa-check"></i> Follow</button>
-                </h6>
-
-              </li>
-            </ul>
-
-          </div>
-        </div>
-
-
+                    <button class="btn btn-outline-success btn-sm float-right follow mx-1">
+                      <i class="fas fa-check"></i> Follow</button>
+                    </h6>
+                  </li>
+                </ul>
+              </div>
+            </div>
         <div class="card my-1" id="followers">
           <div class="card-header">Followers</div>
 
