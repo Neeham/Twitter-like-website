@@ -1,4 +1,7 @@
 <?php
+
+require "vendor/autoload.php";
+
 class SampleTest extends \PHPUnit_Framework_TestCase
 {
   public $object = '';
