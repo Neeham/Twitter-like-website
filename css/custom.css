@@ -5,6 +5,10 @@ body{
     min-height: 400px;
    margin-bottom: 100px;
 }
+#profile_container{
+  padding-left: 1px;
+  padding-right: 1px;
+}
 #quack-button, #image-upload-button, #emoji-button, .reply{
     background-color: #FF5722;
     color: white;

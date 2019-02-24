@@ -6,7 +6,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
 printQuacks('checkURL');//Check here if URL even make sense in order to redirect before running any html code
 ?>
 <body id="profile">
-  <div class="container">
+  <div class="container" id="profile_container">
     <div class="row">
 
       <!--Your Profile-->
