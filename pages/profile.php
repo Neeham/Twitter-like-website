@@ -43,11 +43,11 @@ require $_SERVER['DOCUMENT_ROOT'].'/assets/query.php';
       <?php printQuacks(); ?>
     </div>
 
-    <!--Following & Followers-->
-    <div class="col-md-3 " >
 
-      <!--FOLLOWING-->
-      <div class="card my-1" id="following">
+    <div class="col-md-3 " > <!--Following & Followers-->
+
+
+      <div class="card my-1" id="following"> <!--FOLLOWING-->
         <div class="card-header">Following</div>
 
         <div class="card-text">
@@ -77,10 +77,8 @@ require $_SERVER['DOCUMENT_ROOT'].'/assets/query.php';
                     <button class="btn btn-outline-success btn-sm float-right follow mx-1">
                       <i class="fas fa-check"></i> Follow</button>
                     </h6>
-
                   </li>
                 </ul>
-
               </div>
             </div>
 
