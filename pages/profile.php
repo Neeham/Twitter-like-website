@@ -38,7 +38,7 @@ printQuacks('checkURL');//Check here if URL even make sense in order to redirect
         </div>
       </div>
 
-      <div class="col-md-6 center-block text-center" style="border-radius: 6px; padding: 0px; margin: 0px;">
+      <div class="col-md-6 center-block" style="border-radius: 6px; padding: 0px; margin: 0px;">
         <h3> <?php echo _("Your Latest Quacks") ?> </h3>
         <?php printQuacks('post');?>
       </div>
