@@ -3,7 +3,15 @@ textarea{
 }
 body{
     min-height: 400px;
-   margin-bottom: 100px;
+    margin-bottom: 100px;
+}
+
+#your-profile{
+  border-radius: 8px;
+}
+#profile_row{
+  padding: 5px;
+  margin: 5px;
 }
 #quack-button, #image-upload-button, #emoji-button, .reply{
     background-color: #FF5722;
