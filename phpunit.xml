@@ -15,13 +15,15 @@
      stopOnIncomplete="false"
      stopOnSkipped="false"
      testSuiteLoaderClass="PHPUnit_Runner_StandardTestSuiteLoader"
+
      strict="false"
      verbose="false"
     >
 
     <testsuites>
         <testsuite name="Tests">
-        <directory suffix="AcceptanceTests.php"></directory>
+        <directory suffix=".php"></directory>
         </testsuite>
     </testsuites>
+
 </phpunit>
