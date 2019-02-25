@@ -13,7 +13,7 @@
    <div class = "container-fluid">
    <div class="row">
       <div class="col-md-4 center-block"></div>
-      <div class="col-md-4 center-block" style="background-color:#FFA000;">
+      <div class="col-md-4 center-block" style="background-color:#e6ecf0;">
          <form class="form-signin" action="../assets/query" method="post">
             <h2 class="form-signin-heading">
                <?php echo _("Please Register")?>

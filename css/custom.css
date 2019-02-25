@@ -46,3 +46,73 @@ h6 img {
 #userList li{
      padding:12px;
 }
+
+
+.floating-duck {
+    position: absolute;
+    top: 260px;
+    left: calc(50% - 280px);
+    animation: floating-duck 2s alternate ease-in-out infinite;
+      animation-name: floating-duck;
+      animation-duration: 2s;
+      animation-timing-function: ease-in-out;
+      animation-delay: 0s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-fill-mode: none;
+      animation-play-state: running;
+    will-change: transform;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+@keyframes floating-duck {
+  0%{transform:translateY(-8px)}100%{transform:translateY(10px)}
+}
+
+@keyframes move_wave {
+    0% {
+        transform: translateX(0) translateZ(0) scaleY(1)
+    }
+    50% {
+        transform: translateX(-25%) translateZ(0) scaleY(0.92)
+    }
+    100% {
+        transform: translateX(-50%) translateZ(0) scaleY(1)
+    }
+}
+.waveWrapper {
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+}
+.waveWrapperInner {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    bottom: -1px;
+
+}
+.bgMiddle {
+    z-index: 10;
+    opacity: 0.60;
+}
+.wave {
+    position: absolute;
+    top: 420px;
+    left: 0;
+    width: 200%;
+    height: 100%;
+
+}
+.waveMiddle {
+    background-size: 50% 200px;
+}
+.waveAnimation .waveMiddle {
+    animation: move_wave 25s linear infinite;
+}
