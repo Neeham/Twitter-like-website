@@ -6,6 +6,7 @@
 
 class SampleTest extends \PHPUnit_Framework_TestCase
 {
+  $this->assertTrue(true);
 /*
   public function SampleTest()
   {
@@ -22,7 +23,7 @@ class SampleTest extends \PHPUnit_Framework_TestCase
      $object->setUsernameOfLoggedInUser('Updated');
 
      echo "setUsernameofLoggedInUser: ".$object;
-     
+
      $object->getUsernameOfLoggedInUser();
 
      echo "getUsernameofLoggedInUser: ".$object;
