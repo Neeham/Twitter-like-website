@@ -83,11 +83,17 @@ if (basename($_SERVER['PHP_SELF'], '.php') == "index") {
 if (basename($_SERVER['PHP_SELF'], '.php') == "feed") {
 
     if ($_GET['Alert'] == 'errorInsert') {
-        echo alert('error', 'Database Error', 'Something went wrong (not entered in database). Please try again.');
+        echo alert('error', 'Database Error', 'Something went wrong (not entered in database). Please try again. :()');
     }
     if ($_GET['Alert'] == 'successfulInsert') {
-        echo alert('success', 'Woohoo', 'Your Quack has successfully been posted! Happy Quacking!');
+        echo alert('success', 'Woohoo', 'Your Quack has successfully been posted! Happy Quacking! :D');
    }
+   if ($_GET['Alert'] == 'errorLike') {
+       echo alert('error', 'Database Error', 'Something went wrong (The Quack is not liked). Please try again. :()');
+   }
+   if ($_GET['Alert'] == 'successLike') {
+       echo alert('success', 'Woohoo', 'You have successfully liked a Quack! Happy Quacking! :D');
+  }
 }
 //profile page
 if (basename($_SERVER['PHP_SELF'], '.php') == "profile") {

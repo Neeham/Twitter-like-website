@@ -23,9 +23,7 @@
             <input type="text" class="form-control" name="username" placeholder="<?php echo _("Username")?>" required=""/><br>
             <input type="password" class="form-control" name="password" placeholder="<?php echo _("Password")?>" required=""/><br>
             <input type="email" class="form-control" name="email" placeholder="<?php echo _("Email Address")?>" required=""/><br><br>
-            <button class="btn btn-lg btn-warning btn-block" name="register" type="submit">
-            <?php echo _("Register")?>
-            </button><br>
+            <button class="btn btn-lg btn-warning btn-block" name="register" type="submit" disabled><?php echo _("Register - Disabled for Now")?></button><br>
          </form>
          <button onclick="location.href = 'https://haxstar.com/';" class="btn btn-lg btn-primary btn-block" name="login"><?php echo _("Login")?></button><br>
       </div>
