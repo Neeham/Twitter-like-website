@@ -6,39 +6,25 @@
 
 class SampleTest extends \PHPUnit_Framework_TestCase
 {
-  $object = new \tests\ObjectTest;
-
-  $object->getUsernameOfLoggedInUser();
-
-  echo "getUsernameofLoggedInUser: ".$object;
-
-  $object->setUsernameOfLoggedInUser("Changed from SampleTest");
-
-  echo "setUsernameofLoggedInUser: ".$object;
-
-  $this->assertNotNull($object);
-  $this->assertTrue(true);
-
-  /*
-
+/*
   public function SampleTest()
   {
     global $object;
     $this->object = new \tests\ObjectTest;
   }
-
+*/
   public function testGetTheContentFromFeed()
   {
     //$this->assertTrue(true); //checks with assetsTrue to see if param is true
 
-     //$object = new \tests\ObjectTest;
+     $object = new \tests\ObjectTest;
 
 
      $object->getUsernameOfLoggedInUser();
 
      echo "getUsernameofLoggedInUser: ".$object;
 
-     $object->setUsernameOfLoggedInUser('$testingGetVariable;');
+     $object->setUsernameOfLoggedInUser('Updated');
 
      echo "setUsernameofLoggedInUser: ".$object;
 
