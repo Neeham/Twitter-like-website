@@ -13,8 +13,6 @@ class AcceptanceTests extends \PHPUnit_Framework_TestCase
   $object->setUsernameOfLoggedInUser('Testing 101');
 
   echo "setUsernameofLoggedInUser: " + $object;
-  
-  echo "setUsernameofLoggedInUser: ".$object;
 }
 
 
