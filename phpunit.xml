@@ -9,6 +9,7 @@
      forceCoversAnnotation="false"
      mapTestClassNameToCoveredClassName="false"
      printerClass="PHPUnit_TextUI_ResultPrinter"
+
      processIsolation="false"
      stopOnError="false"
      stopOnFailure="false"
@@ -21,9 +22,20 @@
     >
 
     <testsuites>
-        <testsuite name="travis-tests">
-        <directory suffix="AcceptanceTests.php"></directory>
+        <testsuite name="Tests Update">
+        <directory>.</directory>
         </testsuite>
     </testsuites>
 
+    <filter>
+        <blacklist>
+            <directory suffix=".php"></directory>
+            <file></file>
+            <exclude>
+                <directory suffix=".php"></directory>
+                <file></file>
+            </exclude>
+        </blacklist>
+
+    </filter>
 </phpunit>
