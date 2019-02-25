@@ -6,7 +6,7 @@ before_install:
   - composer self-update
 
 before_script:
-  - composer installfgfgtg
+  - composer install
 
 script: phpunit --configuration phpunit.xml --coverage-text
 
