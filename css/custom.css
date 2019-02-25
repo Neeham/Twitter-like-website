@@ -42,7 +42,7 @@ h6 img {
 
 .floating-duck {
     position: absolute;
-    top: 220px;
+    top: 260px;
     left: calc(50% - 280px);
     animation: floating-duck 2s alternate ease-in-out infinite;
       animation-name: floating-duck;
@@ -96,7 +96,7 @@ h6 img {
 }
 .wave {
     position: absolute;
-    top: 400px;
+    top: 420px;
     left: 0;
     width: 200%;
     height: 100%;
