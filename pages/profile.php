@@ -3,7 +3,7 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
-printQuacks('checkURL');//Check here if URL even make sense in order to redirect before running any html code
+printProfilePage('checkURL');//Check here if URL even make sense in order to redirect before running any html code
 ?>
 <body id="profile">
   <div class="container" id="profile_container">
@@ -19,19 +19,19 @@ printQuacks('checkURL');//Check here if URL even make sense in order to redirect
 
               <li class="list-group-item follow-suggestion">
                 <h5> <!--PROFILE PICTURE-->
-                    <img src="../images/users/default_duck.jpg" class="rounded-circle" style="width: 100%; height:100%;" id="default_duck" /><?php printQuacks('name');?></a>
+                    <img src="../images/users/default_duck.jpg" class="rounded-circle" style="width: 100%; height:100%;" id="default_duck" /><?php printProfilePage('name');?></a>
                 </h5>
               </br>
-                <!-- Need a button here, upon click it will run follow query the button will then change to following - Need to hide the button here when the person visit their own profile -->
-                <button class="btn btn-outline-success btn-sm follow mx-1 profile-follow d-none">
-                <i class="fas fa-check"></i>Follow</button>
+                <?PHP printProfilePage('button');?>
+                <!-- <button class="btn btn-outline-success btn-sm follow mx-1 profile-follow d-none">
+                <i class="fas fa-check"></i>Follow</button> -->
                 </br></br>
                 <h3>Email:</h3></br>
-                <p><?php printQuacks('email');?></p>
+                <p><?php printProfilePage('email');?></p>
                 <h5>Followers:</h5></br>
-                <p><?php printQuacks('followerCount');?></p>
+                <p><?php printProfilePage('followerCount');?></p>
                 <h5>Following:</h5></br>
-                <p><?php printQuacks('followingCount');?></p>
+                <p><?php printProfilePage('followingCount');?></p>
               </li>
             </ul>
           </div>
@@ -40,43 +40,18 @@ printQuacks('checkURL');//Check here if URL even make sense in order to redirect
 
       <div class="col-md-6 center-block" style="border-radius: 6px; padding: 0px; margin: 0px;">
         <h3> <?php echo _("Your Latest Quacks") ?> </h3>
-        <?php printQuacks('post');?>
+        <?php printProfilePage('post');?>
       </div>
 
 
       <div class="col-md-3 "> <!--Following & Followers-->
 
-        <div class="card my-1" id="following">   <!--FOLLOWING-->
+        <div class="card" id="following">   <!--FOLLOWING-->
           <div class="card-header text-center">Following</div>
 
           <div class="card-text">
             <ul class="list-group ">
-              <li class="list-group-item follow-suggestion">
-
-                <h6><a href="#">
-                    <img src="https://randomuser.me/api/portraits/women/74.jpg" /> Bobby Lynch</a>
-                  <button class="btn btn-outline-success btn-sm float-right follow mx-1">
-                    <i class="fas fa-check"></i> Follow</button>
-                </h6>
-
-              </li>
-              <li class="list-group-item follow-suggestion">
-
-                <h6><a href="#">
-                    <img src="https://randomuser.me/api/portraits/men/99.jpg" /> Veronica Bugs</a>
-                  <button class="btn btn-outline-success btn-sm float-right follow mx-1">
-                    <i class="fas fa-check"></i> Follow</button>
-                </h6>
-
-              </li>
-              <li class="list-group-item follow-suggestion">
-
-                <h6><a href="#">
-                    <img src="https://randomuser.me/api/portraits/men/81.jpg" />Baby Big Jr.</a>
-                    <button class="btn btn-outline-success btn-sm float-right follow mx-1">
-                      <i class="fas fa-check"></i> Follow</button>
-                    </h6>
-                  </li>
+              <?php printProfilePage('following');?>
                 </ul>
               </div>
             </div>
@@ -89,33 +64,7 @@ printQuacks('checkURL');//Check here if URL even make sense in order to redirect
 
           <div class="card-text">
             <ul class="list-group ">
-              <li class="list-group-item follow-suggestion">
-
-                <h6><a href="#">
-                    <img src="https://randomuser.me/api/portraits/women/77.jpg" /> Ann Marie</a>
-                  <button class="btn btn-outline-success btn-sm float-right follow mx-1">
-                    <i class="fas fa-check"></i> Follow</button>
-                </h6>
-
-              </li>
-              <li class="list-group-item follow-suggestion">
-
-                <h6><a href="#">
-                    <img src="https://randomuser.me/api/portraits/men/94.jpg" /> Marc Anthony</a>
-                  <button class="btn btn-outline-success btn-sm float-right follow mx-1">
-                    <i class="fas fa-check"></i> Follow</button>
-                </h6>
-
-              </li>
-              <li class="list-group-item follow-suggestion">
-
-                <h6><a href="#">
-                    <img src="https://randomuser.me/api/portraits/men/89.jpg" /> John Shepherd</a>
-                  <button class="btn btn-outline-success btn-sm float-right follow mx-1">
-                    <i class="fas fa-check"></i> Follow</button>
-                </h6>
-
-              </li>
+              <?php printProfilePage('followers');?>
             </ul>
           </div>
         </div>
