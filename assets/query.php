@@ -6,6 +6,7 @@ $loggedInUser = $_SESSION["session_user"];
 require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
 
 // ################################# Searching a User #################################
+//This method searches the database for all the registered user and let user click on it in order to redirect to their profile.
 if(isset($_POST["searchUser"])) {
      $output = '';
      $sql = "SELECT * FROM User WHERE username LIKE '%".$_POST["searchUser"]."%'";
@@ -19,6 +20,7 @@ if(isset($_POST["searchUser"])) {
 }
 
 // ################################# VERIFY LOGIN #################################
+//The goal of this method is to verify whether or not the preson can log in.
 if (isset($_POST['login'])) {
     $username = mysql_escape_string($_POST['username']);
     $password = mysql_escape_string($_POST['password']);
@@ -49,6 +51,7 @@ if (isset($_POST['login'])) {
 }
 
 // ################################# Register an Account #################################
+//Before registering a user account, it checks whether or not the username and/or email already exists
 if (isset($_POST['register'])) {
     $fName = mysql_escape_string($_POST['firstname']);
     $lName = mysql_escape_string($_POST['lastname']);
@@ -137,10 +140,10 @@ function printFeed() {
                         $insertResult = $conn->query($insertsql);
                         if (!$insertResult) {
                             //the Like is not inserted into the database therefore display the errorInsert alert
-                            echo "<script>window.location = 'https://www.google.com';</script>";                    //UPDATE TO DISPLAY AN ERROR THAT NO LIKEY THE POST
+                            echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$GLOBALS['loggedInUser']}&Alert=errorLike';</script>";                    //UPDATE TO DISPLAY AN ERROR THAT NO LIKEY THE POST
                         } else {
                             //the Quack is inserted into the database therefore display the successfulInsert alert
-                            echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$GLOBALS['loggedInUser']}';</script>";
+                            echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$GLOBALS['loggedInUser']}&Alert=successLike';</script>";
                         }
                       }
 
@@ -149,10 +152,10 @@ function printFeed() {
                         $deleteResult = $conn->query($deletesql);
                         if (!$deleteResult) {
                             //the Quack is not inserted into the database therefore display the errorInsert alert
-                            echo "<script>window.location = 'https://www.google.com';</script>";                          //UPDATE TO DISPLAY AN ERROR THAT NO UNLIKEY THE POST
+                            echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$GLOBALS['loggedInUser']}&Alert=errorLike';</script>";                          //UPDATE TO DISPLAY AN ERROR THAT NO UNLIKEY THE POST
                         } else {
                             //the Quack is inserted into the database therefore display the successfulInsert alert
-                            echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$GLOBALS['loggedInUser']}';</script>";
+                            echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$GLOBALS['loggedInUser']}&Alert=successLike';</script>";
                         }
                       }
 
