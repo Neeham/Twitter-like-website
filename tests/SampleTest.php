@@ -7,7 +7,7 @@ class SampleTest extends \PHPUnit_Framework_TestCase
     $object = new \tests\ObjectTest;
     $object->getUsernameOfLoggedInUser();
     echo "getUsernameofLoggedInUser: ".$object;
-    $object->setUsernameOfLoggedInUser('Testing 101');
+    $object->setUsernameOfLoggedInUser('OMG DID IT ACTUALLY WORK?!!');
     echo "setUsernameofLoggedInUser: ".$object;
     $this->assertNotNull($object);    //will check if the input text is empty or not (this will display through Travis CI )
   }
