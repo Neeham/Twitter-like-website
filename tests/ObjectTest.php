@@ -5,7 +5,7 @@
 namespace tests;
 
 class ObjectTest
-{
+{                              /*
   //global variable used to get/set methods
   //rotected $localVariable = '';
 
@@ -29,7 +29,7 @@ class ObjectTest
   {
 //    global $localVariable;
     return $this->localVariable;
-  }
+  }                                                  */
 }
 
  ?>
