@@ -7,19 +7,19 @@ namespace tests;
 class ObjectTest
 {
   //global variable used to get/set methods
-  protected $localVariable = '';
+  //rotected $localVariable = '';
 
   public function getUsernameOfLoggedInUser()
   {
     //global is required in order to associate with class $localVariable
-    global $localVariable;
+    //global $localVariable;
 
     return $this->localVariable;
   }
 
   public function setUsernameOfLoggedInUser($givenUsernameFromTextarea)
   {
-      global $localVariable;
+    //  global $localVariable;
       $this->localVariable = $givenUsernameFromTextarea;
       return $this->localVariable;
 
@@ -27,7 +27,7 @@ class ObjectTest
 
   public function __toString()
   {
-    global $localVariable;
+//    global $localVariable;
     return $this->localVariable;
   }
 }
