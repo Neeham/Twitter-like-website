@@ -121,14 +121,23 @@ function printFeed() {
                 $innerResult = $conn->query($innersql);
                 if ($rowInner = $innerResult->fetch_assoc()) {
                   ?>
+
+<!-- THIS CAN BE ALTERED BASED ON FRONTEND'S DESIGN  -->
+
                         <form action="" method="post">   <!-- if you already liked the Quack, it will show unlikeQuack button -->
-                        <button class="btn float-right btn-danger like mx-1" name="<?php echo $retrivedTweetID.'_unlikeQuackbtn'; ?>" type="submit">♥</button>
+                        <button class="btn float-right btn-danger like mx-1" name="<?php echo $retrivedTweetID.'_unlikeQuackbtn'; ?>" type="submit" title="<?php echo countLikes($retrivedTweetID); ?>">
+                          <i class="fas fa-heart" ></i>
+                        </button>
                         </form>
                   <?php
                       } else {
                   ?>
+
+<!-- THIS CAN BE ALTERED BASED ON FRONTEND'S DESIGN  -->
                         <form action="" method="post">  <!-- if you want to like the Quack, it will show likeQuack button -->
-                        <button class="btn float-right btn-danger like mx-1" name="<?php echo $retrivedTweetID.'_likeQuackbtn'; ?>" type="submit">♡</button>
+                        <button class="btn float-right btn-outline-danger like mx-1" name="<?php echo $retrivedTweetID.'_likeQuackbtn'; ?>" type="submit" title="<?php echo countLikes($retrivedTweetID); ?>">
+                          <i class="fas fa-heart" ></i>
+                        </button>
                         </form>
                   <?php
                       }
@@ -155,20 +164,43 @@ function printFeed() {
                             echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$GLOBALS['loggedInUser']}&Alert=errorLike';</script>";                          //UPDATE TO DISPLAY AN ERROR THAT NO UNLIKEY THE POST
                         } else {
                             //the Quack is inserted into the database therefore display the successfulInsert alert
-                            echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$GLOBALS['loggedInUser']}&Alert=successLike';</script>";
+                            echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$GLOBALS['loggedInUser']}&Alert=successUnlike';</script>";
                         }
                       }
-
                   ?>
-
                     </div>
                 </li> <?PHP
 
         }//end of while
 }
 
+// ####################################################### Displays Number of Users That Liked a Quack ######################################
+function countLikes($givenTweetID)
+{
+  require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
 
-// ################################# Post a Quack ######################################     ****If time - update since userID is in session****
+  $sql = "SELECT COUNT(*) AS total FROM Liked WHERE tweetID = '$givenTweetID'";
+  $result=mysqli_query($conn,$sql);
+  if($result)
+  {
+    while($row=mysqli_fetch_assoc($result))
+    {
+      if($row['total'] == 0)
+      {
+        echo 'Be the first to like this Quack!';
+      } else if($row['total'] == 1) {
+        echo $row['total'].' user liked this Quack';
+      } else {
+        echo $row['total'].' users liked this Quack';
+      }
+    }
+  }
+}
+
+// ########################################################## Post a Quack ##################################################################
+
+// ****If time - update since userID is in session****
+
 //if the post button is clicked
 if (isset($_POST['postQuackBtn'])) {
     //get current date and time
@@ -393,7 +425,7 @@ function followers($userID) {
 
 function printPost($userID) {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
-    $sql    = "SELECT tweet FROM Tweet WHERE userID = '$userID' ORDER BY date DESC";
+    $sql    = "SELECT tweet, tweetID FROM Tweet WHERE userID = '$userID' ORDER BY date DESC";
     $result = mysqli_query($conn, $sql);
 ?>
     <div class="card my-3">
@@ -401,14 +433,95 @@ function printPost($userID) {
         <ul class="list-group" id="quack-list">
 
   <?php
+
         while ($row = $result->fetch_assoc()) {
             echo "<li class=\"list-group-item quack\">";
-            foreach ($row as $value) {
+        //    foreach ($row as $value) {
                 echo "<div class=\"mx-2 \">";
                 //echo "<h5><span class=\"float-right\"><button class=\"btn btn-danger delete-button\"><i class=\"fas fa-times\"></i> Delete</button></span></h5>";
-                echo "$value";
+                echo $row['tweet'];
+
+                $retrivedTweetID = $row['tweetID'];
+
+                $getLoggedinUserID = mysql_escape_string($_SESSION["session_id"]);
+                $innersql = "SELECT date FROM Liked WHERE tweetID = $retrivedTweetID AND userID = $getLoggedinUserID";
+                $innerResult = $conn->query($innersql);
+                if ($rowInner = $innerResult->fetch_assoc()) {
+                  ?>
+
+<!-- THIS CAN BE ALTERED BASED ON FRONTEND'S DESIGN  -->
+
+                        <form action="" method="post">   <!-- if you already liked the Quack, it will show unlikeQuack button -->
+                        <button class="btn float-right btn-danger like mx-1" name="<?php echo $retrivedTweetID.'_unlikeQuackbtn'; ?>" type="submit" title="<?php echo countLikes($retrivedTweetID); ?>">
+                          <i class="fas fa-heart" ></i>
+                        </button>
+                        </form>
+                  <?php
+                      } else {
+                  ?>
+
+<!-- THIS CAN BE ALTERED BASED ON FRONTEND'S DESIGN  -->
+                        <form action="" method="post">  <!-- if you want to like the Quack, it will show likeQuack button -->
+                        <button class="btn float-right btn-outline-danger like mx-1" name="<?php echo $retrivedTweetID.'_likeQuackbtn'; ?>" type="submit" title="<?php echo countLikes($retrivedTweetID); ?>">
+                          <i class="fas fa-heart" ></i>
+                        </button>
+                        </form>
+                  <?php
+                      }
+
+                      $currentLookup = mysql_escape_string($_GET['Lookup']);
+                      if (isset($_POST[$retrivedTweetID.'_likeQuackbtn'])) {
+
+                        $currentDateTime = date('Y-m-d H:i:s');
+                        $insertsql = "INSERT INTO Liked (tweetID,userID,date) VALUES ('$retrivedTweetID','$getLoggedinUserID','$currentDateTime')";
+                        $insertResult = $conn->query($insertsql);
+
+                        if (!$insertResult) {
+                          if($currentLookup != '')
+                          {
+                            echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$currentLookup}&Alert=errorLike';</script>";
+                          } else {
+                            //the Like is not inserted into the database therefore display the errorLike alert
+                            echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Alert=errorLike';</script>";
+                          }
+                        } else {
+                            //the Quack is inserted into the database therefore display the successfulLike alert
+                            if($currentLookup != '')
+                            {
+                              echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$currentLookup}&Alert=successLike';</script>";
+                            } else {
+                              //the Like is not inserted into the database therefore display the errorInsert alert
+                              echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Alert=successLike';</script>";
+                            }
+                        }
+                      }
+
+                      if (isset($_POST[$retrivedTweetID.'_unlikeQuackbtn'])) {
+                        $deletesql = "DELETE FROM Liked WHERE tweetID = '$retrivedTweetID' AND userID = '$getLoggedinUserID'";
+                        $deleteResult = $conn->query($deletesql);
+                        if (!$deleteResult) {
+                            //the Quack is not inserted into the database therefore display the errorLike alert
+                            if($currentLookup != '')
+                            {
+                              echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$currentLookup}&Alert=errorLike';</script>";
+                            } else {
+                              //the Like is not inserted into the database therefore display the errorInsert alert
+                              echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Alert=errorLike';</script>";
+                            }
+                        } else {
+                            //the Quack is inserted into the database therefore display the successfulUnlike alert
+                            if($currentLookup != '')
+                            {
+                              echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$currentLookup}&Alert=successUnlike';</script>";
+                            } else {
+                              //the Like is not inserted into the database therefore display the errorInsert alert
+                              echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Alert=successUnlike';</script>";
+                            }
+                        }
+                      }
+                  ?>
+                <?php
                 echo "</div></li>";
-            }
         }
         echo "</ul></div>";
 }
