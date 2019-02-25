@@ -4,10 +4,11 @@ class AcceptanceTests extends \PHPUnit_Framework_TestCase
   public function SampleTest()
   {
     global $object;
-    $this->object = new \tests\ObjectTest;
+    $this->object = new \tests\ObjectTests;
   }
   public function testGetTheContentFromFeed()
   {
+      $this->assertTrue(true);
     //$this->assertTrue(true); //checks with assetsTrue to see if param is true
      $object = new \tests\ObjectTest;
      $object->setUsernameOfLoggedInUser('Updated');
