@@ -3,7 +3,6 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
-$testingGetVariable = 'In the feed page';
 ?>
 
 

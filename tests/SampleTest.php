@@ -13,7 +13,7 @@ class SampleTest extends \PHPUnit_Framework_TestCase
     global $object;
     $this->object = new \tests\ObjectTest;
   }
-*/
+
   public function testGetTheContentFromFeed()
   {
     //$this->assertTrue(true); //checks with assetsTrue to see if param is true
@@ -33,7 +33,7 @@ class SampleTest extends \PHPUnit_Framework_TestCase
      echo "setUsernameofLoggedInUser: ".$object;
 
      $this->assertNotNull($object);    //will check if the input text is empty or not (this will display through Travis CI )
-  }
+  } */
 }
 
 

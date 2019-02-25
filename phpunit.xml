@@ -22,7 +22,7 @@
 
     <testsuites>
         <testsuite name="Tests">
-        <directory suffix="SampleTest.php">Tests</directory>
+        <directory suffix=".php"></directory>
         </testsuite>
     </testsuites>
 
