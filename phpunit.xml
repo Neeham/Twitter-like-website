@@ -9,7 +9,6 @@
      forceCoversAnnotation="false"
      mapTestClassNameToCoveredClassName="false"
      printerClass="PHPUnit_TextUI_ResultPrinter"
-     bootstrap="./vendor/autoload.php"
      processIsolation="false"
      stopOnError="false"
      stopOnFailure="false"

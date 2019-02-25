@@ -19,12 +19,15 @@ class SampleTest extends \PHPUnit_Framework_TestCase
 
      $object = new \tests\ObjectTest;
 
+     $object->setUsernameOfLoggedInUser('Updated');
 
+     echo "setUsernameofLoggedInUser: ".$object;
+     
      $object->getUsernameOfLoggedInUser();
 
      echo "getUsernameofLoggedInUser: ".$object;
 
-     $object->setUsernameOfLoggedInUser('Updated');
+     $object->setUsernameOfLoggedInUser('Updated Again');
 
      echo "setUsernameofLoggedInUser: ".$object;
 
