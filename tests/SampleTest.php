@@ -6,9 +6,7 @@ echo $testingGetVariable;
 
 class SampleTest extends \PHPUnit_Framework_TestCase
 {
-  public $object = '';
-
-  $this->object = new \tests\ObjectTest;
+  $object = new \tests\ObjectTest;
 
   $object->getUsernameOfLoggedInUser();
 
@@ -16,7 +14,11 @@ class SampleTest extends \PHPUnit_Framework_TestCase
 
   $object->setUsernameOfLoggedInUser($testingGetVariable);
 
-  echo "setUsernameofLoggedInUser: ".$object;  /*
+  echo "setUsernameofLoggedInUser: ".$object;
+
+  $this->assertNotNull($object);
+
+  /*
 
   public function SampleTest()
   {
