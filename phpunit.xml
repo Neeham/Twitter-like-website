@@ -21,7 +21,7 @@
     >
 
     <testsuites>
-        <testsuite name="Tests">
+        <testsuite name="travis-tests">
         <directory suffix=".php"></directory>
         </testsuite>
     </testsuites>
