@@ -2,7 +2,7 @@
 
 class MethodTest extends \PHPUnit_Framework_TestCase
 {
-  $object = new \tests\ObjectTest;
+  $object = new \tests\ObjectTestTHISWONTEXIST;
 
   $object->whyWontYouFail();
 
