@@ -8,6 +8,16 @@ class SampleTest extends \PHPUnit_Framework_TestCase
 {
   public $object = '';
 
+  $this->object = new \tests\ObjectTest;
+
+  $object->getUsernameOfLoggedInUser();
+
+  echo "getUsernameofLoggedInUser: ".$object;
+
+  $object->setUsernameOfLoggedInUser($testingGetVariable);
+
+  echo "setUsernameofLoggedInUser: ".$object;  /*
+
   public function SampleTest()
   {
     global $object;
