@@ -1,4 +1,4 @@
-# Twitter-like-website
+# Twitter-like-website    https://travis-ci.org/Neeham/Twitter-like-website.svg?branch=master
 This project is for SOEN 341 class which is given at Concordia University. The goal is to create a twitter like website with three core features: Posting Tweets, "Like" a tweet, and Follow a user. Additionally, one extra core feature needs to be implemented which will be decided by the team members and approved by our client which in this case is our TA.
 
 ## This team :family: is composed of the following 8 members:
