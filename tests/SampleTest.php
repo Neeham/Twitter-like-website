@@ -2,6 +2,9 @@
 
 class SampleTest extends \PHPUnit_Framework_TestCase
 {
+  $object = new \tests\ObjectTest;
+
+  $object->whyWontYouFail();
 
 }
 
