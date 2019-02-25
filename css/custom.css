@@ -25,6 +25,8 @@ body{
 	border-radius: 50%;
 }
 
+
+
 h6 img {
 	width: 30px;
 	height: 30px;
@@ -37,4 +39,28 @@ h6 img {
 }
 #userList li{
      padding:12px;
+}
+
+.floating-duck {
+    position: absolute;
+    top: 240px;
+    left: calc(50% - 280px);
+    animation: floating-duck 2s alternate ease-in-out infinite;
+      animation-name: floating-duck;
+      animation-duration: 2s;
+      animation-timing-function: ease-in-out;
+      animation-delay: 0s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-fill-mode: none;
+      animation-play-state: running;
+    will-change: transform;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+@keyframes floating-duck {0%{transform:translateY(-8px)}100%{transform:translateY(8px)}}
+
+svg {
+  display:table;
 }
