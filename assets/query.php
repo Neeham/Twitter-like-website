@@ -104,42 +104,68 @@ function printFeed() {
 
     $sql    = "SELECT u.firstName AS displayName, u.userName AS username, t.tweet as tweets, t.tweetID as tweetID FROM Tweet t INNER JOIN User u ON u.userID = t.userID WHERE u.userID = '{$GLOBALS['loggedInUserID']}' OR EXISTS (SELECT 1 FROM Follow f WHERE f.follower = '{$GLOBALS['loggedInUserID']}' AND f.following = t.userID) ORDER BY t.date DESC";
     $result = mysqli_query($conn, $sql);
-        while ($row = $result->fetch_assoc()) {
+    while ($row = $result->fetch_assoc()) {
           ?>
           <li class="list-group-item quack">
               <div class="media-body mx-2">
                 <h5><a href="<?PHP echo "https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$row['username']}" ?>"><?PHP echo $row['displayName']; ?></a></h5>
-                      <?PHP echo $row['tweets'];     // echo $row['tweetID']; ?>
-                <br/>
+                      <?PHP echo $row['tweets'];
+                      $retrivedTweetID = $row['tweetID'];
+                      echo '<br/>';
 
-                <!-- <?php //printLikeButton();?>
-                <button class="btn float-right btn-danger like mx-1">                CODE WHERE BUTTON FOR ♥ IS BEING GENERATED
-                  <i class="fas fa-heart"></i>
-                </button> -->
+                $getLoggedinUserID = mysql_escape_string($_SESSION["session_id"]);
+                $innersql = "SELECT date FROM Liked WHERE tweetID = $retrivedTweetID AND userID = $getLoggedinUserID";
+                $innerResult = $conn->query($innersql);
+                if ($rowInner = $innerResult->fetch_assoc()) {
+                  ?>
+                        <form action="" method="post">   <!-- if you already liked the Quack, it will show unlikeQuack button -->
+                        <button class="btn float-right btn-danger like mx-1" name="<?php echo $retrivedTweetID.'_unlikeQuackbtn'; ?>" type="submit">♥</button>
+                        </form>
+                  <?php
+                      } else {
+                  ?>
+                        <form action="" method="post">  <!-- if you want to like the Quack, it will show likeQuack button -->
+                        <button class="btn float-right btn-danger like mx-1" name="<?php echo $retrivedTweetID.'_likeQuackbtn'; ?>" type="submit">♡</button>
+                        </form>
+                  <?php
+                      }
 
-          <?php
-          $testLike = true;
+                      if (isset($_POST[$retrivedTweetID.'_likeQuackbtn'])) {
 
-                if ($testLike == true) {
-          ?>
-                <form action="" method="post">
-                <button class="btn float-right btn-danger like mx-1" name="likeQuack" type="submit">♥</button>
-                </form>
-          <?php
-              } else {
-          ?>
-                <form action="" method="post">
-                <button class="btn float-right btn-danger like mx-1" name="unlikeQuack" type="submit">♡</button>
-                </form>
-          <?php
-              }
-          ?>
-              </div>
-          </li> <?PHP
-        }
+                        $currentDateTime = date('Y-m-d H:i:s');
+                        $insertsql = "INSERT INTO Liked (tweetID,userID,date) VALUES ('$retrivedTweetID','$getLoggedinUserID','$currentDateTime')";
+                        $insertResult = $conn->query($insertsql);
+                        if (!$insertResult) {
+                            //the Like is not inserted into the database therefore display the errorInsert alert
+                            echo "<script>window.location = 'https://www.google.com';</script>";                    //UPDATE TO DISPLAY AN ERROR THAT NO LIKEY THE POST
+                        } else {
+                            //the Quack is inserted into the database therefore display the successfulInsert alert
+                            echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$GLOBALS['loggedInUser']}';</script>";
+                        }
+                      }
+
+                      if (isset($_POST[$retrivedTweetID.'_unlikeQuackbtn'])) {
+                        $deletesql = "DELETE FROM Liked WHERE tweetID = '$retrivedTweetID' AND userID = '$getLoggedinUserID'";
+                        $deleteResult = $conn->query($deletesql);
+                        if (!$deleteResult) {
+                            //the Quack is not inserted into the database therefore display the errorInsert alert
+                            echo "<script>window.location = 'https://www.google.com';</script>";                          //UPDATE TO DISPLAY AN ERROR THAT NO UNLIKEY THE POST
+                        } else {
+                            //the Quack is inserted into the database therefore display the successfulInsert alert
+                            echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$GLOBALS['loggedInUser']}';</script>";
+                        }
+                      }
+
+                  ?>
+
+                    </div>
+                </li> <?PHP
+
+        }//end of while
 }
 
-// ################################# Post a Quack ######################################     ****CHANGE FIRST SQL SINCE ID IS IN SESSION****
+
+// ################################# Post a Quack ######################################     ****If time - update since userID is in session****
 //if the post button is clicked
 if (isset($_POST['postQuackBtn'])) {
     //get current date and time
@@ -147,7 +173,7 @@ if (isset($_POST['postQuackBtn'])) {
     //get the input from the textbox
     $inputText = mysql_escape_string($_POST['tweet']);
     //get the corresponding userID from the username
-    $sql = "SELECT userID FROM User WHERE username = '$loggedInUser'";   //HERE
+    $sql = "SELECT userID FROM User WHERE username = '$loggedInUser'";
     $result = $conn->query($sql);
     //if the database returned a result (userID)
     if ($row = $result->fetch_assoc()) {
@@ -385,33 +411,6 @@ function printPost($userID) {
 }
 
 // ################################# Follow/Unfollow button under profile page, action #################################
-if (isset($_POST['followUser'])) {
-  $following = mysql_escape_string($_GET['Lookup']);
-  require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
-  $sql = "SELECT userID FROM User WHERE username = '$following'";
-  $result = $conn->query($sql);
-  if ($row = $result->fetch_assoc()) {
-    $userID = $row['userID'];
-    $sql = "INSERT INTO Follow (follower,following) VALUES ('{$GLOBALS['loggedInUserID']}','$userID')";
-    $result = $conn->query($sql);
-    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$following}';</script>";
-  }
-}
-
-if (isset($_POST['unfollowUser'])) {
-  $following = mysql_escape_string($_GET['Lookup']);
-  require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
-  $sql = "SELECT userID FROM User WHERE username = '$following'";
-  $result = $conn->query($sql);
-  if ($row = $result->fetch_assoc()) {
-    $userID = $row['userID'];
-    $sql = "DELETE FROM Follow WHERE follower = '{$GLOBALS['loggedInUserID']}' AND following = '$userID'";
-    $result = $conn->query($sql);
-    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$following}';</script>";
-  }
-}
-
-// ################################# Like/Unlike button for Quacks, action #################################
 if (isset($_POST['followUser'])) {
   $following = mysql_escape_string($_GET['Lookup']);
   require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
