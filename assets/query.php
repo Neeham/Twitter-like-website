@@ -152,8 +152,8 @@ if (isset($_POST['postQuackBtn'])) {
 }
 
 
-// ################################# Display Quacks under profile ######################################
-function printQuacks($type) { //This function will take param and will do if else based on the following: name, email, post, follower count, following count
+// ################################# Display Quacks and everything that displays under profile page ######################################
+function printProfilePage($type) { //This function will take param and will do if else based on the following: name, email, post, follower count, following count
 require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
 
   If (isset($_GET['Login']) && !empty($_GET['Login']) AND isset($_GET['Lookup']) && !empty($_GET['Lookup'])) {
@@ -180,11 +180,20 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
           if ($type == 'followingCount') {
             printFollowingCount($row['userID']);
           }
-          if ($type == 'followUSer') {
+          if ($type == 'button'){
+            followButton($row['userID']);
+          }
+          if ($type == 'followUser') {
             followUser($row['userID']);
           }
-          if ($type == 'unfollowUSer') {
+          if ($type == 'unfollowUser') {
             unfollowUser($row['userID']);
+          }
+          if ($type == 'following') {
+            following($row['userID']);
+          }
+          if ($type == 'followers') {
+            followers($row['userID']);
           }
         } else {
           echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Alert=invalidURL';</script>";
@@ -204,6 +213,12 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
           }
           if ($type == 'followingCount') {
             printFollowingCount($GLOBALS['loggedInUserID']);
+          }
+          if ($type == 'following') {
+            following($GLOBALS['loggedInUserID']);
+          }
+          if ($type == 'followers') {
+            followers($GLOBALS['loggedInUserID']);
           }
         }
       }
@@ -244,16 +259,86 @@ function printFollowingCount($userID) {
     }
 }
 
-function followUser($userID) {
+function followButton($userID) {
   require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
-  $sql = "INSERT INTO Follow (follower,following) VALUES ('{$GLOBALS['loggedInUserID']}','$userID')";
-  $result = $conn->query($sql);
+  $sql = "SELECT follower, following FROM Follow WHERE follower = {$GLOBALS['loggedInUserID']} AND following = '$userID'";
+  $result = mysqli_query($conn, $sql);
+  if ($row = $result->fetch_assoc()) {
+    ?>
+      <form action="" method="post">
+      <button class="btn btn-danger" name="unfollowUser" type="submit">Unfollow</button>
+      </form>
+    <?PHP
+  } else {
+    ?>
+    <form action="" method="post">
+    <button class="btn btn-success" name="followUser" type="submit">Follow</button>
+    </form>
+    <?PHP
+  }
 }
 
-function unfollowUser($userID) {
+function following($userID) {
+    require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
+    $sql = "SELECT Follow.following as followingID, User.username as user FROM Follow INNER JOIN User ON Follow.following = User.userID WHERE follower = '$userID'";
+    $result = mysqli_query($conn, $sql);
+    while ($row = $result->fetch_assoc()) { ?>
+        <li class="list-group-item follow-suggestion">
+          <h6><a href="<?PHP echo "https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$row['user']}";?>"><?PHP echo $row['user']; ?></a>
+          </h6>
+<?PHP/* NOT A PRIORITY but basically have the folllow/unfollow button beside every user being displayed
+          $sql = "SELECT follower, following FROM Follow WHERE follower = {$GLOBALS['loggedInUserID']} AND following = '$userID'";
+          $result = mysqli_query($conn, $sql);
+          if ($row = $result->fetch_assoc()) {
+            ?>
+              <form action="" method="post">
+              <button class="btn btn-danger" name="unfollowUser" type="submit">Unfollow</button>
+              </form>
+            <?PHP
+          } else {
+            ?>
+            <form action="" method="post">
+            <button class="btn btn-success" name="followUser" type="submit">Follow</button>
+            </form>
+            <?PHP
+          }*/
+?>
+        </li>
+        <?PHP
+
+  }
+}
+
+function followers($userID) {
   require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
-  $sql = "DELETE FROM Follow WHERE follower = '{$GLOBALS['loggedInUserID']}' AND following = '$userID'";
-  $result = $conn->query($sql);
+  $sql = "SELECT Follow.follower as followingID, User.username as user FROM Follow INNER JOIN User ON Follow.follower = User.userID WHERE following = '$userID'";
+  $result = mysqli_query($conn, $sql);
+  while ($row = $result->fetch_assoc()) { ?>
+      <li class="list-group-item follow-suggestion">
+        <h6><a href="<?PHP echo "https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$row['user']}";?>"><?PHP echo $row['user']; ?></a>
+        </h6>
+
+        <?PHP/* NOT A PRIORITY but basically have the folllow/unfollow button beside every user being displayed
+                  $sql = "SELECT follower, following FROM Follow WHERE follower = {$GLOBALS['loggedInUserID']} AND following = '$userID'";
+                  $result = mysqli_query($conn, $sql);
+                  if ($row = $result->fetch_assoc()) {
+                    ?>
+                      <form action="" method="post">
+                      <button class="btn btn-danger" name="unfollowUser" type="submit">Unfollow</button>
+                      </form>
+                    <?PHP
+                  } else {
+                    ?>
+                    <form action="" method="post">
+                    <button class="btn btn-success" name="followUser" type="submit">Follow</button>
+                    </form>
+                    <?PHP
+                  }*/
+        ?>
+
+      </li>
+      <?PHP
+  }
 }
 
 function printPost($userID) {
@@ -276,6 +361,33 @@ function printPost($userID) {
             }
         }
         echo "</ul></div>";
+}
+
+// ################################# Follow/Unfollow button under profile page, action #################################
+if (isset($_POST['followUser'])) {
+  $following = mysql_escape_string($_GET['Lookup']);
+  require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
+  $sql = "SELECT userID FROM User WHERE username = '$following'";
+  $result = $conn->query($sql);
+  if ($row = $result->fetch_assoc()) {
+    $userID = $row['userID'];
+    $sql = "INSERT INTO Follow (follower,following) VALUES ('{$GLOBALS['loggedInUserID']}','$userID')";
+    $result = $conn->query($sql);
+    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$following}';</script>";
+  }
+}
+
+if (isset($_POST['unfollowUser'])) {
+  $following = mysql_escape_string($_GET['Lookup']);
+  require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
+  $sql = "SELECT userID FROM User WHERE username = '$following'";
+  $result = $conn->query($sql);
+  if ($row = $result->fetch_assoc()) {
+    $userID = $row['userID'];
+    $sql = "DELETE FROM Follow WHERE follower = '{$GLOBALS['loggedInUserID']}' AND following = '$userID'";
+    $result = $conn->query($sql);
+    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$following}';</script>";
+  }
 }
 
 //last statement of the code which is to close the database.
