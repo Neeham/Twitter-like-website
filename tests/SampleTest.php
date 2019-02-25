@@ -1,9 +1,8 @@
 <?php
+require(dirname(__FILE__)."/../assets/feed.php");
+echo $testingGetVariable;
 
-require "vendor/autoload.php";
-
-$testingVendor = $_POST['tweet'];
-
+//require "vendor/autoload.php";
 
 class SampleTest extends \PHPUnit_Framework_TestCase
 {
@@ -26,11 +25,9 @@ class SampleTest extends \PHPUnit_Framework_TestCase
 
      echo "getUsernameofLoggedInUser: ".$object;
 
-     $object->setUsernameOfLoggedInUser('Testing 101');
+     $object->setUsernameOfLoggedInUser('$testingGetVariable;');
 
      echo "setUsernameofLoggedInUser: ".$object;
-
-
 
      $this->assertNotNull($object);    //will check if the input text is empty or not (this will display through Travis CI )
   }
