@@ -23,9 +23,9 @@ require $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
        <div class="col-md-7">
        <img class="floating-duck" src="https://haxstar.com/images/logo/duck.png" width="270" height="270">
        </div>
-       <div class="col-md-3" style="background-color:#e6ecf0">
+       <div class="col-md-3" style="background-color:#e6ecf0; z-index: 1000">
           <form class="form-signin" action="../assets/query" method="post">
-             <h2 class="form-signin-heading"> <?php echo _("Please Login")?><br><br></h2>
+             <h2 class="form-signin-heading"> <?php echo _("Login")?><br><br></h2>
              <input type="text" class="form-control" name="username" placeholder="<?php echo _("Username")?>" required="" autofocus /><br>
              <input type="password" class="form-control" name="password" placeholder="<?php echo _("Password")?>" required=""/><br><br>
              <button class="btn btn-lg btn-primary btn-block" name="login" type="submit"><?php echo _("Login")?></button><br>
@@ -38,6 +38,9 @@ require $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
       <div class="waveWrapperInner bgMiddle">
         <div class="wave waveMiddle" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-mid.png')"></div>
       </div>
+    </div>
+    <div>
+
     </div>
 
    <?php require $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php';?>
