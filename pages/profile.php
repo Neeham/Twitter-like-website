@@ -18,8 +18,8 @@ printQuacks('checkURL');//Check here if URL even make sense in order to redirect
             <ul class="list-group ">
 
               <li class="list-group-item follow-suggestion">
-                <h5>
-                    <img src="../images/users/default_duck.jpg" class="rounded-circle" id="default_duck" /><?php printQuacks('name');?></a>
+                <h5> <!--PROFILE PICTURE-->
+                    <img src="../images/users/default_duck.jpg" class="rounded-circle" style="width: 100%; height:100%;" id="default_duck" /><?php printQuacks('name');?></a>
                 </h5>
               </br>
                 <!-- Need a button here, upon click it will run follow query the button will then change to following - Need to hide the button here when the person visit their own profile -->
@@ -38,7 +38,7 @@ printQuacks('checkURL');//Check here if URL even make sense in order to redirect
         </div>
       </div>
 
-      <div class="col-md-6 center-block text-center" style="background-color:yellow; border-radius: 6px; padding: 0px; margin: 0px;">
+      <div class="col-md-6 center-block text-center" style="border-radius: 6px; padding: 0px; margin: 0px;">
         <h3> <?php echo _("Your Latest Quacks") ?> </h3>
         <?php printQuacks('post');?>
       </div>
