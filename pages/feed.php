@@ -23,7 +23,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
             <br>
             <span class="my-2" id="quack-limit">0/255</span>
             <button class="btn float-right btn-primary quack-btn" name="postQuackBtn"
-              type="submit"><?php echo _("*Quack") ?></button><br>
+              type="submit"><?php echo _("Quack") ?></button><br>
             </button>
           </form>
           <div class="card my-3">

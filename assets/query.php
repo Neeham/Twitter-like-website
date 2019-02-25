@@ -118,7 +118,7 @@ function printFeed() {
         }
 }
 
-// ################################# Post a Quack ######################################
+// ################################# Post a Quack ######################################     ****CHANGE FIRST SQL SINCE ID IS IN SESSION****
 //if the post button is clicked
 if (isset($_POST['postQuackBtn'])) {
     //get current date and time
@@ -126,7 +126,7 @@ if (isset($_POST['postQuackBtn'])) {
     //get the input from the textbox
     $inputText = mysql_escape_string($_POST['tweet']);
     //get the corresponding userID from the username
-    $sql = "SELECT userID FROM User WHERE username = '$loggedInUser'";
+    $sql = "SELECT userID FROM User WHERE username = '$loggedInUser'";   //HERE
     $result = $conn->query($sql);
     //if the database returned a result (userID)
     if ($row = $result->fetch_assoc()) {
@@ -137,15 +137,15 @@ if (isset($_POST['postQuackBtn'])) {
         $result = $conn->query($sql);
         //check if the Quack is inserted into the database
         if (!$result) {
-            //the Quack is not inserted into the database (can elaborate on types of errors)
+            //the Quack is not inserted into the database therefore display the errorInsert alert
             header("Location: https://www.haxstar.com/pages/feed?Login=".$_SESSION["session_user"]."&Alert=errorInsert");
             exit;
         } else {
-            //the Quack is inserted into the database
+            //the Quack is inserted into the database therefore display the successfulInsert alert
             header("Location: https://www.haxstar.com/pages/feed?Login=".$_SESSION["session_user"]."&Alert=successfulInsert");
             exit;
         }
-    } else { //if database didn't return userID
+    } else { //if database didn't return userID, display the errorInsert alert
         header("Location: https://www.haxstar.com/pages/feed?Login=".$_SESSION["session_user"]."&Alert=errorInsert");
         exit;
     }
@@ -277,7 +277,6 @@ function printPost($userID) {
         }
         echo "</ul></div>";
 }
-
 //last statement of the code which is to close the database.
 mysqli_close($conn);
 ?>
