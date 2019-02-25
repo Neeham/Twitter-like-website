@@ -7,7 +7,7 @@ namespace tests;
 class ObjectTest
 {
   //global variable used to get/set methods
-  protected $localVariable = '';
+  protected $localVariable = 'Original';
 
   public function getUsernameOfLoggedInUser()
   {

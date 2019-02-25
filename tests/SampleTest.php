@@ -12,11 +12,12 @@ class SampleTest extends \PHPUnit_Framework_TestCase
 
   echo "getUsernameofLoggedInUser: ".$object;
 
-  $object->setUsernameOfLoggedInUser($testingGetVariable);
+  $object->setUsernameOfLoggedInUser("Changed from SampleTest");
 
   echo "setUsernameofLoggedInUser: ".$object;
 
   $this->assertNotNull($object);
+  $this->assertTrue(true);
 
   /*
 
