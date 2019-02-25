@@ -1,6 +1,6 @@
 <?php
-require(dirname(__FILE__)."/../assets/feed.php");
-echo $testingGetVariable;
+//require(dirname(__FILE__)."/../assets/feed.php");
+//echo $testingGetVariable;
 
 //require "vendor/autoload.php";
 
