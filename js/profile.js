@@ -28,11 +28,13 @@ for (let followButton of followButtons) {
 //       "btn btn-outline-success btn-sm follow mx-1 profile-follow d-none";
 //   }
 // }
+
 //Function to count the number of characters in the text field
 function setCounter() {
   let counter = quackBox.value.length;
   quackLimit.innerHTML = counter + "/255";
 }
+
 //Loads at the start of a website (Not needed anymore)
 // profileFollowHide();
 
