@@ -125,7 +125,7 @@ function printFeed() {
 <!-- THIS CAN BE ALTERED BASED ON FRONTEND'S DESIGN  -->
 
                         <form action="" method="post">   <!-- if you already liked the Quack, it will show unlikeQuack button -->
-                        <button class="btn float-right btn-danger like mx-1" name="<?php echo $retrivedTweetID.'_unlikeQuackbtn'; ?>" type="submit" title="<?php echo countLikes($retrivedTweetID); ?>">
+                        <button class="btn float-right btn-danger like mx-1" name="<?php echo $retrivedTweetID.'_unlikeQuackbtn'; ?>" type="submit" data-tippy-content="<?php echo countLikes($retrivedTweetID); ?>">
                           <i class="fas fa-heart" ></i>
                         </button>
                         </form>
@@ -135,7 +135,7 @@ function printFeed() {
 
 <!-- THIS CAN BE ALTERED BASED ON FRONTEND'S DESIGN  -->
                         <form action="" method="post">  <!-- if you want to like the Quack, it will show likeQuack button -->
-                        <button class="btn float-right btn-outline-danger like mx-1" name="<?php echo $retrivedTweetID.'_likeQuackbtn'; ?>" type="submit" title="<?php echo countLikes($retrivedTweetID); ?>">
+                        <button class="btn float-right btn-outline-danger like mx-1" name="<?php echo $retrivedTweetID.'_likeQuackbtn'; ?>" type="submit" data-tippy-content="<?php echo countLikes($retrivedTweetID); ?>">
                           <i class="fas fa-heart" ></i>
                         </button>
                         </form>
@@ -452,7 +452,7 @@ function printPost($userID) {
 <!-- THIS CAN BE ALTERED BASED ON FRONTEND'S DESIGN  -->
 
                         <form action="" method="post">   <!-- if you already liked the Quack, it will show unlikeQuack button -->
-                        <button class="btn float-right btn-danger like mx-1" name="<?php echo $retrivedTweetID.'_unlikeQuackbtn'; ?>" type="submit" title="<?php echo countLikes($retrivedTweetID); ?>">
+                        <button class="btn float-right btn-danger like mx-1" name="<?php echo $retrivedTweetID.'_unlikeQuackbtn'; ?>" type="submit" data-tippy-content="<?php echo countLikes($retrivedTweetID); ?>">
                           <i class="fas fa-heart" ></i>
                         </button>
                         </form>
@@ -462,7 +462,7 @@ function printPost($userID) {
 
 <!-- THIS CAN BE ALTERED BASED ON FRONTEND'S DESIGN  -->
                         <form action="" method="post">  <!-- if you want to like the Quack, it will show likeQuack button -->
-                        <button class="btn float-right btn-outline-danger like mx-1" name="<?php echo $retrivedTweetID.'_likeQuackbtn'; ?>" type="submit" title="<?php echo countLikes($retrivedTweetID); ?>">
+                        <button class="btn float-right btn-outline-danger like mx-1" name="<?php echo $retrivedTweetID.'_likeQuackbtn'; ?>" type="submit" data-tippy-content="<?php echo countLikes($retrivedTweetID); ?>">
                           <i class="fas fa-heart" ></i>
                         </button>
                         </form>

@@ -78,7 +78,10 @@ printProfilePage('checkURL');//Check here if URL even make sense in order to red
   <!--Container-->
 
   <?php require $_SERVER['DOCUMENT_ROOT'] . '/repeated/footer.php';?>
-  <script src="https://www.haxstar.com/js/profile.js?v=1.1"></script>
+  <script src="https://unpkg.com/popper.js@1/dist/umd/popper.min.js"></script>
+  <script src="https://unpkg.com/tippy.js@4"></script>
+  <script src="https://www.haxstar.com/js/profile.js?v=1.2"></script>
+
  </body>
 
 </html>

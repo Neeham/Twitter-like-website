@@ -22,7 +22,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
               placeholder="<?php echo _("Quack it") ?>"></textarea>
             <br>
             <span class="my-2" id="quack-limit">0/255</span>
-            <button class="btn float-right btn-primary quack-btn" name="postQuackBtn"
+            <button class="btn float-right quack-btn" name="postQuackBtn" id = "quack-button"
               type="submit"><?php echo _("Quack") ?></button><br>
             </button>
           </form>
@@ -77,8 +77,9 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
 
       <?php require $_SERVER['DOCUMENT_ROOT'] . '/repeated/footer.php';?>
       <!--These scripts tag have to run after the html elements have been loaded-->
-
-      <script type="text/javascript" src="https://haxstar.com/js/feed.js?v=1.2"></script>
+      <script src="https://unpkg.com/popper.js@1/dist/umd/popper.min.js"></script>
+      <script src="https://unpkg.com/tippy.js@4"> </script>
+      <script type="text/javascript" src="https://haxstar.com/js/feed.js?v=1.3"></script>
 
 
 </body>
