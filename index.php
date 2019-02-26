@@ -21,7 +21,7 @@ require $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
    <div class = "container-fluid">
      <div class = "row">
        <div class="col-md-7">
-       <img class="floating-duck" src="https://haxstar.com/images/logo/duck.png" width="270" height="270">
+       <img class="floating-duck" src="https://haxstar.com/images/logo/duck.png">
        </div>
        <div class="col-md-3" style="background-color:#e6ecf0; z-index: 1000">
           <form class="form-signin" action="../assets/query" method="post">
