@@ -1,118 +1,144 @@
-textarea{
-    resize: none;
+textarea {
+  resize: none;
 }
-body{
-    min-height: 400px;
-    margin-bottom: 100px;
+body {
+  min-height: 400px;
+  margin-bottom: 100px;
 }
 
-#your-profile{
+#your-profile,
+#your-profile-mobile {
   border-radius: 8px;
 }
-#profile_row{
+#profile_row {
   padding: 5px;
   margin: 5px;
 }
-#quack-button, #image-upload-button, #emoji-button, .reply{
-    background-color: #FF5722;
-    color: white;
+#quack-button,
+#image-upload-button,
+#emoji-button,
+.reply {
+  background-color: #ff5722;
+  color: white;
 }
-#feed-bg, #register, #profile, #login{
-
-    background-color:#e6ecf0;
+#feed-bg,
+#register,
+#profile,
+#login {
+  background-color: #e6ecf0;
 }
-.card-header{
-    background-color: #FFA000;
+.card-header {
+  background-color: #ffa000;
 }
-.quack, .follow-suggestion{
-    background-color: #FFC107;
+.mobile-profile-picture {
+  width: 150px;
+  height: 150px;
+}
+.jumbotron {
+  background-color: #ffc107;
+}
+.quack,
+.follow-suggestion,
+.profile-bg {
+  background-color: #ffc107;
 }
 .media img {
-	width: 50px;
-	height: 50px;
-	border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
 
 h6 img {
-	width: 30px;
-	height: 30px;
-	border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
 }
 
-#userList ul{
-     background-color:#FFFFE0;
-     cursor:pointer;
+#userList ul {
+  background-color: #ffffe0;
+  cursor: pointer;
 }
-#userList li{
-     padding:12px;
+#userList li {
+  padding: 12px;
 }
-
 
 .floating-duck {
-    position: absolute;
-    top: 260px;
-    left: calc(50% - 280px);
-    animation: floating-duck 2s alternate ease-in-out infinite;
-      animation-name: floating-duck;
-      animation-duration: 2s;
-      animation-timing-function: ease-in-out;
-      animation-delay: 0s;
-      animation-iteration-count: infinite;
-      animation-direction: alternate;
-      animation-fill-mode: none;
-      animation-play-state: running;
-    will-change: transform;
-    -webkit-user-select: none;
-    user-select: none;
+  position: absolute;
+  top: 260px;
+  left: calc(50% - 280px);
+  animation: floating-duck 2s alternate ease-in-out infinite;
+  animation-name: floating-duck;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-fill-mode: none;
+  animation-play-state: running;
+  will-change: transform;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 @keyframes floating-duck {
-  0%{transform:translateY(-8px)}100%{transform:translateY(10px)}
+  0% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(10px);
+  }
 }
 
 @keyframes move_wave {
-    0% {
-        transform: translateX(0) translateZ(0) scaleY(1)
-    }
-    50% {
-        transform: translateX(-25%) translateZ(0) scaleY(0.92)
-    }
-    100% {
-        transform: translateX(-50%) translateZ(0) scaleY(1)
-    }
+  0% {
+    transform: translateX(0) translateZ(0) scaleY(1);
+  }
+  50% {
+    transform: translateX(-25%) translateZ(0) scaleY(0.92);
+  }
+  100% {
+    transform: translateX(-50%) translateZ(0) scaleY(1);
+  }
 }
 .waveWrapper {
-    overflow: hidden;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    margin: auto;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
 }
 .waveWrapperInner {
-    position: absolute;
-    width: 100%;
-    overflow: hidden;
-    height: 100%;
-    bottom: -1px;
-
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  height: 100%;
+  bottom: -1px;
 }
 .bgMiddle {
-    z-index: 10;
-    opacity: 0.60;
+  z-index: 10;
+  opacity: 0.6;
 }
 .wave {
-    position: absolute;
-    top: 420px;
-    left: 0;
-    width: 200%;
-    height: 100%;
-
+  position: absolute;
+  top: 420px;
+  left: 0;
+  width: 200%;
+  height: 100%;
 }
 .waveMiddle {
-    background-size: 50% 200px;
+  background-size: 50% 200px;
 }
 .waveAnimation .waveMiddle {
-    animation: move_wave 25s linear infinite;
+  animation: move_wave 25s linear infinite;
+}
+
+.mobile-nav-item {
+  background-color: #ffa000;
+}
+.nav-link.active {
+  background-color: #ff5722 !important;
+  border: 1px solid transparent !important;
+  border-color: #ff5722 !important;
 }

@@ -428,9 +428,7 @@ function printPost($userID) {
     $sql    = "SELECT tweet, tweetID FROM Tweet WHERE userID = '$userID' ORDER BY date DESC";
     $result = mysqli_query($conn, $sql);
 ?>
-    <div class="card my-3">
-        <div class="card-header text-center">Your Feed</div>
-        <ul class="list-group" id="quack-list">
+    
 
   <?php
 
@@ -523,7 +521,7 @@ function printPost($userID) {
                 <?php
                 echo "</div></li>";
         }
-        echo "</ul></div>";
+        echo "</ul>";
 }
 
 // ################################# Follow/Unfollow button under profile page, action #################################
