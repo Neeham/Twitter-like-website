@@ -118,7 +118,7 @@ printProfilePage('checkURL');//Check here if URL even make sense in order to red
       <div class="card">
         <div class="card-header">
           <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
-            <li class="nav-item">
+            <li class="nav-item mobile-nav-item">
               <a
                 class="nav-link active"
                 id="home-tab"
@@ -131,7 +131,7 @@ printProfilePage('checkURL');//Check here if URL even make sense in order to red
               >
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item mobile-nav-item">
               <a
                 class="nav-link"
                 id="messages-tab"
@@ -143,7 +143,7 @@ printProfilePage('checkURL');//Check here if URL even make sense in order to red
                 >Following</a
               >
             </li>
-            <li class="nav-item">
+            <li class="nav-item mobile-nav-item">
               <a
                 class="nav-link"
                 id="settings-tab"
