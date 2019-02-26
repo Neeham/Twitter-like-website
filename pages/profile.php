@@ -9,7 +9,7 @@ printProfilePage('checkURL');//Check here if URL even make sense in order to red
     <div
       class="jumbotron jumbotron-fluid mobile-profile d-lg-none d-block mt-3"
     >
-      <div class="d-flex">
+      <div class="container d-flex">
         <div class="mobile-profile-picture">
           <img
             src="https://www.haxstar.com/images/users/default_duck.jpg"
@@ -40,9 +40,9 @@ printProfilePage('checkURL');//Check here if URL even make sense in order to red
       </div>
     </div>
 
-    <div class="container" id="profile_container">
-      <div class="row" id="profile_row">
-        <div class="col-lg-3 d-lg-block d-none" id="your-profile">
+    <div class="container d-none d-lg-block" id="profile_container">
+      <div class="row " id="profile_row">
+        <div class="col-lg-3 d-none d-lg-block" id="your-profile">
           <!--Your Profile-->
           <div class="card">
             <div class="text-center card-header">
@@ -80,15 +80,15 @@ printProfilePage('checkURL');//Check here if URL even make sense in order to red
           </div>
         </div>
 
-        <div
-          class="col-md-6 center-block"
-          style="border-radius: 6px; padding: 0px; margin: 0px;"
-        >
+        <div class="col-md-6 ">
           <h3><?php echo _("Your Latest Quacks") ?></h3>
+          <div class="card my-3">
+              <div class="card-header text-center">Your Feed</div>
+              <ul class="list-group" id="quack-list">
           <?php printProfilePage('post');?>
+              </div>
         </div>
-
-        <div class="col-md-3 ">
+        <div class="col-md-3 d-none d-lg-block">
           <!--Following & Followers-->
 
           <div class="card" id="following">
@@ -100,28 +100,100 @@ printProfilePage('checkURL');//Check here if URL even make sense in order to red
                 <?php printProfilePage('following');?>
               </ul>
             </div>
-          </div>
+            <div class="card my-1" id="followers">
+              <div class="card-header text-center">Followers</div>
 
-          <br />
-
-          <div class="card my-1" id="followers">
-            <div class="card-header text-center">Followers</div>
-
-            <div class="card-text">
-              <ul class="list-group ">
-                <?php printProfilePage('followers');?>
-              </ul>
+              <div class="card-text">
+                <ul class="list-group ">
+                  <?php printProfilePage('followers');?>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <!--End row-->
+    </div>
+    <!--End row-->
+    <div class="container d-lg-none d-block">
+      <div class="card">
+        <div class="card-header">
+          <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                id="home-tab"
+                data-toggle="tab"
+                href="#home"
+                role="tab"
+                aria-controls="home"
+                aria-selected="true"
+                >Quacks</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="messages-tab"
+                data-toggle="tab"
+                href="#messages"
+                role="tab"
+                aria-controls="messages"
+                aria-selected="false"
+                >Following</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="settings-tab"
+                data-toggle="tab"
+                href="#settings"
+                role="tab"
+                aria-controls="settings"
+                aria-selected="false"
+                >Followers</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div
+            class="tab-pane active"
+            id="home"
+            role="tabpanel"
+            aria-labelledby="home-tab"
+          >
+          <ul class="list-group" id="quack-list">
+            <?php printProfilePage('post');?>
+          </div>
+
+          <div
+            class="tab-pane"
+            id="messages"
+            role="tabpanel"
+            aria-labelledby="messages-tab"
+          >
+          <?php printProfilePage('following');?>
+          </div>
+          <div
+            class="tab-pane"
+            id="settings"
+            role="tabpanel"
+            aria-labelledby="settings-tab"
+          >
+          <?php printProfilePage('followers');?>
+          </div>
+        </div>
+      </div>
     </div>
     <!--Container-->
 
     <?php require $_SERVER['DOCUMENT_ROOT'] . '/repeated/footer.php';?>
     <script src="https://unpkg.com/popper.js@1/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@4"></script>
-    <script src="https://www.haxstar.com/js/profile.js?v=1.2"></script>
+    <script src="https://www.haxstar.com/js/profile.js?v=1.4"></script>
   </body>
 </html>
