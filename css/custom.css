@@ -5,10 +5,7 @@ body {
   min-height: 400px;
   margin-bottom: 100px;
 }
-#login {
-  min-height: 500px;
-  margin-bottom: 200px;
-}
+
 #your-profile,
 #your-profile-mobile {
   border-radius: 8px;
@@ -156,6 +153,10 @@ h6 img {
   .wave {
     top: 470px !important;
     display: none !important;
+  }
+  #login {
+    min-height: 500px;
+    margin-bottom: 200px;
   }
 }
 .floating-duck {
