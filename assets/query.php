@@ -325,7 +325,7 @@ function printEmail($userID) {
 
 function printFollowerCount($userID) {
   require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
-  $sql = "SELECT COUNT(follower) as Sum FROM Follow WHERE follower = '$userID'";
+  $sql = "SELECT COUNT(following) as Sum FROM Follow WHERE following = '$userID'";
   $result = mysqli_query($conn, $sql);
   if ($row = $result->fetch_assoc()) {
     echo $row['Sum'];
@@ -334,7 +334,7 @@ function printFollowerCount($userID) {
 
 function printFollowingCount($userID) {
   require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
-  $sql = "SELECT COUNT(following) as Sum FROM Follow WHERE following = '$userID'";
+  $sql = "SELECT COUNT(follower) as Sum FROM Follow WHERE follower = '$userID'";
   $result = mysqli_query($conn, $sql);
   if ($row = $result->fetch_assoc()) {
     echo $row['Sum'];
@@ -428,7 +428,7 @@ function printPost($userID) {
     $sql    = "SELECT tweet, tweetID FROM Tweet WHERE userID = '$userID' ORDER BY date DESC";
     $result = mysqli_query($conn, $sql);
 ?>
-    
+
 
   <?php
 
