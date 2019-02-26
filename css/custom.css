@@ -142,3 +142,24 @@ h6 img {
   border: 1px solid transparent !important;
   border-color: #ff5722 !important;
 }
+
+@media only screen and (max-width: 760px) {
+  .floating-duck {
+    width: 150px !important;
+    height: 150px !important;
+    top: 370px !important;
+    left: 50% !important;
+  }
+  .wave {
+    top: 470px !important;
+    display: none !important;
+  }
+  #login {
+    min-height: 500px;
+    margin-bottom: 200px;
+  }
+}
+.floating-duck {
+  width: 270px;
+  height: 270px;
+}

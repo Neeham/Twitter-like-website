@@ -36,7 +36,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
         </div>
       </div>
 
-      <div class="col-md-4" id="follower-suggestions">
+      <div class="col-md-4 d-none d-lg-block" id="follower-suggestions">
         <div class="card my-1">
           <div class="card-header">You May Like</div>
 
