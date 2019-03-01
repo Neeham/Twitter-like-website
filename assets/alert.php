@@ -13,7 +13,7 @@ background-color: #FF0000;
 </style>
 <?php }
 
-else if ($type == "success") {?>
+else if ($type == "success") { ?>
 <style>
 .modal-header {
 background-color: #00CF37;
@@ -21,28 +21,28 @@ background-color: #00CF37;
 </style>
 <?php }
 
-else if ($type == "warning") {?>
+else if ($type == "warning") { ?>
 <style>
 .modal-header {
 background-color: #ffa500;
 }
 </style>
-<?php }
-
+<?php
+}
 ?>
 
 <div class="modal fade" tabindex="-1" id="message" role="dialog">
-   <div class="modal-dialog" role="document">
+   <div class="modal-dialog modal-xl" role="document">
       <div class="modal-content">
          <div class="modal-header">
             <?php if ($type == "error") { ?>
             <h4 class="modal-title"><?php echo $title ?></h4>
-            <?php } else if ($type == "success") {?>
-            <h4 class="modal-title"><?php echo $title?></h4>
-            <?php } else if ($type == "warning") {?>
-            <h4 class="modal-title"><?php echo $title?></h4>
+            <?php } else if ($type == "success") { ?>
+            <h4 class="modal-title"><?php echo $title ?></h4>
+            <?php } else if ($type == "warning") { ?>
+            <h4 class="modal-title"><?php echo $title ?></h4>
             <?php } ?>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick="location.href='<?PHP echo $modifyURL; ?>'">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick="location.href='<?php echo $modifyURL; ?>'">
             <span aria-hidden="true">&times;</span>
             </button>
          </div>
@@ -50,7 +50,7 @@ background-color: #ffa500;
             <p><?php echo $msg ?></p>
          </div>
          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal" onClick="location.href='<?PHP echo $modifyURL; ?>'"><?php echo _("Close")?></button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" onClick="location.href='<?php echo $modifyURL; ?>'"><?php echo _("Close") ?></button>
          </div>
       </div>
    </div>
@@ -83,13 +83,13 @@ if (basename($_SERVER['PHP_SELF'], '.php') == "index") {
 if (basename($_SERVER['PHP_SELF'], '.php') == "feed") {
 
     if ($_GET['Alert'] == 'errorInsert') {
-        echo alert('error', 'Database Error', 'Something went wrong (not entered in database). Please try again. :()');
+        echo alert('error', 'Database Error', 'Something went wrong (not entered in database). Please try again. :(');
     }
     if ($_GET['Alert'] == 'successfulInsert') {
         echo alert('success', 'Woohoo', 'Your Quack has successfully been posted! Happy Quacking! :D');
    }
    if ($_GET['Alert'] == 'errorLike') {
-       echo alert('error', 'Database Error', 'Something went wrong (The Quack is not liked). Please try again. :()');
+       echo alert('error', 'Database Error', 'Something went wrong (The Quack is not liked). Please try again. :(');
    }
    if ($_GET['Alert'] == 'successLike') {
        echo alert('success', 'Woohoo', 'You have successfully liked a Quack! Happy Quacking! :D');
