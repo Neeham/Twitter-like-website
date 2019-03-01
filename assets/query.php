@@ -105,11 +105,12 @@ function verify($password, $hashedPassword) {
 function printFeed() {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
 
-    $sql    = "SELECT u.firstName AS displayName, u.userName AS username, t.tweet as tweets, t.tweetID as tweetID FROM Tweet t INNER JOIN User u ON u.userID = t.userID WHERE u.userID = '{$GLOBALS['loggedInUserID']}' OR EXISTS (SELECT 1 FROM Follow f WHERE f.follower = '{$GLOBALS['loggedInUserID']}' AND f.following = t.userID) ORDER BY t.date DESC";
+    $sql    = "SELECT u.firstName AS displayName, u.userName AS username, t.tweet as tweets, t.date as date, t.tweetID as tweetID FROM Tweet t INNER JOIN User u ON u.userID = t.userID WHERE u.userID = '{$GLOBALS['loggedInUserID']}' OR EXISTS (SELECT 1 FROM Follow f WHERE f.follower = '{$GLOBALS['loggedInUserID']}' AND f.following = t.userID) ORDER BY t.date DESC";
     $result = mysqli_query($conn, $sql);
     while ($row = $result->fetch_assoc()) {
           ?>
           <li class="list-group-item quack">
+            <div class="text-danger"><?php echo date_format(date_create($row['date']), 'd M y - g:i A'); ?></div>
               <div class="media-body mx-2">
                 <h5><a href="<?PHP echo "https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$row['username']}" ?>"><?PHP echo $row['displayName']; ?></a></h5>
                       <?PHP echo $row['tweets'];
@@ -425,17 +426,19 @@ function followers($userID) {
 
 function printPost($userID) {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
-    $sql    = "SELECT tweet, tweetID FROM Tweet WHERE userID = '$userID' ORDER BY date DESC";
+    $sql    = "SELECT * FROM Tweet WHERE userID = '$userID' ORDER BY date DESC";
     $result = mysqli_query($conn, $sql);
 ?>
 
 
   <?php
 
-        while ($row = $result->fetch_assoc()) {
-            echo "<li class=\"list-group-item quack\">";
+        while ($row = $result->fetch_assoc()) { ?>
+            <li class="list-group-item quack">
+            <div class="text-danger"><?php echo date_format(date_create($row['date']), 'd M y - g:i A'); ?></div>
+          <?php
         //    foreach ($row as $value) {
-                echo "<div class=\"mx-2 \">";
+                echo "<div class=\"mx-2\">";
                 //echo "<h5><span class=\"float-right\"><button class=\"btn btn-danger delete-button\"><i class=\"fas fa-times\"></i> Delete</button></span></h5>";
                 echo $row['tweet'];
 
