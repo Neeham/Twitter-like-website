@@ -5,7 +5,7 @@
 ?>
 <body id="register">
   <nav class="navbar navbar-expand-sm bg-warning navbar-light">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="https://www.haxstar.com">
       <img src="https://haxstar.com/images/logo/duck.png" width="30" height="30" class="d-inline-block align-top" alt="">
       <img src="https://haxstar.com/images/logo/Quacker.png" width="140" height="30" class="d-inline-block align-top" alt="">
     </a>

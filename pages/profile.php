@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <?php
+<?php
 require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
 printProfilePage('checkURL');//Check here if URL even make sense in order to redirect before running any html code
