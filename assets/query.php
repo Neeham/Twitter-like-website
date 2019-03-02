@@ -481,17 +481,21 @@ function printPost($userID)
             if (!$insertResult) {
                 if ($currentLookup != '') {
                     echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$currentLookup}&Alert=errorLike';</script>";
+                    exit;
                 } else {
                     //the Like is not inserted into the database therefore display the errorLike alert
                     echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Alert=errorLike';</script>";
+                    exit;
                 }
             } else {
                 //the Quack is inserted into the database therefore display the successfulLike alert
                 if ($currentLookup != '') {
                     echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$currentLookup}&Alert=successLike';</script>";
+                    exit;
                 } else {
                     //the Like is not inserted into the database therefore display the errorInsert alert
                     echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Alert=successLike';</script>";
+                    exit;
                 }
             }
         }
@@ -503,22 +507,24 @@ function printPost($userID)
                 //the Quack is not inserted into the database therefore display the errorLike alert
                 if ($currentLookup != '') {
                     echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$currentLookup}&Alert=errorLike';</script>";
+                    exit;
                 } else {
                     //the Like is not inserted into the database therefore display the errorInsert alert
                     echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Alert=errorLike';</script>";
+                    exit;
                 }
             } else {
                 //the Quack is inserted into the database therefore display the successfulUnlike alert
                 if ($currentLookup != '') {
                     echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$currentLookup}&Alert=successUnlike';</script>";
+                    exit;
                 } else {
                     //the Like is not inserted into the database therefore display the errorInsert alert
                     echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Alert=successUnlike';</script>";
+                    exit;
                 }
             }
         }
-?>
-<?php
         echo "</div></li>";
     }
     echo "</ul>";
