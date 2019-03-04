@@ -26,7 +26,7 @@ if (isset($_SESSION["session_user"]) && $_SESSION['session_activated'] == 1) {
          </div>
          <div class="col-md-3" style="background-color:#e6ecf0; z-index: 1000">
             <form class="form-signin" action="../assets/query" method="post">
-               <h2 class="form-signin-heading"><?php echo _("Login") ?><br><br></h2>
+               <h2 class="form-signin-heading"><?php echo _("Login") ?></h2>
                <input type="text" class="form-control" name="username" placeholder="<?php echo _("Username") ?>" required="" autofocus /><br>
                <input type="password" class="form-control" name="password" placeholder="<?php echo _("Password") ?>" required=""/><br><br>
                <button class="btn btn-lg btn-primary btn-block" name="login" type="submit"><?php echo _("Login") ?></button><br>

@@ -7,6 +7,14 @@ body {
   font-family: 'Signika', sans-serif;
 }
 
+h1{
+  padding-top:120px
+}
+
+.form-signin{
+  margin-top: 50px;
+}
+
 #your-profile,
 #your-profile-mobile {
   border-radius: 8px;
