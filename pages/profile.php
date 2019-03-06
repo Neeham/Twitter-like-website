@@ -1,138 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php';
-require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
-printQuacks('checkURL');//Check here if URL even make sense in order to redirect before running any html code
+  require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php';
+  require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
+  printProfilePage('checkURL');//Check here if URL even make sense in order to redirect before running any html code
 ?>
-<body id="profile">
-  <div class="container">
-    <div class="row">
-
-      <!--Your Profile-->
-      <div class=" col-lg-3" id="your-profile">
-        <div class="card">
-          <div class="text-center card-header">
-            <h2>Your Profile</h2>
-          </div>
-          <div class="text-center  card-text">
-            <ul class="list-group ">
-
-              <li class="list-group-item follow-suggestion"> <!-- where is the closing for this tag? -->
-                <h1>
-                    <img src="https://randomuser.me/api/portraits/women/50.jpg" id="#" /><?php printQuacks('name');?></a>
-                </h1></br>
-                <!-- Need a button here, upon click it will run follow query the button will then change to following - Need to hide the button here when the person visit their own profile -->
-                <button class="btn btn-outline-success btn-sm follow mx-1 profile-follow d-none">
-                <i class="fas fa-check"></i> Follow</button>
-                </br></br>
-                <h3>Email:</h3></br>
-                <p><?php printQuacks('email');?></p>
-                <h3>Followers:</h3></br>
-                <p><?php printQuacks('followerCount');?></p>
-                <h3>Following:</h3></br>
-                <p><?php printQuacks('followingCount');?></p>
-              </li>
-            </ul>
-          </div>
-        </div>
+   <body id="profile">
+      <div class="jumbotron jumbotron-fluid mobile-profile d-lg-none d-block mt-3">
+         <div class="container d-flex">
+            <div class="mobile-profile-picture">
+               <img src="https://www.haxstar.com/images/users/default_duck.jpg" class="rounded-circle mobile-profile-picture" alt="duck"/>
+            </div>
+            <div class="display-4 mb-1 name-mobile">
+               <?php printProfilePage('name'); ?>
+            </div>
+         </div>
+         <div class="mobile-info ml-3 mt-3">
+            <h4 class="email-mobile">
+               Email:
+               <h6>
+                  <?php printProfilePage('email'); ?>
+               </h6>
+            </h4>
+            <h4 class="followers-mobile">
+               Followers:
+               <?php printProfilePage('followerCount'); ?>
+            </h4>
+            <h4 class="following-mobile">
+               Following:
+               <?php printProfilePage('followingCount'); ?>
+            </h4>
+         </div>
       </div>
-
-      <div class="col-md-6 center-block" style="background-color:lavenderblush;">
-
-        <h3> <?php echo _("*Your Latest Quacks") ?> </h3>
-        <?php printQuacks('post');?>
+      <div class="container d-none d-lg-block" id="profile_container">
+         <div class="row " id="profile_row">
+            <div class="col-lg-3 d-none d-lg-block" id="your-profile">
+               <!--Your Profile-->
+               <div class="card">
+                  <div class="text-center card-header">
+                     <h3>Your Profile</h3>
+                  </div>
+                  <div class="text-center  card-text">
+                     <ul class="list-group ">
+                        <li class="list-group-item profile-bg">
+                           <h5>
+                              <!--PROFILE PICTURE-->
+                              <img src="https://www.haxstar.com/images/users/default_duck.jpg" class="rounded-circle" style="width: 100%; height:100%;" id="default_duck"/>
+                              <?php printProfilePage('name'); ?>
+                           </h5>
+                           <br />
+                           <?php printProfilePage('button'); ?>
+                           <!-- <button class="btn btn-outline-success btn-sm follow mx-1 profile-follow d-none">
+                              <i class="fas fa-check"></i>Follow</button> -->
+                           <br /><br />
+                           <h3>Email:</h3>
+                           <br />
+                           <p><?php printProfilePage('email'); ?></p>
+                           <h5>Followers:</h5>
+                           <br />
+                           <p><?php printProfilePage('followerCount'); ?></p>
+                           <h5>Following:</h5>
+                           <br />
+                           <p><?php printProfilePage('followingCount'); ?></p>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-6 ">
+               <h3><?php echo ("Your Latest Quacks") ?></h3>
+               <div class="card my-3">
+                  <div class="card-header text-center">Your Feed</div>
+                  <ul class="list-group" id="quack-list">
+                  <?php printProfilePage('post'); ?>
+               </div>
+            </div>
+            <div class="col-md-3 d-none d-lg-block">
+               <!--Following & Followers-->
+               <div class="card" id="following">
+                  <!--FOLLOWING-->
+                  <div class="card-header text-center">Following</div>
+                  <div class="card-text">
+                     <ul class="list-group ">
+                        <?php printProfilePage('following'); ?>
+                     </ul>
+                  </div>
+                  <div class="card my-1" id="followers">
+                     <div class="card-header text-center">Followers</div>
+                     <div class="card-text">
+                        <ul class="list-group ">
+                           <?php printProfilePage('followers'); ?>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
       </div>
-
-      <!--Following & Followers-->
-      <div class="col-md-3 ">
-
-        <!--FOLLOWING-->
-        <div class="card my-1" id="following">
-          <div class="card-header">Following</div>
-
-          <div class="card-text">
-            <ul class="list-group ">
-              <li class="list-group-item follow-suggestion">
-
-                <h6><a href="#">
-                    <img src="https://randomuser.me/api/portraits/women/74.jpg" /> Bobby Lynch</a>
-                  <button class="btn btn-outline-success btn-sm float-right follow mx-1">
-                    <i class="fas fa-check"></i> Follow</button>
-                </h6>
-
-              </li>
-              <li class="list-group-item follow-suggestion">
-
-                <h6><a href="#">
-                    <img src="https://randomuser.me/api/portraits/men/99.jpg" /> Veronica Bugs</a>
-                  <button class="btn btn-outline-success btn-sm float-right follow mx-1">
-                    <i class="fas fa-check"></i> Follow</button>
-                </h6>
-
-              </li>
-              <li class="list-group-item follow-suggestion">
-
-                <h6><a href="#">
-                    <img src="https://randomuser.me/api/portraits/men/81.jpg" />Baby Big Jr.</a>
-                  <button class="btn btn-outline-success btn-sm float-right follow mx-1">
-                    <i class="fas fa-check"></i> Follow</button>
-                </h6>
-
-              </li>
-            </ul>
-
-          </div>
-        </div>
-
-
-        <div class="card my-1" id="followers">
-          <div class="card-header">Followers</div>
-
-          <div class="card-text">
-            <ul class="list-group ">
-              <li class="list-group-item follow-suggestion">
-
-                <h6><a href="#">
-                    <img src="https://randomuser.me/api/portraits/women/77.jpg" /> Ann Marie</a>
-                  <button class="btn btn-outline-success btn-sm float-right follow mx-1">
-                    <i class="fas fa-check"></i> Follow</button>
-                </h6>
-
-              </li>
-              <li class="list-group-item follow-suggestion">
-
-                <h6><a href="#">
-                    <img src="https://randomuser.me/api/portraits/men/94.jpg" /> Marc Anthony</a>
-                  <button class="btn btn-outline-success btn-sm float-right follow mx-1">
-                    <i class="fas fa-check"></i> Follow</button>
-                </h6>
-
-              </li>
-              <li class="list-group-item follow-suggestion">
-
-                <h6><a href="#">
-                    <img src="https://randomuser.me/api/portraits/men/89.jpg" /> John Shepherd</a>
-                  <button class="btn btn-outline-success btn-sm float-right follow mx-1">
-                    <i class="fas fa-check"></i> Follow</button>
-                </h6>
-
-              </li>
-            </ul>
-          </div>
-        </div>
-
-
-      </div>
-      <!--end of Marc changes-->
-
-    </div>
-    <!--End row-->
-  </div>
-  <!--Container-->
-
-  <?php require $_SERVER['DOCUMENT_ROOT'] . '/repeated/footer.php';?>
-  <script src="https://www.haxstar.com/js/profile.js?v=1.1"></script>
- </body>
-
+      <!--End row-->
+      <div class="container d-lg-none d-block">
+         <div class="card">
+            <div class="card-header">
+               <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                  <li class="nav-item mobile-nav-item">
+                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Quacks</a>
+                  </li>
+                  <li class="nav-item mobile-nav-item">
+                     <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Following</a>
+                  </li>
+                  <li class="nav-item mobile-nav-item">
+                     <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Followers</a>
+                  </li>
+               </ul>
+            </div>
+            <!-- Tab panes -->
+            <div class="tab-content">
+               <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                  <?php printProfilePage('post'); ?>
+               </div>
+               <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+                  <?php printProfilePage('following'); ?>
+               </div>
+               <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+                  <?php printProfilePage('followers'); ?>
+               </div>
+            </div>
+         </div>
+      </div> <!--Container-->
+      <?php require $_SERVER['DOCUMENT_ROOT'] . '/repeated/footer.php'; ?>
+      <script src="https://unpkg.com/popper.js@1/dist/umd/popper.min.js"></script>
+      <script src="https://unpkg.com/tippy.js@4"></script>
+      <script src="https://www.haxstar.com/js/profile.js?v=1.4"></script>
+   </body>
 </html>
