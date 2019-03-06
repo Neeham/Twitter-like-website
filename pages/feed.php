@@ -61,6 +61,6 @@
       <!--These scripts tag have to run after the html elements have been loaded-->
       <script src="https://unpkg.com/popper.js@1/dist/umd/popper.min.js"></script>
       <script src="https://unpkg.com/tippy.js@4"> </script>
-      <script type="text/javascript" src="https://haxstar.com/js/feed.js?v=1.3"></script>
+      <script type="text/javascript" src="https://haxstar.com/resources/js/feed.js?v=1.4"></script>
    </body>
 </html>
