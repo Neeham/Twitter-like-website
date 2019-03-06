@@ -9,7 +9,7 @@
       <div class="jumbotron jumbotron-fluid mobile-profile d-lg-none d-block mt-3">
          <div class="container d-flex">
             <div class="mobile-profile-picture">
-               <img src="https://www.haxstar.com/images/users/default_duck.jpg" class="rounded-circle mobile-profile-picture" alt="duck"/>
+               <img src="https://www.haxstar.com/resources/images/users/default_duck.jpg" class="rounded-circle mobile-profile-picture" alt="duck"/>
             </div>
             <div class="display-4 mb-1 name-mobile">
                <?php printProfilePage('name'); ?>
@@ -45,7 +45,7 @@
                         <li class="list-group-item profile-bg">
                            <h5>
                               <!--PROFILE PICTURE-->
-                              <img src="https://www.haxstar.com/images/users/default_duck.jpg" class="rounded-circle" style="width: 100%; height:100%;" id="default_duck"/>
+                              <img src="https://www.haxstar.com/resources/images/users/default_duck.jpg" class="rounded-circle" style="width: 100%; height:100%;" id="default_duck"/>
                               <?php printProfilePage('name'); ?>
                            </h5>
                            <br />
@@ -130,6 +130,6 @@
       <?php require $_SERVER['DOCUMENT_ROOT'] . '/repeated/footer.php'; ?>
       <script src="https://unpkg.com/popper.js@1/dist/umd/popper.min.js"></script>
       <script src="https://unpkg.com/tippy.js@4"></script>
-      <script src="https://www.haxstar.com/js/profile.js?v=1.4"></script>
+      <script src="https://www.haxstar.com/resources/js/profile.js?v=1.4"></script>
    </body>
 </html>

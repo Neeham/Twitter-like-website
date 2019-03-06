@@ -5,7 +5,7 @@
 <nav class="navbar navbar-expand-sm bg-warning navbar-light">
    <div class="container">
       <a class="navbar-brand" href="https://www.haxstar.com/pages/feed?Login=<?php echo $_SESSION["session_user"] ?>"><img
-         src="https://haxstar.com/images/logo/duck.png" height="35px" /></a>
+         src="https://haxstar.com/resources/images/logo/duck.png" height="35px" /></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

@@ -14,15 +14,15 @@ if (isset($_SESSION["session_user"]) && $_SESSION['session_activated'] == 1) {
    <body id="login">
       <nav class="navbar navbar-expand-sm bg-warning navbar-light">
          <a class="navbar-brand">
-         <img src="https://haxstar.com/images/logo/duck.png" width="30" height="30" class="d-inline-block align-top" alt="">
-         <img src="https://haxstar.com/images/logo/Quacker.png" width="140" height="30" class="d-inline-block align-top" alt="">
+         <img src="https://haxstar.com/resources/images/logo/duck.png" width="30" height="30" class="d-inline-block align-top" alt="">
+         <img src="https://haxstar.com/resources/images/logo/Quacker.png" width="140" height="30" class="d-inline-block align-top" alt="">
          </a>
       </nav>
       <div class = "container-fluid">
       <div class = "row">
          <div class="col-md-7">
            <h1 align="center">Don't be wack, start to quack.</h1>
-            <img class="floating-duck" src="https://haxstar.com/images/logo/duck.png">
+            <img class="floating-duck" src="https://haxstar.com/resources/images/logo/duck.png">
          </div>
          <div class="col-md-3" style="background-color:#e6ecf0; z-index: 1000">
             <form class="form-signin" action="../assets/query" method="post">
