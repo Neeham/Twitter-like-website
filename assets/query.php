@@ -84,8 +84,7 @@ function generateHash($password) {
 }
 
 //Function to Decrypte a Password
-function verify($password, $hashedPassword)
-{
+function verify($password, $hashedPassword) {
     return crypt($password, $hashedPassword) == $hashedPassword;
 }
 
