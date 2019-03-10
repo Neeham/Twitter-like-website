@@ -76,13 +76,13 @@ if (isset($_POST['register'])) {
 }
 
 //Function to Encrypte a Password
-function generateHash($password)
-{
+function generateHash($password) {
     if (defined("CRYPT_BLOWFISH") && CRYPT_BLOWFISH) {
         $salt = '$2y$11$' . substr(md5(uniqid(rand(), true)), 0, 22);
         return crypt($password, $salt);
     }
 }
+
 //Function to Decrypte a Password
 function verify($password, $hashedPassword)
 {
