@@ -2,7 +2,7 @@
 function alert($type, $title ,$msg) {
 
 $currentURL = 'https://'. $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; //The current URL of the page
-$modifyURL = modify_url($currentURL, 'Alert'); //Modify the URL to remote the Alert parameter (This URL will be called when Alert is closed)
+$modifyURL = modify_url($currentURL, 'Alert'); //Modify the URL to remove the Alert parameter (This URL will be called when Alert is closed)
 
 if ($type == "error") { ?>
 
@@ -31,8 +31,8 @@ background-color: #ffa500;
 }
 ?>
 
-<div class="modal fade" tabindex="-1" id="message" role="dialog">
-   <div class="modal-dialog modal-xl" role="document">
+<div class="modal fade" tabindex="-1" id="message" role="dialog" data-backdrop="static" data-keyboard="false">
+   <div class="modal-dialog" role="document">
       <div class="modal-content">
          <div class="modal-header">
             <?php if ($type == "error") { ?>
