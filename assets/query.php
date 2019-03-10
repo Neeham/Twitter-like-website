@@ -449,7 +449,6 @@ function printPost($userID) {
 <?php
         } else {
 ?>
-
           <!-- THIS CAN BE ALTERED BASED ON FRONTEND'S DESIGN  -->
           <form action="" method="post">  <!-- if you want to like the Quack, it will show likeQuack button -->
           <button class="btn float-right btn-outline-danger like mx-1" name="<?php echo $retrivedTweetID . '_likeQuackbtn'; ?>" type="submit" data-tippy-content="<?php echo countLikes($retrivedTweetID); ?>">
