@@ -5,20 +5,6 @@ $loggedInUserID = $_SESSION["session_id"];
 $loggedInUser   = $_SESSION["session_user"];
 require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
 
-// ################################# Searching a User #################################
-//This method searches the database for all the registered user and let user click on it in order to redirect to their profile.
-if (isset($_POST["searchUser"])) {
-    $output = '';
-    $sql    = "SELECT * FROM User WHERE username LIKE '%" . $_POST["searchUser"] . "%'";
-    $result = mysqli_query($conn, $sql);
-    $output = '<ul class="list-unstyled">';
-    while ($row = mysqli_fetch_array($result)) {
-        $output .= '<li>' . $row["username"] . '</li>';
-    }
-    $output .= '</ul>';
-    echo $output;
-}
-
 // ################################# VERIFY LOGIN #################################
 //The goal of this method is to verify whether or not the preson can log in.
 if (isset($_POST['login'])) {
@@ -101,6 +87,20 @@ function generateHash($password)
 function verify($password, $hashedPassword)
 {
     return crypt($password, $hashedPassword) == $hashedPassword;
+}
+
+// ################################# Searching a User #################################
+//This method searches the database for all the registered user and let user click on it in order to redirect to their profile.
+if (isset($_POST["searchUser"])) {
+    $output = '';
+    $sql    = "SELECT * FROM User WHERE username LIKE '%" . $_POST["searchUser"] . "%'";
+    $result = mysqli_query($conn, $sql);
+    $output = '<ul class="list-unstyled">';
+    while ($row = mysqli_fetch_array($result)) {
+        $output .= '<li>' . $row["username"] . '</li>';
+    }
+    $output .= '</ul>';
+    echo $output;
 }
 
 // ################################# Display Quack on Feed ######################################
