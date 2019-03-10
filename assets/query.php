@@ -103,8 +103,7 @@ if (isset($_POST["searchUser"])) {
 }
 
 // ################################# Display Quack on Feed ######################################
-function printFeed()
-{
+function printFeed() {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
     $sql    = "SELECT u.firstName AS displayName, u.userName AS username, t.tweet as tweets, t.date as date, t.tweetID as tweetID FROM Tweet t INNER JOIN User u ON u.userID = t.userID WHERE u.userID = '{$GLOBALS['loggedInUserID']}' OR EXISTS (SELECT 1 FROM Follow f WHERE f.follower = '{$GLOBALS['loggedInUserID']}' AND f.following = t.userID) ORDER BY t.date DESC";
     $result = mysqli_query($conn, $sql);
@@ -175,8 +174,7 @@ function printFeed()
 }
 
 // ####################################################### Displays Number of Users That Liked a Quack ######################################
-function countLikes($givenTweetID)
-{
+function countLikes($givenTweetID) {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
     $sql    = "SELECT COUNT(*) AS total FROM Liked WHERE tweetID = '$givenTweetID'";
     $result = mysqli_query($conn, $sql);
@@ -231,8 +229,7 @@ if (isset($_POST['postQuackBtn'])) {
 
 
 // ################################# Display Quacks and everything that displays under profile page ######################################
-function printProfilePage($type) //This function will take param and will do if else based on the following: name, email, post, follower count, following count
-{
+function printProfilePage($type) { //This function will take param and will do if else based on the following: name, email, post, follower count, following count
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
     If (isset($_GET['Login']) && !empty($_GET['Login']) AND isset($_GET['Lookup']) && !empty($_GET['Lookup'])) {
         $following = mysql_escape_string($_GET['Lookup']);
@@ -300,8 +297,7 @@ function printProfilePage($type) //This function will take param and will do if 
     }
 }
 
-function printName($userID)
-{
+function printName($userID) {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
     $sql    = "SELECT firstName, lastName FROM User WHERE userID = '$userID'";
     $result = mysqli_query($conn, $sql);
@@ -310,8 +306,7 @@ function printName($userID)
     }
 }
 
-function printEmail($userID)
-{
+function printEmail($userID) {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
     $sql    = "SELECT email FROM User WHERE userID = '$userID'";
     $result = mysqli_query($conn, $sql);
@@ -320,8 +315,7 @@ function printEmail($userID)
     }
 }
 
-function printFollowerCount($userID)
-{
+function printFollowerCount($userID) {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
     $sql    = "SELECT COUNT(following) as Sum FROM Follow WHERE following = '$userID'";
     $result = mysqli_query($conn, $sql);
@@ -330,8 +324,7 @@ function printFollowerCount($userID)
     }
 }
 
-function printFollowingCount($userID)
-{
+function printFollowingCount($userID) {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
     $sql    = "SELECT COUNT(follower) as Sum FROM Follow WHERE follower = '$userID'";
     $result = mysqli_query($conn, $sql);
@@ -340,8 +333,7 @@ function printFollowingCount($userID)
     }
 }
 
-function followButton($userID)
-{
+function followButton($userID) {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
     $sql    = "SELECT follower, following FROM Follow WHERE follower = {$GLOBALS['loggedInUserID']} AND following = '$userID'";
     $result = mysqli_query($conn, $sql);
@@ -360,8 +352,7 @@ function followButton($userID)
     }
 }
 
-function following($userID)
-{
+function following($userID) {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
     $sql    = "SELECT Follow.following as followingID, User.username as user FROM Follow INNER JOIN User ON Follow.following = User.userID WHERE follower = '$userID'";
     $result = mysqli_query($conn, $sql);
@@ -392,8 +383,7 @@ function following($userID)
     }
 }
 
-function followers($userID)
-{
+function followers($userID) {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
     $sql    = "SELECT Follow.follower as followingID, User.username as user FROM Follow INNER JOIN User ON Follow.follower = User.userID WHERE following = '$userID'";
     $result = mysqli_query($conn, $sql);
