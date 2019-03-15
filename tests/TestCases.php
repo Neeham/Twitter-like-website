@@ -1,14 +1,14 @@
 <?php
 
-include 'ObjectTest.php';
+include 'DataObjects.php';
 
 
-class SampleTest extends \PHPUnit_Framework_TestCase
+class TestCases extends \PHPUnit_Framework_TestCase
 {
   public function testToGetTheTextareaContent()
   {
     //$this->assertTrue(true); //checks with assetsTrue to see if param is true
-    $object = new ObjectTest;
+    $object = new DataObjects;
 
     $object->getUsernameOfLoggedInUser();
 
