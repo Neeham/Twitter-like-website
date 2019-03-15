@@ -39,9 +39,7 @@ if (isset($_POST['login'])) {
 // ################################# Register an Account #################################
 //Before registering a user account, it checks whether or not the username and/or email already exists
 if (isset($_POST['register'])) {
-
   $registration = false;
-
   if ($registration) {
     $fName    = mysql_escape_string($_POST['firstname']);
     $lName    = mysql_escape_string($_POST['lastname']);
