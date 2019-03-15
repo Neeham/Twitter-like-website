@@ -116,7 +116,9 @@ if (basename($_SERVER['PHP_SELF'], '.php') == "profile") {
 
 //register pages
 if (basename($_SERVER['PHP_SELF'], '.php') == "register") {
-
+    if ($_GET['Alert'] == 'disabled') {
+      echo alert('error', 'Nice Try!', 'You may have bypassed through the Insepect Element. Not this time!');
+    }
     if ($_GET['Alert'] == 'errorNameExists') {
         echo alert('error', 'Username Already Exists', 'The username already exists. Please choose another username.');
     }

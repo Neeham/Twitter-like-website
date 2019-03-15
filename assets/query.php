@@ -39,6 +39,10 @@ if (isset($_POST['login'])) {
 // ################################# Register an Account #################################
 //Before registering a user account, it checks whether or not the username and/or email already exists
 if (isset($_POST['register'])) {
+
+  $registration = false;
+
+  if ($registration) {
     $fName    = mysql_escape_string($_POST['firstname']);
     $lName    = mysql_escape_string($_POST['lastname']);
     $username = mysql_escape_string($_POST['username']);
@@ -73,6 +77,9 @@ if (isset($_POST['register'])) {
         header("Location: https://www.haxstar.com/?Alert=verifyEmail");
         exit;
     }
+  } else {
+    header("Location: https://www.haxstar.com/pages/register?Alert=disabled");
+  }
 }
 
 //Function to Encrypte a Password
@@ -100,6 +107,13 @@ if (isset($_POST["searchUser"])) {
     }
     $output .= '</ul>';
     echo $output;
+}
+
+// ################################# Upload Profile Picture ######################################
+if (isset($_POST["submit"])) {
+    //move_uploaded_file($_FILES['file']['tmp_name'],"/resources/images/profilePic/".$_FILES['file']['name']);
+    //$sql      = "UPDATE User SET profilePicture = '".$_FILES['file']['name']."' WHERE username = '{$GLOBALS['loggedInUserID']}'";
+  echo "SUP!! It's still work in progress :P";
 }
 
 // ################################# Display Quack on Feed ######################################
@@ -317,7 +331,11 @@ function printProfile($userID) {
 
 function printUpload($userID) {
   ?>
-     <button type="button" class="btn btn-success">Upload Picture</button>
+  <form action="" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" name="submit">
+</form>
+     <!-- <button type="button" class="btn btn-success">Upload Picture</button> -->
     <?php
 }
 
