@@ -10,7 +10,6 @@ if (!class_exists('\PHPUnit\Framework\TestCase'))
 
 Class Test extends PHPUnit_Framework_TestCase
 {
-  echo "Made it into the Test class";
 	public function basicTest()
   {
     echo "Made it into the Test.php file :D";
