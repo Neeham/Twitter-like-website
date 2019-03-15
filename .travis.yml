@@ -10,7 +10,7 @@ php:
 
 dist: trusty
 
-script: phpunit test/SampleTest.php
+script: phpunit /tests/SampleTest.php
 
 #script: phpunit --configuration phpunit.xml --coverage-text
 
