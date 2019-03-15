@@ -1,23 +1,25 @@
 <?php
+//This is the page that Travis CI reference for success or fail
 
-// backward compatibility
-if (!class_exists('\PHPUnit\Framework\TestCase'))
+//include 'http://www.haxstar.com/pages/feed.php';  //worked but gave warning for not opening, need a better solution to link to feed without server
+class Test
 {
-    class_alias('\PHPUnit_Framework_TestCase', '\PHPUnit\Framework\TestCase');
-}
-
-//include 'index.php';
-
-Class Test extends PHPUnit_Framework_TestCase
-{
-	public function basicTest()
+  protected $localVariable = '';
+  public function getUsernameOfLoggedInUser()
   {
-    echo "Made it into the Test.php file :D";
-		$this->assertTrue(true);
-
-
-    $object = "not null ;)";
-    $this->assertNotNull($object);
-    //echo "Made it into the Test.php file :D";
-	}
+    global $localVariable;
+    return $this->localVariable;
+  }
+  public function setUsernameOfLoggedInUser($givenUsernameFromTextarea)
+  {
+      global $localVariable;
+      $this->localVariable = $givenUsernameFromTextarea;
+      return $this->localVariable;
+  }
+  public function __toString()
+  {
+    global $localVariable;
+    return $this->localVariable;
+  }
 }
+ ?>
