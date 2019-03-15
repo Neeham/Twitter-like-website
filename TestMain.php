@@ -1,4 +1,7 @@
 <?php
+
+include 'Test.php';
+
  class TestMain extends \PHPUnit_Framework_TestCase
  {
    public function testToGetTheTextareaContent()
