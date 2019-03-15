@@ -239,6 +239,9 @@ function printProfilePage($type) { //This function will take param and will do i
             if ($following == $GLOBALS['loggedInUser']) { //If the lookup user is the person itself, redirect to their profile without lookup in url
                 echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}';</script>";
             }
+            if ($type == 'profilepic') {
+                printProfile($row['userID']);
+            }
             if ($type == 'name') {
                 printName($row['userID']);
             }
@@ -273,6 +276,12 @@ function printProfilePage($type) { //This function will take param and will do i
             echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Alert=invalidURL';</script>";
         }
     } else {
+        if ($type == 'profilepic') {
+            printProfile($GLOBALS['loggedInUserID']);
+        }
+        if ($type == 'upload') {
+            printUpload($GLOBALS['loggedInUserID']);
+        }
         if ($type == 'name') {
             printName($GLOBALS['loggedInUserID']);
         }
@@ -295,6 +304,21 @@ function printProfilePage($type) { //This function will take param and will do i
             followers($GLOBALS['loggedInUserID']);
         }
     }
+}
+
+function printProfile($userID) {
+    require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
+    $sql    = "SELECT profilePicture FROM User WHERE userID = '$userID'";
+    $result = mysqli_query($conn, $sql);
+    if ($row = $result->fetch_assoc()) {
+        echo $row['profilePicture'];
+    }
+}
+
+function printUpload($userID) {
+  ?>
+     <button type="button" class="btn btn-success">Upload Picture</button>
+    <?php
 }
 
 function printName($userID) {
