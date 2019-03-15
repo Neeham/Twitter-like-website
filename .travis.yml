@@ -8,7 +8,9 @@ before_install:
 before_script:
   - composer install
 
-script: phpunit --configuration phpunit.xml --coverage-text
+script: phpunit Test.php
+
+#script: phpunit --configuration phpunit.xml --coverage-text
 
 #
 #language: php
