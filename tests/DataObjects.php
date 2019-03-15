@@ -1,6 +1,6 @@
 <?php
 
-include '../assets/query.php';
+require __DIR__ . "/assets/query.php"
 
 //include 'http://www.haxstar.com/pages/feed.php';  //worked but gave warning for not opening, need a better solution to link to feed without server
 class DataObjects
