@@ -3,6 +3,9 @@ session_start();
 //get the user ID and username of the currently logged in user through session
 $loggedInUserID = $_SESSION["session_id"];
 $loggedInUser   = $_SESSION["session_user"];
+
+$testing = (string)$loggedInUser;
+
 require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
 
 // ################################# VERIFY LOGIN #################################
@@ -122,7 +125,6 @@ function printFeed() {
         $innerResult       = $conn->query($innersql);
         if ($rowInner = $innerResult->fetch_assoc()) {
 ?>
-          <!-- THIS CAN BE ALTERED BASED ON FRONTEND'S DESIGN  -->
           <form action="" method="post">   <!-- if you already liked the Quack, it will show unlikeQuack button -->
           <button class="btn float-right btn-danger like mx-1" name="<?php echo $retrivedTweetID . '_unlikeQuackbtn'; ?>" type="submit" data-tippy-content="<?php echo countLikes($retrivedTweetID); ?>">
           <i class="fas fa-heart" ></i>
@@ -131,8 +133,6 @@ function printFeed() {
 <?php
         } else {
 ?>
-
-          <!-- THIS CAN BE ALTERED BASED ON FRONTEND'S DESIGN  -->
           <form action="" method="post">  <!-- if you want to like the Quack, it will show likeQuack button -->
           <button class="btn float-right btn-outline-danger like mx-1" name="<?php echo $retrivedTweetID . '_likeQuackbtn'; ?>" type="submit" data-tippy-content="<?php echo countLikes($retrivedTweetID); ?>">
           <i class="fas fa-heart" ></i>
@@ -148,7 +148,7 @@ function printFeed() {
             $insertResult    = $conn->query($insertsql);
             if (!$insertResult) {
                 //the Like is not inserted into the database therefore display the errorInsert alert
-                echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$GLOBALS['loggedInUser']}&Alert=errorLike';</script>"; //UPDATE TO DISPLAY AN ERROR THAT NO LIKEY THE POST
+                echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$GLOBALS['loggedInUser']}&Alert=errorLike';</script>";
             } else {
                 //the Quack is inserted into the database therefore display the successfulInsert alert
                 echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$GLOBALS['loggedInUser']}&Alert=successLike';</script>";
@@ -160,7 +160,7 @@ function printFeed() {
             $deleteResult = $conn->query($deletesql);
             if (!$deleteResult) {
                 //the Quack is not inserted into the database therefore display the errorInsert alert
-                echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$GLOBALS['loggedInUser']}&Alert=errorLike';</script>"; //UPDATE TO DISPLAY AN ERROR THAT NO UNLIKEY THE POST
+                echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$GLOBALS['loggedInUser']}&Alert=errorLike';</script>";
             } else {
                 //the Quack is inserted into the database therefore display the successfulInsert alert
                 echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$GLOBALS['loggedInUser']}&Alert=successUnlike';</script>";

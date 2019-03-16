@@ -11,7 +11,7 @@ class DataObjects
   {
     global $localVariable;
 
-    $localVariable = $loggedInUser;
+    $localVariable = $testing;
 
     return $this->localVariable;
   }
