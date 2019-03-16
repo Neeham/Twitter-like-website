@@ -114,17 +114,17 @@ if (isset($_POST["uploadPicture"])) {
   $uploadOk = 1;
   $imageFileType = pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION);
 
-// Check if image file is a actual image or fake image
+// Check if image file is a image or a fake image
   $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
   if ($check == false) {
     echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Alert=fileNotSelected';</script>";
-  } else if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") { // Allow certain file formats
+  } else if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") { // Allowing only jpg, png and jpeg file format
       echo "<script>window.location = 'https://www.haxstar.com/pages/profiled?Login={$GLOBALS['loggedInUser']}&Alert=formatIncorrect';</script>";
   }
-    else if ($_FILES["fileToUpload"]["size"] > 5000000) { // Check file size
+    else if ($_FILES["fileToUpload"]["size"] > 5000000) { // Ensuring file size does not exceed 5000KB
       echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Alert=sizeTooLarge';</script>";
   }
-    else { // if everything is ok, try to upload file
+    else { // If no error, attempt to upload profile picture.
       if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_dir . $fileName)) {
         $sql = "UPDATE User SET profilePicture = '{$fileName}' WHERE userID = '{$GLOBALS['loggedInUserID']}'";
         $result = $conn->query($sql);
