@@ -3,13 +3,12 @@
 <?php
   require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php';
   require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
-  printProfilePage('checkURL');//Check here if URL even make sense in order to redirect before running any html code
 ?>
    <body id="profile">
       <div class="jumbotron jumbotron-fluid mobile-profile d-lg-none d-block mt-3">
          <div class="container d-flex">
             <div class="mobile-profile-picture">
-               <img src="https://www.haxstar.com/resources/images/users/default_duck.jpg" class="rounded-circle mobile-profile-picture" alt="duck"/>
+               <img src="https://www.haxstar.com/resources/images/profilePic/<?php printProfilePage('profilepic'); ?>" class="rounded-circle mobile-profile-picture"/>
             </div>
             <div class="display-4 mb-1 name-mobile">
                <?php printProfilePage('name'); ?>
@@ -45,11 +44,12 @@
                         <li class="list-group-item profile-bg">
                            <h5>
                               <!--PROFILE PICTURE-->
-                              <img src="https://www.haxstar.com/resources/images/users/default_duck.jpg" class="rounded-circle" style="width: 100%; height:100%;" id="default_duck"/>
+                              <img src="https://www.haxstar.com/resources/images/profilePic/<?php printProfilePage('profilepic'); ?>" class="rounded-circle" style="width: 100%;"/>
+                              <br />
                               <?php printProfilePage('name'); ?>
                            </h5>
                            <br />
-                           <?php printProfilePage('button'); ?>
+                           <?php printProfilePage('button'); printProfilePage('upload');?>
                            <!-- <button class="btn btn-outline-success btn-sm follow mx-1 profile-follow d-none">
                               <i class="fas fa-check"></i>Follow</button> -->
                            <br /><br />
