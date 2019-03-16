@@ -119,7 +119,7 @@ if (isset($_POST["uploadPicture"])) {
   if ($check == false) {
     echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Alert=fileNotSelected';</script>";
   } else if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") { // Allowing only jpg, png and jpeg file format
-      echo "<script>window.location = 'https://www.haxstar.com/pages/profiled?Login={$GLOBALS['loggedInUser']}&Alert=formatIncorrect';</script>";
+      echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Alert=formatIncorrect';</script>";
   }
     else if ($_FILES["fileToUpload"]["size"] > 5000000) { // Ensuring file size does not exceed 5000KB
       echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Alert=sizeTooLarge';</script>";
