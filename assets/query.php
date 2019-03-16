@@ -108,10 +108,30 @@ if (isset($_POST["searchUser"])) {
 }
 
 // ################################# Upload Profile Picture ######################################
-if (isset($_POST["submit"])) {
-    //move_uploaded_file($_FILES['file']['tmp_name'],"/resources/images/profilePic/".$_FILES['file']['name']);
-    //$sql      = "UPDATE User SET profilePicture = '".$_FILES['file']['name']."' WHERE username = '{$GLOBALS['loggedInUserID']}'";
-  echo "SUP!! It's still work in progress :P";
+if (isset($_POST["uploadPicture"])) {
+  $target_dir = "../resources/images/profilePic/";
+  $fileName = $loggedInUserID . '.' . pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION);
+  $uploadOk = 1;
+  $imageFileType = pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION);
+
+// Check if image file is a actual image or fake image
+  $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+  if ($check == false) {
+    echo "Either the file was not selected, or the file is not an image.";
+  } else if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") { // Allow certain file formats
+      echo "Sorry, only JPG, JPEG, & PNG files are allowed.";
+  }
+    else if ($_FILES["fileToUpload"]["size"] > 5000000) { // Check file size
+      echo "Sorry, your file is too large.";
+  }
+    else { // if everything is ok, try to upload file
+      if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_dir . $fileName)) {
+        $sql = "UPDATE User SET profilePicture = '{$fileName}' WHERE userID = '{$GLOBALS['loggedInUserID']}'";
+        $result = $conn->query($sql);
+      } else {
+          echo "Sorry, there was an error uploading your file.";
+        }
+    }
 }
 
 // ################################# Display Quack on Feed ######################################
@@ -329,11 +349,12 @@ function printProfile($userID) {
 
 function printUpload($userID) {
   ?>
+
   <form action="" method="post" enctype="multipart/form-data">
-        <input type="file" name="file">
-        <input type="submit" name="submit">
-</form>
-     <!-- <button type="button" class="btn btn-success">Upload Picture</button> -->
+      Select image to upload:
+      <input type="file" name="fileToUpload" id="fileToUpload">
+      <input type="submit" value="Upload Image" name="uploadPicture">
+  </form>
     <?php
 }
 
