@@ -82,40 +82,54 @@ if (basename($_SERVER['PHP_SELF'], '.php') == "index") {
 //feed page
 if (basename($_SERVER['PHP_SELF'], '.php') == "feed") {
 
-    if ($_GET['Alert'] == 'errorInsert') {
-        echo alert('error', 'Database Error', 'Something went wrong (not entered in database). Please try again. :(');
-    }
-    if ($_GET['Alert'] == 'successfulInsert') {
-        echo alert('success', 'Woohoo', 'Your Quack has successfully been posted! Happy Quacking! :D');
-   }
-   if ($_GET['Alert'] == 'errorLike') {
-       echo alert('error', 'Database Error', 'Something went wrong (The Quack is not liked). Please try again. :(');
-   }
-   if ($_GET['Alert'] == 'successLike') {
-       echo alert('success', 'Woohoo', 'You have successfully liked a Quack! Happy Quacking! :D');
+  if ($_GET['Alert'] == 'errorInsert') {
+    echo alert('error', 'Database Error', 'Something went wrong (not entered in database). Please try again. :(');
+  }
+  if ($_GET['Alert'] == 'successfulInsert') {
+    echo alert('success', 'Woohoo', 'Your Quack has successfully been posted! Happy Quacking! :D');
+  }
+  if ($_GET['Alert'] == 'errorLike') {
+   echo alert('error', 'Database Error', 'Something went wrong (The Quack is not liked). Please try again. :(');
+  }
+  if ($_GET['Alert'] == 'successLike') {
+   echo alert('success', 'Woohoo', 'You have successfully liked a Quack! Happy Quacking! :D');
   }
   if ($_GET['Alert'] == 'successUnlike') {
-      echo alert('success', 'Woohoo', 'You have successfully unliked a Quack!');
+   echo alert('success', 'Woohoo', 'You have successfully unliked a Quack!');
   }
 }
 //profile page
 if (basename($_SERVER['PHP_SELF'], '.php') == "profile") {
+
   if ($_GET['Alert'] == 'invalidURL') {
-      echo alert('error', 'Invalid URL', 'The URL is invalid. You have been redirected to your profile.');
- }
- if ($_GET['Alert'] == 'errorLike') {
-     echo alert('error', 'Database Error', 'Something went wrong (The Quack is not liked). Please try again. :()');
- }
- if ($_GET['Alert'] == 'successLike') {
-     echo alert('success', 'Woohoo', 'You have successfully liked a Quack! Happy Quacking! :D');
- }
- if ($_GET['Alert'] == 'successUnlike') {
-     echo alert('success', 'Woohoo', 'You have successfully unliked a Quack!');
- }
+    echo alert('error', 'Invalid URL', 'The URL is invalid. You have been redirected to your profile.');
+  }
+  if ($_GET['Alert'] == 'errorLike') {
+    echo alert('error', 'Database Error', 'Something went wrong (The Quack is not liked). Please try again. :()');
+  }
+  if ($_GET['Alert'] == 'successLike') {
+    echo alert('success', 'Woohoo', 'You have successfully liked a Quack! Happy Quacking! :D');
+  }
+  if ($_GET['Alert'] == 'successUnlike') {
+    echo alert('success', 'Woohoo', 'You have successfully unliked a Quack!');
+  }
+  if ($_GET['Alert'] == 'fileNotSelected') {
+    echo alert('error', 'Profile Upload Error', 'Either the file was not selected, or the file is not of an image format.');
+  }
+  if ($_GET['Alert'] == 'formatIncorrect') {
+    echo alert('error', 'Profile Upload Error', 'Sorry, only JPG, JPEG, & PNG files are allowed.');
+  }
+  if ($_GET['Alert'] == 'sizeTooLarge') {
+    echo alert('error', 'Profile Upload Error', 'Sorry, your file is too large. Ensure it is not more than 5000KB.');
+  }
+  if ($_GET['Alert'] == 'uploadError') {
+    echo alert('error', 'Profile Upload Error', 'Sorry, there was an error uploading your file.');
+  }
 }
 
 //register pages
 if (basename($_SERVER['PHP_SELF'], '.php') == "register") {
+
     if ($_GET['Alert'] == 'disabled') {
       echo alert('error', 'Nice Try!', 'You may have bypassed through the Insepect Element. Not this time!');
     }

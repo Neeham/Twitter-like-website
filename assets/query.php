@@ -117,19 +117,19 @@ if (isset($_POST["uploadPicture"])) {
 // Check if image file is a actual image or fake image
   $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
   if ($check == false) {
-    echo "Either the file was not selected, or the file is not an image.";
+    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Alert=fileNotSelected';</script>";
   } else if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") { // Allow certain file formats
-      echo "Sorry, only JPG, JPEG, & PNG files are allowed.";
+      echo "<script>window.location = 'https://www.haxstar.com/pages/profiled?Login={$GLOBALS['loggedInUser']}&Alert=formatIncorrect';</script>";
   }
     else if ($_FILES["fileToUpload"]["size"] > 5000000) { // Check file size
-      echo "Sorry, your file is too large.";
+      echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Alert=sizeTooLarge';</script>";
   }
     else { // if everything is ok, try to upload file
       if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_dir . $fileName)) {
         $sql = "UPDATE User SET profilePicture = '{$fileName}' WHERE userID = '{$GLOBALS['loggedInUserID']}'";
         $result = $conn->query($sql);
       } else {
-          echo "Sorry, there was an error uploading your file.";
+          echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Alert=uploadError';</script>";
         }
     }
 }
@@ -137,14 +137,17 @@ if (isset($_POST["uploadPicture"])) {
 // ################################# Display Quack on Feed ######################################
 function printFeed() {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
-    $sql    = "SELECT u.firstName AS displayName, u.userName AS username, t.tweet as tweets, t.date as date, t.tweetID as tweetID FROM Tweet t INNER JOIN User u ON u.userID = t.userID WHERE u.userID = '{$GLOBALS['loggedInUserID']}' OR EXISTS (SELECT 1 FROM Follow f WHERE f.follower = '{$GLOBALS['loggedInUserID']}' AND f.following = t.userID) ORDER BY t.date DESC";
+    $sql    = "SELECT u.firstName AS displayName, u.userName AS username, u.profilePicture as profilePic, t.tweet as tweets, t.date as date, t.tweetID as tweetID FROM Tweet t INNER JOIN User u ON u.userID = t.userID WHERE u.userID = '{$GLOBALS['loggedInUserID']}' OR EXISTS (SELECT 1 FROM Follow f WHERE f.follower = '{$GLOBALS['loggedInUserID']}' AND f.following = t.userID) ORDER BY t.date DESC";
     $result = mysqli_query($conn, $sql);
     while ($row = $result->fetch_assoc()) {
 ?>
         <li class="list-group-item quack">
         <div class="text-danger"><?php echo date_format(date_create($row['date']), 'd M y - g:i A'); ?></div>
         <div class="media-body mx-2">
-        <h5><a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$row['username']}"; ?>"><?php echo $row['displayName']; ?></a></h5>
+        <h5>
+          <img src="https://haxstar.com/resources/images/profilePic/<?php echo $row['profilePic']; ?>" class="rounded-circle" style="width: 5%; height: auto;">
+          <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$row['username']}"; ?>"><?php echo $row['displayName']; ?></a>
+        </h5>
 <?php
         echo $row['tweets'];
         $retrivedTweetID = $row['tweetID'];
@@ -259,7 +262,6 @@ if (isset($_POST['postQuackBtn'])) {
     }
 }
 
-
 // ################################# Display Quacks and everything that displays under profile page ######################################
 function printProfilePage($type) { //This function will take param and will do if else based on the following: name, email, post, follower count, following count
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
@@ -348,14 +350,12 @@ function printProfile($userID) {
 }
 
 function printUpload($userID) {
-  ?>
-
+?>
   <form action="" method="post" enctype="multipart/form-data">
-      Select image to upload:
-      <input type="file" name="fileToUpload" id="fileToUpload">
-      <input type="submit" value="Upload Image" name="uploadPicture">
+      <input type="file" name="fileToUpload" class="btn btn-info" style="width: 120px;"><br><br>
+      <input type="submit" value="Upload Image" class="btn btn-info" name="uploadPicture">
   </form>
-    <?php
+<?php
 }
 
 function printName($userID) {
@@ -415,12 +415,15 @@ function followButton($userID) {
 
 function following($userID) {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
-    $sql    = "SELECT Follow.following as followingID, User.username as user FROM Follow INNER JOIN User ON Follow.following = User.userID WHERE follower = '$userID'";
+    $sql    = "SELECT Follow.following as followingID, User.username as user, User.profilePicture as profilePic FROM Follow INNER JOIN User ON Follow.following = User.userID WHERE follower = '$userID'";
     $result = mysqli_query($conn, $sql);
     while ($row = $result->fetch_assoc()) {
 ?>
       <li class="list-group-item follow-suggestion">
-      <h6><a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$row['user']}"; ?>"><?php echo $row['user']; ?></a></h6>
+      <h6>
+        <img src="https://haxstar.com/resources/images/profilePic/<?php echo $row['profilePic']; ?>" class="rounded-circle" style="width: 20%; height: auto;">
+        <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$row['user']}"; ?>"><?php echo $row['user']; ?></a>
+      </h6>
 <?php
         /* NOT A PRIORITY but basically have the folllow/unfollow button beside every user being displayed
         $sql = "SELECT follower, following FROM Follow WHERE follower = {$GLOBALS['loggedInUserID']} AND following = '$userID'";
@@ -446,12 +449,15 @@ function following($userID) {
 
 function followers($userID) {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
-    $sql    = "SELECT Follow.follower as followingID, User.username as user FROM Follow INNER JOIN User ON Follow.follower = User.userID WHERE following = '$userID'";
+    $sql    = "SELECT Follow.follower as followingID, User.username as user, User.profilePicture as profilePic FROM Follow INNER JOIN User ON Follow.follower = User.userID WHERE following = '$userID'";
     $result = mysqli_query($conn, $sql);
     while ($row = $result->fetch_assoc()) {
 ?>
       <li class="list-group-item follow-suggestion">
-      <h6><a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$row['user']}"; ?>"><?php echo $row['user']; ?></a></h6>
+      <h6>
+        <img src="https://haxstar.com/resources/images/profilePic/<?php echo $row['profilePic']; ?>" class="rounded-circle" style="width: 20%; height: auto;">
+        <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$row['user']}"; ?>"><?php echo $row['user']; ?></a>
+      </h6>
 
 <?php
         /* NOT A PRIORITY but basically have the folllow/unfollow button beside every user being displayed
