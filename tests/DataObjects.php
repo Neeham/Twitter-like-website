@@ -15,14 +15,7 @@ class DataObjects
 
     return $this->localVariable;
   }
-  /*
-  public function setUsernameOfLoggedInUser($givenUsernameFromTextarea)
-  {
-      global $localVariable;
-      $this->localVariable = $givenUsernameFromTextarea;
-      return $this->localVariable;
-  }
-  */
+
   public function __toString()
   {
     global $localVariable;
