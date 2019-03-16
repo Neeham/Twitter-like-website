@@ -6,9 +6,11 @@ require "/home/travis/build/Neeham/Twitter-like-website/assets/query.php";
 class DataObjects
 {
   protected $localVariable = '';
-
+  require "/home/travis/build/Neeham/Twitter-like-website/assets/config.php";
+  
   public function getUsernameOfLoggedInUser()
   {
+
     global $localVariable;
 
     $localVariable = (string)$loggedInUser;
