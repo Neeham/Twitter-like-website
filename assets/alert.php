@@ -117,7 +117,7 @@ if (basename($_SERVER['PHP_SELF'], '.php') == "profile") {
     echo alert('error', 'Profile Upload Error', 'Either the file was not selected, or the file is not of an image format.');
   }
   if ($_GET['Alert'] == 'formatIncorrect') {
-    echo alert('error', 'Profile Upload Error', 'Sorry, only JPG, JPEG, & PNG files are allowed.');
+    echo alert('error', 'Profile Upload Error', 'Sorry, only JPG, JPEG, & PNG file formats are allowed.');
   }
   if ($_GET['Alert'] == 'sizeTooLarge') {
     echo alert('error', 'Profile Upload Error', 'Sorry, your file is too large. Ensure it is not more than 5000KB.');
