@@ -14,9 +14,9 @@ class TestCases extends \PHPUnit_Framework_TestCase
 
     echo "getUsernameofLoggedInUser: ".$object;
 
-    $object->setUsernameOfLoggedInUser('Checking to see if parameters are passing to ObjectTest');
+  //  $object->setUsernameOfLoggedInUser('Checking to see if parameters are passing to ObjectTest');
 
-    echo "setUsernameofLoggedInUser: ".$object;
+  //  echo "setUsernameofLoggedInUser: ".$object;
 
     $this->assertNotNull($object);    //will check if the input text is empty or not (this will display through Travis CI )
   }
