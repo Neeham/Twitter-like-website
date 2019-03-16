@@ -7,7 +7,7 @@ class TestCases extends \PHPUnit_Framework_TestCase
 {
   public function testToGetTheTextareaContent()
   {
-    //$this->assertTrue(true); //checks with assetsTrue to see if param is true
+    $this->assertTrue(true); //checks with assetsTrue to see if param is true
     $object = new DataObjects;
 
     $object->getUsernameOfLoggedInUser();

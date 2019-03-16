@@ -3,9 +3,6 @@ session_start();
 //get the user ID and username of the currently logged in user through session
 $loggedInUserID = $_SESSION["session_id"];
 $loggedInUser   = $_SESSION["session_user"];
-
-$testing = (string)$loggedInUser;
-
 require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
 
 // ################################# VERIFY LOGIN #################################

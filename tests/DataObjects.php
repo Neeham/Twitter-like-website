@@ -11,16 +11,18 @@ class DataObjects
   {
     global $localVariable;
 
-    $localVariable = $testing;
+    $localVariable = (string)$loggedInUser;
 
     return $this->localVariable;
   }
+  /*
   public function setUsernameOfLoggedInUser($givenUsernameFromTextarea)
   {
       global $localVariable;
       $this->localVariable = $givenUsernameFromTextarea;
       return $this->localVariable;
   }
+  */
   public function __toString()
   {
     global $localVariable;
