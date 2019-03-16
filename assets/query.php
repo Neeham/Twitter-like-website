@@ -109,9 +109,10 @@ if (isset($_POST["searchUser"])) {
 
 // ################################# Upload Profile Picture ######################################
 if (isset($_POST["uploadPicture"])) {
-  $target_dir = "../resources/images/profilePic/";
-  $fileName = $loggedInUserID . '.' . pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION);
-  $uploadOk = 1;
+  $target_dir = $_SERVER['DOCUMENT_ROOT'].'/resources/images/profilePic/';
+  do { //Ensure the filename generated does not already exists, format: date time_userIDofUploader
+    $fileName = date("Y-m-d H:i:s_"). $GLOBALS['loggedInUserID'] . '.' . pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION);
+  } while (file_exists($target_dir . $fileName));
   $imageFileType = pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION);
 
 // Check if image file is a image or a fake image
@@ -124,10 +125,26 @@ if (isset($_POST["uploadPicture"])) {
     else if ($_FILES["fileToUpload"]["size"] > 5000000) { // Ensuring file size does not exceed 5000KB
       echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Alert=sizeTooLarge';</script>";
   }
-    else { // If no error, attempt to upload profile picture.
-      if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_dir . $fileName)) {
+    else { // If no error, get the current filename from the Database.
+      $deleteFile;
+      $shouldDelete =  false;
+      $sql      = "SELECT profilePicture FROM User WHERE userID = '{$GLOBALS['loggedInUserID']}'";
+      $result   = $conn->query($sql);
+      if ($row = $result->fetch_assoc()) {
+        if ($row["profilePicture"] !== "default.jpg") {
+          $deleteFile = $row["profilePicture"];
+          $shouldDelete = true;
+        }
+      }
+      if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_dir . $fileName)) { // Attempt to upload profile picture.
         $sql = "UPDATE User SET profilePicture = '{$fileName}' WHERE userID = '{$GLOBALS['loggedInUserID']}'";
         $result = $conn->query($sql);
+
+        //Attemps to delete the old profile picture from the directory to save space
+        if ($shouldDelete = true) {
+          $path = $_SERVER['DOCUMENT_ROOT'].'/resources/images/profilePic/'.$deleteFile;
+          unlink($path);
+        }
       } else {
           echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Alert=uploadError';</script>";
         }
