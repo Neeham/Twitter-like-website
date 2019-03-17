@@ -144,7 +144,7 @@ function printFeed() {
         <div class="text-danger"><?php echo date_format(date_create($row['date']), 'd M y - g:i A'); ?></div>
         <div class="media-body mx-2">
         <h5>
-          <img src="https://haxstar.com/resources/images/profilePic/<?php echo $row['profilePic']; ?>" class="rounded-circle" style="width: 5%; height: auto;">
+          <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$row['username']}"; ?>"><img src="https://haxstar.com/resources/images/profilePic/<?php echo $row['profilePic']; ?>" class="rounded-circle" style="height: 40px; max-width: 40px; width: 100%;"></a>
           <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$row['username']}"; ?>"><?php echo $row['displayName']; ?></a>
         </h5>
 <?php
