@@ -44,15 +44,14 @@
                         <li class="list-group-item profile-bg">
                            <h5>
                               <!--PROFILE PICTURE-->
-                              <img src="https://www.haxstar.com/resources/images/profilePic/<?php printProfilePage('profilepic'); ?>" class="rounded-circle" style="width: 100%;"/>
-                              <br />
+                              <img src="https://www.haxstar.com/resources/images/profilePic/<?php printProfilePage('profilepic'); ?>" class="rounded-circle"/>
+                              <br /> <br />
                               <?php printProfilePage('name'); ?>
                            </h5>
+                                 <div class="panel-body" align="center">
+                                   <?php printProfilePage('button'); printProfilePage('upload');?>
+                                 </div>
                            <br />
-                           <?php printProfilePage('button'); printProfilePage('upload');?>
-                           <!-- <button class="btn btn-outline-success btn-sm follow mx-1 profile-follow d-none">
-                              <i class="fas fa-check"></i>Follow</button> -->
-                           <br /><br />
                            <h3>Email:</h3>
                            <br />
                            <p><?php printProfilePage('email'); ?></p>
@@ -133,3 +132,68 @@
       <script src="https://www.haxstar.com/resources/js/profile.js?v=1.4"></script>
    </body>
 </html>
+
+<div id="uploadimageModal" class="modal" role="dialog" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title-center">Crop & Upload Profile Picture</h4>
+            <button type="button" class="close" data-dismiss="modal" onClick="window.location.reload()">&times;</button>
+          </div>
+          <div class="modal-body">
+              <div id="imageToCrop"></div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-success crop_image">Upload</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" onClick="window.location.reload()">Close</button>
+          </div>
+      </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function(){
+
+	$image_crop = $('#imageToCrop').croppie({
+    enableExif: true,
+    viewport: {
+      width:200,
+      height:200,
+      type:'circle'
+    },
+    boundary:{
+      width:300,
+      height:300
+    }
+  });
+
+  $('#imageUpload').on('change', function(){
+    var reader = new FileReader();
+    reader.onload = function (event) {
+      $image_crop.croppie('bind', {
+        url: event.target.result
+      }).then(function(){
+      });
+    }
+    reader.readAsDataURL(this.files[0]);
+    $('#uploadimageModal').modal('show');
+  });
+
+  $('.crop_image').click(function(event){
+    $image_crop.croppie('result', {
+      type: 'canvas',
+      size: 'viewport'
+    }).then(function(response){
+      $.ajax({
+        url:"/assets/query",
+        type: "POST",
+        data:{"cropAndUpload": response},
+        success:function(data) {
+          $('#uploadimageModal').modal('hide');
+          location.reload();
+        }
+      });
+    })
+  });
+});
+</script>

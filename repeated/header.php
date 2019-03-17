@@ -19,5 +19,7 @@
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="https://haxstar.com/resources/css/croppie.css" />
+   <script src="https://haxstar.com/resources/js/croppie.js"></script>
    <?php require $_SERVER['DOCUMENT_ROOT'] . '/assets/alert.php'; ?>
 </head>
