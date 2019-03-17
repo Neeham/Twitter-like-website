@@ -113,21 +113,21 @@ if (isset($_POST["cropAndUpload"])) {
 	$image_array_1 = explode(";", $data);
 	$image_array_2 = explode(",", $image_array_1[1]);
 	$data = base64_decode($image_array_2[1]);
-	$imageName = date("Y-m-d H-i-s_") . $GLOBALS['loggedInUserID'] . '.png';
-	file_put_contents($_SERVER['DOCUMENT_ROOT'].'/resources/images/profilePic/'.$imageName, $data);
+	$imageName = date("Y-m-d H-i-s_") . $GLOBALS['loggedInUserID'] . '.png'; //Generate a unique filename, format: Date Time_userIDOfUploader
+	file_put_contents($_SERVER['DOCUMENT_ROOT'].'/resources/images/profilePic/'.$imageName, $data); //Upload picture to server
   $deleteFile;
   $shouldDelete =  false;
   $sql      = "SELECT profilePicture FROM User WHERE userID = '{$GLOBALS['loggedInUserID']}'";
   $result   = $conn->query($sql);
   if ($row = $result->fetch_assoc()) {
-    if ($row["profilePicture"] !== "default.jpg") {
+    if ($row["profilePicture"] !== "default.jpg") { //Ensuring the current profile picture is not the default picture.
       $deleteFile = $row["profilePicture"];
       $shouldDelete = true;
     }
   }
-  $sql = "UPDATE User SET profilePicture = '$imageName' WHERE userID = '{$GLOBALS['loggedInUserID']}'";
+  $sql = "UPDATE User SET profilePicture = '$imageName' WHERE userID = '{$GLOBALS['loggedInUserID']}'"; //Update the uploaded file name onto the database.
   $result = $conn->query($sql);
-  if ($shouldDelete = true) {
+  if ($shouldDelete = true) { //If the old profile picture was not the default picture, remove it from the server to save valuable resources.
     $path = $_SERVER['DOCUMENT_ROOT'].'/resources/images/profilePic/'.$deleteFile;
     unlink($path);
   }
@@ -349,7 +349,7 @@ function printProfile($userID) {
 
 function printUpload($userID) {
 ?>
-    <input type="file" name="upload_image" class="btn btn-info" style="width: 120px;" id="upload_image" />
+    <input type="file" name="imageUpload" class="btn btn-info" style="width: 120px;" id="imageUpload" />
 <?php
 }
 
