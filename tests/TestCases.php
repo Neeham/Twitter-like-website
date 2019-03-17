@@ -1,7 +1,8 @@
 <?php
+
+include 'DataObjects.php';
 require "/home/travis/build/Neeham/Twitter-like-website/assets/config.php";
 require "/home/travis/build/Neeham/Twitter-like-website/assets/query.php";
-include 'DataObjects.php';
 
 class TestCases extends \PHPUnit_Framework_TestCase
 {
