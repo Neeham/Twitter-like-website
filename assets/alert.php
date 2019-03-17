@@ -113,18 +113,6 @@ if (basename($_SERVER['PHP_SELF'], '.php') == "profile") {
   if ($_GET['Alert'] == 'successUnlike') {
     echo alert('success', 'Woohoo', 'You have successfully unliked a Quack!');
   }
-  if ($_GET['Alert'] == 'fileNotSelected') {
-    echo alert('error', 'Profile Upload Error', 'Either the file was not selected, or the file is not of an image format.');
-  }
-  if ($_GET['Alert'] == 'formatIncorrect') {
-    echo alert('error', 'Profile Upload Error', 'Sorry, only JPG, JPEG, & PNG file formats are allowed.');
-  }
-  if ($_GET['Alert'] == 'sizeTooLarge') {
-    echo alert('error', 'Profile Upload Error', 'Sorry, your file is too large. Ensure it is not more than 5000KB.');
-  }
-  if ($_GET['Alert'] == 'uploadError') {
-    echo alert('error', 'Profile Upload Error', 'Sorry, there was an error uploading your file.');
-  }
 }
 
 //register pages

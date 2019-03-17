@@ -108,47 +108,29 @@ if (isset($_POST["searchUser"])) {
 }
 
 // ################################# Upload Profile Picture ######################################
-if (isset($_POST["uploadPicture"])) {
-  $target_dir = $_SERVER['DOCUMENT_ROOT'].'/resources/images/profilePic/';
-  do { //Ensure the filename generated does not already exists, format: date time_userIDofUploader
-    $fileName = date("Y-m-d H:i:s_"). $GLOBALS['loggedInUserID'] . '.' . pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION);
-  } while (file_exists($target_dir . $fileName));
-  $imageFileType = pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION);
-
-// Check if image file is a image or a fake image
-  $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-  if ($check == false) {
-    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Alert=fileNotSelected';</script>";
-  } else if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") { // Allowing only jpg, png and jpeg file format
-      echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Alert=formatIncorrect';</script>";
-  }
-    else if ($_FILES["fileToUpload"]["size"] > 5000000) { // Ensuring file size does not exceed 5000KB
-      echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Alert=sizeTooLarge';</script>";
-  }
-    else { // If no error, get the current filename from the Database.
-      $deleteFile;
-      $shouldDelete =  false;
-      $sql      = "SELECT profilePicture FROM User WHERE userID = '{$GLOBALS['loggedInUserID']}'";
-      $result   = $conn->query($sql);
-      if ($row = $result->fetch_assoc()) {
-        if ($row["profilePicture"] !== "default.jpg") {
-          $deleteFile = $row["profilePicture"];
-          $shouldDelete = true;
-        }
-      }
-      if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_dir . $fileName)) { // Attempt to upload profile picture.
-        $sql = "UPDATE User SET profilePicture = '{$fileName}' WHERE userID = '{$GLOBALS['loggedInUserID']}'";
-        $result = $conn->query($sql);
-
-        //Attemps to delete the old profile picture from the directory to save space
-        if ($shouldDelete = true) {
-          $path = $_SERVER['DOCUMENT_ROOT'].'/resources/images/profilePic/'.$deleteFile;
-          unlink($path);
-        }
-      } else {
-          echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Alert=uploadError';</script>";
-        }
+if (isset($_POST["cropAndUpload"])) {
+  $data = $_POST["cropAndUpload"];
+	$image_array_1 = explode(";", $data);
+	$image_array_2 = explode(",", $image_array_1[1]);
+	$data = base64_decode($image_array_2[1]);
+	$imageName = date("Y-m-d H-i-s_") . $GLOBALS['loggedInUserID'] . '.png'; //Generate a unique filename, format: Date Time_userIDOfUploader
+	file_put_contents($_SERVER['DOCUMENT_ROOT'].'/resources/images/profilePic/'.$imageName, $data); //Upload picture to server
+  $deleteFile;
+  $shouldDelete =  false;
+  $sql      = "SELECT profilePicture FROM User WHERE userID = '{$GLOBALS['loggedInUserID']}'";
+  $result   = $conn->query($sql);
+  if ($row = $result->fetch_assoc()) {
+    if ($row["profilePicture"] !== "default.jpg") { //Ensuring the current profile picture is not the default picture.
+      $deleteFile = $row["profilePicture"];
+      $shouldDelete = true;
     }
+  }
+  $sql = "UPDATE User SET profilePicture = '$imageName' WHERE userID = '{$GLOBALS['loggedInUserID']}'"; //Update the uploaded file name onto the database.
+  $result = $conn->query($sql);
+  if ($shouldDelete = true) { //If the old profile picture was not the default picture, remove it from the server to save valuable resources.
+    $path = $_SERVER['DOCUMENT_ROOT'].'/resources/images/profilePic/'.$deleteFile;
+    unlink($path);
+  }
 }
 
 // ################################# Display Quack on Feed ######################################
@@ -183,7 +165,6 @@ function printFeed() {
 <?php
         } else {
 ?>
-
           <!-- THIS CAN BE ALTERED BASED ON FRONTEND'S DESIGN  -->
           <form action="" method="post">  <!-- if you want to like the Quack, it will show likeQuack button -->
           <button class="btn float-right btn-outline-danger like mx-1" name="<?php echo $retrivedTweetID . '_likeQuackbtn'; ?>" type="submit" data-tippy-content="<?php echo countLikes($retrivedTweetID); ?>">
@@ -368,10 +349,7 @@ function printProfile($userID) {
 
 function printUpload($userID) {
 ?>
-  <form action="" method="post" enctype="multipart/form-data">
-      <input type="file" name="fileToUpload" class="btn btn-info" style="width: 120px;"><br><br>
-      <input type="submit" value="Upload Image" class="btn btn-info" name="uploadPicture">
-  </form>
+    <input type="file" name="imageUpload" class="btn btn-info" style="width: 120px;" id="imageUpload" />
 <?php
 }
 
@@ -438,7 +416,7 @@ function following($userID) {
 ?>
       <li class="list-group-item follow-suggestion">
       <h6>
-        <img src="https://haxstar.com/resources/images/profilePic/<?php echo $row['profilePic']; ?>" class="rounded-circle" style="width: 20%; height: auto;">
+        <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$row['user']}"; ?>"><img src="https://haxstar.com/resources/images/profilePic/<?php echo $row['profilePic']; ?>" class="rounded-circle" style="height: 40px; max-width: 40px; width: 100%;"></a>
         <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$row['user']}"; ?>"><?php echo $row['user']; ?></a>
       </h6>
 <?php
@@ -472,7 +450,7 @@ function followers($userID) {
 ?>
       <li class="list-group-item follow-suggestion">
       <h6>
-        <img src="https://haxstar.com/resources/images/profilePic/<?php echo $row['profilePic']; ?>" class="rounded-circle" style="width: 20%; height: auto;">
+        <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$row['user']}"; ?>"><img src="https://haxstar.com/resources/images/profilePic/<?php echo $row['profilePic']; ?>" class="rounded-circle" style="height: 40px; max-width: 40px; width: 100%;></a>
         <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$row['user']}"; ?>"><?php echo $row['user']; ?></a>
       </h6>
 
