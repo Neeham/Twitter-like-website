@@ -57,7 +57,7 @@
              var query = $(this).val();
              if(query != '') {
                   $.ajax({
-                       url:"../assets/query",
+                       url:"/assets/query",
                        method:"POST",
                        data:{searchUser:query},
                        success:function(data) {
