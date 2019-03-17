@@ -22,4 +22,7 @@ class Test
     return $this->localVariable;
   }
 }
+
+//adding comment to see Travis response to pull request
+
  ?>
