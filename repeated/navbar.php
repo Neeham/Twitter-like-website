@@ -2,7 +2,7 @@
   require $_SERVER['DOCUMENT_ROOT'] . '/assets/loggedin.php';
   require $_SERVER['DOCUMENT_ROOT'] . '/repeated/header.php';
 ?>
-<nav class="navbar navbar-expand-sm bg-warning navbar-light">
+<nav class="navbar navbar-expand-sm bg-warning navbar-light sticky-top">
    <div class="container">
       <a class="navbar-brand" href="https://www.haxstar.com/pages/feed?Login=<?php echo $_SESSION["session_user"] ?>"><img
          src="https://haxstar.com/resources/images/logo/duck.png" height="35px" /></a>

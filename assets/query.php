@@ -349,7 +349,7 @@ function printProfile($userID) {
 
 function printUpload() {
 ?>
-    <input type="file" name="imageUpload" class="btn btn-info" style="width: 120px;" id="imageUpload" />
+    <input type="file" name="imageUpload" class="btn btn-info" style="width: 120px; color:transparent;" id="imageUpload" />
 <?php
 }
 
@@ -410,33 +410,13 @@ function followButton($userID) {
 
 function following($userID) {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
-    $sql    = "SELECT Follow.following as followingID, User.username as user, User.profilePicture as profilePic FROM Follow INNER JOIN User ON Follow.following = User.userID WHERE follower = '$userID'";
+    $sql    = "SELECT Follow.following as followingID, User.username as user, User.profilePicture as profilePic FROM Follow INNER JOIN User ON Follow.following = User.userID WHERE follower = '$userID' LIMIT 3";
     $result = mysqli_query($conn, $sql);
     while ($row = $result->fetch_assoc()) {
 ?>
-      <li class="list-group-item follow-suggestion">
-      <h6>
+      <li class="list-group-item profile-card-bg">
         <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$row['user']}"; ?>"><img src="https://haxstar.com/resources/images/profilePic/<?php echo $row['profilePic']; ?>" class="rounded-circle" style="height: 40px; max-width: 40px; width: 100%;"></a>
         <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$row['user']}"; ?>"><?php echo $row['user']; ?></a>
-      </h6>
-<?php
-        /* NOT A PRIORITY but basically have the folllow/unfollow button beside every user being displayed
-        $sql = "SELECT follower, following FROM Follow WHERE follower = {$GLOBALS['loggedInUserID']} AND following = '$userID'";
-        $result = mysqli_query($conn, $sql);
-        if ($row = $result->fetch_assoc()) {
-        ?>
-        <form action="" method="post">
-        <button class="btn btn-danger" name="unfollowUser" type="submit">Unfollow</button>
-        </form>
-        <?php
-        } else {
-        ?>
-        <form action="" method="post">
-        <button class="btn btn-success" name="followUser" type="submit">Follow</button>
-        </form>
-        <?php
-        }*/
-?>
       </li>
 <?php
     }
@@ -444,35 +424,13 @@ function following($userID) {
 
 function followers($userID) {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
-    $sql    = "SELECT Follow.follower as followingID, User.username as user, User.profilePicture as profilePic FROM Follow INNER JOIN User ON Follow.follower = User.userID WHERE following = '$userID'";
+    $sql    = "SELECT Follow.follower as followingID, User.username as user, User.profilePicture as profilePic FROM Follow INNER JOIN User ON Follow.follower = User.userID WHERE following = '$userID' LIMIT 3";
     $result = mysqli_query($conn, $sql);
     while ($row = $result->fetch_assoc()) {
 ?>
-      <li class="list-group-item follow-suggestion">
-      <h6>
-        <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$row['user']}"; ?>"><img src="https://haxstar.com/resources/images/profilePic/<?php echo $row['profilePic']; ?>" class="rounded-circle" style="height: 40px; max-width: 40px; width: 100%;></a>
+      <li class="list-group-item profile-card-bg">
+        <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$row['user']}"; ?>"><img src="https://haxstar.com/resources/images/profilePic/<?php echo $row['profilePic']; ?>" class="rounded-circle" style="height: 40px; max-width: 40px; width: 100%;"></a>
         <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$GLOBALS['loggedInUser']}&Lookup={$row['user']}"; ?>"><?php echo $row['user']; ?></a>
-      </h6>
-
-<?php
-        /* NOT A PRIORITY but basically have the folllow/unfollow button beside every user being displayed
-        $sql = "SELECT follower, following FROM Follow WHERE follower = {$GLOBALS['loggedInUserID']} AND following = '$userID'";
-        $result = mysqli_query($conn, $sql);
-        if ($row = $result->fetch_assoc()) {
-        ?>
-        <form action="" method="post">
-        <button class="btn btn-danger" name="unfollowUser" type="submit">Unfollow</button>
-        </form>
-        <?php
-        } else {
-        ?>
-        <form action="" method="post">
-        <button class="btn btn-success" name="followUser" type="submit">Follow</button>
-        </form>
-        <?php
-        }*/
-?>
-
       </li>
 <?php
     }
@@ -482,18 +440,11 @@ function printPost($userID) {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
     $sql    = "SELECT * FROM Tweet WHERE userID = '$userID' ORDER BY date DESC";
     $result = mysqli_query($conn, $sql);
-?>
-
-
-<?php
     while ($row = $result->fetch_assoc()) {
 ?>
-      <li class="list-group-item quack">
+      <li class="list-group-item profile-quack-card-bg">
       <div class="text-danger"><?php echo date_format(date_create($row['date']), 'd M y - g:i A'); ?></div>
 <?php
-        //    foreach ($row as $value) {
-        echo "<div class=\"mx-2\">";
-        //echo "<h5><span class=\"float-right\"><button class=\"btn btn-danger delete-button\"><i class=\"fas fa-times\"></i> Delete</button></span></h5>";
         echo $row['tweet'];
         $retrivedTweetID = $row['tweetID'];
         $getLoggedinUserID = mysql_escape_string($_SESSION["session_id"]);
@@ -501,7 +452,6 @@ function printPost($userID) {
         $innerResult       = $conn->query($innersql);
         if ($innerResult->fetch_assoc()) {
 ?>
-
           <!-- THIS CAN BE ALTERED BASED ON FRONTEND'S DESIGN  -->
           <form action="" method="post">   <!-- if you already liked the Quack, it will show unlikeQuack button -->
           <button class="btn float-right btn-danger like mx-1" name="<?php echo $retrivedTweetID . '_unlikeQuackbtn'; ?>" type="submit" data-tippy-content="<?php echo countLikes($retrivedTweetID); ?>">
@@ -566,9 +516,8 @@ function printPost($userID) {
                 }
             }
         }
-        echo "</div></li>";
+        echo "</li>";
     }
-    echo "</ul>";
 }
 
 // ################################# Follow/Unfollow button under profile page, action #################################

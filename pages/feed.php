@@ -7,7 +7,20 @@
    <!-- <body id="feed">  //trying to fix conflicts, if this is needed can uncomment -->
    <body id="feed-bg">
       <div class="container">
-      <div class="row">
+        <div class="row">
+      <div class="col-md-2"> <!-- Display ads on the feed page, LEFT column -->
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- quackerLeft -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7253133501830941"
+     data-ad-slot="8541286842"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+      </div>
       <div class="col-md-8">
          <div class="form-group">
             <form class="form-group" action="../assets/query" method="post">
@@ -27,36 +40,21 @@
             </div>
          </div>
       </div>
-      <div class="col-md-4 d-none d-lg-block" id="follower-suggestions">
-         <div class="card my-1">
-            <div class="card-header">You May Like</div>
-            <div class="card-text">
-               <ul class="list-group ">
-                  <li class="list-group-item follow-suggestion">
-                     <h6><a href="#">
-                        <img src="https://randomuser.me/api/portraits/women/77.jpg" /> Ann Marie</a>
-                        <button class="btn btn-outline-success btn-sm float-right follow mx-1">
-                        <i class="fas fa-check"></i> Follow</button>
-                     </h6>
-                  </li>
-                  <li class="list-group-item follow-suggestion">
-                     <h6><a href="#">
-                        <img src="https://randomuser.me/api/portraits/men/94.jpg" /> Marc Anthony</a>
-                        <button class="btn btn-outline-success btn-sm float-right follow mx-1">
-                        <i class="fas fa-check"></i> Follow</button>
-                     </h6>
-                  </li>
-                  <li class="list-group-item follow-suggestion">
-                     <h6><a href="#">
-                        <img src="https://randomuser.me/api/portraits/men/89.jpg" /> John Shepherd</a>
-                        <button class="btn btn-outline-success btn-sm float-right follow mx-1">
-                        <i class="fas fa-check"></i> Follow</button>
-                     </h6>
-                  </li>
-               </ul>
-            </div>
-         </div>
+      <div class="col-md-2"> <!-- Display ads on the feed page, RIGHT column -->
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- quackerRight -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7253133501830941"
+     data-ad-slot="5357075527"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
       </div>
+</div>
+</div>
       <?php require $_SERVER['DOCUMENT_ROOT'] . '/repeated/footer.php'; ?>
       <!--These scripts tag have to run after the html elements have been loaded-->
       <script src="https://unpkg.com/popper.js@1/dist/umd/popper.min.js"></script>
