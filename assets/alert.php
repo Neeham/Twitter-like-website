@@ -131,13 +131,13 @@ if (basename($_SERVER['PHP_SELF'], '.php') == "register") {
 
 //Modifying URL for when the Alert is closed to remove the alert paramter from it.
 function modify_url( $url, $param ) {
-    $base_url = strtok($url, '?');              // Get the base url
-    $parsed_url = parse_url($url);              // Parse it
-    $query = $parsed_url['query'];              // Get the query string
+    $baseUrl = strtok($url, '?');              // Get the base url
+    $parsedUrl = parse_url($url);              // Parse it
+    $query = $parsedUrl['query'];              // Get the query string
     parse_str( $query, $parameters );           // Convert Parameters into array
     unset( $parameters[$param] );               // Delete the one you want
-    $new_query = http_build_query($parameters); // Rebuilt query string
-    return $base_url.'?'.$new_query;            // Final modified URL
+    $newQuery = http_build_query($parameters); // Rebuilt query string
+    return $baseUrl.'?'.$newQuery;            // Final modified URL
 }
 
 ?>
