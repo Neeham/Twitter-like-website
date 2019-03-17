@@ -23,6 +23,4 @@ class Test
   }
 }
 
-//adding comment to see Travis response to pull request
-
  ?>
