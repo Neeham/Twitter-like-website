@@ -24,4 +24,6 @@ class DataObjects
     return $this->localVariable;
   }
 }
+
+mysqli_close($conn);
  ?>
