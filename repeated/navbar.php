@@ -30,6 +30,11 @@
       </div>
    </div>
 </nav>
+<div id="adBlock" style="display:none">
+  <div class="container-fluid text-center" style="background-color:pink">
+    <strong style="color:red">AdBlocker Detected</strong><br> It appears that you are using an <strong>AdBlocker</strong>. Please consider adding an exception to your <strong>AdBlocker</strong> for http://www.haxstar.com <br> Haxstar/Quacker is largely supported by the advertising income. This is why our ducks are able to swim and reunite with their family! Thank you for your support :)
+  </div>
+</div>
 <!-- Pop up for Searching a User -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
    <div class="modal-dialog" role="document">
