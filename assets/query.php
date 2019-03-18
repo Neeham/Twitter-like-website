@@ -29,7 +29,7 @@ if (isset($_POST['login'])) {
                 $_SESSION["sessionID"]        = $row['userID'];
                 $_SESSION["sessionUsername"]      = $row['username'];
                 $_SESSION["sessionActivated"] = $row['emailVerification'];
-                $_SESSION["lastLoggedIn"] = date_format(date_create($row['lastLogin']), 'd M y - H:i:s');
+                $_SESSION["lastLoggedIn"] = date_format(date_create($row['lastLogin']), 'd M y - H:i');
                 header("Location: https://www.haxstar.com/pages/feed?Login=" . $_SESSION["sessionUsername"]);
                 exit;
               }
