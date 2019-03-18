@@ -15,22 +15,21 @@
                      </div>
                      <li class="list-group-item profile-card-bg text-center">
                         <img src="https://www.haxstar.com/resources/images/profilePic/<?php printProfilePage('profilepic'); ?>" class="rounded-circle"/>
-                        <br />
-                        <h5> <?php printProfilePage('name'); ?> </h5>
+                        <br>
+                        <br>
+                        <h4> <?php printProfilePage('name'); ?> </h4>
                         <p><?php printProfilePage('button'); printProfilePage('upload');?></p>
-                        <br />
-                        <h5>Email:</h5>
-                        <?php printProfilePage('email'); ?>
-                        <br /><br />
-                        <h5>Followers: <?php printProfilePage('followerCount'); ?> </h5>
-                        <h5>Following: <?php printProfilePage('followingCount'); ?> </h5>
+                        <br>
+                        <h6>Email: <?php printProfilePage('email'); ?></h6>
+                        <h6>Followers: <?php printProfilePage('followerCount'); ?> </h6>
+                        <h6>Following: <?php printProfilePage('followingCount'); ?> </h6>
                      </li>
                   </div>
                </div>
             </div>
             <div class="col-lg-6 text">
                <div class="card">
-                  <div class="card-header text-center sticky-top">
+                  <div class="card-header text-center">
                      <h5>Your Feed</h5>
                   </div>
                   <?php printProfilePage('post'); ?>
@@ -46,7 +45,7 @@
                         <?php printProfilePage('following'); ?>
                      </div>
                   </div>
-                  <div class="card my-1">
+                  <div class="card">
                      <div class="card-header text-center">
                         <h5>Followers</h5>
                      </div>
