@@ -3,7 +3,7 @@
   require $_SERVER['DOCUMENT_ROOT'] . '/repeated/header.php';
 ?>
 <nav class="navbar navbar-expand-sm bg-warning navbar-light sticky-top">
-  Last Logged in: <?php echo $_SESSION["lastLoggedIn"]; ?>
+  Last Logged in: <?php echo $_SESSION["sessionLastLoggedIn"]; ?>
    <div class="container">
       <a class="navbar-brand" href="https://www.haxstar.com/pages/feed?Login=<?php echo $_SESSION["sessionUsername"]; ?>"><img
          src="https://haxstar.com/resources/images/logo/duck.png" height="35px" /></a>

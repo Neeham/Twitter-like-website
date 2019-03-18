@@ -1,11 +1,12 @@
 <head>
+  <!--NEED TO RE-ADD THIS SCRIPT WITH MORE CONTENT FOR GOOGLE APPROVAL -->
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-7253133501830941",
-          enable_page_level_ads: true
-     });
-</script>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-7253133501830941",
+            enable_page_level_ads: true
+       });
+  </script>
    <title>Quacker</title>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
