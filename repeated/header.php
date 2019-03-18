@@ -10,8 +10,6 @@
    <title>Quacker</title>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <script type="text/javascript"> var adblock = true; </script>
-   <script type="text/javascript" src="https://haxstar.com/resources/js/adsbygoogle.js"></script>
    <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
    <link rel="apple-touch-icon" sizes="180x180" href="https://haxstar.com/resources/images/favicon/apple-touch-icon.png?v=1.1">
    <link rel="icon" type="image/png" sizes="32x32" href="https://haxstar.com/resources/images/favicon/favicon-32x32.png?v=1.1">
