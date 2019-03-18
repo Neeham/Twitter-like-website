@@ -150,7 +150,7 @@ function printFeed() {
 <?php
         echo $row['tweets'];
         $retrivedTweetID = $row['tweetID'];
-        echo '<br/>';
+        echo '<br>';
         $getLoggedinUserID = mysql_escape_string($_SESSION["session_id"]);
         $innersql          = "SELECT date FROM Liked WHERE tweetID = $retrivedTweetID AND userID = $getLoggedinUserID";
         $innerResult       = $conn->query($innersql);
