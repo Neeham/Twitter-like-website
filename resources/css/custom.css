@@ -47,9 +47,12 @@ h1{
   background-color: #ffc107;
 }
 .quack,
-.follow-suggestion,
-.profile-bg {
+.profile-quack-card-bg {
   background-color: #ffc107;
+}
+.profile-card-bg {
+  background-color: #ffc107;
+  width: 250px;
 }
 .media img {
   width: 50px;
