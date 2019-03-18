@@ -8,16 +8,7 @@
       <div class="container">
          <div class="row">
             <div class="col-md-2"> <!-- Display ads on the feed page, LEFT column -->
-               <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-               <ins class="adsbygoogle"
-                  style="display:block"
-                  data-ad-client="ca-pub-7253133501830941"
-                  data-ad-slot="8541286842"
-                  data-ad-format="auto"
-                  data-full-width-responsive="true"></ins>
-               <script>
-                  (adsbygoogle = window.adsbygoogle || []).push({});
-               </script>
+<!-- put ad here -->
             </div>
             <div class="col-md-8"> <!-- Display Quacks -->
                <div class="form-group">
@@ -39,16 +30,7 @@
                </div>
             </div>
             <div class="col-md-2"> <!-- Display ads on the feed page, RIGHT column -->
-               <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-               <ins class="adsbygoogle"
-                  style="display:block"
-                  data-ad-client="ca-pub-7253133501830941"
-                  data-ad-slot="5357075527"
-                  data-ad-format="auto"
-                  data-full-width-responsive="true"></ins>
-               <script>
-                  (adsbygoogle = window.adsbygoogle || []).push({});
-               </script>
+<!-- put ad here -->
             </div>
          </div>
       </div>
