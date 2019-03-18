@@ -1,5 +1,5 @@
 <?php
-
+//testing purposes
 include 'DataObjects.php';
 require "/home/travis/build/Neeham/Twitter-like-website/assets/config.php";
 require "/home/travis/build/Neeham/Twitter-like-website/assets/query.php";
