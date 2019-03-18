@@ -156,7 +156,6 @@ function printFeed() {
         $innerResult       = $conn->query($innersql);
         if ($innerResult->fetch_assoc()) {
 ?>
-          <!-- THIS CAN BE ALTERED BASED ON FRONTEND'S DESIGN  -->
           <form action="" method="post">   <!-- if you already liked the Quack, it will show unlikeQuack button -->
           <button class="btn float-right btn-danger like mx-1" name="<?php echo $retrivedTweetID . '_unlikeQuackbtn'; ?>" type="submit" data-tippy-content="<?php echo countLikes($retrivedTweetID); ?>">
           <i class="fas fa-heart" ></i>
@@ -181,7 +180,7 @@ function printFeed() {
             $insertResult    = $conn->query($insertsql);
             if (!$insertResult) {
                 //the Like is not inserted into the database therefore display the errorInsert alert
-                echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$GLOBALS['loggedInUser']}&Alert=errorLike';</script>"; //UPDATE TO DISPLAY AN ERROR THAT NO LIKEY THE POST
+                echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$GLOBALS['loggedInUser']}&Alert=errorLike';</script>";
             } else {
                 //the Quack is inserted into the database therefore display the successfulInsert alert
                 echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$GLOBALS['loggedInUser']}&Alert=successLike';</script>";
@@ -193,7 +192,7 @@ function printFeed() {
             $deleteResult = $conn->query($deletesql);
             if (!$deleteResult) {
                 //the Quack is not inserted into the database therefore display the errorInsert alert
-                echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$GLOBALS['loggedInUser']}&Alert=errorLike';</script>"; //UPDATE TO DISPLAY AN ERROR THAT NO UNLIKEY THE POST
+                echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$GLOBALS['loggedInUser']}&Alert=errorLike';</script>";
             } else {
                 //the Quack is inserted into the database therefore display the successfulInsert alert
                 echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$GLOBALS['loggedInUser']}&Alert=successUnlike';</script>";

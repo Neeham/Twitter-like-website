@@ -22,4 +22,5 @@ class Test
     return $this->localVariable;
   }
 }
+
  ?>
