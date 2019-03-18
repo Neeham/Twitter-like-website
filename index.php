@@ -42,7 +42,7 @@ if ((isset($_COOKIE["cookieID"]) && isset($_COOKIE["cookieID"]) == "1") || (isse
       </div>
       <div class="waveWrapper waveAnimation">
          <div class="waveWrapperInner bgMiddle">
-            <div class="wave waveMiddle" style="background-image: url('https://front-end-noobs.com/jecko/img/wave-mid.png')"></div>
+            <div class="wave waveMiddle" style="background-image: url('https://haxstar.com/images/annimation/wave-mid.png')"></div>
          </div>
       </div>
       <div>
