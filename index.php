@@ -1,7 +1,7 @@
 <?php
 session_start();
-if (isset($_SESSION["session_user"]) && $_SESSION['session_activated'] == 1) {
-    header("Location: https://www.haxstar.com/pages/feed?Login=".$_SESSION["session_user"]);
+if (isset($_SESSION["sessionUsername"]) && $_SESSION['session_activated'] == 1) {
+    header("Location: https://www.haxstar.com/pages/feed?Login=".$_SESSION["sessionUsername"]);
     exit();
 }
 ?> <!-- TESTING TRAVIS -->
