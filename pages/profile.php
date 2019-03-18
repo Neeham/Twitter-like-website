@@ -63,7 +63,7 @@
                <img src="https://www.haxstar.com/resources/images/profilePic/<?php printProfilePage('profilepic'); ?>" class="rounded-circle mobile-profile-picture"/>
             </div>
             <div class="display-4 mb-1 name-mobile">
-               <?php printProfilePage('name'); ?>
+               <?php printProfilePage('name'); printProfilePage('button');?>
             </div>
          </div>
          <div class="mobile-info ml-3 mt-3">
