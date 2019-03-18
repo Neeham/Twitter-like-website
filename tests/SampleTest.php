@@ -1,36 +1,46 @@
 <?php
-class SampleTest extends \PHPUnit_Framework_TestCase
+include 'DataObjects.php';
+require "/home/travis/build/Neeham/Twitter-like-website/assets/config.php";
+require "/home/travis/build/Neeham/Twitter-like-website/assets/query.php";
+class TestCases extends \PHPUnit_Framework_TestCase
 {
-  public function testToGetTheTextareaContent()
+  public function testToCheckIfAUserIsLoggedIn()
   {
-    //$this->assertTrue(true); //checks with assetsTrue to see if param is true
-    $object = new \tests\ObjectTest;
-
-    $object->getUsernameOfLoggedInUser();
-
-    echo "getUsernameofLoggedInUser: ".$object;
-
-    $object->setUsernameOfLoggedInUser('Checking to see if parameters are passing to ObjectTest');
-
-    echo "setUsernameofLoggedInUser: ".$object;
-
-    $this->assertNotNull($object);    //will check if the input text is empty or not (this will display through Travis CI )
+    require "/home/travis/build/Neeham/Twitter-like-website/assets/config.php";
+    require "/home/travis/build/Neeham/Twitter-like-website/assets/query.php";
+    $this->assertTrue(true); //TESTING - checks with assetsTrue to see if param is true
+    $getLoggedInUser = new DataObjects;
+    $getLoggedInUser->getUsernameOfLoggedInUser();
+    echo "getUsernameofLoggedInUser: ".$getLoggedInUser;
+    $this->assertNotNull($getLoggedInUser);    //will check if the input text is empty or not (this will display through Travis CI )
+  }
+  //core feature: post a Quack
+  public function testToCheckIfASubmittedQuackIsEmpty()
+  {
+  }
+  //core feature: follow a user
+  public function test()
+  {
+  }
+  //core feature: like a Quack
+  public function testToCheckIfCountReturnsResult()
+  {
+    //call function countLikes($getFromDataObjects)
+    //modify countLikes to return the number of likes
+    //check if the return value is an integer number
+  }
+  //additional feature: search for a user
+  public function testToCheckIfTheSearchIsEmpty()
+  {
   }
 }
-
 /*Notes
-
 Referencing this link for tutorial on tests - https://www.youtube.com/watch?v=V3xrGsUIYis
-
-
 SampleTest.php outline
-
 --> Future: see if you can associate pages like profile and feed to a namespace in order to access data
-
-
-
 $object = new class with methods like getInputText()
 $object->getInputText();
 $this->assertNotNull($object);    //will check if the input text is empty or not (this will display through Travis CI )
 */
+mysqli_close($conn);
 ?>
