@@ -12,6 +12,8 @@ script: phpunit tests/TestCases.php
 
 #script: phpunit --configuration phpunit.xml --coverage-text
 
+#TESTING
+
 #
 #language: php
 #php:
