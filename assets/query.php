@@ -1,9 +1,9 @@
 <?php
 session_start();
-$_SESSION["sessionID"];                //Session to store logged in user ID
-$_SESSION["sessionUsername"];              //Session to store logged in username
-$_SESSION["sessionActivated"];         //Session to check whether or not the user is successfully logged in
-$_SESSION["lastLoggedIn"];             //Session to store the last login time of the user
+$_SESSION["sessionID"];                 //Session to store logged in user ID
+$_SESSION["sessionUsername"];           //Session to store logged in username
+$_SESSION["sessionActivated"];          //Session to check whether or not the user is successfully logged in
+$_SESSION["sessionLastLoggedIn"];       //Session to store the last login time of the user
 $currentDateTime = date('Y-m-d H:i:s'); //Variable to store the current system time
 require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
 
@@ -26,10 +26,16 @@ if (isset($_POST['login'])) {
                 $innerResult     = $conn->query($innerSql);
                 $result   = $conn->query($sql);
                 if ($row = $result->fetch_assoc()) { // select the fields from database again and set them as sessions.
-                $_SESSION["sessionID"]        = $row['userID'];
-                $_SESSION["sessionUsername"]      = $row['username'];
-                $_SESSION["sessionActivated"] = $row['emailVerification'];
-                $_SESSION["lastLoggedIn"] = date_format(date_create($row['lastLogin']), 'd M y - H:i');
+                  $_SESSION["sessionID"]        = $row['userID'];
+                  $_SESSION["sessionUsername"]  = $row['username'];
+                  $_SESSION["sessionActivated"] = $row['emailVerification'];
+                  $_SESSION["sessionLastLoggedIn"]     = date_format(date_create($row['lastLogin']), 'd M y - H:i');
+                  if (isset($_POST['remember'])) { //if remember me is checked, set cookie for 10 days so the user won't have to relogin.
+                    setcookie("cookieID", $row['userID'], time() + (86400 * 10), "/");
+                    setcookie("cookieUsername", $row['username'], time() + (86400 * 10), "/");
+                    setcookie("cookieActivated", $row['emailVerification'], time() + (86400 * 10), "/");
+                    setcookie("cookieLoggedIn", date_format(date_create($row['lastLogin']), 'd M y - H:i'), time() + (86400 * 10), "/");
+                  }
                 header("Location: https://www.haxstar.com/pages/feed?Login=" . $_SESSION["sessionUsername"]);
                 exit;
               }
