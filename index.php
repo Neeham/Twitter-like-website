@@ -4,7 +4,7 @@ if (isset($_SESSION["session_user"]) && $_SESSION['session_activated'] == 1) {
     header("Location: https://www.haxstar.com/pages/feed?Login=".$_SESSION["session_user"]);
     exit();
 }
-?>
+?> <!-- TESTING TRAVIS -->
 <!DOCTYPE html>
 <html lang="en">
    <?php require $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php'; ?>
