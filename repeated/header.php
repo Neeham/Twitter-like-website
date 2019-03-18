@@ -6,7 +6,7 @@
           enable_page_level_ads: true
      });
 </script>
-   <title><?php echo _("Quacker") ?></title>
+   <title>Quacker</title>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <script type="text/javascript"> var adblock = true; </script>
@@ -23,7 +23,7 @@
    <meta name="theme-color" content="#ffffff">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-   <link rel="stylesheet" type="text/css" href="https://haxstar.com/resources/css/custom.css?v=1.4">
+   <link rel="stylesheet" type="text/css" href="https://haxstar.com/resources/css/custom.css?v=1.9">
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
