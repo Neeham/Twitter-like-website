@@ -3,8 +3,9 @@
   require $_SERVER['DOCUMENT_ROOT'] . '/repeated/header.php';
 ?>
 <nav class="navbar navbar-expand-sm bg-warning navbar-light sticky-top">
+  Last Logged in: <?php echo $_SESSION["lastLoggedIn"]; ?>
    <div class="container">
-      <a class="navbar-brand" href="https://www.haxstar.com/pages/feed?Login=<?php echo $_SESSION["session_user"] ?>"><img
+      <a class="navbar-brand" href="https://www.haxstar.com/pages/feed?Login=<?php echo $_SESSION["sessionUsername"]; ?>"><img
          src="https://haxstar.com/resources/images/logo/duck.png" height="35px" /></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,10 +14,10 @@
       <div class = "collapse navbar-collapse" id = "navbarSupportedContent">
          <ul class="navbar-nav">
             <li class="nav-item">
-               <a class="nav-link" href="https://www.haxstar.com/pages/profile?Login=<?php echo $_SESSION["session_user"] ?>">My Profile</a>
+               <a class="nav-link" href="https://www.haxstar.com/pages/profile?Login=<?php echo $_SESSION["sessionUsername"]; ?>">My Profile</a>
             </li>
             <li class="nav-item">
-               <a class="nav-link" href="https://www.haxstar.com/pages/feed?Login=<?php echo $_SESSION["session_user"] ?>">Feed</a>
+               <a class="nav-link" href="https://www.haxstar.com/pages/feed?Login=<?php echo $_SESSION["sessionUsername"]; ?>">Feed</a>
             </li>
          </ul>
          <ul class = "navbar-nav ml-auto">
@@ -75,7 +76,7 @@
         $(document).on('click', '#userList li', function(){
              $('#userfields').val($(this).text());
              var user = document.getElementById("userfields").value;
-             window.location.href = '<?php echo 'https://www.haxstar.com/pages/profile?Login='.$_SESSION["session_user"].'&Lookup=' ?>'+user;
+             window.location.href = '<?php echo 'https://www.haxstar.com/pages/profile?Login='.$_SESSION["sessionUsername"].'&Lookup=' ?>'+user;
              $('#userList').fadeOut();
         });
    });
