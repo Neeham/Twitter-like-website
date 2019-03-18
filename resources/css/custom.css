@@ -1,3 +1,16 @@
+.animatedBg {
+  background: gray url(https://haxstar.com/resources/images/annimation/wallpaper.png) repeat 0 0;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  height: 300px;
+  box-sizing: border-box;
+  -webkit-animation: slide 60s linear infinite;
+}
+@-webkit-keyframes slide {
+    from { background-position: 0 0; }
+    to { background-position: -400px 0; }
+}
 textarea {
   resize: none;
 }
@@ -34,7 +47,16 @@ h1 {
 #register,
 #profile,
 #login {
-  background-color: #e6ecf0;
+  background-color: #fff9e6;
+}
+.loginForm {
+  background-color: #fff9e6;
+  z-index: 1000;
+}
+.registrationForm {
+  background-color: rgb(255,255,255, 0.7);
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 .card-header {
   background-color: #ffa000;
