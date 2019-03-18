@@ -29,6 +29,5 @@
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
    <link rel="stylesheet" href="https://haxstar.com/resources/css/croppie.css" />
    <script src="https://haxstar.com/resources/js/croppie.js"></script>
-   <script src="https://haxstar.com/resources/js/checker.js"></script>
    <?php require $_SERVER['DOCUMENT_ROOT'] . '/assets/alert.php'; ?>
 </head>
