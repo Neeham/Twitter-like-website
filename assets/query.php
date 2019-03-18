@@ -441,7 +441,7 @@ function printPost($userID) {
     $result = mysqli_query($conn, $sql);
     while ($row = $result->fetch_assoc()) {
 ?>
-      <li class="list-group-item profile-quack-card-bg">
+      <li class="list-group-item profile-quack-card-bg p-4">
       <div class="text-danger"><?php echo date_format(date_create($row['date']), 'd M y - g:i A'); ?></div>
 <?php
         echo $row['tweet'];
@@ -452,19 +452,19 @@ function printPost($userID) {
         if ($innerResult->fetch_assoc()) {
 ?>
           <!-- THIS CAN BE ALTERED BASED ON FRONTEND'S DESIGN  -->
-          <form action="" method="post">   <!-- if you already liked the Quack, it will show unlikeQuack button -->
-          <button class="btn float-right btn-danger like mx-1" name="<?php echo $retrivedTweetID . '_unlikeQuackbtn'; ?>" type="submit" data-tippy-content="<?php echo countLikes($retrivedTweetID); ?>">
-          <i class="fas fa-heart" ></i>
-          </button>
+          <form action="" method="post" class = "d-inline">   <!-- if you already liked the Quack, it will show unlikeQuack button -->
+            <button class="btn float-right btn-danger like mx-1" name="<?php echo $retrivedTweetID . '_unlikeQuackbtn'; ?>" type="submit" data-tippy-content="<?php echo countLikes($retrivedTweetID); ?>">
+                <i class="fas fa-heart" ></i>
+            </button>
           </form>
 <?php
         } else {
 ?>
           <!-- THIS CAN BE ALTERED BASED ON FRONTEND'S DESIGN  -->
-          <form action="" method="post">  <!-- if you want to like the Quack, it will show likeQuack button -->
-          <button class="btn float-right btn-outline-danger like mx-1" name="<?php echo $retrivedTweetID . '_likeQuackbtn'; ?>" type="submit" data-tippy-content="<?php echo countLikes($retrivedTweetID); ?>">
-          <i class="fas fa-heart" ></i>
-          </button>
+          <form action="" method="post" class = "d-inline">  <!-- if you want to like the Quack, it will show likeQuack button -->
+            <button class="btn float-right btn-outline-danger like mx-1" name="<?php echo $retrivedTweetID . '_likeQuackbtn'; ?>" type="submit" data-tippy-content="<?php echo countLikes($retrivedTweetID); ?>">
+                <i class="fas fa-heart" ></i>
+            </button>
           </form>
 <?php
         }

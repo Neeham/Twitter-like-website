@@ -4,14 +4,14 @@ textarea {
 body {
   min-height: 400px;
   margin-bottom: 100px;
-  font-family: 'Signika', sans-serif;
+  font-family: "Signika", sans-serif;
 }
 
-h1{
-  padding-top:120px
+h1 {
+  padding-top: 120px;
 }
 
-.form-signin{
+.form-signin {
   margin-top: 50px;
 }
 
@@ -169,6 +169,10 @@ h6 img {
   #login {
     min-height: 500px;
     margin-bottom: 200px;
+  }
+
+  .profile-card-bg {
+    width: 100%;
   }
 }
 .floating-duck {
