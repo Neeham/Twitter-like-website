@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ((isset($_COOKIE["cookieID"]) && isset($_COOKIE["cookieID"]) == "1") || (isset($_SESSION["sessionID"]) && $_SESSION["sessionActivated"] == "1")) {
+if (isset($_SESSION["sessionID"]) && $_SESSION["sessionActivated"] == "1") {
     header("Location: https://www.haxstar.com/pages/feed?Login=".$_SESSION["sessionUsername"]);
     exit();
 }
