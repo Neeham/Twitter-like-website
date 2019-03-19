@@ -57,7 +57,7 @@
             </div>
          </div>
       </div> <!-- END: PROPERLY FORMATED AND WORKING WITH DATABASE -->
-      <div class="jumbotron jumbotron-fluid mobile-profile d-lg-none d-block mt-3"><!-- Mobile profile information--> 
+      <div class="jumbotron jumbotron-fluid mobile-profile d-lg-none d-block mt-3"><!-- Mobile profile information-->
          <div class="container d-flex">
             <div class="mobile-profile-picture">
                <img src="https://www.haxstar.com/resources/images/profilePic/<?php printProfilePage('profilepic'); ?>" class="rounded-circle mobile-profile-picture"/>
