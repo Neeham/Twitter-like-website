@@ -3,8 +3,9 @@
   require $_SERVER['DOCUMENT_ROOT'] . '/repeated/header.php';
 ?>
 <nav class="navbar navbar-expand-sm bg-warning navbar-light sticky-top">
+  Last Logged in: <?php echo $_SESSION["sessionLastLoggedIn"]; ?>
    <div class="container">
-      <a class="navbar-brand" href="https://www.haxstar.com/pages/feed?Login=<?php echo $_SESSION["session_user"] ?>"><img
+      <a class="navbar-brand" href="https://www.haxstar.com/pages/feed?Login=<?php echo $_SESSION["sessionUsername"]; ?>"><img
          src="https://haxstar.com/resources/images/logo/duck.png" height="35px" /></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,15 +14,15 @@
       <div class = "collapse navbar-collapse" id = "navbarSupportedContent">
          <ul class="navbar-nav">
             <li class="nav-item">
-               <a class="nav-link" href="https://www.haxstar.com/pages/profile?Login=<?php echo $_SESSION["session_user"] ?>">My Profile</a>
+               <a class="nav-link" href="https://www.haxstar.com/pages/profile?Login=<?php echo $_SESSION["sessionUsername"]; ?>">My Profile</a>
             </li>
             <li class="nav-item">
-               <a class="nav-link" href="https://www.haxstar.com/pages/feed?Login=<?php echo $_SESSION["session_user"] ?>">Feed</a>
+               <a class="nav-link" href="https://www.haxstar.com/pages/feed?Login=<?php echo $_SESSION["sessionUsername"]; ?>">Feed</a>
             </li>
          </ul>
          <ul class = "navbar-nav ml-auto">
             <li class = "nav-item">
-               <button type="button" class="btn btn-info my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal">Search a User</button>
+               <button type="button" class="btn btn-info my-2 my-sm-0" data-toggle="modal" data-target="#searchUserModal">Search a User</button>
             </li>
             <li class="nav-item ">
                <a class="nav-link p-0" href="https://www.haxstar.com/assets/logout"><button class="Logout-button btn btn-danger mx-2 my-2 my-sm-0">Log out</button></a>
@@ -32,11 +33,11 @@
 </nav>
 <div id="adBlock" style="display:none">
   <div class="container-fluid text-center" style="background-color:pink">
-    <strong style="color:red">AdBlocker Detected</strong><br> It appears that you are using an <strong>AdBlocker</strong>. Please consider adding an exception to your <strong>AdBlocker</strong> for http://www.haxstar.com <br> Haxstar/Quacker is largely supported by the advertising income. This is why our ducks are able to swim and reunite with their family! Thank you for your support :)
+    <strong style="color:red">AdBlocker Detected</strong><br> It appears that you are using an <strong>AdBlocker</strong>. Please consider adding an exception to your <strong>AdBlocker</strong> for https://www.haxstar.com <br> Haxstar/Quacker is largely supported by the advertising income. This is why our ducks are able to swim and reunite with their family! Thank you for your support :)
   </div>
 </div>
-<!-- Pop up for Searching a User -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Open the modal for Searching a User -->
+<div class="modal fade" id="searchUserModal" role="dialog" data-backdrop="static" data-keyboard="false">
    <div class="modal-dialog" role="document">
       <div class="modal-content">
          <div class="modal-header">
@@ -75,7 +76,7 @@
         $(document).on('click', '#userList li', function(){
              $('#userfields').val($(this).text());
              var user = document.getElementById("userfields").value;
-             window.location.href = '<?php echo 'https://www.haxstar.com/pages/profile?Login='.$_SESSION["session_user"].'&Lookup=' ?>'+user;
+             window.location.href = '<?php echo 'https://www.haxstar.com/pages/profile?Login='.$_SESSION["sessionUsername"].'&Lookup=' ?>'+user;
              $('#userList').fadeOut();
         });
    });

@@ -5,7 +5,7 @@
       require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
    ?>
    <body id="profile">
-      <div class="container"> <!-- START: PROPERLY FORMATED AND WORKING WITH DATABASE -->
+      <div class="container d-none d-lg-block"> <!-- START: PROPERLY FORMATED AND WORKING WITH DATABASE -->
          <div class="row">
             <div class="col-lg-3">
                <div style="position: fixed;">
@@ -35,7 +35,7 @@
                   <?php printProfilePage('post'); ?>
                </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-3 ">
                <div style="position: fixed;">
                   <div class="card">
                      <div class="card-header text-center">
@@ -57,13 +57,13 @@
             </div>
          </div>
       </div> <!-- END: PROPERLY FORMATED AND WORKING WITH DATABASE -->
-      <div class="jumbotron jumbotron-fluid mobile-profile d-lg-none d-block mt-3">
+      <div class="jumbotron jumbotron-fluid mobile-profile d-lg-none d-block mt-3"><!-- Mobile profile information-->
          <div class="container d-flex">
             <div class="mobile-profile-picture">
                <img src="https://www.haxstar.com/resources/images/profilePic/<?php printProfilePage('profilepic'); ?>" class="rounded-circle mobile-profile-picture"/>
             </div>
             <div class="display-4 mb-1 name-mobile">
-               <?php printProfilePage('name'); ?>
+               <?php printProfilePage('name'); printProfilePage('button');?>
             </div>
          </div>
          <div class="mobile-info ml-3 mt-3">
@@ -84,7 +84,7 @@
          </div>
       </div>
       <!--End row-->
-      <div class="container d-lg-none d-block">
+      <div class="container d-lg-none d-block"><!-- Mobile feed and following and followers tabs-->
          <div class="card">
             <div class="card-header">
                <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
