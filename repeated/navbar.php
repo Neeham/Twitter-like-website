@@ -22,7 +22,7 @@
          </ul>
          <ul class = "navbar-nav ml-auto">
             <li class = "nav-item">
-               <button type="button" class="btn btn-info my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal">Search a User</button>
+               <button type="button" class="btn btn-info my-2 my-sm-0" data-toggle="modal" data-target="#searchUserModal">Search a User</button>
             </li>
             <li class="nav-item ">
                <a class="nav-link p-0" href="https://www.haxstar.com/assets/logout"><button class="Logout-button btn btn-danger mx-2 my-2 my-sm-0">Log out</button></a>
@@ -37,7 +37,7 @@
   </div>
 </div>
 <!-- Pop up for Searching a User -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="searchUserModal" role="dialog" data-backdrop="static" data-keyboard="false">
    <div class="modal-dialog" role="document">
       <div class="modal-content">
          <div class="modal-header">
