@@ -1,13 +1,12 @@
-<?php
-session_start();
-if (isset($_SESSION["sessionID"]) && $_SESSION["sessionActivated"] == "1") {
-    header("Location: https://www.haxstar.com/pages/feed?Login=".$_SESSION["sessionUsername"]);
-    exit();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
-   <?php require $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php'; ?>
+   <?php require $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
+   session_start();
+   if (isset($_SESSION["sessionID"]) && $_SESSION["sessionActivated"] == "1") {
+       header("Location: https://www.haxstar.com/pages/feed?Login=".$_SESSION["sessionUsername"]);
+       exit();
+   }
+  ?>
    <body id="login">
       <nav class="navbar navbar-expand-sm bg-warning navbar-light">
          <a class="navbar-brand">

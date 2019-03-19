@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (isset($_COOKIE["cookieID"])) {
+  $_SESSION["sessionID"]               = $_COOKIE["cookieID"];
+  $_SESSION["sessionUsername"]         = $_COOKIE["cookieUsername"];
+  $_SESSION["sessionActivated"]        = $_COOKIE["cookieActivated"];
+  $_SESSION["sessionLastLoggedIn"]     = $_COOKIE["cookieLoggedIn"];
+}
+?>
 <head>
   <!--NEED TO RE-ADD THIS SCRIPT WITH MORE CONTENT FOR GOOGLE APPROVAL -->
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
