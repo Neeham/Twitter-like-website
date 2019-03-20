@@ -1,7 +1,7 @@
 <?php
-  require $_SERVER['DOCUMENT_ROOT'] . '/assets/alertsModals.php';
   require $_SERVER['DOCUMENT_ROOT'] . '/assets/loggedin.php';
   require $_SERVER['DOCUMENT_ROOT'] . '/repeated/header.php';
+  require $_SERVER['DOCUMENT_ROOT'] . '/assets/alertsModals.php';
 ?>
 <nav class="navbar navbar-expand-sm bg-warning navbar-light sticky-top">
   Last Logged in: <?php echo $_SESSION["sessionLastLoggedIn"]; ?>
