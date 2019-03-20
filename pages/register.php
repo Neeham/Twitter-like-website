@@ -46,7 +46,7 @@
                   </div>
                </div>
                <br>
-               <button class="btn btn-lg btn-warning btn-block" name="register" type="submit" disabled>Register - Disabled for Now</button><br>
+               <button class="btn btn-lg btn-warning btn-block" name="register" type="submit">Register - (Testing)</button><br>
             </form>
             <button onclick="location.href = 'https://haxstar.com/';" class="btn btn-lg btn-primary btn-block" name="login">Login</button><br>
          </div>
