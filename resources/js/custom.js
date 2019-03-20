@@ -70,3 +70,13 @@ $(document).ready(function(){
     })
   });
 });
+
+
+// Ad blocker detection
+$(document).ready(function() {
+    if(adblock)
+        $("#adBlock").show();
+        $("#ad1").hide();
+          $("#ad2").hide();
+
+});
