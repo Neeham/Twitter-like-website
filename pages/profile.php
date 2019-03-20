@@ -53,6 +53,7 @@
                         <?php printProfilePage('followers'); ?>
                      </div>
                   </div>
+
                </div>
             </div>
          </div>
