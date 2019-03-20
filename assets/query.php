@@ -22,7 +22,8 @@ if (isset($_POST['login'])) {
                 header("Location: https://www.haxstar.com/?Alert=verifyEmail");
                 exit;
             } else { //User has succesfully identify itself, therefore set lastLogin in database as the current date and time.
-                $innerSQL    = "UPDATE User SET lastLogin = '{$GLOBALS['currentDateTime']}' WHERE userID = '{$row['userID']}'";
+                $currentDateTime = date('Y-m-d H:i:s');
+                $innerSQL    = "UPDATE User SET lastLogin = '$currentDateTime' WHERE userID = '{$row['userID']}'";
                 $innerResult = $conn->query($innerSQL);
                 $result      = $conn->query($sql);
                 if ($row = $result->fetch_assoc()) { // select the fields from database again and set them as sessions.
@@ -76,7 +77,7 @@ if (isset($_POST['register'])) {
             $sql              = "INSERT INTO User (firstName,lastName,username,password,email,hash) VALUES ('$fName','$lName','$username','$secured_password','$email', '$hash')";
             $result           = $conn->query($sql);
             $to               = $email; //Sending email to user
-            $subject          = 'Quacker - Signup | Verification'; //subject of the email
+            $subject          = '=?utf-8?Q?=F0=9F=90=A5_Quacker_-_Signup_=7C_Verification_=F0=9F=90=A5?='; //subject of the email
             $message          = '
 
 
