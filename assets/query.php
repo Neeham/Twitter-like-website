@@ -4,6 +4,7 @@ $_SESSION["sessionID"];                 //Session to store logged in user ID
 $_SESSION["sessionUsername"];           //Session to store logged in username
 $_SESSION["sessionActivated"];          //Session to check whether or not the user is successfully logged in
 $_SESSION["sessionLastLoggedIn"];       //Session to store the last login time of the user
+$_SESSION["viewAllFriendListID"];       //Stores either the ID of the logged in user or the visiting profile
 $currentDateTime = date('Y-m-d H:i:s'); //Variable to store the current system time
 require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
 
@@ -268,7 +269,7 @@ if (isset($_POST['postQuackBtn'])) {
 // ################################# Display Quacks and everything that displays under profile page ######################################
 function printProfilePage($type) { //This function will take param and will do if else based on the following: name, email, post, follower count, following count
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
-    If (isset($_GET['Login']) && !empty($_GET['Login']) AND isset($_GET['Lookup']) && !empty($_GET['Lookup'])) {
+    if (isset($_GET['Login']) && !empty($_GET['Login']) AND isset($_GET['Lookup']) && !empty($_GET['Lookup'])) {
         $following = mysql_escape_string($_GET['Lookup']);
         $sql       = "SELECT userID FROM User WHERE username = '$following'";
         $result    = $conn->query($sql);
@@ -276,6 +277,7 @@ function printProfilePage($type) { //This function will take param and will do i
             if ($following == $_SESSION["sessionUsername"]) { //If the lookup user is the person itself, redirect to their profile without lookup in url
                 echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}';</script>";
             }
+            $_SESSION["viewAllFriendListID"] = $row['userID'];
             if ($type == 'profilepic') {
                 printProfile($row['userID']);
             }
@@ -313,6 +315,7 @@ function printProfilePage($type) { //This function will take param and will do i
             echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}&Alert=invalidURL';</script>";
         }
     } else {
+        $_SESSION["viewAllFriendListID"] = $_SESSION["sessionID"];
         if ($type == 'profilepic') {
             printProfile($_SESSION["sessionID"]);
         }
@@ -415,7 +418,7 @@ function followButton($userID) {
 
 function following($userID) {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
-    $sql    = "SELECT Follow.following as followingID, User.username as user, User.profilePicture as profilePic FROM Follow INNER JOIN User ON Follow.following = User.userID WHERE follower = '$userID' ORDER BY user ASC LIMIT 3";
+    $sql    = "SELECT Follow.following as followingID, User.username as user, User.profilePicture as profilePic FROM Follow INNER JOIN User ON Follow.following = User.userID WHERE follower = '$userID' ORDER BY user ASC LIMIT 2";
     $result = mysqli_query($conn, $sql);
     while ($row = $result->fetch_assoc()) {
 ?>
@@ -425,17 +428,43 @@ function following($userID) {
       </li>
 <?php
     }
+    $secondSQL    = "SELECT Follow.following as followingID, User.username as user, User.profilePicture as profilePic FROM Follow INNER JOIN User ON Follow.following = User.userID WHERE follower = '$userID' ORDER BY user ASC";
+    $secondResult = mysqli_query($conn, $secondSQL);
+    $totalResult = 0;
+    while ($row = $secondResult->fetch_assoc()) {
+      $totalResult++;
+    }
+    if ($totalResult > 2) {
+    ?>
+      <li class="list-group-item profile-card-bg text-center">
+          <button type="button" class="btn btn-info btn-sm" id="viewAllFollowing">View All</button>
+      </li>
+<?php
+    }
 }
 
 function followers($userID) {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
-    $sql    = "SELECT Follow.follower as followingID, User.username as user, User.profilePicture as profilePic FROM Follow INNER JOIN User ON Follow.follower = User.userID WHERE following = '$userID' ORDER BY user ASC LIMIT 3";
+    $sql    = "SELECT Follow.follower as followingID, User.username as user, User.profilePicture as profilePic FROM Follow INNER JOIN User ON Follow.follower = User.userID WHERE following = '$userID' ORDER BY user ASC LIMIT 2";
     $result = mysqli_query($conn, $sql);
     while ($row = $result->fetch_assoc()) {
 ?>
       <li class="list-group-item profile-card-bg">
         <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}&Lookup={$row['user']}"; ?>"><img src="https://haxstar.com/resources/images/profilePic/<?php echo $row['profilePic']; ?>" class="rounded-circle" style="height: 40px; max-width: 40px; width: 100%;"></a>
         <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}&Lookup={$row['user']}"; ?>"><?php echo $row['user']; ?></a>
+      </li>
+<?php
+    }
+    $secondSQL    = "SELECT Follow.follower as followingID, User.username as user, User.profilePicture as profilePic FROM Follow INNER JOIN User ON Follow.follower = User.userID WHERE following = '$userID' ORDER BY user ASC";
+    $secondResult = mysqli_query($conn, $secondSQL);
+    $totalResult = 0;
+    while ($row = $secondResult->fetch_assoc()) {
+      $totalResult++;
+    }
+    if ($totalResult > 2) {
+    ?>
+      <li class="list-group-item profile-card-bg text-center">
+          <button type="button" class="btn btn-info btn-sm" id="viewAllFollower">View All</button>
       </li>
 <?php
     }
@@ -521,6 +550,31 @@ function printPost($userID) {
         }
         echo "</li>";
     }
+}
+
+//WORK IN PROGRESSS!!!!!! Refer to navbar and convert this into Javascript/query, the page refresh upon clicking.
+if (isset($_POST['viewAllFollowing'])) {
+  require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
+  $secondSQL    = "SELECT Follow.following as followingID, User.username as user, User.profilePicture as profilePic FROM Follow INNER JOIN User ON Follow.following = User.userID WHERE follower = '{$_SESSION["viewAllFriendListID"]}' ORDER BY user ASC";
+  $secondResult = mysqli_query($conn, $secondSQL);
+  while ($secondRow = $secondResult->fetch_assoc()) {
+?>
+    <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}&Lookup={$secondRow['user']}"; ?>"><img src="https://haxstar.com/resources/images/profilePic/<?php echo $secondRow['profilePic']; ?>" class="rounded-circle" style="height: 40px; max-width: 40px; width: 100%;"></a>
+    <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}&Lookup={$secondRow['user']}"; ?>"><?php echo $secondRow['user']; ?></a><br><br>
+<?
+  }
+}
+
+if (isset($_POST['viewAllFollower'])) {
+  require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
+  $sql    = "SELECT Follow.follower as followingID, User.username as user, User.profilePicture as profilePic FROM Follow INNER JOIN User ON Follow.follower = User.userID WHERE following = '{$_SESSION["viewAllFriendListID"]}' ORDER BY user ASC";
+  $result = mysqli_query($conn, $sql);
+  while ($row = $result->fetch_assoc()) {
+?>
+  <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}&Lookup={$row['user']}"; ?>"><img src="https://haxstar.com/resources/images/profilePic/<?php echo $row['profilePic']; ?>" class="rounded-circle" style="height: 40px; max-width: 40px; width: 100%;"></a>
+  <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}&Lookup={$row['user']}"; ?>"><?php echo $row['user']; ?></a><br><br>
+<?
+  }
 }
 
 // ################################# Follow/Unfollow button under profile page, action #################################

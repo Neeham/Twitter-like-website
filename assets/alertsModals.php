@@ -139,5 +139,78 @@ function modify_url( $url, $param ) {
     $newQuery = http_build_query($parameters); // Rebuilt query string
     return $baseUrl.'?'.$newQuery;            // Final modified URL
 }
-
 ?>
+
+<!-- Open the modal for when "Choose file" button is clicked under profile for uploading a profile picture -->
+<div id="uploadimageModal" class="modal" role="dialog" data-backdrop="static" data-keyboard="false">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h4 class="modal-title-center">Crop & Upload Profile Picture</h4>
+            <button type="button" class="close" data-dismiss="modal" onClick="window.location.reload()">&times;</button>
+         </div>
+         <div class="modal-body">
+            <div id="imageToCrop"></div>
+         </div>
+         <div class="modal-footer">
+            <button class="btn btn-success crop_image">Upload</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" onClick="window.location.reload()">Close</button>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- Open the modal for when "View All" button is clicked under profile for following -->
+<div class="modal fade" id="myFollowingModal" role="dialog" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog modal-sm modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Following List</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body" id="displayFollowingList">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Open the modal for when "View All" button is clicked under profile for followers -->
+<div class="modal fade" id="myFollowerModal" role="dialog" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog modal-sm modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Follower List</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body" id="displayFollowerList">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Open the modal for Searching a User -->
+<div class="modal fade" id="searchUserModal" role="dialog" data-backdrop="static" data-keyboard="false">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title">Username Lookup</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <input type="text" name="userfields" id="userfields" class="form-control" placeholder="Search User" />
+            <div id="userList"></div>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+         </div>
+      </div>
+   </div>
+</div>

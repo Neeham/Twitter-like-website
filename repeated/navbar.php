@@ -36,26 +36,6 @@
     <strong style="color:red">AdBlocker Detected</strong><br> It appears that you are using an <strong>AdBlocker</strong>. Please consider adding an exception to your <strong>AdBlocker</strong> for https://www.haxstar.com <br> Haxstar/Quacker is largely supported by the advertising income. This is why our ducks are able to swim and reunite with their family! Thank you for your support :)
   </div>
 </div>
-<!-- Open the modal for Searching a User -->
-<div class="modal fade" id="searchUserModal" role="dialog" data-backdrop="static" data-keyboard="false">
-   <div class="modal-dialog" role="document">
-      <div class="modal-content">
-         <div class="modal-header">
-            <h5 class="modal-title">Username Lookup</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-         </div>
-         <div class="modal-body">
-            <input type="text" name="userfields" id="userfields" class="form-control" placeholder="Search User" />
-            <div id="userList"></div>
-         </div>
-         <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-         </div>
-      </div>
-   </div>
-</div>
 <!-- Search the database for users -->
 <script>
    $(document).ready(function(){
