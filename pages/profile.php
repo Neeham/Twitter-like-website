@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-   <?php
+<?php
       require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php';
       require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
-   ?>
+?>
    <body id="profile">
-      <div class="container d-none d-lg-block"> <!-- START: PROPERLY FORMATED AND WORKING WITH DATABASE -->
+      <div class="container d-none d-lg-block">
          <div class="row">
             <div class="col-lg-3">
                <div style="position: fixed;">
@@ -17,12 +17,12 @@
                         <img src="https://www.haxstar.com/resources/images/profilePic/<?php printProfilePage('profilepic'); ?>" class="rounded-circle"/>
                         <br>
                         <br>
-                        <h4> <?php printProfilePage('name'); ?> </h4>
-                        <p><?php printProfilePage('button'); printProfilePage('upload');?></p>
+                        <h4><?php printProfilePage('name'); ?></h4>
+                        <p><?php printProfilePage('button'); printProfilePage('upload'); ?></p>
                         <br>
                         <h6>Email: <?php printProfilePage('email'); ?></h6>
-                        <h6>Followers: <?php printProfilePage('followerCount'); ?> </h6>
-                        <h6>Following: <?php printProfilePage('followingCount'); ?> </h6>
+                        <h6>Following: <?php printProfilePage('followingCount'); ?></h6>
+                        <h6>Followers: <?php printProfilePage('followerCount'); ?></h6>
                      </li>
                   </div>
                </div>
@@ -56,14 +56,16 @@
                </div>
             </div>
          </div>
-      </div> <!-- END: PROPERLY FORMATED AND WORKING WITH DATABASE -->
-      <div class="jumbotron jumbotron-fluid mobile-profile d-lg-none d-block mt-3"><!-- Mobile profile information-->
+      </div>
+      <!-- END: PROPERLY FORMATED AND WORKING WITH DATABASE -->
+      <div class="jumbotron jumbotron-fluid mobile-profile d-lg-none d-block mt-3">
+         <!-- Mobile profile information-->
          <div class="container d-flex">
             <div class="mobile-profile-picture">
                <img src="https://www.haxstar.com/resources/images/profilePic/<?php printProfilePage('profilepic'); ?>" class="rounded-circle mobile-profile-picture"/>
             </div>
             <div class="display-4 mb-1 name-mobile">
-               <?php printProfilePage('name'); printProfilePage('button');?>
+               <?php printProfilePage('name'); printProfilePage('button'); ?>
             </div>
          </div>
          <div class="mobile-info ml-3 mt-3">
@@ -84,7 +86,8 @@
          </div>
       </div>
       <!--End row-->
-      <div class="container d-lg-none d-block"><!-- Mobile feed and following and followers tabs-->
+      <div class="container d-lg-none d-block">
+         <!-- Mobile feed and following and followers tabs-->
          <div class="card">
             <div class="card-header">
                <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
@@ -120,66 +123,3 @@
       <script src="https://www.haxstar.com/resources/js/profile.js?v=1.4"></script>
    </body>
 </html>
-<div id="uploadimageModal" class="modal" role="dialog" data-backdrop="static" data-keyboard="false">
-   <div class="modal-dialog">
-      <div class="modal-content">
-         <div class="modal-header">
-            <h4 class="modal-title-center">Crop & Upload Profile Picture</h4>
-            <button type="button" class="close" data-dismiss="modal" onClick="window.location.reload()">&times;</button>
-         </div>
-         <div class="modal-body">
-            <div id="imageToCrop"></div>
-         </div>
-         <div class="modal-footer">
-            <button class="btn btn-success crop_image">Upload</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" onClick="window.location.reload()">Close</button>
-         </div>
-      </div>
-   </div>
-</div>
-<script>
-   $(document).ready(function(){
-
-   	$image_crop = $('#imageToCrop').croppie({
-       enableExif: true,
-       viewport: {
-         width:200,
-         height:200,
-         type:'circle'
-       },
-       boundary:{
-         width:300,
-         height:300
-       }
-     });
-
-     $('#imageUpload').on('change', function(){
-       var reader = new FileReader();
-       reader.onload = function (event) {
-         $image_crop.croppie('bind', {
-           url: event.target.result
-         }).then(function(){
-         });
-       }
-       reader.readAsDataURL(this.files[0]);
-       $('#uploadimageModal').modal('show');
-     });
-
-     $('.crop_image').click(function(event){
-       $image_crop.croppie('result', {
-         type: 'canvas',
-         size: 'viewport'
-       }).then(function(response){
-         $.ajax({
-           url:"/assets/query",
-           type: "POST",
-           data:{"cropAndUpload": response},
-           success:function(data) {
-             $('#uploadimageModal').modal('hide');
-             location.reload();
-           }
-         });
-       })
-     });
-   });
-</script>

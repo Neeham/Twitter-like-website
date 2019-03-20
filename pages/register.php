@@ -2,6 +2,7 @@
 <html lang="en">
    <?php require $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php'; ?>
    <body id="register" class="animatedBg">
+      <?php require $_SERVER['DOCUMENT_ROOT'] . '/assets/alertsModals.php'; ?>
       <nav class="navbar navbar-expand-sm bg-warning navbar-light">
          <a class="navbar-brand" href="https://www.haxstar.com">
          <img src="https://haxstar.com/resources/images/logo/duck.png" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -45,7 +46,7 @@
                   </div>
                </div>
                <br>
-               <button class="btn btn-lg btn-warning btn-block" name="register" type="submit" disabled>Register - Disabled for Now</button><br>
+               <button class="btn btn-lg btn-warning btn-block" name="register" type="submit">Register - (Testing)</button><br>
             </form>
             <button onclick="location.href = 'https://haxstar.com/';" class="btn btn-lg btn-primary btn-block" name="login">Login</button><br>
          </div>

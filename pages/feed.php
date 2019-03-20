@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-   <?php
+<?php
       require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php';
       require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
-   ?>
+?>
    <body id="feed-bg">
       <div class="container">
          <div class="row">
-            <div class="col-md-2"> <!-- Display ads on the feed page, LEFT column -->
-<!-- put ad here --->
+            <div class="col-md-2">
+               <!-- Display ads on the feed page, LEFT column -->
+               <!-- put ad here --->
             </div>
-            <div class="col-md-8"> <!-- Display Quacks -->
+            <div class="col-md-8">
+               <!-- Display Quacks -->
                <div class="form-group">
                   <form class="form-group" action="../assets/query" method="post">
                      <h2 class="display-4 text-danger">Post a Quack:</h2>
@@ -29,15 +31,16 @@
                   </div>
                </div>
             </div>
-            <div class="col-md-2"> <!-- Display ads on the feed page, RIGHT column -->
-<!-- put ad here -->
+            <div class="col-md-2">
+               <!-- Display ads on the feed page, RIGHT column -->
+               <!-- put ad here -->
             </div>
          </div>
       </div>
       <?php require $_SERVER['DOCUMENT_ROOT'] . '/repeated/footer.php'; ?>
       <!--These scripts tag have to run after the html elements have been loaded-->
       <script src="https://unpkg.com/popper.js@1/dist/umd/popper.min.js"></script>
-      <script src="https://unpkg.com/tippy.js@4"> </script>
+      <script src="https://unpkg.com/tippy.js@4"></script>
       <script type="text/javascript" src="https://haxstar.com/resources/js/feed.js?v=1.4"></script>
    </body>
 </html>
