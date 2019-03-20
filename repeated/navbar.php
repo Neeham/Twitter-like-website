@@ -1,4 +1,5 @@
 <?php
+  require $_SERVER['DOCUMENT_ROOT'] . '/assets/alertsModals.php';
   require $_SERVER['DOCUMENT_ROOT'] . '/assets/loggedin.php';
   require $_SERVER['DOCUMENT_ROOT'] . '/repeated/header.php';
 ?>

@@ -20,15 +20,14 @@ if (isset($_COOKIE["cookieID"])) {
    <meta name="msapplication-TileColor" content="#da532c">
    <meta name="msapplication-config" content="https://haxstar.com/resources/images/favicon/browserconfig.xml?v=6.0">
    <meta name="theme-color" content="#ffffff">
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css?v=6.0">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css?v=6.0">
    <link rel="stylesheet" type="text/css" href="https://haxstar.com/resources/css/custom.css?v=6.0">
    <link rel="stylesheet" href="https://haxstar.com/resources/css/croppie.css?v=6.0" />
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css?v=6.0"
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js?v=6.0"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js?v=6.0"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js?v=6.0"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js?v=6.0"></script>
    <script src="https://haxstar.com/resources/js/croppie.js?v=6.0"></script>
    <script src="https://haxstar.com/resources/js/custom.js?v=6.0"></script>
 </head>
-<?php require $_SERVER['DOCUMENT_ROOT'] . '/assets/alertsModals.php'; ?>

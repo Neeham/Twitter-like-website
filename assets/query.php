@@ -1,10 +1,10 @@
 <?php
 session_start();
-$_SESSION["sessionID"];                 //Session to store logged in user ID
-$_SESSION["sessionUsername"];           //Session to store logged in username
-$_SESSION["sessionActivated"];          //Session to check whether or not the user is successfully logged in
-$_SESSION["sessionLastLoggedIn"];       //Session to store the last login time of the user
-$_SESSION["loggedInOrVisitingProfile"];       //Stores either the ID of the logged in user or the visiting profile
+$_SESSION['sessionID'];                 //Session to store logged in user ID
+$_SESSION['sessionUsername'];           //Session to store logged in username
+$_SESSION['sessionActivated'];          //Session to check whether or not the user is successfully logged in
+$_SESSION['sessionLastLoggedIn'];       //Session to store the last login time of the user
+$_SESSION['loggedInOrVisitingProfile'];       //Stores either the ID of the logged in user or the visiting profile
 $currentDateTime = date('Y-m-d H:i:s'); //Variable to store the current system time
 require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
 
@@ -27,17 +27,17 @@ if (isset($_POST['login'])) {
                 $innerResult     = $conn->query($innerSql);
                 $result   = $conn->query($sql);
                 if ($row = $result->fetch_assoc()) { // select the fields from database again and set them as sessions.
-                  $_SESSION["sessionID"]        = $row['userID'];
-                  $_SESSION["sessionUsername"]  = $row['username'];
-                  $_SESSION["sessionActivated"] = $row['emailVerification'];
-                  $_SESSION["sessionLastLoggedIn"]     = date_format(date_create($row['lastLogin']), 'd M y - H:i');
+                  $_SESSION['sessionID']        = $row['userID'];
+                  $_SESSION['sessionUsername']  = $row['username'];
+                  $_SESSION['sessionActivated'] = $row['emailVerification'];
+                  $_SESSION['sessionLastLoggedIn']     = date_format(date_create($row['lastLogin']), 'd M y - H:i');
                   if (isset($_POST['remember'])) { //if remember me is checked, set cookie for 10 days so the user won't have to relogin.
                     setcookie("cookieID", $row['userID'], time() + (86400 * 10), "/");
                     setcookie("cookieUsername", $row['username'], time() + (86400 * 10), "/");
                     setcookie("cookieActivated", $row['emailVerification'], time() + (86400 * 10), "/");
                     setcookie("cookieLoggedIn", date_format(date_create($row['lastLogin']), 'd M y - H:i'), time() + (86400 * 10), "/");
                   }
-                header("Location: https://www.haxstar.com/pages/feed?Login=" . $_SESSION["sessionUsername"]);
+                header("Location: https://www.haxstar.com/pages/feed?Login=" . $_SESSION['sessionUsername']);
                 exit;
               }
             }
@@ -128,11 +128,11 @@ if (isset($_POST["cropAndUpload"])) {
 	$image_array_1 = explode(";", $data);
 	$image_array_2 = explode(",", $image_array_1[1]);
 	$data = base64_decode($image_array_2[1]);
-	$imageName = date("Y-m-d H-i-s_") . $_SESSION["sessionID"] . '.png'; //Generate a unique filename, format: Date Time_userIDOfUploader
+	$imageName = date("Y-m-d H-i-s_") . $_SESSION['sessionID'] . '.png'; //Generate a unique filename, format: Date Time_userIDOfUploader
 	file_put_contents($_SERVER['DOCUMENT_ROOT'].'/resources/images/profilePic/'.$imageName, $data); //Upload picture to server
   $deleteFile;
   $shouldDelete =  false;
-  $sql      = "SELECT profilePicture FROM User WHERE userID = '{$_SESSION["sessionID"]}'";
+  $sql      = "SELECT profilePicture FROM User WHERE userID = '{$_SESSION['sessionID']}'";
   $result   = $conn->query($sql);
   if ($row = $result->fetch_assoc()) {
     if ($row["profilePicture"] !== "default.jpg") { //Ensuring the current profile picture is not the default picture.
@@ -140,7 +140,7 @@ if (isset($_POST["cropAndUpload"])) {
       $shouldDelete = true;
     }
   }
-  $sql = "UPDATE User SET profilePicture = '$imageName' WHERE userID = '{$_SESSION["sessionID"]}'"; //Update the uploaded file name onto the database.
+  $sql = "UPDATE User SET profilePicture = '$imageName' WHERE userID = '{$_SESSION['sessionID']}'"; //Update the uploaded file name onto the database.
   $result = $conn->query($sql);
   if ($shouldDelete = true) { //If the old profile picture was not the default picture, remove it from the server to save valuable resources.
     $path = $_SERVER['DOCUMENT_ROOT'].'/resources/images/profilePic/'.$deleteFile;
@@ -151,7 +151,7 @@ if (isset($_POST["cropAndUpload"])) {
 // ################################# Display Quack on Feed ######################################
 function printFeed() {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
-    $sql    = "SELECT u.firstName AS displayName, u.userName AS username, u.profilePicture as profilePic, t.tweet as tweets, t.date as date, t.tweetID as tweetID FROM Tweet t INNER JOIN User u ON u.userID = t.userID WHERE u.userID = '{$_SESSION["sessionID"]}' OR EXISTS (SELECT 1 FROM Follow f WHERE f.follower = '{$_SESSION["sessionID"]}' AND f.following = t.userID) ORDER BY t.date DESC";
+    $sql    = "SELECT u.firstName AS displayName, u.userName AS username, u.profilePicture as profilePic, t.tweet as tweets, t.date as date, t.tweetID as tweetID FROM Tweet t INNER JOIN User u ON u.userID = t.userID WHERE u.userID = '{$_SESSION['sessionID']}' OR EXISTS (SELECT 1 FROM Follow f WHERE f.follower = '{$_SESSION['sessionID']}' AND f.following = t.userID) ORDER BY t.date DESC";
     $result = mysqli_query($conn, $sql);
     while ($row = $result->fetch_assoc()) {
 ?>
@@ -159,14 +159,14 @@ function printFeed() {
         <div class="text-danger"><?php echo date_format(date_create($row['date']), 'd M y - g:i A'); ?></div>
         <div class="media-body mx-2">
         <h5>
-          <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}&Lookup={$row['username']}"; ?>"><img src="https://haxstar.com/resources/images/profilePic/<?php echo $row['profilePic']; ?>" class="rounded-circle" style="height: 40px; max-width: 40px; width: 100%;"></a>
-          <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}&Lookup={$row['username']}"; ?>"><?php echo $row['displayName']; ?></a>
+          <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$row['username']}"; ?>"><img src="https://haxstar.com/resources/images/profilePic/<?php echo $row['profilePic']; ?>" class="rounded-circle" style="height: 40px; max-width: 40px; width: 100%;"></a>
+          <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$row['username']}"; ?>"><?php echo $row['displayName']; ?></a>
         </h5>
 <?php
         echo $row['tweets'];
         $retrivedTweetID = $row['tweetID'];
         echo '<br>';
-        $innersql          = "SELECT date FROM Liked WHERE tweetID = $retrivedTweetID AND userID = {$_SESSION["sessionID"]}";
+        $innersql          = "SELECT date FROM Liked WHERE tweetID = $retrivedTweetID AND userID = {$_SESSION['sessionID']}";
         $innerResult       = $conn->query($innersql);
         if ($innerResult->fetch_assoc()) {
 ?>
@@ -188,26 +188,26 @@ function printFeed() {
         }
 
         if (isset($_POST[$retrivedTweetID . '_likeQuackbtn'])) {
-            $insertsql       = "INSERT INTO Liked (tweetID,userID,date) VALUES ('$retrivedTweetID','{$_SESSION["sessionID"]}','{$GLOBALS['currentDateTime']}')";
+            $insertsql       = "INSERT INTO Liked (tweetID,userID,date) VALUES ('$retrivedTweetID','{$_SESSION['sessionID']}','{$GLOBALS['currentDateTime']}')";
             $insertResult    = $conn->query($insertsql);
             if (!$insertResult) {
                 //the Like is not inserted into the database therefore display the errorInsert alert
-                echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$_SESSION["sessionUsername"]}&Alert=errorLike';</script>";
+                echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$_SESSION['sessionUsername']}&Alert=errorLike';</script>";
             } else {
                 //the Quack is inserted into the database therefore display the successfulInsert alert
-                echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$_SESSION["sessionUsername"]}&Alert=successLike';</script>";
+                echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$_SESSION['sessionUsername']}&Alert=successLike';</script>";
             }
         }
 
         if (isset($_POST[$retrivedTweetID . '_unlikeQuackbtn'])) {
-            $deletesql    = "DELETE FROM Liked WHERE tweetID = '$retrivedTweetID' AND userID = '{$_SESSION["sessionID"]}'";
+            $deletesql    = "DELETE FROM Liked WHERE tweetID = '$retrivedTweetID' AND userID = '{$_SESSION['sessionID']}'";
             $deleteResult = $conn->query($deletesql);
             if (!$deleteResult) {
                 //the Quack is not inserted into the database therefore display the errorInsert alert
-                echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$_SESSION["sessionUsername"]}&Alert=errorLike';</script>";
+                echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$_SESSION['sessionUsername']}&Alert=errorLike';</script>";
             } else {
                 //the Quack is inserted into the database therefore display the successfulInsert alert
-                echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$_SESSION["sessionUsername"]}&Alert=successUnlike';</script>";
+                echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$_SESSION['sessionUsername']}&Alert=successUnlike';</script>";
             }
         }
 ?>
@@ -241,7 +241,7 @@ if (isset($_POST['postQuackBtn'])) {
     //get the input from the textbox
     $inputText       = mysql_escape_string($_POST['tweet']);
     //get the corresponding userID from the username
-    $sql             = "SELECT userID FROM User WHERE username = '{$_SESSION["sessionUsername"]}'";
+    $sql             = "SELECT userID FROM User WHERE username = '{$_SESSION['sessionUsername']}'";
     $result          = $conn->query($sql);
     //if the database returned a result (userID)
     if ($row = $result->fetch_assoc()) {
@@ -253,15 +253,15 @@ if (isset($_POST['postQuackBtn'])) {
         //check if the Quack is inserted into the database
         if (!$result) {
             //the Quack is not inserted into the database therefore display the errorInsert alert
-            header("Location: https://www.haxstar.com/pages/feed?Login=" . $_SESSION["sessionUsername"] . "&Alert=errorInsert");
+            header("Location: https://www.haxstar.com/pages/feed?Login=" . $_SESSION['sessionUsername'] . "&Alert=errorInsert");
             exit;
         } else {
             //the Quack is inserted into the database therefore display the successfulInsert alert
-            header("Location: https://www.haxstar.com/pages/feed?Login=" . $_SESSION["sessionUsername"] . "&Alert=successfulInsert");
+            header("Location: https://www.haxstar.com/pages/feed?Login=" . $_SESSION['sessionUsername'] . "&Alert=successfulInsert");
             exit;
         }
     } else { //if database didn't return userID, display the errorInsert alert
-        header("Location: https://www.haxstar.com/pages/feed?Login=" . $_SESSION["sessionUsername"] . "&Alert=errorInsert");
+        header("Location: https://www.haxstar.com/pages/feed?Login=" . $_SESSION['sessionUsername'] . "&Alert=errorInsert");
         exit;
     }
 }
@@ -274,10 +274,10 @@ function printProfilePage($type) { //This function will take param and will do i
         $sql       = "SELECT userID FROM User WHERE username = '$following'";
         $result    = $conn->query($sql);
         if ($row = $result->fetch_assoc()) {
-            if ($following == $_SESSION["sessionUsername"]) { //If the lookup user is the person itself, redirect to their profile without lookup in url
-                echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}';</script>";
+            if ($following == $_SESSION['sessionUsername']) { //If the lookup user is the person itself, redirect to their profile without lookup in url
+                echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}';</script>";
             }
-            $_SESSION["loggedInOrVisitingProfile"] = $row['userID'];
+            $_SESSION['loggedInOrVisitingProfile'] = $row['userID'];
             if ($type == 'button') {
                 followButton($row['userID']);
             }
@@ -288,38 +288,38 @@ function printProfilePage($type) { //This function will take param and will do i
                 unfollowUser($row['userID']);
             }
         } else {
-            echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}&Alert=invalidURL';</script>";
+            echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Alert=invalidURL';</script>";
         }
     } else {
-        $_SESSION["loggedInOrVisitingProfile"] = $_SESSION["sessionID"];
+        $_SESSION['loggedInOrVisitingProfile'] = $_SESSION['sessionID'];
         if ($type == 'upload') {
             printUpload();
         }
     }
 
         if ($type == 'profilepic') {
-            printProfile($_SESSION["loggedInOrVisitingProfile"]);
+            printProfile($_SESSION['loggedInOrVisitingProfile']);
         }
         if ($type == 'name') {
-            printName($_SESSION["loggedInOrVisitingProfile"]);
+            printName($_SESSION['loggedInOrVisitingProfile']);
         }
         if ($type == 'email') {
-            printEmail($_SESSION["loggedInOrVisitingProfile"]);
+            printEmail($_SESSION['loggedInOrVisitingProfile']);
         }
         if ($type == 'post') {
-            printPost($_SESSION["loggedInOrVisitingProfile"]);
+            printPost($_SESSION['loggedInOrVisitingProfile']);
         }
         if ($type == 'followerCount') {
-            printFollowerCount($_SESSION["loggedInOrVisitingProfile"]);
+            printFollowerCount($_SESSION['loggedInOrVisitingProfile']);
         }
         if ($type == 'followingCount') {
-            printFollowingCount($_SESSION["loggedInOrVisitingProfile"]);
+            printFollowingCount($_SESSION['loggedInOrVisitingProfile']);
         }
         if ($type == 'following') {
-            following($_SESSION["loggedInOrVisitingProfile"]);
+            following($_SESSION['loggedInOrVisitingProfile']);
         }
         if ($type == 'followers') {
-            followers($_SESSION["loggedInOrVisitingProfile"]);
+            followers($_SESSION['loggedInOrVisitingProfile']);
         }
 }
 
@@ -376,7 +376,7 @@ function printFollowingCount($userID) {
 
 function followButton($userID) {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
-    $sql    = "SELECT follower, following FROM Follow WHERE follower = {$_SESSION["sessionID"]} AND following = '$userID'";
+    $sql    = "SELECT follower, following FROM Follow WHERE follower = {$_SESSION['sessionID']} AND following = '$userID'";
     $result = mysqli_query($conn, $sql);
     if ($row = $result->fetch_assoc()) {
 ?>
@@ -400,8 +400,8 @@ function following($userID) {
     while ($row = $result->fetch_assoc()) {
 ?>
       <li class="list-group-item profile-card-bg">
-        <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}&Lookup={$row['user']}"; ?>"><img src="https://haxstar.com/resources/images/profilePic/<?php echo $row['profilePic']; ?>" class="rounded-circle" style="height: 40px; max-width: 40px; width: 100%;"></a>
-        <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}&Lookup={$row['user']}"; ?>"><?php echo $row['user']; ?></a>
+        <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$row['user']}"; ?>"><img src="https://haxstar.com/resources/images/profilePic/<?php echo $row['profilePic']; ?>" class="rounded-circle" style="height: 40px; max-width: 40px; width: 100%;"></a>
+        <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$row['user']}"; ?>"><?php echo $row['user']; ?></a>
       </li>
 <?php
     }
@@ -427,8 +427,8 @@ function followers($userID) {
     while ($row = $result->fetch_assoc()) {
 ?>
       <li class="list-group-item profile-card-bg">
-        <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}&Lookup={$row['user']}"; ?>"><img src="https://haxstar.com/resources/images/profilePic/<?php echo $row['profilePic']; ?>" class="rounded-circle" style="height: 40px; max-width: 40px; width: 100%;"></a>
-        <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}&Lookup={$row['user']}"; ?>"><?php echo $row['user']; ?></a>
+        <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$row['user']}"; ?>"><img src="https://haxstar.com/resources/images/profilePic/<?php echo $row['profilePic']; ?>" class="rounded-circle" style="height: 40px; max-width: 40px; width: 100%;"></a>
+        <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$row['user']}"; ?>"><?php echo $row['user']; ?></a>
       </li>
 <?php
     }
@@ -458,7 +458,7 @@ function printPost($userID) {
 <?php
         echo $row['tweet'];
         $retrivedTweetID = $row['tweetID'];
-        $innersql          = "SELECT date FROM Liked WHERE tweetID = $retrivedTweetID AND userID = {$_SESSION["sessionID"]}";
+        $innersql          = "SELECT date FROM Liked WHERE tweetID = $retrivedTweetID AND userID = {$_SESSION['sessionID']}";
         $innerResult       = $conn->query($innersql);
         if ($innerResult->fetch_assoc()) {
 ?>
@@ -483,45 +483,45 @@ function printPost($userID) {
         $currentLookup = mysql_escape_string($_GET['Lookup']);
         if (isset($_POST[$retrivedTweetID . '_likeQuackbtn'])) {
 
-            $insertsql       = "INSERT INTO Liked (tweetID,userID,date) VALUES ('$retrivedTweetID','{$_SESSION["sessionID"]}','{$GLOBALS['currentDateTime']}')";
+            $insertsql       = "INSERT INTO Liked (tweetID,userID,date) VALUES ('$retrivedTweetID','{$_SESSION['sessionID']}','{$GLOBALS['currentDateTime']}')";
             $insertResult    = $conn->query($insertsql);
 
             if (!$insertResult) {
                 if ($currentLookup != '') {
-                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}&Lookup={$currentLookup}&Alert=errorLike';</script>";
+                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$currentLookup}&Alert=errorLike';</script>";
                 } else {
                     //the Like is not inserted into the database therefore display the errorLike alert
-                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}&Alert=errorLike';</script>";
+                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Alert=errorLike';</script>";
                 }
             } else {
                 //the Quack is inserted into the database therefore display the successfulLike alert
                 if ($currentLookup != '') {
-                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}&Lookup={$currentLookup}&Alert=successLike';</script>";
+                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$currentLookup}&Alert=successLike';</script>";
                 } else {
                     //the Like is not inserted into the database therefore display the errorInsert alert
-                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}&Alert=successLike';</script>";
+                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Alert=successLike';</script>";
                 }
             }
         }
 
         if (isset($_POST[$retrivedTweetID . '_unlikeQuackbtn'])) {
-            $deletesql    = "DELETE FROM Liked WHERE tweetID = '$retrivedTweetID' AND userID = '{$_SESSION["sessionID"]}'";
+            $deletesql    = "DELETE FROM Liked WHERE tweetID = '$retrivedTweetID' AND userID = '{$_SESSION['sessionID']}'";
             $deleteResult = $conn->query($deletesql);
             if (!$deleteResult) {
                 //the Quack is not inserted into the database therefore display the errorLike alert
                 if ($currentLookup != '') {
-                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}&Lookup={$currentLookup}&Alert=errorLike';</script>";
+                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$currentLookup}&Alert=errorLike';</script>";
                 } else {
                     //the Like is not inserted into the database therefore display the errorInsert alert
-                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}&Alert=errorLike';</script>";
+                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Alert=errorLike';</script>";
                 }
             } else {
                 //the Quack is inserted into the database therefore display the successfulUnlike alert
                 if ($currentLookup != '') {
-                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}&Lookup={$currentLookup}&Alert=successUnlike';</script>";
+                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$currentLookup}&Alert=successUnlike';</script>";
                 } else {
                     //the Like is not inserted into the database therefore display the errorInsert alert
-                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}&Alert=successUnlike';</script>";
+                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Alert=successUnlike';</script>";
                 }
             }
         }
@@ -531,24 +531,24 @@ function printPost($userID) {
 
 if (isset($_POST['viewAllFollowing'])) {
   require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
-  $secondSQL    = "SELECT Follow.following as followingID, User.username as user, User.profilePicture as profilePic FROM Follow INNER JOIN User ON Follow.following = User.userID WHERE follower = '{$_SESSION["loggedInOrVisitingProfile"]}' ORDER BY user ASC";
+  $secondSQL    = "SELECT Follow.following as followingID, User.username as user, User.profilePicture as profilePic FROM Follow INNER JOIN User ON Follow.following = User.userID WHERE follower = '{$_SESSION['loggedInOrVisitingProfile']}' ORDER BY user ASC";
   $secondResult = mysqli_query($conn, $secondSQL);
   while ($secondRow = $secondResult->fetch_assoc()) {
 ?>
-    <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}&Lookup={$secondRow['user']}"; ?>"><img src="https://haxstar.com/resources/images/profilePic/<?php echo $secondRow['profilePic']; ?>" class="rounded-circle" style="height: 40px; max-width: 40px; width: 100%;"></a>
-    <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}&Lookup={$secondRow['user']}"; ?>"><?php echo $secondRow['user']; ?></a><br><br>
+    <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$secondRow['user']}"; ?>"><img src="https://haxstar.com/resources/images/profilePic/<?php echo $secondRow['profilePic']; ?>" class="rounded-circle" style="height: 40px; max-width: 40px; width: 100%;"></a>
+    <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$secondRow['user']}"; ?>"><?php echo $secondRow['user']; ?></a><br><br>
 <?
   }
 }
 
 if (isset($_POST['viewAllFollower'])) {
   require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
-  $sql    = "SELECT Follow.follower as followingID, User.username as user, User.profilePicture as profilePic FROM Follow INNER JOIN User ON Follow.follower = User.userID WHERE following = '{$_SESSION["loggedInOrVisitingProfile"]}' ORDER BY user ASC";
+  $sql    = "SELECT Follow.follower as followingID, User.username as user, User.profilePicture as profilePic FROM Follow INNER JOIN User ON Follow.follower = User.userID WHERE following = '{$_SESSION['loggedInOrVisitingProfile']}' ORDER BY user ASC";
   $result = mysqli_query($conn, $sql);
   while ($row = $result->fetch_assoc()) {
 ?>
-  <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}&Lookup={$row['user']}"; ?>"><img src="https://haxstar.com/resources/images/profilePic/<?php echo $row['profilePic']; ?>" class="rounded-circle" style="height: 40px; max-width: 40px; width: 100%;"></a>
-  <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}&Lookup={$row['user']}"; ?>"><?php echo $row['user']; ?></a><br><br>
+  <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$row['user']}"; ?>"><img src="https://haxstar.com/resources/images/profilePic/<?php echo $row['profilePic']; ?>" class="rounded-circle" style="height: 40px; max-width: 40px; width: 100%;"></a>
+  <a href="<?php echo "https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$row['user']}"; ?>"><?php echo $row['user']; ?></a><br><br>
 <?
   }
 }
@@ -561,9 +561,9 @@ if (isset($_POST['followUser'])) {
     $result = $conn->query($sql);
     if ($row = $result->fetch_assoc()) {
         $userID = $row['userID'];
-        $sql    = "INSERT INTO Follow (follower,following) VALUES ('{$_SESSION["sessionID"]}','$userID')";
+        $sql    = "INSERT INTO Follow (follower,following) VALUES ('{$_SESSION['sessionID']}','$userID')";
         $result = $conn->query($sql);
-        echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}&Lookup={$following}';</script>";
+        echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$following}';</script>";
     }
 }
 
@@ -574,9 +574,9 @@ if (isset($_POST['unfollowUser'])) {
     $result = $conn->query($sql);
     if ($row = $result->fetch_assoc()) {
         $userID = $row['userID'];
-        $sql    = "DELETE FROM Follow WHERE follower = '{$_SESSION["sessionID"]}' AND following = '$userID'";
+        $sql    = "DELETE FROM Follow WHERE follower = '{$_SESSION['sessionID']}' AND following = '$userID'";
         $result = $conn->query($sql);
-        echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}&Lookup={$following}';</script>";
+        echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$following}';</script>";
     }
 }
 
