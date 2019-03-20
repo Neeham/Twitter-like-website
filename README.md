@@ -23,11 +23,11 @@ Zohal Mir | zohalmir | zohalmir9@gmail.com | Frontend
 
 ## Languages and tools that will be used:
 * PHP
-* CSS
 * HTML
+* CSS
 * AJAX
+* Travis
 * BOOTSTRAP
 * JAVASCRIPT
 * MySQL Database
-* Travis
 * PHPMD (Static Analysis Tool)
