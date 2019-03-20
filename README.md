@@ -26,8 +26,8 @@ Zohal Mir | zohalmir | zohalmir9@gmail.com | Frontend
 * HTML
 * CSS
 * AJAX
+* Travis
 * BOOTSTRAP
 * JAVASCRIPT
 * MySQL Database
-* Travis
 * PHPMD (Static Analysis Tool)
