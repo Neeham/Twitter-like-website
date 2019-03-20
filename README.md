@@ -29,4 +29,5 @@ Zohal Mir | zohalmir | zohalmir9@gmail.com | Frontend
 * BOOTSTRAP
 * JAVASCRIPT
 * MySQL Database
+* Travis
 * PHPMD (Static Analysis Tool)
