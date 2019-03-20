@@ -4,7 +4,7 @@ $_SESSION["sessionID"];                 //Session to store logged in user ID
 $_SESSION["sessionUsername"];           //Session to store logged in username
 $_SESSION["sessionActivated"];          //Session to check whether or not the user is successfully logged in
 $_SESSION["sessionLastLoggedIn"];       //Session to store the last login time of the user
-$_SESSION["viewAllFriendListID"];       //Stores either the ID of the logged in user or the visiting profile
+$_SESSION["loggedInOrVisitingProfile"];       //Stores either the ID of the logged in user or the visiting profile
 $currentDateTime = date('Y-m-d H:i:s'); //Variable to store the current system time
 require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
 
@@ -277,25 +277,7 @@ function printProfilePage($type) { //This function will take param and will do i
             if ($following == $_SESSION["sessionUsername"]) { //If the lookup user is the person itself, redirect to their profile without lookup in url
                 echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}';</script>";
             }
-            $_SESSION["viewAllFriendListID"] = $row['userID'];
-            if ($type == 'profilepic') {
-                printProfile($row['userID']);
-            }
-            if ($type == 'name') {
-                printName($row['userID']);
-            }
-            if ($type == 'email') {
-                printEmail($row['userID']);
-            }
-            if ($type == 'post') {
-                printPost($row['userID']);
-            }
-            if ($type == 'followerCount') {
-                printFollowerCount($row['userID']);
-            }
-            if ($type == 'followingCount') {
-                printFollowingCount($row['userID']);
-            }
+            $_SESSION["loggedInOrVisitingProfile"] = $row['userID'];
             if ($type == 'button') {
                 followButton($row['userID']);
             }
@@ -305,45 +287,40 @@ function printProfilePage($type) { //This function will take param and will do i
             if ($type == 'unfollowUser') {
                 unfollowUser($row['userID']);
             }
-            if ($type == 'following') {
-                following($row['userID']);
-            }
-            if ($type == 'followers') {
-                followers($row['userID']);
-            }
         } else {
             echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION["sessionUsername"]}&Alert=invalidURL';</script>";
         }
     } else {
-        $_SESSION["viewAllFriendListID"] = $_SESSION["sessionID"];
-        if ($type == 'profilepic') {
-            printProfile($_SESSION["sessionID"]);
-        }
+        $_SESSION["loggedInOrVisitingProfile"] = $_SESSION["sessionID"];
         if ($type == 'upload') {
             printUpload();
         }
+    }
+
+        if ($type == 'profilepic') {
+            printProfile($_SESSION["loggedInOrVisitingProfile"]);
+        }
         if ($type == 'name') {
-            printName($_SESSION["sessionID"]);
+            printName($_SESSION["loggedInOrVisitingProfile"]);
         }
         if ($type == 'email') {
-            printEmail($_SESSION["sessionID"]);
+            printEmail($_SESSION["loggedInOrVisitingProfile"]);
         }
         if ($type == 'post') {
-            printPost($_SESSION["sessionID"]);
+            printPost($_SESSION["loggedInOrVisitingProfile"]);
         }
         if ($type == 'followerCount') {
-            printFollowerCount($_SESSION["sessionID"]);
+            printFollowerCount($_SESSION["loggedInOrVisitingProfile"]);
         }
         if ($type == 'followingCount') {
-            printFollowingCount($_SESSION["sessionID"]);
+            printFollowingCount($_SESSION["loggedInOrVisitingProfile"]);
         }
         if ($type == 'following') {
-            following($_SESSION["sessionID"]);
+            following($_SESSION["loggedInOrVisitingProfile"]);
         }
         if ($type == 'followers') {
-            followers($_SESSION["sessionID"]);
+            followers($_SESSION["loggedInOrVisitingProfile"]);
         }
-    }
 }
 
 function printProfile($userID) {
@@ -552,10 +529,9 @@ function printPost($userID) {
     }
 }
 
-//WORK IN PROGRESSS!!!!!! Refer to navbar and convert this into Javascript/query, the page refresh upon clicking.
 if (isset($_POST['viewAllFollowing'])) {
   require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
-  $secondSQL    = "SELECT Follow.following as followingID, User.username as user, User.profilePicture as profilePic FROM Follow INNER JOIN User ON Follow.following = User.userID WHERE follower = '{$_SESSION["viewAllFriendListID"]}' ORDER BY user ASC";
+  $secondSQL    = "SELECT Follow.following as followingID, User.username as user, User.profilePicture as profilePic FROM Follow INNER JOIN User ON Follow.following = User.userID WHERE follower = '{$_SESSION["loggedInOrVisitingProfile"]}' ORDER BY user ASC";
   $secondResult = mysqli_query($conn, $secondSQL);
   while ($secondRow = $secondResult->fetch_assoc()) {
 ?>
@@ -567,7 +543,7 @@ if (isset($_POST['viewAllFollowing'])) {
 
 if (isset($_POST['viewAllFollower'])) {
   require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
-  $sql    = "SELECT Follow.follower as followingID, User.username as user, User.profilePicture as profilePic FROM Follow INNER JOIN User ON Follow.follower = User.userID WHERE following = '{$_SESSION["viewAllFriendListID"]}' ORDER BY user ASC";
+  $sql    = "SELECT Follow.follower as followingID, User.username as user, User.profilePicture as profilePic FROM Follow INNER JOIN User ON Follow.follower = User.userID WHERE following = '{$_SESSION["loggedInOrVisitingProfile"]}' ORDER BY user ASC";
   $result = mysqli_query($conn, $sql);
   while ($row = $result->fetch_assoc()) {
 ?>
