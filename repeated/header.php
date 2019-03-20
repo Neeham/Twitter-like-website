@@ -10,6 +10,10 @@ if (isset($_COOKIE["cookieID"])) {
 <head>
    <title>Quacker</title>
    <meta charset="utf-8">
+   <!--Ad block detection script-->
+   <script type="text/javascript"> var adblock = true; </script>
+   <script type="text/javascript" src="https://haxstar.com/resources/js/adsbygoogle.js"></script>
+
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
    <link rel="apple-touch-icon" sizes="180x180" href="https://haxstar.com/resources/images/favicon/apple-touch-icon.png?v=6.0">

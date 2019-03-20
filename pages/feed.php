@@ -8,7 +8,7 @@
       <div class="container  ">
 
          <div class="row">
-           <div   class="col-md-2 position-sticky">
+           <div  id="ad1" class="col-md-2 position-sticky d-none d-lg-block">
               <!-- Display ads on the feed page, LEFT column -->
 
                             <div   class="card   ">
@@ -60,7 +60,7 @@
                   </div>
                </div>
             </div>
-            <div   class="col-md-2 position-sticky">
+            <div  id="ad2" class="col-md-2 d-none d-lg-block">
            <!-- Display ads on the feed page, Right column -->
               <div  class="card ">
 
