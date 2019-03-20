@@ -395,7 +395,7 @@ function followButton($userID) {
 
 function following($userID) {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
-    $sql    = "SELECT Follow.following as followingID, User.username as user, User.profilePicture as profilePic FROM Follow INNER JOIN User ON Follow.following = User.userID WHERE follower = '$userID' ORDER BY user ASC LIMIT 2";
+    $sql    = "SELECT Follow.following as followingID, User.username as user, User.profilePicture as profilePic FROM Follow INNER JOIN User ON Follow.following = User.userID WHERE follower = '$userID' ORDER BY RAND() ASC LIMIT 2";
     $result = mysqli_query($conn, $sql);
     while ($row = $result->fetch_assoc()) {
 ?>
@@ -422,7 +422,7 @@ function following($userID) {
 
 function followers($userID) {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
-    $sql    = "SELECT Follow.follower as followingID, User.username as user, User.profilePicture as profilePic FROM Follow INNER JOIN User ON Follow.follower = User.userID WHERE following = '$userID' ORDER BY user ASC LIMIT 2";
+    $sql    = "SELECT Follow.follower as followingID, User.username as user, User.profilePicture as profilePic FROM Follow INNER JOIN User ON Follow.follower = User.userID WHERE following = '$userID' ORDER BY RAND() ASC LIMIT 2";
     $result = mysqli_query($conn, $sql);
     while ($row = $result->fetch_assoc()) {
 ?>
