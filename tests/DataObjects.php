@@ -22,5 +22,4 @@ class DataObjects
   }
 }
 
-mysqli_close($conn);
  ?>
