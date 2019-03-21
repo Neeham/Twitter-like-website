@@ -5,7 +5,6 @@ $_SESSION['sessionUsername']; //Session to store logged in username
 $_SESSION['sessionActivated']; //Session to check whether or not the user is has succes verified their account
 $_SESSION['sessionLastLoggedIn']; //Session to store the last login time
 $_SESSION['loggedInOrVisitingProfile']; //Stores either the ID of the logged in user or the visiting profile
-$GLOBALS['currentDateTime'] = date('Y-m-d H:i:s'); //Stores the current date and time for the database inserts
 require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
 
 // ################################# VERIFY LOGIN #################################
@@ -232,7 +231,8 @@ function printFeed()
         }
         //Liking a Quack from the Feed page
         if (isset($_POST[$retrivedTweetID . '_feedLikeQuackbtn'])) {
-            $insertSQL    = "INSERT INTO Liked (tweetID,userID,date) VALUES ('$retrivedTweetID','{$_SESSION['sessionID']}','{$GLOBALS['currentDateTime']}')";
+            $currentDateTime = date('Y-m-d H:i:s');
+            $insertSQL    = "INSERT INTO Liked (tweetID,userID,date) VALUES ('$retrivedTweetID','{$_SESSION['sessionID']}','$currentDateTime')";
             $insertResult = $conn->query($insertSQL);
             if (!$insertResult) {
                 //the Like is not inserted into the database therefore display the errorInsert alert
@@ -297,7 +297,8 @@ if (isset($_POST['postQuackBtn'])) {
         //put the userID in a variable fetchedUserID
         $fetchedUserID = $row['userID'];
         //insert the logged in user's ID, the Quack, and the timestamp
-        $sql           = "INSERT INTO Tweet (userID,tweet,date) VALUES ('$fetchedUserID','$inputText','{$GLOBALS['currentDateTime']}')";
+        $currentDateTime = date('Y-m-d H:i:s');
+        $sql           = "INSERT INTO Tweet (userID,tweet,date) VALUES ('$fetchedUserID','$inputText','$currentDateTime')";
         $result        = $conn->query($sql);
         //check if the Quack is inserted into the database
         if (!$result) {
@@ -571,7 +572,8 @@ function printPost($userID)
         }
         $currentLookup = mysql_escape_string($_GET['Lookup']);
         if (isset($_POST[$retrivedTweetID . '_profileLikeQuackbtn'])) {
-            $insertSQL       = "INSERT INTO Liked (tweetID,userID,date) VALUES ('$retrivedTweetID','{$_SESSION['sessionID']}','{$GLOBALS['currentDateTime']}')";
+            $currentDateTime = date('Y-m-d H:i:s');
+            $insertSQL       = "INSERT INTO Liked (tweetID,userID,date) VALUES ('$retrivedTweetID','{$_SESSION['sessionID']}','$currentDateTime')";
             $insertResult    = $conn->query($insertSQL);
             if (!$insertResult) {
                 if (!empty($currentLookup)) {
@@ -647,7 +649,7 @@ if (isset($_POST['viewAllFollowing'])) {
 ?>"><?php
         echo $secondRow['user'];
 ?></a><br><br>
-<?
+<?php
     }
 }
 
@@ -667,7 +669,7 @@ if (isset($_POST['viewAllFollower'])) {
 ?>"><?php
         echo $row['user'];
 ?></a><br><br>
-<?
+<?php
     }
 }
 
