@@ -21,6 +21,11 @@
      verbose="false"
     >
 
+    <php>
+      <session name='sessionID' value='1' />
+    </php>
+
+
     <testsuites>
         <testsuite name="Tests Update">
         <directory>.</directory>
