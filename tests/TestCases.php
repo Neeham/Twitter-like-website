@@ -1,15 +1,15 @@
 <?php
 //testing purposes
 include 'DataObjects.php';
-//require "/home/travis/build/Neeham/Twitter-like-website/assets/config.php";
-require "/home/travis/build/Neeham/Twitter-like-website/assets/query.php";
+require "/home/travis/build/Neeham/Twitter-like-website/pages/feed.php";
+require "/home/travis/build/Neeham/Twitter-like-website/pages/profile.php";
 
 class TestCases extends \PHPUnit_Framework_TestCase
 {
   public function testToCheckIfAUserIsLoggedIn()
   {
-  //  require "/home/travis/build/Neeham/Twitter-like-website/assets/config.php";
-    require "/home/travis/build/Neeham/Twitter-like-website/assets/query.php";
+    require "/home/travis/build/Neeham/Twitter-like-website/pages/feed.php";
+    require "/home/travis/build/Neeham/Twitter-like-website/pages/profile.php";
 
     $this->assertTrue(true); //TESTING - checks with assetsTrue to see if param is true
 
