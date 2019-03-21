@@ -5,6 +5,7 @@ $_SESSION['sessionUsername']; //Session to store logged in username
 $_SESSION['sessionActivated']; //Session to check whether or not the user is has succes verified their account
 $_SESSION['sessionLastLoggedIn']; //Session to store the last login time
 $_SESSION['loggedInOrVisitingProfile']; //Stores either the ID of the logged in user or the visiting profile
+$GLOBALS['currentDateTime'] = date('Y-m-d H:i:s'); //Stores the current date and time for the database inserts
 require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
 
 // ################################# VERIFY LOGIN #################################
@@ -173,7 +174,7 @@ if (isset($_POST["cropAndUpload"])) {
     }
 }
 
-// ################################# Display Quack on Feed ######################################
+// ################################# Display the Quacks on Feed Page ######################################
 function printFeed()
 {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
@@ -206,9 +207,9 @@ function printFeed()
         $innerResult = $conn->query($innerSQL);
         if ($innerResult->fetch_assoc()) {
 ?>
-          <form action="" method="post">   <!-- if you already liked the Quack, it will show unlikeQuack button -->
+          <form action="" method="post">   <!-- if you already liked the Quack, it will show the unlikeQuack button -->
           <button class="btn float-right btn-danger like mx-1" name="<?php
-            echo $retrivedTweetID . '_unlikeQuackbtn';
+            echo $retrivedTweetID . '_feedUnlikeQuackbtn';
 ?>" type="submit" data-tippy-content="<?php
             echo countLikes($retrivedTweetID);
 ?>">
@@ -218,10 +219,9 @@ function printFeed()
 <?php
         } else {
 ?>
-          <!-- THIS CAN BE ALTERED BASED ON FRONTEND'S DESIGN  -->
-          <form action="" method="post">  <!-- if you want to like the Quack, it will show likeQuack button -->
+          <form action="" method="post">  <!-- if you want to like the Quack, it will show the likeQuack button -->
           <button class="btn float-right btn-outline-danger like mx-1" name="<?php
-            echo $retrivedTweetID . '_likeQuackbtn';
+            echo $retrivedTweetID . '_feedLikeQuackbtn';
 ?>" type="submit" data-tippy-content="<?php
             echo countLikes($retrivedTweetID);
 ?>">
@@ -230,26 +230,28 @@ function printFeed()
           </form>
 <?php
         }
-
-        if (isset($_POST[$retrivedTweetID . '_likeQuackbtn'])) {
+        //Liking a Quack from the Feed page
+        if (isset($_POST[$retrivedTweetID . '_feedLikeQuackbtn'])) {
             $insertSQL    = "INSERT INTO Liked (tweetID,userID,date) VALUES ('$retrivedTweetID','{$_SESSION['sessionID']}','{$GLOBALS['currentDateTime']}')";
             $insertResult = $conn->query($insertSQL);
             if (!$insertResult) {
                 //the Like is not inserted into the database therefore display the errorInsert alert
                 echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$_SESSION['sessionUsername']}&Alert=errorLike';</script>";
-            } else {
+            }
+            if ($insertResult) {
                 //the Quack is inserted into the database therefore display the successfulInsert alert
                 echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$_SESSION['sessionUsername']}&Alert=successLike';</script>";
             }
         }
 
-        if (isset($_POST[$retrivedTweetID . '_unlikeQuackbtn'])) {
+        if (isset($_POST[$retrivedTweetID . '_feedUnlikeQuackbtn'])) {
             $deletesql    = "DELETE FROM Liked WHERE tweetID = '$retrivedTweetID' AND userID = '{$_SESSION['sessionID']}'";
             $deleteResult = $conn->query($deletesql);
             if (!$deleteResult) {
                 //the Quack is not inserted into the database therefore display the errorInsert alert
                 echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$_SESSION['sessionUsername']}&Alert=errorLike';</script>";
-            } else {
+            }
+            if ($deleteResult) {
                 //the Quack is inserted into the database therefore display the successfulInsert alert
                 echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$_SESSION['sessionUsername']}&Alert=successUnlike';</script>";
             }
@@ -271,9 +273,11 @@ function countLikes($givenTweetID)
         while ($row = mysqli_fetch_assoc($result)) {
             if ($row['total'] == 0) {
                 echo 'Be the first to like this Quack!';
-            } else if ($row['total'] == 1) {
-                echo $row['total'] . ' user liked this Quack';
-            } else {
+            }
+            if ($row['total'] == 1) {
+                echo '1 user liked this Quack';
+            }
+            if ($row['total'] > 1) {
                 echo $row['total'] . ' users liked this Quack';
             }
         }
@@ -300,7 +304,8 @@ if (isset($_POST['postQuackBtn'])) {
             //the Quack is not inserted into the database therefore display the errorInsert alert
             header("Location: https://www.haxstar.com/pages/feed?Login=" . $_SESSION['sessionUsername'] . "&Alert=errorInsert");
             exit;
-        } else {
+        }
+        if ($result) {
             //the Quack is inserted into the database therefore display the successfulInsert alert
             header("Location: https://www.haxstar.com/pages/feed?Login=" . $_SESSION['sessionUsername'] . "&Alert=successfulInsert");
             exit;
@@ -542,7 +547,7 @@ function printPost($userID)
           <!-- THIS CAN BE ALTERED BASED ON FRONTEND'S DESIGN  -->
           <form action="" method="post" class="d-inline">   <!-- if you already liked the Quack, it will show unlikeQuack button -->
           <button class="btn float-right btn-danger like mx-1" name="<?php
-            echo $retrivedTweetID . '_unlikeQuackbtn';
+            echo $retrivedTweetID . '_profileUnlikeQuackbtn';
 ?>" type="submit" data-tippy-content="<?php
             echo countLikes($retrivedTweetID);
 ?>">
@@ -555,7 +560,7 @@ function printPost($userID)
           <!-- THIS CAN BE ALTERED BASED ON FRONTEND'S DESIGN  -->
           <form action="" method="post" class="d-inline">  <!-- if you want to like the Quack, it will show likeQuack button -->
           <button class="btn float-right btn-outline-danger like mx-1" name="<?php
-            echo $retrivedTweetID . '_likeQuackbtn';
+            echo $retrivedTweetID . '_profileLikeQuackbtn';
 ?>" type="submit" data-tippy-content="<?php
             echo countLikes($retrivedTweetID);
 ?>">
@@ -565,50 +570,55 @@ function printPost($userID)
 <?php
         }
         $currentLookup = mysql_escape_string($_GET['Lookup']);
-        if (isset($_POST[$retrivedTweetID . '_likeQuackbtn'])) {
-            $currentDateTime = date('Y-m-d H:i:s');
-            $insertSQL       = "INSERT INTO Liked (tweetID,userID,date) VALUES ('$retrivedTweetID','{$_SESSION['sessionID']}','$currentDateTime')";
+        if (isset($_POST[$retrivedTweetID . '_profileLikeQuackbtn'])) {
+            $insertSQL       = "INSERT INTO Liked (tweetID,userID,date) VALUES ('$retrivedTweetID','{$_SESSION['sessionID']}','{$GLOBALS['currentDateTime']}')";
             $insertResult    = $conn->query($insertSQL);
             if (!$insertResult) {
-                if ($currentLookup != '') {
+                if (!empty($currentLookup)) {
                     echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$currentLookup}&Alert=errorLike';</script>";
                     exit;
-                } else {
+                }
+                if (empty($currentLookup)) {
                     //the Like is not inserted into the database therefore display the errorLike alert
                     echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Alert=errorLike';</script>";
                     exit;
                 }
-            } else {
+            }
+            if ($insertResult) {
                 //the Quack is inserted into the database therefore display the successfulLike alert
-                if ($currentLookup != '') {
+                if (!empty($currentLookup)) {
                     echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$currentLookup}&Alert=successLike';</script>";
                     exit;
-                } else {
+                }
+                if (empty($currentLookup)) {
                     //the Like is not inserted into the database therefore display the errorInsert alert
                     echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Alert=successLike';</script>";
                     exit;
                 }
             }
         }
-        if (isset($_POST[$retrivedTweetID . '_unlikeQuackbtn'])) {
+        if (isset($_POST[$retrivedTweetID . '_profileUnlikeQuackbtn'])) {
             $deletesql    = "DELETE FROM Liked WHERE tweetID = '$retrivedTweetID' AND userID = '{$_SESSION['sessionID']}'";
             $deleteResult = $conn->query($deletesql);
             if (!$deleteResult) {
                 //the Quack is not inserted into the database therefore display the errorLike alert
-                if ($currentLookup != '') {
+                if (!empty($currentLookup)) {
                     echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$currentLookup}&Alert=errorLike';</script>";
                     exit;
-                } else {
+                }
+                if (empty($currentLookup)) {
                     //the Like is not inserted into the database therefore display the errorInsert alert
                     echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Alert=errorLike';</script>";
                     exit;
                 }
-            } else {
+            }
+            if ($deleteResult) {
                 //the Quack is inserted into the database therefore display the successfulUnlike alert
-                if ($currentLookup != '') {
+                if (!empty($currentLookup)) {
                     echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$currentLookup}&Alert=successUnlike';</script>";
                     exit;
-                } else {
+                }
+                if (empty($currentLookup)) {
                     //the Like is not inserted into the database therefore display the errorInsert alert
                     echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Alert=successUnlike';</script>";
                     exit;
