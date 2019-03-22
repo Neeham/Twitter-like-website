@@ -2,8 +2,6 @@
 
 class DataObjects
 {
-  protected $localVariable = '';
-
   public function testingRegistrationInput($firstName, $lastName, $username, $password, $email)
   {
     //check if first and last names do not contain numbers
@@ -17,8 +15,7 @@ class DataObjects
 
   public function __toString()
   {
-    global $localVariable;
-    return $this->localVariable;
+    return "Testing";
   }
 }
  ?>
