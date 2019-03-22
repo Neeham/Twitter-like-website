@@ -12,7 +12,7 @@ class TestCases extends \PHPUnit_Framework_TestCase
 
     echo "Return value from inputted registration data: ".$successfulRegistrationValues;
 
-    $this->assertEquals($successfulRegistrationValues, true);    //will check if the input text is empty or not (this will display through Travis CI )
+    $this->assertNotNull($successfulRegistrationValues);    //will check if the input text is empty or not (this will display through Travis CI )
   }
 
   //core feature: post a Quack
