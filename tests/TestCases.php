@@ -30,7 +30,7 @@ class TestCases extends \PHPUnit_Framework_TestCase
     $this->assertEquals($successfulQuackPost, 'true');
 
     //Input an empty Quack
-    $failureQuackPost->testingQuackPost('1', '2', '', '2019-13-17 22:28:05');
+    $failureQuackPost->testingQuackPost(1, 2, 'T', '2019-13-17 22:28:05');
     //echo "Failure: ".$failureQuackPost;
     $this->assertEquals($failureQuackPost, 'false');
 
