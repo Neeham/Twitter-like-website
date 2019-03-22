@@ -27,10 +27,10 @@ class TestCases extends \PHPUnit_Framework_TestCase
     $failureQuackPost = new DataObjects;
 
     $successfulQuackPost->testingQuackPost('Hello World');
-    echo "Successful: ".$successfulQuackPost;
+    //echo "Successful: ".$successfulQuackPost;
 
     $failureQuackPost->testingQuackPost('');
-    echo "Failure: ".$failureQuackPost;
+    //echo "Failure: ".$failureQuackPost;
 
     $this->assertEquals($successfulQuackPost, 'true');
     $this->assertEquals($failureQuackPost, 'false');

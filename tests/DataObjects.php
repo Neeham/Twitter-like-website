@@ -18,7 +18,7 @@ class DataObjects
       }
     }
     //*********TESTING
-    echo 'Firstname: '.gettype($firstName).'    Lastname: '.gettype($lastName).'    Username: '.gettype($username).'    Password: '.gettype($password).'    Email: '.gettype($email);
+    //echo 'Firstname: '.gettype($firstName).'    Lastname: '.gettype($lastName).'    Username: '.gettype($username).'    Password: '.gettype($password).'    Email: '.gettype($email);
 
     $this->variableToCheck = 'false';
     return $this->variableToCheck;
@@ -26,7 +26,7 @@ class DataObjects
 
   public function testingQuackPost($quack)
   {
-    if(!empty($quack))
+    if(!empty($quack) && (strlen($quack) < 256))
     {
       $this->variableToCheck = 'true';
       return $this->variableToCheck;
