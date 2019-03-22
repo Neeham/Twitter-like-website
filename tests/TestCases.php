@@ -99,12 +99,16 @@ class TestCases extends \PHPUnit_Framework_TestCase
       //echo "Successful: ".$successfulQuackPost;
       $this->assertEquals($successfulSearchUser, 'true');
 
-      //Liking a Quack with an invalid date
+      //Inputting an empty search
       $failureSearchUser->searchUser('');
       //echo "Successful: ".$successfulQuackPost;
       $this->assertEquals($failureSearchUser, 'false');
-  }
 
+      //Inputting an invalid username
+      $failureSearchUser->searchUser(23);
+      //echo "Successful: ".$successfulQuackPost;
+      $this->assertEquals($failureSearchUser, 'false');
+  }
 }
 
 /*Notes

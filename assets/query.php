@@ -6,6 +6,7 @@ $_SESSION['sessionActivated']; //Session to check whether or not the user is has
 $_SESSION['sessionLastLoggedIn']; //Session to store the last login time
 $_SESSION['loggedInOrVisitingProfile']; //Stores either the ID of the logged in user or the visiting profile
 require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/tests/DataObjects.php';
 
 // ################################# VERIFY LOGIN #################################
 //The goal of this method is to verify whether or not the preson can log in.
