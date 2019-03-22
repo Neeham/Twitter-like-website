@@ -8,19 +8,32 @@ class TestCases extends \PHPUnit_Framework_TestCase
     $failureRegistrationValues = new DataObjects;
 
     $successfulRegistrationValues->testingRegistrationInput('A', 'A', 'A', 'A', 'A@A.com');
-    echo "Successful: ".$successfulRegistrationValues;
+    //echo "Successful: ".$successfulRegistrationValues;
 
-    $failureRegistrationValues->testingRegistrationInput('A', 'A', 'A', 'A', 'A@.com');
-    echo "  Failure: ".$failureRegistrationValues;
+    $failureRegistrationValues->testingRegistrationInput('1234', '5678', 'A', 'A', 'A@.com');
+    //echo "  Failure: ".$failureRegistrationValues;
 
-    $this->assertEquals($successfulRegistrationValues, 'true');    //will check if the input text is empty or not (this will display through Travis CI )
+    $this->assertEquals($successfulRegistrationValues, 'true');
     $this->assertEquals($failureRegistrationValues, 'false');
   }
 
   //core feature: post a Quack
-  public function testToCheckIfASubmittedQuackIsEmpty()
+  public function testToCheckTheSubmittedQuacksCharLimit()
   {
+    //check if the input is empty (return true is not empty)
+    //check the character count is 255 or less
 
+    $successfulQuackPost = new DataObjects;
+    $failureQuackPost = new DataObjects;
+
+    $successfulQuackPost->testingQuackPost('Hello World');
+    echo "Successful: ".$successfulQuackPost;
+
+    $failureQuackPost->testingQuackPost('');
+    echo "Failure: ".$failureQuackPost;
+
+    $this->assertEquals($successfulQuackPost, 'true');
+    $this->assertEquals($failureQuackPost, 'false');
   }
 
   //core feature: follow a user
@@ -40,7 +53,7 @@ class TestCases extends \PHPUnit_Framework_TestCase
   //additional feature: search for a user
   public function testToCheckIfTheSearchIsEmpty()
   {
-
+      //check if the input is a string and not empty
   }
 
 }
