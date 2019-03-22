@@ -9,10 +9,11 @@ class TestCases extends \PHPUnit_Framework_TestCase
     $successfulRegistrationValues = new DataObjects;
 
     $successfulRegistrationValues->testingRegistrationInput('A', 'A', 'A', 'A', 'A@A.com');
+    echo testingRegistrationInput('A', 'A', 'A', 'A', 'A@A.com');
 
     echo "Return value from inputted registration data: ".$successfulRegistrationValues;
 
-    $this->assertTrue($successfulRegistrationValues);    //will check if the input text is empty or not (this will display through Travis CI )
+    $this->assertFalse($successfulRegistrationValues);    //will check if the input text is empty or not (this will display through Travis CI )
   }
 
   //core feature: post a Quack
