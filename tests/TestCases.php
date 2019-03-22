@@ -36,7 +36,7 @@ class TestCases extends \PHPUnit_Framework_TestCase
 
     //Input a Quack with a character length of 256
     $failureQuackPost->testingQuackPost('g7cAs43CRVmyWIe16akYnVjVIXXF5QFNb8PKmZoswj8geGD849myKiNR31PW4g5Ho5at0ErYepAU2SiH92INITGDOGqZ31F390YYHaUr6FLiwGFBQQNybaI9V44G56pyr9EcykgHCGtMOtcGnyLf0RNV4C16W31Rkottj7aP1x4JvPT77NI6OaaJLlsE31wKB3pgLne4H8VWG5GGu4Y4gAB9XShWcOUh3qHUkuJzC0lf0QpW3V7bYDaKLAANFeWb');
-    $this->assertEquals($failureQuackPost, 'false');
+    $this->assertEquals($failureQuackPost, 'true');
   }
 
   //core feature: follow a user
