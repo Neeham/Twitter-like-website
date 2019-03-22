@@ -26,8 +26,8 @@ class DataObjects
 
   public function testingQuackPost($userID, $quackID, $quack, $date)
   {
-    $formatDate = DateTime::createFromFormat('Y-m-d H:i:s', $date);
-    if(is_int($userID) && is_int($quackID) && !empty($quack) && (strlen($quack) < 256) && $formatDate)
+    $formatDate = date_parse($date);
+    if(is_int($userID) && is_int($quackID) && !empty($quack) && (strlen($quack) < 256) && checkdate($formatDate["month"], $formatDate["day"], $formatDate["year"]))
     {
       $this->variableToCheck = 'true';
       return $this->variableToCheck;
