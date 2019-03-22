@@ -9,7 +9,6 @@ class TestCases extends \PHPUnit_Framework_TestCase
     $successfulRegistrationValues = new DataObjects;
 
     $successfulRegistrationValues->testingRegistrationInput('A', 'A', 'A', 'A', 'A@A.com');
-    echo testingRegistrationInput('A', 'A', 'A', 'A', 'A@A.com');
 
     echo "Return value from inputted registration data: ".$successfulRegistrationValues;
 
