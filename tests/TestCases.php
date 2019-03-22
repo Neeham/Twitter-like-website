@@ -25,12 +25,12 @@ class TestCases extends \PHPUnit_Framework_TestCase
     $successfulQuackPost = new DataObjects;
     $failureQuackPost = new DataObjects;
 
-    $successfulQuackPost->testingQuackPost(1, 10, 'Hello World', '2019-03-18 22:28:05');
+    $successfulQuackPost->testingQuackPost(1, 10, 'Hello World', '2019-13-18 22:28:05');
     //echo "Successful: ".$successfulQuackPost;
     $this->assertEquals($successfulQuackPost, 'true');
 
     //Input an empty Quack
-    $failureQuackPost->testingQuackPost('1', '2', '', '2019-13-17 22:28:05');
+    $failureQuackPost->testingQuackPost('1', '2', '', '2019-03-17 22:28:05');
     //echo "Failure: ".$failureQuackPost;
     $this->assertEquals($failureQuackPost, 'false');
 
