@@ -73,7 +73,7 @@ class TestCases extends \PHPUnit_Framework_TestCase
     $successfulLikeQuack = new DataObjects;
     $failureLikeQuack = new DataObjects;
 
-    $successfulLikeQuack->likeQuack(10, 1, '2019-44-18 22:28:05');
+    $successfulLikeQuack->likeQuack(10, 1, '2019-03-18 22:28:05');
     //echo "Successful: ".$successfulQuackPost;
     $this->assertEquals($successfulLikeQuack, 'true');
 
@@ -89,9 +89,20 @@ class TestCases extends \PHPUnit_Framework_TestCase
   }
 
   // ####################################### Test Case - Search a User #######################################
-  public function testToCheckIfTheSearchIsEmpty()
+  public function testTheSearchInputIsEmpty()
   {
       //check if the input is a string and not empty
+      $successfulSearchUser = new DataObjects;
+      $failureSearchUser = new DataObjects;
+
+      $successfulSearchUser->searchUser('Oussama');
+      //echo "Successful: ".$successfulQuackPost;
+      $this->assertEquals($successfulSearchUser, 'true');
+
+      //Liking a Quack with an invalid date
+      $failureSearchUser->searchUser('');
+      //echo "Successful: ".$successfulQuackPost;
+      $this->assertEquals($failureSearchUser, 'false');
   }
 
 }

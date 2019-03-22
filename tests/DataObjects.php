@@ -64,7 +64,16 @@ class DataObjects
   }
 
 
-
+  public function searchUser($username)
+  {
+    if(!empty($username) && is_string($username))
+    {
+      $this->variableToCheck = 'true';
+      return $this->variableToCheck;
+    }
+    $this->variableToCheck = 'false';
+    return $this->variableToCheck;
+  }
 
 
   // ####################################### Object's toString to Print the Results #######################################
