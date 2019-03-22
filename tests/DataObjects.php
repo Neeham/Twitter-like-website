@@ -4,13 +4,15 @@ class DataObjects
 {
   protected $localVariable = '';
 
-  public function getUsernameOfLoggedInUser()
+  public function testingRegistrationInput($firstName, $lastName, $username, $password, $email)
   {
-    global $localVariable;
+    //check if first and last names do not contain numbers
+    if(ctype_alpha($firstName) && ctype_alpha($lastName) && is_string($username) && is_string($password) && is_string($email))
+    {
+      return true;
+    }
 
-    $localVariable = (string)$loggedInUser;
-
-    return $this->localVariable;
+    return false;
   }
 
   public function __toString()

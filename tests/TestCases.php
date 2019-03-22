@@ -1,19 +1,18 @@
 <?php
-
 include 'DataObjects.php';
 class TestCases extends \PHPUnit_Framework_TestCase
 {
-  public function testToCheckIfAUserIsLoggedIn()
+  public function testToCheckTheRegistrationValuesDataTypes()
   {
     $this->assertTrue(true); //TESTING - checks with assetsTrue to see if param is true
 
-    $getLoggedInUser = new DataObjects;
+    $successfulRegistrationValues = new DataObjects;
 
-    $getLoggedInUser->getUsernameOfLoggedInUser();
+    $successfulRegistrationValues->testingRegistrationInput("A", "A", "A", "A", "A@A.com");
 
-    echo "getUsernameofLoggedInUser: ".$getLoggedInUser;
+    echo "Return value from inputted registration data: ".$successfulRegistrationValues;
 
-    $this->assertNotNull($getLoggedInUser);    //will check if the input text is empty or not (this will display through Travis CI )
+    $this->assertTrue($successfulRegistrationValues);    //will check if the input text is empty or not (this will display through Travis CI )
   }
 
   //core feature: post a Quack
