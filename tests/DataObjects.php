@@ -22,9 +22,9 @@ class DataObjects
     echo "The input data is not considered valid. Here are the following data types: \r\n";
     echo "Firstname: ".gettype($firstName).
         "\r\nLastname: ".gettype($lastName).
-        " Username: ".gettype($username).
+        "\r\nUsername: ".gettype($username).
         "\r\nPassword: ".gettype($password).
-        "\r\nEmail: ".gettype($email));
+        "\r\nEmail: ".gettype($email);
 
     $this->variableToCheck = 'false';
     return $this->variableToCheck;
