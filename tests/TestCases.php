@@ -61,7 +61,7 @@ class TestCases extends \PHPUnit_Framework_TestCase
   }
 
   // ####################################### Test Case - Like a Quack #######################################
-  public function testToCheckIfCountReturnsResult()
+  public function testUserWantsToLikeQuack()
   {
     //call function countLikes($getFromDataObjects)
     //modify countLikes to return the number of likes
