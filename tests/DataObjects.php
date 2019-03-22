@@ -5,7 +5,7 @@ class DataObjects
   public $variableToCheck;
 
   // ####################################### Checks if the Input Registration Values are Valid #######################################
-  public function testingRegistrationInput($firstName, $lastName, $username, $password, $email)
+  public function register($firstName, $lastName, $username, $password, $email)
   {
     //if first and last names do not contain numbers and the others are strings
     if(ctype_alpha($firstName) && ctype_alpha($lastName) && is_string($username) && is_string($password) && is_string($email))
@@ -24,12 +24,23 @@ class DataObjects
     return $this->variableToCheck;
   }
 
-  public function testingQuackPost($userID, $quack, $date)
+  public function postQuack($userID, $quack, $date)
   {
     $format = 'Y-m-d H:i:s';
     $dateTime = DateTime::createFromFormat($format, $date);
 
     if(is_int($userID) && !empty($quack) && (strlen($quack) < 256) && ($dateTime instanceof DateTime && $dateTime->format('Y-m-d H:i:s') == $date))
+    {
+      $this->variableToCheck = 'true';
+      return $this->variableToCheck;
+    }
+    $this->variableToCheck = 'false';
+    return $this->variableToCheck;
+  }
+
+  public function followUser($loggedInUser, $userThatWillBeFollowed)
+  {
+    if(is_int($loggedInUser) && is_int($userThatWillBeFollowed))
     {
       $this->variableToCheck = 'true';
       return $this->variableToCheck;
