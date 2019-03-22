@@ -117,10 +117,8 @@
             </div>
          </div>
       </div>
-      <!--Container-->
+      <!-- This script tag have to run after the html elements have been loaded -->
+      <script> tippy(".like");</script>
       <?php require $_SERVER['DOCUMENT_ROOT'] . '/repeated/footer.php'; ?>
-      <script src="https://unpkg.com/popper.js@1/dist/umd/popper.min.js"></script>
-      <script src="https://unpkg.com/tippy.js@4"></script>
-      <script src="https://www.haxstar.com/resources/js/profile.js?v=1.4"></script>
    </body>
 </html>

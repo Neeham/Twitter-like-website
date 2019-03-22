@@ -37,8 +37,11 @@ h1 {
   margin: 5px;
 }
 #quack-button,
-#image-upload-button,
-#emoji-button,
+#search-user,
+#viewAllFollowing,
+#viewAllFollower,
+#imageUpload,
+#modalCloseButton,
 .reply {
   background-color: #ff5722;
   color: white;
