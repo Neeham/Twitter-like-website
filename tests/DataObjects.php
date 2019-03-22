@@ -13,18 +13,18 @@ class DataObjects
       //checks the input email's format
       if (filter_var($email, FILTER_VALIDATE_EMAIL))
       {
-        echo 'The input values for the registration of '.$username.' are considered valid \n';
+        echo 'The input values for the registration of '.$username.' are considered valid \r\n';
         $this->variableToCheck = 'true';
         return $this->variableToCheck;
       }
       echo 'The input email '.$email.' follows an invalid format \n';
     }
-    echo 'The input data is not considered valid. Here are the following data types: \n';
+    echo 'The input data is not considered valid. Here are the following data types: \r\n';
     echo '  Firstname: '.gettype($firstName).
-        '\n Lastname: '.gettype($lastName).
-        '\n Username: '.gettype($username).
-        '\n Password: '.gettype($password).
-        '\n Email: '.gettype($email);
+        '\r\n Lastname: '.gettype($lastName).
+        '\r\n Username: '.gettype($username).
+        '\r\n Password: '.gettype($password).
+        '\r\n Email: '.gettype($email);
 
     $this->variableToCheck = 'false';
     return $this->variableToCheck;
