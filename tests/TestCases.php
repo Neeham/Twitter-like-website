@@ -9,11 +9,10 @@ class TestCases extends \PHPUnit_Framework_TestCase
 
     $successfulRegistrationValues->testingRegistrationInput('A', 'A', 'A', 'A', 'A@A.com');
     //echo "Successful: ".$successfulRegistrationValues;
+    $this->assertEquals($successfulRegistrationValues, 'true');
 
     $failureRegistrationValues->testingRegistrationInput('1234', '5678', 'A', 'A', 'A@.com');
     //echo "  Failure: ".$failureRegistrationValues;
-
-    $this->assertEquals($successfulRegistrationValues, 'true');
     $this->assertEquals($failureRegistrationValues, 'false');
   }
 
@@ -28,11 +27,15 @@ class TestCases extends \PHPUnit_Framework_TestCase
 
     $successfulQuackPost->testingQuackPost('Hello World');
     //echo "Successful: ".$successfulQuackPost;
+    $this->assertEquals($successfulQuackPost, 'true');
 
+    //Input an empty Quack
     $failureQuackPost->testingQuackPost('');
     //echo "Failure: ".$failureQuackPost;
+    $this->assertEquals($failureQuackPost, 'false');
 
-    $this->assertEquals($successfulQuackPost, 'true');
+    //Input a Quack with a character length of 256
+    $failureQuackPost->testingQuackPost('g7cAs43CRVmyWIe16akYnVjVIXXF5QFNb8PKmZoswj8geGD849myKiNR31PW4g5Ho5at0ErYepAU2SiH92INITGDOGqZ31F390YYHaUr6FLiwGFBQQNybaI9V44G56pyr9EcykgHCGtMOtcGnyLf0RNV4C16W31Rkottj7aP1x4JvPT77NI6OaaJLlsE31wKB3pgLne4H8VWG5GGu4Y4gAB9XShWcOUh3qHUkuJzC0lf0QpW3V7bYDaKLAANFeWb');
     $this->assertEquals($failureQuackPost, 'false');
   }
 
