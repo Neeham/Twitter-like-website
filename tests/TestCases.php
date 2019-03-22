@@ -10,7 +10,7 @@ class TestCases extends \PHPUnit_Framework_TestCase
     $successfulRegistrationValues->testingRegistrationInput('A', 'A', 'A', 'A', 'A@A.com');
     echo "Successful: ".$successfulRegistrationValues;
 
-    $failureRegistrationValues->testingRegistrationInput('A', 'A', 'A', 'A', 'A');
+    $failureRegistrationValues->testingRegistrationInput('A', 'A', 'A', 'A', 'A@.com');
     echo "  Failure: ".$failureRegistrationValues;
 
     $this->assertEquals($successfulRegistrationValues, 'true');    //will check if the input text is empty or not (this will display through Travis CI )
