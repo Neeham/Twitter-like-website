@@ -20,7 +20,7 @@ class DataObjects
 
   public function __toString()
   {
-    return $this->variableToCheck;
+    return $variableToCheck = 'true';
   }
 }
  ?>
