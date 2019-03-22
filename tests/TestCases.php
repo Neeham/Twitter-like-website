@@ -59,5 +59,4 @@ $object = new class with methods like getInputText()
 $object->getInputText();
 $this->assertNotNull($object);    //will check if the input text is empty or not (this will display through Travis CI )
 */
-mysqli_close($conn);
 ?>
