@@ -1,12 +1,10 @@
 <?php
-
+$variableToCheck = '';
 class DataObjects
 {
-
-  global $variableToCheck;
-
   public function testingRegistrationInput($firstName, $lastName, $username, $password, $email)
   {
+    global $variableToCheck;
     //check if first and last names do not contain numbers
     if(ctype_alpha($firstName) && ctype_alpha($lastName) && is_string($username) && is_string($password) && is_string($email))
     {
@@ -21,6 +19,7 @@ class DataObjects
 
   public function __toString()
   {
+    global $variableToCheck;
     return $this->variableToCheck;
   }
 }
