@@ -24,12 +24,12 @@ class DataObjects
     return $this->variableToCheck;
   }
 
-  public function testingQuackPost($userID, $quackID, $quack, $date)
+  public function testingQuackPost($userID, $quack, $date)
   {
     $format = 'Y-m-d H:i:s';
     $dateTime = DateTime::createFromFormat($format, $date);
 
-    if(is_int($userID) && is_int($quackID) && !empty($quack) && (strlen($quack) < 256) && ($dateTime instanceof DateTime && $dateTime->format('Y-m-d H:i:s') == $date))
+    if(is_int($userID) && !empty($quack) && (strlen($quack) < 256) && ($dateTime instanceof DateTime && $dateTime->format('Y-m-d H:i:s') == $date))
     {
       $this->variableToCheck = 'true';
       return $this->variableToCheck;

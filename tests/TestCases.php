@@ -2,10 +2,13 @@
 include 'DataObjects.php';
 class TestCases extends \PHPUnit_Framework_TestCase
 {
-  public function testToCheckTheRegistrationValuesDataTypes()
+  $successfulRegistrationValues = new DataObjects;
+  $failureRegistrationValues = new DataObjects;
+  // ####################################### Test Case - Registration #######################################
+  public function testTheRegistrationInputValuesDataTypes()
   {
-    $successfulRegistrationValues = new DataObjects;
-    $failureRegistrationValues = new DataObjects;
+  //  $successfulRegistrationValues = new DataObjects;
+  //  $failureRegistrationValues = new DataObjects;
 
     $successfulRegistrationValues->testingRegistrationInput('A', 'A', 'A', 'A', 'A@A.com');
     //echo "Successful: ".$successfulRegistrationValues;
@@ -16,36 +19,38 @@ class TestCases extends \PHPUnit_Framework_TestCase
     $this->assertEquals($failureRegistrationValues, 'false');
   }
 
-  //core feature: post a Quack
-  public function testToCheckTheSubmittedQuacksCharLimit()
+  // ####################################### Test Case - Post a Quack #######################################
+  public function testTheInputQuacksCharLimit()
   {
-    //check if the input is empty (return true is not empty)
-    //check the character count is 255 or less
+    //$successfulQuackPost = new DataObjects;
+  //  $failureQuackPost = new DataObjects;
 
-    $successfulQuackPost = new DataObjects;
-    $failureQuackPost = new DataObjects;
-
-    $successfulQuackPost->testingQuackPost(1, 10, 'Hello World', '2019-03-18 22:28:05');
+    $successfulQuackPost->testingQuackPost(1, 'Hello World', '2019-03-18 22:28:05');
     //echo "Successful: ".$successfulQuackPost;
     $this->assertEquals($successfulQuackPost, 'true');
 
+    //Input a Quack with an invalid date
+    $failureQuackPost->testingQuackPost(1, 'Hello World', '2019-13-17 22:28:05');
+    //echo "Failure: ".$failureQuackPost;
+    $this->assertEquals($failureQuackPost, 'false');
+
     //Input an empty Quack
-    $failureQuackPost->testingQuackPost(1, 2, 'T', '2019-13-17 22:28:05');
+    $failureQuackPost->testingQuackPost(1, '', '2019-03-17 22:28:05');
     //echo "Failure: ".$failureQuackPost;
     $this->assertEquals($failureQuackPost, 'false');
 
     //Input a Quack with a character length of 256
-    $failureQuackPost->testingQuackPost(1, 10, 'g7cAs43CRVmyWIe16akYnVjVIXXF5QFNb8PKmZoswj8geGD849myKiNR31PW4g5Ho5at0ErYepAU2SiH92INITGDOGqZ31F390YYHaUr6FLiwGFBQQNybaI9V44G56pyr9EcykgHCGtMOtcGnyLf0RNV4C16W31Rkottj7aP1x4JvPT77NI6OaaJLlsE31wKB3pgLne4H8VWG5GGu4Y4gAB9XShWcOUh3qHUkuJzC0lf0QpW3V7bYDaKLAANFeWb', '2019-03-13 22:28:05');
+    $failureQuackPost->testingQuackPost(1, 'g7cAs43CRVmyWIe16akYnVjVIXXF5QFNb8PKmZoswj8geGD849myKiNR31PW4g5Ho5at0ErYepAU2SiH92INITGDOGqZ31F390YYHaUr6FLiwGFBQQNybaI9V44G56pyr9EcykgHCGtMOtcGnyLf0RNV4C16W31Rkottj7aP1x4JvPT77NI6OaaJLlsE31wKB3pgLne4H8VWG5GGu4Y4gAB9XShWcOUh3qHUkuJzC0lf0QpW3V7bYDaKLAANFeWb', '2019-03-13 22:28:05');
     $this->assertEquals($failureQuackPost, 'false');
   }
 
-  //core feature: follow a user
-  public function test()
+  // ####################################### Test Case - Follow a User #######################################
+  public function testUserWantsToFollowAnotherUser()
   {
     //check if the users involved in the following process both have userIDs as intergers
   }
 
-  //core feature: like a Quack
+  // ####################################### Test Case - Like a Quack #######################################
   public function testToCheckIfCountReturnsResult()
   {
     //call function countLikes($getFromDataObjects)
@@ -56,7 +61,7 @@ class TestCases extends \PHPUnit_Framework_TestCase
     //check if the date is in the proper format
   }
 
-  //additional feature: search for a user
+  // ####################################### Test Case - Search a User #######################################
   public function testToCheckIfTheSearchIsEmpty()
   {
       //check if the input is a string and not empty
