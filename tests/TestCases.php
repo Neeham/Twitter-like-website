@@ -4,15 +4,17 @@ class TestCases extends \PHPUnit_Framework_TestCase
 {
   public function testToCheckTheRegistrationValuesDataTypes()
   {
-    $this->assertTrue(true); //TESTING - checks with assetsTrue to see if param is true
-
     $successfulRegistrationValues = new DataObjects;
+    $failureRegistrationValues = new DataObjects;
 
     $successfulRegistrationValues->testingRegistrationInput('A', 'A', 'A', 'A', 'A@A.com');
+    echo "Successful: ".$successfulRegistrationValues;
 
-    echo "Return value from inputted registration data: ".$successfulRegistrationValues;
+    $failureRegistrationValues->testingRegistrationInput('1234', '5678', 'A', 'A', 'A@A.com');
+    echo "  Failure: ".$failureRegistrationValues;
 
-    $this->assertEquals($successfulRegistrationValues, true);    //will check if the input text is empty or not (this will display through Travis CI )
+    $this->assertEquals($successfulRegistrationValues, 'true');    //will check if the input text is empty or not (this will display through Travis CI )
+    $this->assertEquals($failureRegistrationValues, 'false');
   }
 
   //core feature: post a Quack
