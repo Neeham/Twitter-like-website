@@ -32,6 +32,9 @@ class DataObjects
       $this->variableToCheck = 'true';
       return $this->variableToCheck;
     }
+
+    echo 'Year: '.$formatDate["year"].' Month: '.$formatDate["month"].' Day: '.$formatDate["day"].'     ';
+
     $this->variableToCheck = 'false';
     return $this->variableToCheck;
   }
