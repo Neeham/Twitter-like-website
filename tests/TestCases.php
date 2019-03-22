@@ -73,7 +73,7 @@ class TestCases extends \PHPUnit_Framework_TestCase
     $successfulLikeQuack = new DataObjects;
     $failureLikeQuack = new DataObjects;
 
-    $successfulLikeQuack->likeQuack(10, 1, '2019-03-18 22:28:05');
+    $successfulLikeQuack->likeQuack(10, 1, '2019-44-18 22:28:05');
     //echo "Successful: ".$successfulQuackPost;
     $this->assertEquals($successfulLikeQuack, 'true');
 
