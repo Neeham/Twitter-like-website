@@ -37,8 +37,11 @@ h1 {
   margin: 5px;
 }
 #quack-button,
-#image-upload-button,
-#emoji-button,
+#search-user,
+#viewAllFollowing,
+#viewAllFollower,
+#imageUpload,
+#modalCloseButton,
 .reply {
   background-color: #ff5722;
   color: white;
@@ -54,7 +57,7 @@ h1 {
   z-index: 1000;
 }
 .registrationForm {
-  background-color: rgb(255,255,255, 0.7);
+  background-color: rgb(255,255,255, 0.8);
   margin-top: 50px;
   margin-bottom: 50px;
 }

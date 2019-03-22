@@ -94,12 +94,9 @@
               </div>
             </div>
          </div>
-
       </div>
-      <?php require $_SERVER['DOCUMENT_ROOT'] . '/repeated/footer.php'; ?>
-      <!--These scripts tag have to run after the html elements have been loaded-->
-      <script src="https://unpkg.com/popper.js@1/dist/umd/popper.min.js"></script>
-      <script src="https://unpkg.com/tippy.js@4"></script>
+      <!-- This script tag have to run after the html elements have been loaded -->
       <script type="text/javascript" src="https://haxstar.com/resources/js/feed.js?v=1.4"></script>
+      <?php require $_SERVER['DOCUMENT_ROOT'] . '/repeated/footer.php'; ?>
    </body>
 </html>
