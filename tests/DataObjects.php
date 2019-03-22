@@ -17,16 +17,16 @@ class DataObjects
         $this->variableToCheck = 'true';
         return $this->variableToCheck;
       }
-      echo "\r\nThe input email $email follows an invalid format";
+      echo "\r\nProblem: The input email $email follows an invalid format";
       $this->variableToCheck = 'false';
       return $this->variableToCheck;
     }
-    echo "\r\nSome registration inputs are not considered valid. Here are the following data types: ";
-    echo "\r\nFirstname: ".gettype($firstName)."    Requires: String".
-         "\r\nLastname: ".gettype($lastName)."    Requires: String".
-         "\r\nUsername: ".gettype($username)."    Requires: String".
-         "\r\nPassword: ".gettype($password)."    Requires: String".
-         "\r\nEmail: ".gettype($email)."    Requires: String containing the email format";
+    echo "\r\nProblem: Some registration inputs are not considered valid. Here are the following data types: ";
+    echo "\r\nFirstname: ".gettype($firstName)."               Requires: String".
+         "\r\nLastname: ".gettype($lastName)."               Requires: String".
+         "\r\nUsername: ".gettype($username)."               Requires: String".
+         "\r\nPassword: ".gettype($password)."               Requires: String".
+         "\r\nEmail: ".gettype($email)."               Requires: String containing the email format";
 
     $this->variableToCheck = 'false';
     return $this->variableToCheck;
@@ -45,15 +45,15 @@ class DataObjects
 
     if(!($dateTime instanceof DateTime && $dateTime->format('Y-m-d H:i:s') == $date))
     {
-      echo "\r\nThe input time and date $date is invalid";
+      echo "\r\nProblem: The input date and time $date is invalid";
       $this->variableToCheck = 'false';
       return $this->variableToCheck;
     }
 
     echo "\r\nSome post inputs are not considered valid. Here are the following data types: ";
-    echo "\r\nUser ID: ".gettype($userID)."    Requires: Int".
-         "\r\nQuack: ".gettype($quack)."    Requires: String with length between 1 to 255".
-         "\r\nDate and Time: ".gettype($date)."    Requires: String containing the format Y-m-d H:i:s (YYYY-MM-DD HH:MM:SS)";
+    echo "\r\nUser ID: ".gettype($userID)."               Requires: integer".
+         "\r\nQuack: ".gettype($quack)."                  Requires: String with length between 1 to 255".
+         "\r\nDate and Time: ".gettype($date)."               Requires: String containing the format Y-m-d H:i:s (YYYY-MM-DD HH:MM:SS)";
 
     $this->variableToCheck = 'false';
     return $this->variableToCheck;
@@ -63,9 +63,16 @@ class DataObjects
   {
     if(is_int($loggedInUser) && is_int($userThatWillBeFollowed))
     {
+      echo "\r\nThe input values for following a user are considered valid";
       $this->variableToCheck = 'true';
       return $this->variableToCheck;
     }
+
+    echo "\r\nProblem: Some follow inputs are not considered valid. Here are the following data types: ";
+    echo "\r\nUser ID: ".gettype($userID)."               Requires: integer".
+         "\r\nQuack: ".gettype($quack)."               Requires: String with length between 1 to 255".
+         "\r\nDate and Time: ".gettype($date)."               Requires: String containing the format Y-m-d H:i:s (YYYY-MM-DD HH:MM:SS)";
+
     $this->variableToCheck = 'false';
     return $this->variableToCheck;
   }
@@ -77,9 +84,22 @@ class DataObjects
 
     if(is_int($quackID) && is_int($userID) && ($dateTime instanceof DateTime && $dateTime->format('Y-m-d H:i:s') == $date))
     {
+      echo "\r\nThe input values for liking a Quack are considered valid";
       $this->variableToCheck = 'true';
       return $this->variableToCheck;
     }
+    if(!($dateTime instanceof DateTime && $dateTime->format('Y-m-d H:i:s') == $date))
+    {
+      echo "\r\nProblem: The input date and time $date is invalid";
+      $this->variableToCheck = 'false';
+      return $this->variableToCheck;
+    }
+
+    echo "\r\nProblem: Some like inputs are not considered valid. Here are the following data types: ";
+    echo "\r\nQuack ID: ".gettype($userID)."               Requires: integer".
+         "\r\nUser ID: ".gettype($quack)."               Requires: integer".
+         "\r\nDate and Time: ".gettype($date)."               Requires: String containing the format Y-m-d H:i:s (YYYY-MM-DD HH:MM:SS)";
+
     $this->variableToCheck = 'false';
     return $this->variableToCheck;
   }

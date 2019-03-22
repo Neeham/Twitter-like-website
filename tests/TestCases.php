@@ -15,6 +15,10 @@ class TestCases extends \PHPUnit_Framework_TestCase
     $failureRegistrationValues->register('1234', '5678', 'A', 'A', 'A@.com');
     //echo "  Failure: ".$failureRegistrationValues;
     $this->assertEquals($failureRegistrationValues, 'false');
+
+    $failureRegistrationValues->register(1234, 5678, 'A', 'A', 'A@.com');
+    //echo "  Failure: ".$failureRegistrationValues;
+    $this->assertEquals($failureRegistrationValues, 'false');
   }
 
   // ####################################### Test Case - Post a Quack #######################################
