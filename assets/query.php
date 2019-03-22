@@ -7,6 +7,7 @@ $_SESSION['sessionLastLoggedIn']; //Session to store the last login time
 $_SESSION['loggedInOrVisitingProfile']; //Stores either the ID of the logged in user or the visiting profile
 require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/tests/DataObjects.php';
+$testObject = new DataObjects;
 
 // ################################# VERIFY LOGIN #################################
 //The goal of this method is to verify whether or not the preson can log in.
@@ -299,6 +300,7 @@ if (isset($_POST['postQuackBtn'])) {
         $fetchedUserID = $row['userID'];
         //insert the logged in user's ID, the Quack, and the timestamp
         $currentDateTime = date('Y-m-d H:i:s');
+        $testObject->postQuack($fetchedUserID, $inputText, $currentDateTime);
         $sql           = "INSERT INTO Tweet (userID,tweet,date) VALUES ('$fetchedUserID','$inputText','$currentDateTime')";
         $result        = $conn->query($sql);
         //check if the Quack is inserted into the database

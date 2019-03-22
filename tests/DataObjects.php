@@ -13,18 +13,20 @@ class DataObjects
       //checks the input email's format
       if (filter_var($email, FILTER_VALIDATE_EMAIL))
       {
-        echo "The input values for the registration of $username are considered valid \r\n";
+        echo "\r\nThe input values for the registration of $username are considered valid";
         $this->variableToCheck = 'true';
         return $this->variableToCheck;
       }
-      echo "The input email $email follows an invalid format \r\n";
+      echo "\r\nThe input email $email follows an invalid format";
+      $this->variableToCheck = 'false';
+      return $this->variableToCheck;
     }
-    echo "Some inputs are not considered valid. Here are the following data types: \r\n";
-    echo "Firstname: ".gettype($firstName)."    Requires: String".
-        "\r\nLastname: ".gettype($lastName)."    Requires: String".
-        "\r\nUsername: ".gettype($username)."    Requires: String".
-        "\r\nPassword: ".gettype($password)."    Requires: String".
-        "\r\nEmail: ".gettype($email);"    Requires: String with email format".
+    echo "\r\nSome registration inputs are not considered valid. Here are the following data types: ";
+    echo "\r\nFirstname: ".gettype($firstName)."    Requires: String".
+         "\r\nLastname: ".gettype($lastName)."    Requires: String".
+         "\r\nUsername: ".gettype($username)."    Requires: String".
+         "\r\nPassword: ".gettype($password)."    Requires: String".
+         "\r\nEmail: ".gettype($email)."    Requires: String containing the email format";
 
     $this->variableToCheck = 'false';
     return $this->variableToCheck;
@@ -32,14 +34,27 @@ class DataObjects
 
   public function postQuack($userID, $quack, $date)
   {
-    $format = 'Y-m-d H:i:s';
-    $dateTime = DateTime::createFromFormat($format, $date);
+    $dateTime = DateTime::createFromFormat('Y-m-d H:i:s', $date);
 
     if(is_int($userID) && !empty($quack) && (strlen($quack) < 256) && ($dateTime instanceof DateTime && $dateTime->format('Y-m-d H:i:s') == $date))
     {
+      echo "\r\nThe input values for posting a Quack are considered valid";
       $this->variableToCheck = 'true';
       return $this->variableToCheck;
     }
+
+    if(!($dateTime instanceof DateTime && $dateTime->format('Y-m-d H:i:s') == $date))
+    {
+      echo "\r\nThe input time and date $date is invalid";
+      $this->variableToCheck = 'false';
+      return $this->variableToCheck;
+    }
+
+    echo "\r\nSome post inputs are not considered valid. Here are the following data types: ";
+    echo "\r\nUser ID: ".gettype($userID)."    Requires: Int".
+         "\r\nQuack: ".gettype($quack)."    Requires: String with length between 1 to 255".
+         "\r\nDate and Time: ".gettype($date)."    Requires: String containing the format Y-m-d H:i:s (YYYY-MM-DD HH:MM:SS)";
+
     $this->variableToCheck = 'false';
     return $this->variableToCheck;
   }
