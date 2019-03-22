@@ -27,14 +27,16 @@ class DataObjects
   public function testingQuackPost($userID, $quackID, $quack, $date)
   {
     $formatDate = date_parse($date);
-    if(is_int($userID) && is_int($quackID) && !empty($quack) && (strlen($quack) < 256) && checkdate($formatDate["year"], $formatDate["month"], $formatDate["day"]))
+
+    echo 'Year: '.$formatDate["year"].' Month: '.$formatDate["month"].' Day: '.$formatDate["day"];
+
+
+
+    if(is_int($userID) && is_int($quackID) && !empty($quack) && (strlen($quack) < 256) && checkdate($formatDate["month"], $formatDate["day"], $formatDate["year"]))
     {
       $this->variableToCheck = 'true';
       return $this->variableToCheck;
     }
-
-    echo 'Year: '.$formatDate["year"].' Month: '.$formatDate["month"].' Day: '.$formatDate["day"].'     ';
-
     $this->variableToCheck = 'false';
     return $this->variableToCheck;
   }
