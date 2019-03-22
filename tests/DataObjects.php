@@ -24,9 +24,10 @@ class DataObjects
     return $this->variableToCheck;
   }
 
-  public function testingQuackPost($quack)
+  public function testingQuackPost($userID, $quackID, $quack, $date)
   {
-    if(!empty($quack) && (strlen($quack) < 256))
+    $formatDate = DateTime::createFromFormat('Y-m-d H:i:s', $date);
+    if(is_int($userID) && is_int($quackID) && !empty($quack) && (strlen($quack) < 256) && $formatDate)
     {
       $this->variableToCheck = 'true';
       return $this->variableToCheck;

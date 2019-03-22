@@ -25,24 +25,24 @@ class TestCases extends \PHPUnit_Framework_TestCase
     $successfulQuackPost = new DataObjects;
     $failureQuackPost = new DataObjects;
 
-    $successfulQuackPost->testingQuackPost('Hello World');
+    $successfulQuackPost->testingQuackPost(1, 10, 'Hello World', '2019-03-13 22:28:05');
     //echo "Successful: ".$successfulQuackPost;
     $this->assertEquals($successfulQuackPost, 'true');
 
     //Input an empty Quack
-    $failureQuackPost->testingQuackPost('');
+    $failureQuackPost->testingQuackPost('1', '2', '', '2019-03-46 22:28:05');
     //echo "Failure: ".$failureQuackPost;
     $this->assertEquals($failureQuackPost, 'false');
 
     //Input a Quack with a character length of 256
-    $failureQuackPost->testingQuackPost('g7cAs43CRVmyWIe16akYnVjVIXXF5QFNb8PKmZoswj8geGD849myKiNR31PW4g5Ho5at0ErYepAU2SiH92INITGDOGqZ31F390YYHaUr6FLiwGFBQQNybaI9V44G56pyr9EcykgHCGtMOtcGnyLf0RNV4C16W31Rkottj7aP1x4JvPT77NI6OaaJLlsE31wKB3pgLne4H8VWG5GGu4Y4gAB9XShWcOUh3qHUkuJzC0lf0QpW3V7bYDaKLAANFeWb');
-    $this->assertEquals($failureQuackPost, 'true');
+    $failureQuackPost->testingQuackPost(1, 10, 'g7cAs43CRVmyWIe16akYnVjVIXXF5QFNb8PKmZoswj8geGD849myKiNR31PW4g5Ho5at0ErYepAU2SiH92INITGDOGqZ31F390YYHaUr6FLiwGFBQQNybaI9V44G56pyr9EcykgHCGtMOtcGnyLf0RNV4C16W31Rkottj7aP1x4JvPT77NI6OaaJLlsE31wKB3pgLne4H8VWG5GGu4Y4gAB9XShWcOUh3qHUkuJzC0lf0QpW3V7bYDaKLAANFeWb', '2019-03-13 22:28:05');
+    $this->assertEquals($failureQuackPost, 'false');
   }
 
   //core feature: follow a user
   public function test()
   {
-
+    //check if the users involved in the following process both have userIDs as intergers
   }
 
   //core feature: like a Quack
@@ -51,6 +51,9 @@ class TestCases extends \PHPUnit_Framework_TestCase
     //call function countLikes($getFromDataObjects)
     //modify countLikes to return the number of likes
     //check if the return value is an integer number
+
+    //check if the users involved in the liking process have userIDs and tweetIDs as intergers
+    //check if the date is in the proper format
   }
 
   //additional feature: search for a user
