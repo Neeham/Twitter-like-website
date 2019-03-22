@@ -9,6 +9,7 @@ class DataObjects
     {
       return true;
     }
+    echo 'Firstname: '.gettype($firstName).'    Lastname: '.gettype($lastName).'    Username: '.gettype($username).'    Password: '.gettype($password).'    Email: '.gettype($email);
 
     return false;
   }
