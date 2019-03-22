@@ -47,16 +47,16 @@ class TestCases extends \PHPUnit_Framework_TestCase
   {
     //check if the users involved in the following process both have userIDs as intergers
 
-    $successfulFollow = new DataObjects;
-    $failureFollow = new DataObjects;
+    $successfulFollowUser = new DataObjects;
+    $failureFollowUser = new DataObjects;
 
-    $successfulFollow->followUser(1, 5);
+    $successfulFollowUser->followUser(1, 5);
     //echo "Successful: ".$successfulQuackPost;
-    $this->assertEquals($successfulFollow, 'true');
+    $this->assertEquals($successfulFollowUser, 'true');
 
-    $failureFollow->followUser('1', '5');
+    $failureFollowUser->followUser('1', '5');
     //echo "Successful: ".$successfulQuackPost;
-    $this->assertEquals($failureFollow, 'false');
+    $this->assertEquals($failureFollowUser, 'false');
 
   }
 
@@ -69,6 +69,23 @@ class TestCases extends \PHPUnit_Framework_TestCase
 
     //check if the users involved in the liking process have userIDs and tweetIDs as intergers
     //check if the date is in the proper format
+
+    $successfulLikeQuack = new DataObjects;
+    $failureLikeQuack = new DataObjects;
+
+    $successfulLikeQuack->likeQuack(10, 1, '2019-03-18 22:28:05');
+    //echo "Successful: ".$successfulQuackPost;
+    $this->assertEquals($successfulLikeQuack, 'true');
+
+    //Liking a Quack with an invalid date
+    $failureLikeQuack->likeQuack(10, 1, '2019-44-18 22:28:05');
+    //echo "Successful: ".$successfulQuackPost;
+    $this->assertEquals($failureLikeQuack, 'false');
+
+    //Liking a Quack with invalid input for IDs (strings not ints)
+    $failureLikeQuack->likeQuack('10', '1', '2019-03-18 22:28:05');
+    //echo "Successful: ".$successfulQuackPost;
+    $this->assertEquals($failureLikeQuack, 'false');
   }
 
   // ####################################### Test Case - Search a User #######################################

@@ -49,6 +49,24 @@ class DataObjects
     return $this->variableToCheck;
   }
 
+  public function likeQuack($quackID, $userID, $date)
+  {
+    $format = 'Y-m-d H:i:s';
+    $dateTime = DateTime::createFromFormat($format, $date);
+
+    if(is_int($quackID) && is_int($userID) && ($dateTime instanceof DateTime && $dateTime->format('Y-m-d H:i:s') == $date))
+    {
+      $this->variableToCheck = 'true';
+      return $this->variableToCheck;
+    }
+    $this->variableToCheck = 'false';
+    return $this->variableToCheck;
+  }
+
+
+
+
+
   // ####################################### Object's toString to Print the Results #######################################
   public function __toString()
   {
