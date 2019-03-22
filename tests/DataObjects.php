@@ -26,7 +26,7 @@ class DataObjects
          "\r\nLastname: ".gettype($lastName)."          Requires: String".
          "\r\nUsername: ".gettype($username)."           Requires: String".
          "\r\nPassword: ".gettype($password)."           Requires: String".
-         "\r\nEmail: ".gettype($email)."               Requires: String containing the email format";
+         "\r\nEmail: ".gettype($email)."              Requires: String containing the email format";
 
     $this->variableToCheck = 'false';
     return $this->variableToCheck;
@@ -53,7 +53,7 @@ class DataObjects
     echo "\r\nSome post inputs are not considered valid. Here are the following data types: ";
     echo "\r\nUser ID: ".gettype($userID)."               Requires: integer".
          "\r\nQuack: ".gettype($quack)."                  Requires: String with length between 1 to 255".
-         "\r\nDate and Time: ".gettype($date)."           Requires: String containing the format Y-m-d H:i:s (YYYY-MM-DD HH:MM:SS)";
+         "\r\nDate and Time: ".gettype($date)."          Requires: String containing the format Y-m-d H:i:s (YYYY-MM-DD HH:MM:SS)";
 
     $this->variableToCheck = 'false';
     return $this->variableToCheck;
@@ -70,7 +70,7 @@ class DataObjects
 
     echo "\r\nProblem: Some follow inputs are not considered valid. Here are the following data types: ";
     echo "\r\nUser ID of Logged In User: ".gettype($loggedInUser)."               Requires: integer".
-         "\r\nUser ID of The User To Be Followed: ".gettype($userThatWillBeFollowed)."          Requires: integer";
+         "\r\nUser ID of The User To Be Followed: ".gettype($userThatWillBeFollowed)."      Requires: integer";
 
     $this->variableToCheck = 'false';
     return $this->variableToCheck;
@@ -95,22 +95,25 @@ class DataObjects
     }
 
     echo "\r\nProblem: Some like inputs are not considered valid. Here are the following data types: ";
-    echo "\r\nQuack ID: ".gettype($userID)."               Requires: integer".
-         "\r\nUser ID: ".gettype($quack)."               Requires: integer".
-         "\r\nDate and Time: ".gettype($date)."          Requires: String containing the format Y-m-d H:i:s (YYYY-MM-DD HH:MM:SS)";
+    echo "\r\nQuack ID: ".gettype($quackID)."           Requires: integer".
+         "\r\nUser ID: ".gettype($userID)."             Requires: integer".
+         "\r\nDate and Time: ".gettype($date)."         Requires: String containing the format Y-m-d H:i:s (YYYY-MM-DD HH:MM:SS)";
 
     $this->variableToCheck = 'false';
     return $this->variableToCheck;
   }
 
-
   public function searchUser($username)
   {
     if(!empty($username) && is_string($username))
     {
+      echo "\r\nThe input values for searching a user are considered valid";
       $this->variableToCheck = 'true';
       return $this->variableToCheck;
     }
+
+    echo "\r\nProblem: Some like inputs are not considered valid. Here are the following data types: ";
+    echo "\r\nUsername: ".gettype($username)."           Requires: String";
     $this->variableToCheck = 'false';
     return $this->variableToCheck;
   }
