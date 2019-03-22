@@ -1,33 +1,32 @@
 $(document).ready(function(){
-    $("#viewAllFollowing").click(function(){
-        $("#myFollowingModal").modal();
+    $('#viewAllFollowing').on('click', function() {
+        $('#myFollowingModal').modal();
         $.ajax({
             type:'POST',
             url:'/assets/query',
             data:{viewAllFollowing:1},
             success:function(data){
-                $("#displayFollowingList").html(data); //the data is displayed in id=display_details
+                $('#displayFollowingList').html(data);
             }
         });
     });
 });
 
-$(document).ready(function(){
-    $("#viewAllFollower").click(function(){
-        $("#myFollowerModal").modal();
+$(document).ready(function() {
+    $('#viewAllFollower').on('click', function(){
+        $('#myFollowerModal').modal();
         $.ajax({
             type:'POST',
             url:'/assets/query',
             data:{viewAllFollower:1},
             success:function(data){
-                $("#displayFollowerList").html(data); //the data is displayed in id=display_details
+                $('#displayFollowerList').html(data);
             }
         });
     });
 });
 
-$(document).ready(function(){
-
+$(document).ready(function() {
  $image_crop = $('#imageToCrop').croppie({
     enableExif: true,
     viewport: {
@@ -41,7 +40,7 @@ $(document).ready(function(){
     }
   });
 
-  $('#imageUpload').on('change', function(){
+  $('#imageUpload').on('change', function() {
     var reader = new FileReader();
     reader.onload = function (event) {
       $image_crop.croppie('bind', {
@@ -53,7 +52,7 @@ $(document).ready(function(){
     $('#uploadimageModal').modal('show');
   });
 
-  $('.crop_image').click(function(event){
+  $('.crop_image').click(function(event) {
     $image_crop.croppie('result', {
       type: 'canvas',
       size: 'viewport'
@@ -71,12 +70,11 @@ $(document).ready(function(){
   });
 });
 
-
 // Ad blocker detection
 $(document).ready(function() {
     if(adblock)
         $("#adBlock").show();
         $("#ad1").hide();
-          $("#ad2").hide();
+        $("#ad2").hide();
 
 });

@@ -46,7 +46,7 @@
             <p><?php echo $msg ?></p>
          </div>
          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal" onClick="location.href='<?php echo $modifyURL; ?>'"><?php echo _("Close") ?></button>
+            <button type="button" class="btn" data-dismiss="modal" onClick="location.href='<?php echo $modifyURL; ?>'" id="modalCloseButton">Close</button>
          </div>
       </div>
    </div>
@@ -151,7 +151,7 @@
             <div id="userList"></div>
          </div>
          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn" data-dismiss="modal" id="modalCloseButton">Close</button>
          </div>
       </div>
    </div>
@@ -169,7 +169,7 @@
          </div>
          <div class="modal-footer">
             <button class="btn btn-success crop_image">Upload</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" onClick="window.location.reload()">Close</button>
+            <button type="button" class="btn" data-dismiss="modal" onClick="window.location.reload()" id="modalCloseButton">Close</button>
          </div>
       </div>
    </div>
@@ -185,7 +185,7 @@
          <div class="modal-body" id="displayFollowingList">
          </div>
          <div class="modal-footer">
-            <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+            <button type="button" class="btn" data-dismiss="modal" id="modalCloseButton">Close</button>
          </div>
       </div>
    </div>
@@ -201,7 +201,7 @@
          <div class="modal-body" id="displayFollowerList">
          </div>
          <div class="modal-footer">
-            <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+            <button type="button" class="btn" data-dismiss="modal" id="modalCloseButton">Close</button>
          </div>
       </div>
    </div>
