@@ -8,7 +8,6 @@ $_SESSION['loggedInOrVisitingProfile']; //Stores either the ID of the logged in 
 require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/tests/DataObjects.php';
 $testObject = new DataObjects;
-
 // ################################# VERIFY LOGIN #################################
 //The goal of this method is to verify whether or not the preson can log in.
 if (isset($_POST['login'])) {
@@ -233,16 +232,26 @@ function printFeed()
         }
         //Liking a Quack from the Feed page
         if (isset($_POST[$retrivedTweetID . '_feedLikeQuackbtn'])) {
+            $testObject = new DataObjects;
             $currentDateTime = date('Y-m-d H:i:s');
-            $insertSQL    = "INSERT INTO Liked (tweetID,userID,date) VALUES ('$retrivedTweetID','{$_SESSION['sessionID']}','$currentDateTime')";
-            $insertResult = $conn->query($insertSQL);
-            if (!$insertResult) {
+            $tempSessionID = $_SESSION['sessionID'];
+            $testObject->likeQuack((int) $retrivedTweetID, (int) $tempSessionID, (string) $currentDateTime);
+            if(strcasecmp($testObject, 'true') == 0) {
+              $insertSQL    = "INSERT INTO Liked (tweetID,userID,date) VALUES ('$retrivedTweetID','{$_SESSION['sessionID']}','$currentDateTime')";
+              $insertResult = $conn->query($insertSQL);
+              if ($insertResult) {
+                  //the Like is inserted into the database
+                  echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$_SESSION['sessionUsername']}';</script>";
+              }
+              if (!$insertResult) {
                 //the Like is not inserted into the database therefore display the errorInsert alert
-                echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$_SESSION['sessionUsername']}';</script>";
+                echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$_SESSION['sessionUsername']}&Alert=errorLike';</script>";
+                exit;
+              }
             }
-            if ($insertResult) {
-                //the Quack is inserted into the database therefore display the successfulInsert alert
-                echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$_SESSION['sessionUsername']}';</script>";
+            if(strcasecmp($testObject, 'true') != 0) {
+              echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$_SESSION['sessionUsername']}&Alert=errorLike';</script>";
+              exit;
             }
         }
 
@@ -300,19 +309,25 @@ if (isset($_POST['postQuackBtn'])) {
         $fetchedUserID = $row['userID'];
         //insert the logged in user's ID, the Quack, and the timestamp
         $currentDateTime = date('Y-m-d H:i:s');
-        $testObject->postQuack($fetchedUserID, $inputText, $currentDateTime);
-        $sql           = "INSERT INTO Tweet (userID,tweet,date) VALUES ('$fetchedUserID','$inputText','$currentDateTime')";
-        $result        = $conn->query($sql);
-        //check if the Quack is inserted into the database
-        if (!$result) {
-            //the Quack is not inserted into the database therefore display the errorInsert alert
-            header("Location: https://www.haxstar.com/pages/feed?Login=" . $_SESSION['sessionUsername'] . "&Alert=errorInsert");
-            exit;
+        $testObject->postQuack((int) $fetchedUserID, (string) $inputText, (string) $currentDateTime);
+        if(strcasecmp($testObject, 'true') == 0) {
+          $sql           = "INSERT INTO Tweet (userID,tweet,date) VALUES ('$fetchedUserID','$inputText','$currentDateTime')";
+          $result        = $conn->query($sql);
+          //check if the Quack is inserted into the database
+          if (!$result) {
+              //the Quack is not inserted into the database therefore display the errorInsert alert
+              header("Location: https://www.haxstar.com/pages/feed?Login=" . $_SESSION['sessionUsername'] . "&Alert=errorInsert");
+              exit;
+          }
+          if ($result) {
+              //the Quack is inserted into the database therefore display the successfulInsert alert
+              header("Location: https://www.haxstar.com/pages/feed?Login=" . $_SESSION['sessionUsername'] . "&Alert=successfulInsert");
+              exit;
+          }
         }
-        if ($result) {
-            //the Quack is inserted into the database therefore display the successfulInsert alert
-            header("Location: https://www.haxstar.com/pages/feed?Login=" . $_SESSION['sessionUsername'] . "&Alert=successfulInsert");
-            exit;
+        if(strcasecmp($testObject, 'true') != 0) {
+          header("Location: https://www.haxstar.com/pages/feed?Login=" . $_SESSION['sessionUsername'] . "&Alert=errorInsert");
+          exit;
         }
     } else { //if database didn't return userID, display the errorInsert alert
         header("Location: https://www.haxstar.com/pages/feed?Login=" . $_SESSION['sessionUsername'] . "&Alert=errorInsert");
@@ -530,6 +545,7 @@ function followers($userID)
 function printPost($userID)
 {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
+    $testObject = new DataObjects;
     $sql    = "SELECT * FROM Tweet WHERE userID = '$userID' ORDER BY date DESC";
     $result = mysqli_query($conn, $sql);
 ?>
@@ -576,30 +592,46 @@ function printPost($userID)
         $currentLookup = mysql_escape_string($_GET['Lookup']);
         if (isset($_POST[$retrivedTweetID . '_profileLikeQuackbtn'])) {
             $currentDateTime = date('Y-m-d H:i:s');
-            $insertSQL       = "INSERT INTO Liked (tweetID,userID,date) VALUES ('$retrivedTweetID','{$_SESSION['sessionID']}','$currentDateTime')";
-            $insertResult    = $conn->query($insertSQL);
-            if (!$insertResult) {
-                if (!empty($currentLookup)) {
-                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$currentLookup}';</script>";
-                    exit;
-                }
-                if (empty($currentLookup)) {
-                    //the Like is not inserted into the database therefore display the errorLike alert
-                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}';</script>";
-                    exit;
-                }
+            $tempSessionID = $_SESSION['sessionID'];
+            $testObject->likeQuack((int) $retrivedTweetID, (int) $tempSessionID, (string) $currentDateTime);
+            if(strcasecmp($testObject, 'true') == 0) {
+              $insertSQL       = "INSERT INTO Liked (tweetID,userID,date) VALUES ('$retrivedTweetID','{$_SESSION['sessionID']}','$currentDateTime')";
+              $insertResult    = $conn->query($insertSQL);
+              if (!$insertResult) {
+                  if (!empty($currentLookup)) {
+                      echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$currentLookup}';</script>";
+                      exit;
+                  }
+                  if (empty($currentLookup)) {
+                      //the Like is not inserted into the database therefore display the errorLike alert
+                      echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}';</script>";
+                      exit;
+                  }
+              }
+              if ($insertResult) {
+                  //the Quack is inserted into the database therefore display the successfulLike alert
+                  if (!empty($currentLookup)) {
+                      echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$currentLookup}';</script>";
+                      exit;
+                  }
+                  if (empty($currentLookup)) {
+                      //the Like is not inserted into the database therefore display the errorInsert alert
+                      echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}';</script>";
+                      exit;
+                  }
+              }
             }
-            if ($insertResult) {
-                //the Quack is inserted into the database therefore display the successfulLike alert
-                if (!empty($currentLookup)) {
-                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$currentLookup}';</script>";
-                    exit;
-                }
-                if (empty($currentLookup)) {
-                    //the Like is not inserted into the database therefore display the errorInsert alert
-                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}';</script>";
-                    exit;
-                }
+            if(strcasecmp($testObject, 'true') != 0) {
+              if (!empty($currentLookup)) {
+                  echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$currentLookup}&Alert=errorLike';</script>";
+                  exit;
+              }
+              if (empty($currentLookup)) {
+                  //the Like is not inserted into the database therefore display the errorInsert alert
+                  echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Alert=errorLike';</script>";
+                  exit;
+              }
+
             }
         }
         if (isset($_POST[$retrivedTweetID . '_profileUnlikeQuackbtn'])) {

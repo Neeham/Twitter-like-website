@@ -13,7 +13,6 @@ class DataObjects
       //checks the input email's format
       if (filter_var($email, FILTER_VALIDATE_EMAIL))
       {
-        echo "\r\nThe input values for the registration of $username are considered valid";
         $this->variableToCheck = 'true';
         return $this->variableToCheck;
       }
@@ -39,7 +38,6 @@ class DataObjects
 
     if(is_int($userID) && !empty($quack) && (strlen($quack) < 256) && ($dateTime instanceof DateTime && $dateTime->format('Y-m-d H:i:s') == $date))
     {
-      echo "\r\nThe input values for posting a Quack are considered valid";
       $this->variableToCheck = 'true';
       return $this->variableToCheck;
     }
@@ -64,7 +62,6 @@ class DataObjects
   {
     if(is_int($loggedInUser) && is_int($userThatWillBeFollowed))
     {
-      echo "\r\nThe input values for following a user are considered valid";
       $this->variableToCheck = 'true';
       return $this->variableToCheck;
     }
@@ -85,7 +82,6 @@ class DataObjects
 
     if(is_int($quackID) && is_int($userID) && ($dateTime instanceof DateTime && $dateTime->format('Y-m-d H:i:s') == $date))
     {
-      echo "\r\nThe input values for liking a Quack are considered valid";
       $this->variableToCheck = 'true';
       return $this->variableToCheck;
     }
@@ -110,7 +106,6 @@ class DataObjects
   {
     if(!empty($username) && is_string($username))
     {
-      echo "\r\nThe input values for searching a user are considered valid";
       $this->variableToCheck = 'true';
       return $this->variableToCheck;
     }

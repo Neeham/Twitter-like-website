@@ -83,6 +83,9 @@
      if ($_GET['Alert'] == 'successfulInsert') {
        echo alert('success', 'Woohoo', 'Your Quack has successfully been posted! Happy Quacking! :D');
      }
+     if ($_GET['Alert'] == 'errorLike') {
+      echo alert('error', 'Database Error', 'Something went wrong (The Quack is not liked). Please try again. :(');
+     }
    }
 
    //profile page
@@ -90,6 +93,9 @@
 
      if ($_GET['Alert'] == 'invalidURL') {
        echo alert('error', 'Invalid URL', 'The URL is invalid. You have been redirected to your profile.');
+     }
+     if ($_GET['Alert'] == 'errorLike') {
+       echo alert('error', 'Database Error', 'Something went wrong (The Quack is not liked). Please try again. :()');
      }
    }
 
