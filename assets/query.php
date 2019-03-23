@@ -5,7 +5,7 @@ $_SESSION['sessionUsername']; //Session to store logged in username
 $_SESSION['sessionActivated']; //Session to check whether or not the user is has succes verified their account
 $_SESSION['sessionLastLoggedIn']; //Session to store the last login time
 $_SESSION['loggedInOrVisitingProfile']; //Stores either the ID of the logged in user or the visiting profile
-require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';  //Getting the code from config.php file.
 require $_SERVER['DOCUMENT_ROOT'] . '/tests/DataObjects.php';
 $testObject = new DataObjects;
 // ################################# VERIFY LOGIN #################################
@@ -27,12 +27,12 @@ if (isset($_POST['login'])) {
                 $innerSQL    = "UPDATE User SET lastLogin = '$currentDateTime' WHERE userID = '{$row['userID']}'";
                 $innerResult = $conn->query($innerSQL);
                 $result      = $conn->query($sql);
-                if ($row = $result->fetch_assoc()) { // select the fields from database again and set them as sessions.
+                if ($row = $result->fetch_assoc()) { //Select the fields from database again and set them as sessions.
                     $_SESSION['sessionID']           = $row['userID'];
                     $_SESSION['sessionUsername']     = $row['username'];
                     $_SESSION['sessionActivated']    = $row['emailVerification'];
                     $_SESSION['sessionLastLoggedIn'] = date_format(date_create($row['lastLogin']), 'd M y - H:i');
-                    if (isset($_POST['remember'])) { //if remember me is checked, set cookie for 10 days so the user won't have to relogin.
+                    if (isset($_POST['remember'])) { //If remember me is checked, set cookie for 10 days so the user won't have to relogin.
                         setcookie("cookieID", $row['userID'], time() + (86400 * 10), "/");
                         setcookie("cookieUsername", $row['username'], time() + (86400 * 10), "/");
                         setcookie("cookieActivated", $row['emailVerification'], time() + (86400 * 10), "/");
@@ -42,11 +42,11 @@ if (isset($_POST['login'])) {
                     exit;
                 }
             }
-        } else { //password does not match
+        } else { //Password does not match
             header("Location: https://www.haxstar.com/?Alert=credentialError");
             exit;
         }
-    } else { //username not found
+    } else { //Username not found
         header("Location: https://www.haxstar.com/?Alert=credentialError");
         exit;
     }
@@ -55,8 +55,6 @@ if (isset($_POST['login'])) {
 // ################################# Register an Account #################################
 //Before registering a user account, it checks whether or not the username and/or email already exists
 if (isset($_POST['register'])) {
-    $registration = true;
-    if ($registration) {
         $fName    = mysql_escape_string($_POST['firstname']);
         $lName    = mysql_escape_string($_POST['lastname']);
         $username = mysql_escape_string($_POST['username']);
@@ -73,7 +71,7 @@ if (isset($_POST['register'])) {
                 header("Location: https://www.haxstar.com/pages/register?Alert=errorEmailExists");
                 exit;
             }
-        } else { //Uername does not exists therefore it will create a new account.
+        } else { //Uername does not exists therefore create a new account.
             $secured_password = generateHash($pass);
             $sql              = "INSERT INTO User (firstName,lastName,username,password,email,hash) VALUES ('$fName','$lName','$username','$secured_password','$email', '$hash')";
             $result           = $conn->query($sql);
@@ -114,14 +112,10 @@ if (isset($_POST['register'])) {
             header("Location: https://www.haxstar.com/?Alert=verifyEmail");
             exit;
         }
-    } else {
-        header("Location: https://www.haxstar.com/pages/register?Alert=disabled");
-    }
 }
 
 //Function to Encrypte a Password
-function generateHash($password)
-{
+function generateHash($password) {
     if (defined("CRYPT_BLOWFISH") && CRYPT_BLOWFISH) {
         $salt = '$2y$11$' . substr(md5(uniqid(rand(), true)), 0, 22);
         return crypt($password, $salt);
@@ -129,8 +123,7 @@ function generateHash($password)
 }
 
 //Function to Decrypte a Password
-function verify($password, $hashedPassword)
-{
+function verify($password, $hashedPassword) {
     return crypt($password, $hashedPassword) == $hashedPassword;
 }
 
@@ -336,7 +329,7 @@ if (isset($_POST['postQuackBtn'])) {
 }
 
 // ################################# Display Quacks and everything that displays under profile page ######################################
-function printProfilePage($type) //This function will take param and will do if else based on the following: name, email, post, follower count, following count
+function printProfilePage($type) //This function will take param and will do if else based on the provided parameter
 {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
     if (isset($_GET['Login']) && !empty($_GET['Login']) AND isset($_GET['Lookup']) && !empty($_GET['Lookup'])) {

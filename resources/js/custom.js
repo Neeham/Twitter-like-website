@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function(){ //view All button click for following
     $('#viewAllFollowing').on('click', function() {
         $('#myFollowingModal').modal();
         $.ajax({
@@ -12,7 +12,7 @@ $(document).ready(function(){
     });
 });
 
-$(document).ready(function() {
+$(document).ready(function() { //View All button click for follower
     $('#viewAllFollower').on('click', function(){
         $('#myFollowerModal').modal();
         $.ajax({
@@ -26,7 +26,7 @@ $(document).ready(function() {
     });
 });
 
-$(document).ready(function() {
+$(document).ready(function() { //Choose file button to upload profile picture
  $image_crop = $('#imageToCrop').croppie({
     enableExif: true,
     viewport: {
@@ -70,11 +70,8 @@ $(document).ready(function() {
   });
 });
 
-// Ad blocker detection
+//Ad blocker detection
 $(document).ready(function() {
     if(adblock)
         $("#adBlock").show();
-        $("#ad1").hide();
-        $("#ad2").hide();
-
 });

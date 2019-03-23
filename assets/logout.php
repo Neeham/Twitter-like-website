@@ -1,4 +1,4 @@
-<?php
+<?php //Logout by destroying sessions and cookies.
    session_start();
    session_unset();
    session_destroy();

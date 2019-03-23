@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-   <?php require $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php'; ?>
+<?php
+   require $_SERVER['DOCUMENT_ROOT'] . '/repeated/header.php'; //Getting the code from header.php file.
+   require $_SERVER['DOCUMENT_ROOT'] . '/assets/alertsModals.php';  //Getting the code from alertModals.php file.
+?>
    <body id="register" class="animatedBg">
-      <?php require $_SERVER['DOCUMENT_ROOT'] . '/assets/alertsModals.php'; ?>
+      <!-- Nav bar-->
       <nav class="navbar navbar-expand-sm bg-warning navbar-light">
          <a class="navbar-brand" href="https://www.haxstar.com">
          <img src="https://haxstar.com/resources/images/logo/duck.png" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -14,6 +17,7 @@
          <div class="col-md-4 center-block"></div>
          <div class="col-md-4 center-block registrationForm">
             <form class="form-signin" action="../assets/query" method="post">
+               <!-- Registration form -->
                <h2 class="form-signin-heading display-4">Sign Up</h2>
                <br>
                <div class="form-row">
@@ -46,12 +50,12 @@
                   </div>
                </div>
                <br>
-               <button class="btn btn-lg btn-warning btn-block" name="register" type="submit">Register - (Testing)</button><br>
+               <button class="btn btn-lg btn-warning btn-block" name="register" type="submit">Register</button><br>
             </form>
             <button onclick="location.href = 'https://haxstar.com/';" class="btn btn-lg btn-primary btn-block" name="login">Login</button><br>
          </div>
          <div class="col-md-4 center-block"></div>
       </div>
-      <?php require $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php'; ?>
+      <?php require $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php'; ?> <!-- Getting the code from footer.php file. -->
    </body>
 </html>

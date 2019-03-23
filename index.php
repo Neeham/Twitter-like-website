@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-      require $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
-      if (isset($_SESSION["sessionID"]) && $_SESSION["sessionActivated"] == "1") {
-          header("Location: https://www.haxstar.com/pages/feed?Login=".$_SESSION["sessionUsername"]);
-          exit();
-      }
+   require $_SERVER['DOCUMENT_ROOT'] . '/repeated/header.php'; //Getting the code from header.php file.
+   if (isset($_SESSION["sessionID"]) && $_SESSION["sessionActivated"] == "1") { //If user is logged in, redirect them to feed page instead of displaying the login page.
+       header("Location: https://www.haxstar.com/pages/feed?Login=".$_SESSION["sessionUsername"]);
+       exit();
+   }
+   require $_SERVER['DOCUMENT_ROOT'] . '/assets/alertsModals.php'; //Getting the code from alertModals.php file.
 ?>
    <body id="login">
-      <?php require $_SERVER['DOCUMENT_ROOT'] . '/assets/alertsModals.php'; ?>
       <nav class="navbar navbar-expand-sm bg-warning navbar-light">
          <a class="navbar-brand">
          <img src="https://haxstar.com/resources/images/logo/duck.png" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -22,6 +22,7 @@
             <img class="floating-duck" src="https://haxstar.com/resources/images/logo/duck.png">
          </div>
          <div class="col-md-3 loginForm">
+            <!-- Login form -->
             <form class="form-signin" action="../assets/query" method="post">
                <h2 class="form-signin-heading">Login</h2>
                <div class="form-group">
@@ -42,11 +43,11 @@
       </div>
       <div class="waveWrapper waveAnimation">
          <div class="waveWrapperInner bgMiddle">
-            <div class="wave waveMiddle" style="background-image: url('https://haxstar.com/resources/images/annimation/wave-mid.png')"></div>
+            <div class="wave waveMiddle" id="waveAnnimation"></div>
          </div>
       </div>
       <div>
       </div>
-      <?php require $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php'; ?>
+      <?php require $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php'; ?> <!-- Getting the code from footer.php file. -->
    </body>
 </html>

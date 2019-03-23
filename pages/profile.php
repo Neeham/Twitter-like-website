@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-      require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php';
-      require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
+   require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php'; //Getting the code from navbar.php file.
+   require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php'; //Getting the code from query.php file.
 ?>
    <body id="profile">
-      <div class="container d-none d-lg-block">
+      <div class="container-fluid d-none d-lg-block">
          <div class="row">
             <div class="col-lg-3">
-               <div style="position: fixed;">
                   <div class="card">
                      <div class="card-header text-center">
                         <h5>Your Profile</h5>
@@ -24,10 +23,9 @@
                         <h6>Following: <?php printProfilePage('followingCount'); ?></h6>
                         <h6>Followers: <?php printProfilePage('followerCount'); ?></h6>
                      </li>
-                  </div>
                </div>
             </div>
-            <div class="col-lg-6 text">
+            <div class="col-lg-6">
                <div class="card">
                   <div class="card-header text-center">
                      <h5>Your Feed</h5>
@@ -35,8 +33,7 @@
                   <?php printProfilePage('post'); ?>
                </div>
             </div>
-            <div class="col-lg-3 ">
-               <div style="position: fixed;">
+            <div class="col-lg-3">
                   <div class="card">
                      <div class="card-header text-center">
                         <h5>Following</h5>
@@ -53,8 +50,6 @@
                         <?php printProfilePage('followers'); ?>
                      </div>
                   </div>
-
-               </div>
             </div>
          </div>
       </div>
@@ -119,6 +114,6 @@
       </div>
       <!-- This script tag have to run after the html elements have been loaded -->
       <script> tippy(".like");</script>
-      <?php require $_SERVER['DOCUMENT_ROOT'] . '/repeated/footer.php'; ?>
+      <?php require $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php'; ?>
    </body>
 </html>

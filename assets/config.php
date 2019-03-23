@@ -1,4 +1,4 @@
-<?php
+<?php //The connection configuration to the database
    $host = "localhost";
    $dbname = "neeham_twitter";
    $user = "neeham_Soen341";
