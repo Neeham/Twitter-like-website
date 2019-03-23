@@ -6,8 +6,8 @@ $_SESSION['sessionActivated']; //Session to check whether or not the user is has
 $_SESSION['sessionLastLoggedIn']; //Session to store the last login time
 $_SESSION['loggedInOrVisitingProfile']; //Stores either the ID of the logged in user or the visiting profile
 require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';  //Getting the code from config.php file.
-require $_SERVER['DOCUMENT_ROOT'] . '/tests/DataObjects.php';
-$testObject = new DataObjects;
+require $_SERVER['DOCUMENT_ROOT'] . '/tests/DataObjects.php'; //Getting the testing methods from DataObjects.php
+$testObject = new DataObjects; //Creating a DataObjects for input testing
 // ################################# VERIFY LOGIN #################################
 //The goal of this method is to verify whether or not the preson can log in.
 if (isset($_POST['login'])) {
@@ -61,57 +61,60 @@ if (isset($_POST['register'])) {
         $pass     = mysql_escape_string($_POST['password']);
         $email    = mysql_escape_string($_POST['email']);
         $hash     = md5(rand(0, 1000));
-        $sql      = "SELECT * FROM User WHERE (username = '$username' or email = '$email')";
-        $result   = $conn->query($sql);
-        if ($row = $result->fetch_assoc()) {
-            if (strcasecmp($username, $row['username']) == 0) { //Checking if username already exists, case insensitive
-                header("Location: https://www.haxstar.com/pages/register?Alert=errorNameExists");
-                exit;
-            } else if (strcasecmp($email, $row['email']) == 0) { //Checking if email already exists, case insensitive
-                header("Location: https://www.haxstar.com/pages/register?Alert=errorEmailExists");
-                exit;
-            }
-        } else { //Uername does not exists therefore create a new account.
-            $secured_password = generateHash($pass);
-            $sql              = "INSERT INTO User (firstName,lastName,username,password,email,hash) VALUES ('$fName','$lName','$username','$secured_password','$email', '$hash')";
-            $result           = $conn->query($sql);
-            $to               = $email; //Sending email to user
-            $subject          = '=?utf-8?Q?=F0=9F=90=A5_Quacker_-_Signup_=7C_Verification_=F0=9F=90=A5?='; //subject of the email
-            $message          = '
+        $testObject->register((string) $fName, (string) $lName, (string) $username, (string) $pass, (string) $email);
+        if(strcasecmp($testObject, 'true') == 0) {
+          $sql      = "SELECT * FROM User WHERE (username = '$username' or email = '$email')";
+          $result   = $conn->query($sql);
+          if ($row = $result->fetch_assoc()) {
+              if (strcasecmp($username, $row['username']) == 0) { //Checking if username already exists, case insensitive
+                  header("Location: https://www.haxstar.com/pages/register?Alert=errorNameExists");
+                  exit;
+              } else if (strcasecmp($email, $row['email']) == 0) { //Checking if email already exists, case insensitive
+                  header("Location: https://www.haxstar.com/pages/register?Alert=errorEmailExists");
+                  exit;
+              }
+          } else { //Uername does not exists therefore create a new account.
+              $secured_password = generateHash($pass);
+              $sql              = "INSERT INTO User (firstName,lastName,username,password,email,hash) VALUES ('$fName','$lName','$username','$secured_password','$email', '$hash')";
+              $result           = $conn->query($sql);
+              $to               = $email; //Sending email to user
+              $subject          = '=?utf-8?Q?=F0=9F=90=A5_Quacker_-_Signup_=7C_Verification_=F0=9F=90=A5?='; //subject of the email
+              $message          = '
 
 
 
-<html>
-<head>
-<title>Welcome to Quacker!</title>
-</head>
-<body>
-<p>Hello ' . $fName . ',</p>
-<table>
-<tr>
-<th>Email Adddress</th>
-<th>Hash</th>
-<th>Activation Link</th>
-</tr>
-<tr>
-<td>' . $email . '</td>
-<td>' . $hash . '</td>
-<td>https://www.haxstar.com/assets/verify?Email=' . $email . '&Hash=' . $hash . '</td>
-</tr>
-</table>
-</body>
-</html>
+  <html>
+  <head>
+  <title>Welcome to Quacker!</title>
+  </head>
+  <body>
+  <p>Hello ' . $fName . ',</p>
+  <table>
+  <tr>
+  <th>Email Adddress</th>
+  <th>Hash</th>
+  <th>Activation Link</th>
+  </tr>
+  <tr>
+  <td>' . $email . '</td>
+  <td>' . $hash . '</td>
+  <td>https://www.haxstar.com/assets/verify?Email=' . $email . '&Hash=' . $hash . '</td>
+  </tr>
+  </table>
+  </body>
+  </html>
 
 
 
-            ';
-            $headers = "MIME-Version: 1.0" . "\r\n";
-            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-            $headers .= 'From: no-reply@haxstar.com' . "\r\n";
-            mail($to, $subject, $message, $headers); //sending email
-            header("Location: https://www.haxstar.com/?Alert=verifyEmail");
-            exit;
-        }
+              ';
+              $headers = "MIME-Version: 1.0" . "\r\n";
+              $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+              $headers .= 'From: no-reply@haxstar.com' . "\r\n";
+              mail($to, $subject, $message, $headers); //sending email
+              header("Location: https://www.haxstar.com/?Alert=verifyEmail");
+              exit;
+          }
+     }
 }
 
 //Function to Encrypte a Password
@@ -131,14 +134,18 @@ function verify($password, $hashedPassword) {
 //This method searches the database for all the registered user and let user click on it in order to redirect to their profile.
 if (isset($_POST["searchUser"])) {
     $output = '';
-    $sql    = "SELECT * FROM User WHERE username LIKE '%" . $_POST["searchUser"] . "%'";
-    $result = mysqli_query($conn, $sql);
-    $output = '<ul class="list-unstyled">';
-    while ($row = mysqli_fetch_array($result)) {
-        $output .= '<li>' . $row["username"] . '</li>';
+    $enteredUser = $_POST["searchUser"];
+    $testObject->searchUser((string) $enteredUser);
+    if(strcasecmp($testObject, 'true') == 0) {
+      $sql    = "SELECT * FROM User WHERE username LIKE '%" . $_POST["searchUser"] . "%'";
+      $result = mysqli_query($conn, $sql);
+      $output = '<ul class="list-unstyled">';
+      while ($row = mysqli_fetch_array($result)) {
+          $output .= '<li>' . $row["username"] . '</li>';
+      }
+      $output .= '</ul>';
+      echo $output;
     }
-    $output .= '</ul>';
-    echo $output;
 }
 
 // ################################# Upload Profile Picture ######################################
@@ -704,13 +711,17 @@ if (isset($_POST['viewAllFollower'])) {
 if (isset($_POST['followUser'])) {
     $following = mysql_escape_string($_GET['Lookup']);
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
+    $loggedInUser = $_SESSION['sessionID'];
     $sql    = "SELECT userID FROM User WHERE username = '$following'";
     $result = $conn->query($sql);
     if ($row = $result->fetch_assoc()) {
         $userID = $row['userID'];
-        $sql    = "INSERT INTO Follow (follower,following) VALUES ('{$_SESSION['sessionID']}','$userID')";
-        $result = $conn->query($sql);
-        echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$following}';</script>";
+        $testObject->followUser((int) $loggedInUser, (int) $userID);
+        if(strcasecmp($testObject, 'true') == 0) {
+          $sql    = "INSERT INTO Follow (follower,following) VALUES ('{$_SESSION['sessionID']}','$userID')";
+          $result = $conn->query($sql);
+          echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$following}';</script>";
+        }
     }
 }
 
