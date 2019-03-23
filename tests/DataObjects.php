@@ -95,7 +95,7 @@ class DataObjects
     }
 
     echo "\r\nProblem: Some like inputs are not considered valid. Here are the following data types: ";
-    echo "\r\nQuack ID: ".gettype($quackID)."               Requires: integer".
+    echo "\r\nQuack ID: ".gettype($quackID)."              Requires: integer".
          "\r\nUser ID: ".gettype($userID)."               Requires: integer".
          "\r\nDate and Time: ".gettype($date)."         Requires: String containing the format Y-m-d H:i:s (YYYY-MM-DD HH:MM:SS)";
 
