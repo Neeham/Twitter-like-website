@@ -86,12 +86,6 @@
      if ($_GET['Alert'] == 'errorLike') {
       echo alert('error', 'Database Error', 'Something went wrong (The Quack is not liked). Please try again. :(');
      }
-     if ($_GET['Alert'] == 'successLike') {
-      echo alert('success', 'Woohoo', 'You have successfully liked a Quack! Happy Quacking! :D');
-     }
-     if ($_GET['Alert'] == 'successUnlike') {
-      echo alert('success', 'Woohoo', 'You have successfully unliked a Quack!');
-     }
    }
 
    //profile page
@@ -102,12 +96,6 @@
      }
      if ($_GET['Alert'] == 'errorLike') {
        echo alert('error', 'Database Error', 'Something went wrong (The Quack is not liked). Please try again. :()');
-     }
-     if ($_GET['Alert'] == 'successLike') {
-       echo alert('success', 'Woohoo', 'You have successfully liked a Quack! Happy Quacking! :D');
-     }
-     if ($_GET['Alert'] == 'successUnlike') {
-       echo alert('success', 'Woohoo', 'You have successfully unliked a Quack!');
      }
    }
 
