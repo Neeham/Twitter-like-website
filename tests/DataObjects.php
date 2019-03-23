@@ -16,11 +16,11 @@ class DataObjects
         $this->variableToCheck = 'true';
         return $this->variableToCheck;
       }
-      echo "\r\nProblem: The input email $email follows an invalid format";
+      echo "\r\nProblem: the input email $email does not follow a valid format";
       $this->variableToCheck = 'false';
       return $this->variableToCheck;
     }
-    echo "\r\nProblem: Some registration inputs are not considered valid. Here are the following data types: ";
+    echo "\r\nProblem: some 'Registration' inputs are not considered valid. Here are the following data types: ";
     echo "\r\nFirstname: ".gettype($firstName)."         Requires: String".
          "\r\nLastname: ".gettype($lastName)."          Requires: String".
          "\r\nUsername: ".gettype($username)."           Requires: String".
@@ -43,12 +43,12 @@ class DataObjects
     }
     if(!($dateTime instanceof DateTime && $dateTime->format('Y-m-d H:i:s') == $date))
     {
-      echo "\r\nProblem: The input date and time $date is invalid";
+      echo "\r\nProblem: the input date and time $date is invalid";
       $this->variableToCheck = 'false';
       return $this->variableToCheck;
     }
 
-    echo "\r\nSome post inputs are not considered valid. Here are the following data types: ";
+    echo "\r\nProblem: some 'Post' inputs are not considered valid. Here are the following data types: ";
     echo "\r\nUser ID: ".gettype($userID)."               Requires: integer".
          "\r\nQuack: ".gettype($quack)."                  Requires: String with length between 1 to 255".
          "\r\nDate and Time: ".gettype($date)."          Requires: String containing the format Y-m-d H:i:s (YYYY-MM-DD HH:MM:SS)";
@@ -66,7 +66,7 @@ class DataObjects
       return $this->variableToCheck;
     }
 
-    echo "\r\nProblem: Some follow inputs are not considered valid. Here are the following data types: ";
+    echo "\r\nProblem: some 'Follow' inputs are not considered valid. Here are the following data types: ";
     echo "\r\nUser ID of Logged In User: ".gettype($loggedInUser)."               Requires: integer".
          "\r\nUser ID of The User To Be Followed: ".gettype($userThatWillBeFollowed)."      Requires: integer";
 
@@ -87,12 +87,12 @@ class DataObjects
     }
     if(!($dateTime instanceof DateTime && $dateTime->format('Y-m-d H:i:s') == $date))
     {
-      echo "\r\nProblem: The input date and time $date is invalid";
+      echo "\r\nProblem: the input date and time $date is invalid";
       $this->variableToCheck = 'false';
       return $this->variableToCheck;
     }
 
-    echo "\r\nProblem: Some like inputs are not considered valid. Here are the following data types: ";
+    echo "\r\nProblem: some 'Like' inputs are not considered valid. Here are the following data types: ";
     echo "\r\nQuack ID: ".gettype($quackID)."              Requires: integer".
          "\r\nUser ID: ".gettype($userID)."               Requires: integer".
          "\r\nDate and Time: ".gettype($date)."         Requires: String containing the format Y-m-d H:i:s (YYYY-MM-DD HH:MM:SS)";
@@ -110,7 +110,7 @@ class DataObjects
       return $this->variableToCheck;
     }
 
-    echo "\r\nProblem: The search input is not considered valid. Here is the following data type: ";
+    echo "\r\nProblem: the 'Search User' input is not considered valid. Here is the following data type: ";
     echo "\r\nUsername: ".gettype($username)."           Requires: String";
     $this->variableToCheck = 'false';
     return $this->variableToCheck;
