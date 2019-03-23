@@ -1,16 +1,7 @@
 <?php
-   /*
-   FRONTEND: DO NOT TOUCH THIS PAGE
-
-   I made this page for backend to trace any error visual instead of going through the codes.
-
-   Backend: You can see what's going on in the database whenever you perform database actions: create/login/post/like
-   */
-   ?>
-<?php
    include $_SERVER['DOCUMENT_ROOT'] . '/repeated/header.php';
    include $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
-   ?>
+?>
 <style>
    body {
    background-color: pink;
