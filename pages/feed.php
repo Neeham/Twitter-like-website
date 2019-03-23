@@ -5,37 +5,14 @@
    require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php'; //Getting the code from query.php file.
 ?>
    <body id="feed-bg">
-      <div class="container  ">
+      <div class="container-fluid">
          <div class="row">
-            <div  id="ad1" class="col-md-2 position-sticky d-none d-lg-block">
-               <!-- Display ads on the feed page, LEFT column -->
-               <div class="card">
-                  <div class="card-header text-center">
-                     Movie ad
-                  </div>
-                  <div class="card-text">
-                     <img class="img-fluid" src="https://www.haxstar.com/resources/images/ads/howard-the-duck.jpg" />
-                  </div>
-               </div>
-               <div class="card">
-                  <div class="card-header text-center">
-                     Restaurant ad
-                  </div>
-                  <div class="card-text">
-                     <img class="img-fluid" src="https://www.haxstar.com/resources/images/ads/fancyduck.jpg" />
-                  </div>
-               </div>
-               <div class="card">
-                  <div class="card-header text-center">
-                     Movie ad
-                  </div>
-                  <div class="card-text">
-                     <img class="img-fluid" src="https://www.haxstar.com/resources/images/ads/lucky-duck.jpg" />
-                  </div>
-               </div>
+            <div class="col-md-2 d-none d-lg-block"> <!-- Display ads on the feed page, LEFT column -->
+               <br><img class="img-fluid w-100" src="https://www.haxstar.com/resources/images/ads/howard-the-duck.jpg" /><br>
+               <br><img class="img-fluid w-100" src="https://www.haxstar.com/resources/images/ads/fancyduck.jpg" /><br>
+               <br><img class="img-fluid w-100" src="https://www.haxstar.com/resources/images/ads/lucky-duck.jpg" />
             </div>
-            <div class="col-md-8">
-               <!-- Display Quacks -->
+            <div class="col-md-8"> <!-- Display Quacks -->
                <div class="form-group">
                   <form class="form-group" action="../assets/query" method="post">
                      <h2 class="display-4 text-danger">Post a Quack:</h2>
@@ -54,32 +31,10 @@
                   </div>
                </div>
             </div>
-            <div  id="ad2" class="col-md-2 d-none d-lg-block">
-               <!-- Display ads on the feed page, Right column -->
-               <div class="card">
-                  <div class="card-header text-center">
-                     Movie ad
-                  </div>
-                  <div class="card-text">
-                     <img class="img-fluid" src="https://www.haxstar.com/resources/images/ads/duck-duck-goose.jpg" />
-                  </div>
-               </div>
-               <div class="card">
-                  <div class="card-header text-center">
-                     Movie ad
-                  </div>
-                  <div class="card-text">
-                     <img class="img-fluid" src="https://www.haxstar.com/resources/images/ads/ducktales.jpg" />
-                  </div>
-               </div>
-               <div class="card">
-                  <div class="card-header text-center">
-                     Tv Show ad
-                  </div>
-                  <div class="card-text">
-                     <img class="img-fluid" src="https://www.haxstar.com/resources/images/ads/duck-dodgers.jpg" />
-                  </div>
-               </div>
+            <div class="col-md-2 d-none d-lg-block"> <!-- Display ads on the feed page, Right column -->
+                <br><img class="img-fluid w-100" src="https://www.haxstar.com/resources/images/ads/duck-duck-goose.jpg" /><br>
+                <br><img class="img-fluid w-100" src="https://www.haxstar.com/resources/images/ads/ducktales.jpg" /><br>
+                <br><img class="img-fluid w-100" src="https://www.haxstar.com/resources/images/ads/duck-dodgers.jpg" />
             </div>
          </div>
       </div>
