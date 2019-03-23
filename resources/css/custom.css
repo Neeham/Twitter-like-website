@@ -53,15 +53,7 @@
  .row-height {
      height: 100vh;
 }
- .left {
-     height: 100%;
-     overflow-y: scroll;
-}
- .mid {
-     height: 100%;
-     overflow-y: scroll;
-}
- .right {
+ .left, .mid, .right {
      height: 100%;
      overflow-y: scroll;
 }
