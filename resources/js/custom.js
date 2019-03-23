@@ -1,5 +1,5 @@
 $(document).ready(function(){ //view All button click for following
-    $('#viewAllFollowing').on('touchstart click', function() {
+    $('.viewAllFollowing').click('touchstart click', function() {
         $('#myFollowingModal').modal();
         $.ajax({
             type:'POST',
@@ -13,7 +13,7 @@ $(document).ready(function(){ //view All button click for following
 });
 
 $(document).ready(function() { //View All button click for follower
-    $('#viewAllFollower').on('touchstart click', function(){
+    $('.viewAllFollower').on('touchstart click', function(){
         $('#myFollowerModal').modal();
         $.ajax({
             type:'POST',
@@ -40,7 +40,7 @@ $(document).ready(function() { //Choose file button to upload profile picture
     }
   });
 
-  $('#imageUpload').on('change', function() {
+  $('.imageUpload').on('change', function() {
     var reader = new FileReader();
     reader.onload = function (event) {
       $image_crop.croppie('bind', {

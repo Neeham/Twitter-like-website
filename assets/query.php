@@ -399,7 +399,7 @@ function printProfile($userID)
 function printUpload()
 {
 ?>
-    <input type="file" name="imageUpload" class="btn orangeColorButton" style="width: 120px; color:transparent;" id="imageUpload" />
+    <input type="file" name="imageUpload" class="btn orangeColorButton imageUpload" style="width: 120px; color:transparent;" />
 <?php
 }
 
@@ -493,7 +493,7 @@ function following($userID)
     if ($totalResult > 2) {
 ?>
       <li class="list-group-item yellowishBgColor text-center">
-          <button type="button" class="btn btn-sm orangeColorButton" data-toggle="modal" id="viewAllFollowing">View All</button>
+          <button type="button" class="btn btn-sm orangeColorButton viewAllFollowing" data-toggle="modal">View All</button>
       </li>
 <?php
     }
@@ -529,7 +529,7 @@ function followers($userID)
     if ($totalResult > 2) {
 ?>
       <li class="list-group-item yellowishBgColor text-center">
-          <button type="button" class="btn btn-sm orangeColorButton" id="viewAllFollower">View All</button>
+          <button type="button" class="btn btn-sm orangeColorButton viewAllFollower">View All</button>
       </li>
 <?php
     }
