@@ -16,10 +16,10 @@
                <div class="form-group">
                   <form class="form-group" action="../assets/query" method="post">
                      <h2 class="display-4 text-danger">Post a Quack:</h2>
-                     <textarea class="form-control" id = "quack-box" oninput = "setCounter()" rows="4" name="tweet" maxlength="255" required placeholder="Quack it"></textarea>
+                     <textarea class="form-control" id="quack-box" oninput = "setCounter()" rows="4" name="tweet" maxlength="255" required placeholder="Quack it"></textarea>
                      <br>
                      <span class="my-2" id="quack-limit">0/255</span>
-                     <button class="btn float-right quack-btn" name="postQuackBtn" id = "quack-button"
+                     <button class="btn float-right quack-btn" name="postQuackBtn" id="quack-button"
                         type="submit">Quack</button><br>
                      </button>
                   </form>

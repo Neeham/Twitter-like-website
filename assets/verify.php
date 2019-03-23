@@ -1,7 +1,7 @@
 <?php //Email verification to activate the user's account.
    require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
    if (isset($_GET['Email']) && !empty($_GET['Email']) AND isset($_GET['Hash']) && !empty($_GET['Hash'])) {
-       // Verify data
+       //Verify data
        $email = mysql_escape_string($_GET['Email']); //Set email variable.
        $hash  = mysql_escape_string($_GET['Hash']); //Set hash variable.
 

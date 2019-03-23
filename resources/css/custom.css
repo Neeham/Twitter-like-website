@@ -30,7 +30,7 @@ h1 {
 
 #adBlock {
   display:none;
-  position: fixed;
+  width: 100%;
 }
 #your-profile,
 #your-profile-mobile {

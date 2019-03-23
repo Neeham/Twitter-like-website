@@ -12,7 +12,7 @@
          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       </button>
-      <div class = "collapse navbar-collapse" id = "navbarSupportedContent">
+      <div class = "collapse navbar-collapse" id="navbarSupportedContent">
          <ul class="navbar-nav">
             <li class="nav-item">
                <a class="nav-link" href="https://www.haxstar.com/pages/profile?Login=<?php echo $_SESSION["sessionUsername"]; ?>">My Profile</a>
@@ -23,7 +23,7 @@
          </ul>
          <ul class = "navbar-nav ml-auto">
             <li class = "nav-item">
-               <button type="button" class="btn my-2 my-sm-0" data-toggle="modal" data-target="#searchUserModal" id = "search-user">Search a User</button>
+               <button type="button" class="btn my-2 my-sm-0" data-toggle="modal" data-target="#searchUserModal" id="search-user">Search a User</button>
             </li>
             <li class="nav-item ">
                <a class="nav-link p-0" href="https://www.haxstar.com/assets/logout"><button class="Logout-button btn btn-danger mx-2 my-2 my-sm-0">Log out</button></a>
