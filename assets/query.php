@@ -175,7 +175,7 @@ function printFeed()
     $result = mysqli_query($conn, $sql);
     while ($row = $result->fetch_assoc()) {
 ?>
-        <li class="list-group-item quack">
+        <li class="list-group-item yellowishBgColor">
         <div class="text-danger"><?php
         echo date_format(date_create($row['date']), 'd M y - g:i A');
 ?></div>
@@ -399,7 +399,7 @@ function printProfile($userID)
 function printUpload()
 {
 ?>
-    <input type="file" name="imageUpload" class="btn" style="width: 120px; color:transparent;" id="imageUpload" />
+    <input type="file" name="imageUpload" class="btn orangeColorButton" style="width: 120px; color:transparent;" id="imageUpload" />
 <?php
 }
 
@@ -470,7 +470,7 @@ function following($userID)
     $result = mysqli_query($conn, $sql);
     while ($row = $result->fetch_assoc()) {
 ?>
-      <li class="list-group-item profile-card-bg">
+      <li class="list-group-item yellowishBgColor">
         <a href="<?php
         echo "https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$row['user']}";
 ?>"><img src="https://haxstar.com/resources/images/profilePic/<?php
@@ -492,8 +492,8 @@ function following($userID)
     }
     if ($totalResult > 2) {
 ?>
-      <li class="list-group-item profile-card-bg text-center">
-          <button type="button" class="btn btn-sm" data-toggle="modal" id="viewAllFollowing">View All</button>
+      <li class="list-group-item yellowishBgColor text-center">
+          <button type="button" class="btn btn-sm orangeColorButton" data-toggle="modal" id="viewAllFollowing">View All</button>
       </li>
 <?php
     }
@@ -506,7 +506,7 @@ function followers($userID)
     $result = mysqli_query($conn, $sql);
     while ($row = $result->fetch_assoc()) {
 ?>
-      <li class="list-group-item profile-card-bg">
+      <li class="list-group-item yellowishBgColor">
         <a href="<?php
         echo "https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$row['user']}";
 ?>"><img src="https://haxstar.com/resources/images/profilePic/<?php
@@ -528,8 +528,8 @@ function followers($userID)
     }
     if ($totalResult > 2) {
 ?>
-      <li class="list-group-item profile-card-bg text-center">
-          <button type="button" class="btn btn-sm" id="viewAllFollower">View All</button>
+      <li class="list-group-item yellowishBgColor text-center">
+          <button type="button" class="btn btn-sm orangeColorButton" id="viewAllFollower">View All</button>
       </li>
 <?php
     }
@@ -545,7 +545,7 @@ function printPost($userID)
 <?php
     while ($row = $result->fetch_assoc()) {
 ?>
-      <li class="list-group-item quack profile-quack-card-bg p-4">
+      <li class="list-group-item yellowishBgColor p-4">
       <div class="text-danger"><?php
         echo date_format(date_create($row['date']), 'd M y - g:i A');
 ?></div>

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm bg-warning fixed-bottom"> <!-- The footer code -->
+<nav class="navbar navbar-expand-sm bg-warning fixed-bottom" id="footer"> <!-- The footer code -->
    <div class = "container-fluid">
       <ul class="navbar-nav mr-auto">
          <li class="nav-item active">Copyright by the Quack Gang © - <?PHP echo date("Y"); ?></li>

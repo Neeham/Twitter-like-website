@@ -1,5 +1,5 @@
 $(document).ready(function(){ //view All button click for following
-    $('#viewAllFollowing').on('click', function() {
+    $('#viewAllFollowing').on('touchstart click', function() {
         $('#myFollowingModal').modal();
         $.ajax({
             type:'POST',
@@ -13,7 +13,7 @@ $(document).ready(function(){ //view All button click for following
 });
 
 $(document).ready(function() { //View All button click for follower
-    $('#viewAllFollower').on('click', function(){
+    $('#viewAllFollower').on('touchstart click', function(){
         $('#myFollowerModal').modal();
         $.ajax({
             type:'POST',
