@@ -18,7 +18,7 @@
       <div class = "container-fluid">
       <div class = "row">
          <div class="col-md-7">
-            <h1 align="center">Don't be wack, start to quack.</h1>
+            <h1 align="center" id="slogan">Don't be wack, start to quack.</h1>
             <img class="floating-duck" src="https://haxstar.com/resources/images/logo/duck.png">
          </div>
          <div class="col-md-3 loginForm">
@@ -43,7 +43,7 @@
       </div>
       <div class="waveWrapper waveAnimation">
          <div class="waveWrapperInner bgMiddle">
-            <div class="wave waveMiddle" id="waveAnnimation"></div>
+            <div class="wave waveMiddle"></div>
          </div>
       </div>
       <div>

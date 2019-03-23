@@ -1,211 +1,178 @@
-.animatedBg {
-  background: gray url(https://haxstar.com/resources/images/annimation/wallpaper.png) repeat 0 0;
-  width: 100%;
-  margin: 0;
-  text-align: center;
-  height: 300px;
-  box-sizing: border-box;
-  -webkit-animation: slide 60s linear infinite;
-}
 @-webkit-keyframes slide {
-    from { background-position: 0 0; }
-    to { background-position: -400px 0; }
+     from {
+         background-position: 0 0;
+    }
+     to {
+         background-position: -400px 0;
+    }
 }
-textarea {
-  resize: none;
+ @keyframes floating-duck {
+     0% {
+         transform: translateY(-8px);
+    }
+     100% {
+         transform: translateY(10px);
+    }
 }
-body {
-  min-height: 400px;
-  margin-bottom: 100px;
-  font-family: "Signika", sans-serif;
+ @keyframes move_wave {
+     0% {
+         transform: translateX(0) translateZ(0) scaleY(1);
+    }
+     50% {
+         transform: translateX(-25%) translateZ(0) scaleY(0.92);
+    }
+     100% {
+         transform: translateX(-50%) translateZ(0) scaleY(1);
+    }
 }
-
-h1 {
-  padding-top: 120px;
+ @media only screen and (max-width: 760px) {
+     .floating-duck {
+         width: 150px !important;
+         height: 150px !important;
+         top: 370px !important;
+         left: 50% !important;
+    }
+     .wave {
+         top: 470px !important;
+         display: none !important;
+    }
+     #login {
+         min-height: 500px;
+         margin-bottom: 200px;
+    }
 }
-
-.form-signin {
-  margin-top: 50px;
+ textarea {
+     resize: none;
 }
-
-#adBlock {
-  display:none;
-  width: 100%;
+ body {
+     font-family: "Signika", sans-serif;
 }
-#your-profile,
-#your-profile-mobile {
-  border-radius: 8px;
+ * {
+     -ms-overflow-style: none !important;
 }
-#profile_row {
-  padding: 5px;
-  margin: 5px;
+ .row-height {
+     height: 100vh;
 }
-#quack-button,
-#search-user,
-#viewAllFollowing,
-#viewAllFollower,
-#imageUpload,
-#modalCloseButton,
-.reply {
-  background-color: #ff5722;
-  color: white;
+ .left, .mid, .right {
+     height: 100%;
+     overflow-y: scroll;
 }
-#feed-bg,
-#register,
-#profile,
-#login {
-  background-color: #fff9e6;
+ ::-webkit-scrollbar {
+     width: 0px;
+     background: transparent;
 }
-.loginForm {
-  background-color: #fff9e6;
-  z-index: 1000;
+ .animatedBg {
+     background: gray url(https://haxstar.com/resources/images/annimation/wallpaper.png) repeat 0 0;
+     width: 100%;
+     margin: 0;
+     text-align: center;
+     height: 300px;
+     box-sizing: border-box;
+     -webkit-animation: slide 60s linear infinite;
 }
-.registrationForm {
-  background-color: rgb(255,255,255, 0.8);
-  margin-top: 50px;
-  margin-bottom: 50px;
+ .form-signin {
+     margin-top: 50px;
 }
-.card-header {
-  background-color: #ffa000;
+ .loginForm {
+     background-color: #fff9e6;
+     z-index: 1;
 }
-.mobile-profile-picture {
-  width: 150px;
-  height: 150px;
+ .registrationForm {
+     background-color: rgb(255,255,255, 0.8);
+     margin-top: 50px;
+     margin-bottom: 50px;
 }
-.jumbotron {
-  background-color: #ffc107;
+ .card-header {
+     background-color: #ffa000;
 }
-.quack,
-.profile-quack-card-bg {
-  background-color: #ffc107;
+ .mobile-profile-picture {
+     width: 150px;
+     height: 150px;
 }
-.profile-card-bg {
-  background-color: #ffc107;
+ .yellowishBgColor {
+     background-color: #ffc107;
 }
-.media img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+ .mobile-nav-item {
+     background-color: #ffa000;
 }
-
-h6 img {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
+ .nav-link.active {
+     background-color: #ff5722 !important;
+     border: 1px solid transparent !important;
+     border-color: #ff5722 !important;
 }
-
-#userList ul {
-  background-color: #ffffe0;
-  cursor: pointer;
+ .floating-duck {
+     position: absolute;
+     top: 260px;
+     left: calc(50% - 280px);
+     animation: floating-duck 2s alternate ease-in-out infinite;
+     animation-name: floating-duck;
+     animation-duration: 2s;
+     animation-timing-function: ease-in-out;
+     animation-delay: 0s;
+     animation-iteration-count: infinite;
+     animation-direction: alternate;
+     animation-fill-mode: none;
+     animation-play-state: running;
+     will-change: transform;
+     -webkit-user-select: none;
+     user-select: none;
 }
-#userList li {
-  padding: 12px;
+ .waveWrapper {
+     overflow: hidden;
+     position: absolute;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     top: 0;
+     margin: auto;
 }
-
-.floating-duck {
-  position: absolute;
-  top: 260px;
-  left: calc(50% - 280px);
-  animation: floating-duck 2s alternate ease-in-out infinite;
-  animation-name: floating-duck;
-  animation-duration: 2s;
-  animation-timing-function: ease-in-out;
-  animation-delay: 0s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  animation-fill-mode: none;
-  animation-play-state: running;
-  will-change: transform;
-  -webkit-user-select: none;
-  user-select: none;
+ .waveWrapperInner {
+     position: absolute;
+     width: 100%;
+     overflow: hidden;
+     height: 100%;
+     bottom: -1px;
 }
-
-@keyframes floating-duck {
-  0% {
-    transform: translateY(-8px);
-  }
-  100% {
-    transform: translateY(10px);
-  }
+ .bgMiddle {
+     opacity: 0.6;
 }
-
-@keyframes move_wave {
-  0% {
-    transform: translateX(0) translateZ(0) scaleY(1);
-  }
-  50% {
-    transform: translateX(-25%) translateZ(0) scaleY(0.92);
-  }
-  100% {
-    transform: translateX(-50%) translateZ(0) scaleY(1);
-  }
+ .wave {
+     position: absolute;
+     top: 420px;
+     left: 0;
+     width: 200%;
+     height: 100%;
 }
-.waveWrapper {
-  overflow: hidden;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  margin: auto;
+ .waveMiddle {
+     background-size: 50% 200px;
 }
-.waveWrapperInner {
-  position: absolute;
-  width: 100%;
-  overflow: hidden;
-  height: 100%;
-  bottom: -1px;
+ .waveAnimation .waveMiddle {
+     animation: move_wave 25s linear infinite;
+     background-image: url(https://haxstar.com/resources/images/annimation/wave-mid.png);
 }
-.bgMiddle {
-  z-index: 10;
-  opacity: 0.6;
+ .floating-duck {
+     width: 270px;
+     height: 270px;
 }
-.wave {
-  position: absolute;
-  top: 420px;
-  left: 0;
-  width: 200%;
-  height: 100%;
+ #slogan {
+     padding-top: 120px;
 }
-.waveMiddle {
-  background-size: 50% 200px;
+ #adBlock {
+     display:none;
+     width: 100%;
+     background-color:pink;
 }
-.waveAnimation .waveMiddle {
-  animation: move_wave 25s linear infinite;
-  background-image: url(https://haxstar.com/resources/images/annimation/wave-mid.png);
+ .orangeColorButton {
+     background-color: #ff5722;
+     color: white;
 }
-
-#waveAnnimation {
-  background-image: url(https://haxstar.com/resources/images/annimation/wave-mid.png);
+ #feed-bg, #register, #profile, #login {
+     background-color: #fff9e6;
 }
-
-.nav-link.active {
-  background-color: #ff5722 !important;
-  border: 1px solid transparent !important;
-  border-color: #ff5722 !important;
+ #userList ul {
+     background-color: #ffffe0;
+     cursor: pointer;
 }
-
-@media only screen and (max-width: 760px) {
-  .floating-duck {
-    width: 150px !important;
-    height: 150px !important;
-    top: 370px !important;
-    left: 50% !important;
-  }
-  .wave {
-    top: 470px !important;
-    display: none !important;
-  }
-  #login {
-    min-height: 500px;
-    margin-bottom: 200px;
-  }
-
-  .profile-card-bg {
-    width: 100%;
-  }
-}
-.floating-duck {
-  width: 270px;
-  height: 270px;
+ #userList li {
+     padding: 12px;
 }

@@ -3,7 +3,7 @@
   require $_SERVER['DOCUMENT_ROOT'] . '/repeated/header.php'; //Getting the code from header.php file.
   require $_SERVER['DOCUMENT_ROOT'] . '/assets/alertsModals.php'; //Getting the code from alertModals.php file.
 ?>
-<nav class="navbar navbar-expand-sm bg-warning navbar-light sticky-top"> <!-- Nav Bar -->
+<nav class="navbar navbar-expand-sm bg-warning navbar-light sticky-top" id="navbar"> <!-- Nav Bar -->
   Last Logged in: <?php echo $_SESSION["sessionLastLoggedIn"]; ?> <!-- Displaying the last time the user logged in -->
    <div class="container">
       <a class="navbar-brand" href="https://www.haxstar.com/pages/feed?Login=<?php echo $_SESSION["sessionUsername"]; ?>"><img
@@ -23,7 +23,7 @@
          </ul>
          <ul class = "navbar-nav ml-auto">
             <li class = "nav-item">
-               <button type="button" class="btn my-2 my-sm-0" data-toggle="modal" data-target="#searchUserModal" id="search-user">Search a User</button>
+               <button type="button" class="btn my-2 my-sm-0 orangeColorButton" data-toggle="modal" data-target="#searchUserModal">Search a User</button>
             </li>
             <li class="nav-item ">
                <a class="nav-link p-0" href="https://www.haxstar.com/assets/logout"><button class="Logout-button btn btn-danger mx-2 my-2 my-sm-0">Log out</button></a>
@@ -32,10 +32,8 @@
       </div>
    </div>
 </nav>
-<div id="adBlock"> <!-- text to unhide (display) when adblock is detected -->
-  <div class="container-fluid text-center" style="background-color:pink">
-    <strong style="color:red">AdBlocker Detected</strong><br> It appears that you are using an <strong>AdBlocker</strong>. Please consider adding an exception to your <strong>AdBlocker</strong> for https://www.haxstar.com <br> Haxstar/Quacker is largely supported by the advertising income. This is why our ducks are able to swim and reunite with their family! Thank you for your support :)
-  </div>
+<div class="container-fluid text-center" id="adBlock"> <!-- text to unhide (display) when adblock is detected -->
+  <strong style="color:red">AdBlocker Detected</strong><br> It appears that you are using an <strong>AdBlocker</strong>. Please consider adding an exception to your <strong>AdBlocker</strong> for https://www.haxstar.com <br> Haxstar/Quacker is largely supported by the advertising income. This is why our ducks are able to swim and reunite with their family! Thank you for your support :)
 </div>
 <!-- Search the database for a user profile to visit -->
 <script>

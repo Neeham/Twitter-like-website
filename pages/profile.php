@@ -6,13 +6,13 @@
 ?>
    <body id="profile">
       <div class="container-fluid d-none d-lg-block">
-         <div class="row">
-            <div class="col-lg-3">
+         <div class="row row-height">
+            <div class="col-md-3">
                   <div class="card">
                      <div class="card-header text-center">
                         <h5>Your Profile</h5>
                      </div>
-                     <li class="list-group-item profile-card-bg text-center">
+                     <li class="list-group-item yellowishBgColor text-center">
                         <img src="https://www.haxstar.com/resources/images/profilePic/<?php printProfilePage('profilepic'); ?>" class="rounded-circle"/>
                         <br>
                         <br>
@@ -25,7 +25,7 @@
                      </li>
                </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-md-6 mid">
                <div class="card">
                   <div class="card-header text-center">
                      <h5>Your Feed</h5>
@@ -33,7 +33,7 @@
                   <?php printProfilePage('post'); ?>
                </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-md-3 right">
                   <div class="card">
                      <div class="card-header text-center">
                         <h5>Following</h5>
@@ -54,7 +54,7 @@
          </div>
       </div>
       <!-- END: PROPERLY FORMATED AND WORKING WITH DATABASE -->
-      <div class="jumbotron jumbotron-fluid mobile-profile d-lg-none d-block mt-3">
+      <div class="jumbotron jumbotron-fluid yellowishBgColor mobile-profile d-lg-none d-block">
          <!-- Mobile profile information-->
          <div class="container d-flex">
             <div class="mobile-profile-picture">
@@ -65,19 +65,17 @@
             </div>
          </div>
          <div class="mobile-info ml-3 mt-3">
+           <h4>
+                <?php printProfilePage('upload'); ?>
+           </h4>
             <h4 class="email-mobile">
-               Email:
-               <h6>
-                  <?php printProfilePage('email'); ?>
-               </h6>
+               Email: <?php printProfilePage('email'); ?>
             </h4>
             <h4 class="followers-mobile">
-               Followers:
-               <?php printProfilePage('followerCount'); ?>
+               Followers: <?php printProfilePage('followerCount'); ?>
             </h4>
             <h4 class="following-mobile">
-               Following:
-               <?php printProfilePage('followingCount'); ?>
+               Following: <?php printProfilePage('followingCount'); ?>
             </h4>
          </div>
       </div>
