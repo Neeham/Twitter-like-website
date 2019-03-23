@@ -8,8 +8,8 @@
    */
    ?>
 <?php
-   include $_SERVER['DOCUMENT_ROOT'].'/repeated/header.php';
-   include $_SERVER['DOCUMENT_ROOT'].'/assets/config.php';
+   include $_SERVER['DOCUMENT_ROOT'] . '/repeated/header.php';
+   include $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
    ?>
 <style>
    body {

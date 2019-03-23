@@ -1,10 +1,10 @@
 <?php
-  require $_SERVER['DOCUMENT_ROOT'] . '/assets/loggedin.php';
-  require $_SERVER['DOCUMENT_ROOT'] . '/repeated/header.php';
-  require $_SERVER['DOCUMENT_ROOT'] . '/assets/alertsModals.php';
+  require $_SERVER['DOCUMENT_ROOT'] . '/assets/loggedIn.php'; //Getting the code from loggedIn.php file.
+  require $_SERVER['DOCUMENT_ROOT'] . '/repeated/header.php'; //Getting the code from header.php file.
+  require $_SERVER['DOCUMENT_ROOT'] . '/assets/alertsModals.php'; //Getting the code from alertModals.php file.
 ?>
-<nav class="navbar navbar-expand-sm bg-warning navbar-light sticky-top">
-  Last Logged in: <?php echo $_SESSION["sessionLastLoggedIn"]; ?>
+<nav class="navbar navbar-expand-sm bg-warning navbar-light sticky-top"> <!-- Nav Bar -->
+  Last Logged in: <?php echo $_SESSION["sessionLastLoggedIn"]; ?> <!-- Displaying the last time the user logged in -->
    <div class="container">
       <a class="navbar-brand" href="https://www.haxstar.com/pages/feed?Login=<?php echo $_SESSION["sessionUsername"]; ?>"><img
          src="https://haxstar.com/resources/images/logo/duck.png" height="35px" /></a>
@@ -32,12 +32,12 @@
       </div>
    </div>
 </nav>
-<div id="adBlock" style="display:none">
+<div id="adBlock" style="display:none"> <!-- text to unhide (display) when adblock is detected -->
   <div class="container-fluid text-center" style="background-color:pink">
     <strong style="color:red">AdBlocker Detected</strong><br> It appears that you are using an <strong>AdBlocker</strong>. Please consider adding an exception to your <strong>AdBlocker</strong> for https://www.haxstar.com <br> Haxstar/Quacker is largely supported by the advertising income. This is why our ducks are able to swim and reunite with their family! Thank you for your support :)
   </div>
 </div>
-<!-- Search the database for users -->
+<!-- Search the database for a user profile to visit -->
 <script>
    $(document).ready(function() {
         $('#userfields').keyup(function() {

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-      require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php';
-      require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php';
+   require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php'; //Getting the code from navbar.php file.
+   require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php'; //Getting the code from query.php file.
 ?>
    <body id="profile">
       <div class="container d-none d-lg-block">
@@ -53,7 +53,6 @@
                         <?php printProfilePage('followers'); ?>
                      </div>
                   </div>
-
                </div>
             </div>
          </div>
@@ -119,6 +118,6 @@
       </div>
       <!-- This script tag have to run after the html elements have been loaded -->
       <script> tippy(".like");</script>
-      <?php require $_SERVER['DOCUMENT_ROOT'] . '/repeated/footer.php'; ?>
+      <?php require $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php'; ?>
    </body>
 </html>
