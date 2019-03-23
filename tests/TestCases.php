@@ -49,8 +49,6 @@ class TestCases extends \PHPUnit_Framework_TestCase
   // ####################################### Test Case - Follow a User #######################################
   public function testUserWantsToFollowAnotherUser()
   {
-    //check if the users involved in the following process both have userIDs as intergers
-
     $successfulFollowUser = new DataObjects;
     $failureFollowUser = new DataObjects;
 
@@ -67,13 +65,6 @@ class TestCases extends \PHPUnit_Framework_TestCase
   // ####################################### Test Case - Like a Quack #######################################
   public function testUserWantsToLikeQuack()
   {
-    //call function countLikes($getFromDataObjects)
-    //modify countLikes to return the number of likes
-    //check if the return value is an integer number
-
-    //check if the users involved in the liking process have userIDs and tweetIDs as intergers
-    //check if the date is in the proper format
-
     $successfulLikeQuack = new DataObjects;
     $failureLikeQuack = new DataObjects;
 
@@ -114,20 +105,4 @@ class TestCases extends \PHPUnit_Framework_TestCase
       $this->assertEquals($failureSearchUser, 'false');
   }
 }
-
-/*Notes
-
-Referencing this link for tutorial on tests - https://www.youtube.com/watch?v=V3xrGsUIYis
-
-
-SampleTest.php outline
-
---> Future: see if you can associate pages like profile and feed to a namespace in order to access data
-
-
-
-$object = new class with methods like getInputText()
-$object->getInputText();
-$this->assertNotNull($object);    //will check if the input text is empty or not (this will display through Travis CI )
-*/
 ?>

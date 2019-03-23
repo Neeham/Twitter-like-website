@@ -4,7 +4,7 @@ class DataObjects
 {
   public $variableToCheck;
 
-  // ####################################### Checks if the Input Registration Values are Valid #######################################
+  // ####################################### Checks if the 'Registration' Input Values are Valid #######################################
   public function register($firstName, $lastName, $username, $password, $email)
   {
     //if first and last names do not contain numbers and the others are strings
@@ -32,6 +32,7 @@ class DataObjects
     return $this->variableToCheck;
   }
 
+  // ####################################### Checks if the 'Posting a Quack' Input Values are Valid #######################################
   public function postQuack($userID, $quack, $date)
   {
     $dateTime = DateTime::createFromFormat('Y-m-d H:i:s', $date);
@@ -42,7 +43,6 @@ class DataObjects
       $this->variableToCheck = 'true';
       return $this->variableToCheck;
     }
-
     if(!($dateTime instanceof DateTime && $dateTime->format('Y-m-d H:i:s') == $date))
     {
       echo "\r\nProblem: The input date and time $date is invalid";
@@ -59,6 +59,7 @@ class DataObjects
     return $this->variableToCheck;
   }
 
+  // ####################################### Checks if the 'Following a User' Input Values are Valid #######################################
   public function followUser($loggedInUser, $userThatWillBeFollowed)
   {
     if(is_int($loggedInUser) && is_int($userThatWillBeFollowed))
@@ -76,6 +77,7 @@ class DataObjects
     return $this->variableToCheck;
   }
 
+  // ####################################### Checks if the 'Liking a Quack' Input Values are Valid #######################################
   public function likeQuack($quackID, $userID, $date)
   {
     $format = 'Y-m-d H:i:s';
@@ -103,6 +105,7 @@ class DataObjects
     return $this->variableToCheck;
   }
 
+  // ####################################### Checks if the 'Search a User' Input Value is Valid #######################################
   public function searchUser($username)
   {
     if(!empty($username) && is_string($username))
