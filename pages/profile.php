@@ -7,7 +7,7 @@
    <body id="profile">
       <div class="container-fluid d-none d-lg-block">
          <div class="row row-height">
-            <div class="col-md-3">
+            <div class="col-md-3 left">
                   <div class="card">
                      <div class="card-header text-center">
                         <h5>Your Profile</h5>
