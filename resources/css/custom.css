@@ -1,56 +1,75 @@
 @-webkit-keyframes slide {
-    from {
-        background-position: 0 0;
-   }
-    to {
-        background-position: -400px 0;
-   }
+     from {
+         background-position: 0 0;
+    }
+     to {
+         background-position: -400px 0;
+    }
 }
-@keyframes floating-duck {
-    0% {
-        transform: translateY(-8px);
-   }
-    100% {
-        transform: translateY(10px);
-   }
+ @keyframes floating-duck {
+     0% {
+         transform: translateY(-8px);
+    }
+     100% {
+         transform: translateY(10px);
+    }
 }
-@keyframes move_wave {
-    0% {
-        transform: translateX(0) translateZ(0) scaleY(1);
-   }
-    50% {
-        transform: translateX(-25%) translateZ(0) scaleY(0.92);
-   }
-    100% {
-        transform: translateX(-50%) translateZ(0) scaleY(1);
-   }
+ @keyframes move_wave {
+     0% {
+         transform: translateX(0) translateZ(0) scaleY(1);
+    }
+     50% {
+         transform: translateX(-25%) translateZ(0) scaleY(0.92);
+    }
+     100% {
+         transform: translateX(-50%) translateZ(0) scaleY(1);
+    }
 }
-@media only screen and (max-width: 760px) {
-    .floating-duck {
-        width: 150px !important;
-        height: 150px !important;
-        top: 370px !important;
-        left: 50% !important;
-   }
-    .wave {
-        top: 470px !important;
-        display: none !important;
-   }
-    #login {
-        min-height: 500px;
-        margin-bottom: 200px;
-   }
+ @media only screen and (max-width: 760px) {
+     .floating-duck {
+         width: 150px !important;
+         height: 150px !important;
+         top: 370px !important;
+         left: 50% !important;
+    }
+     .wave {
+         top: 470px !important;
+         display: none !important;
+    }
+     #login {
+         min-height: 500px;
+         margin-bottom: 200px;
+    }
 }
-textarea {
-    resize: none;
+ textarea {
+     resize: none;
 }
-body {
-    font-family: "Signika", sans-serif;
+ body {
+     font-family: "Signika", sans-serif;
 }
-* {
-  -ms-overflow-style: none !important;
+ * {
+     -ms-overflow-style: none !important;
 }
-.animatedBg {
+ .row-height {
+     height: 100vh;
+}
+ .left {
+     height: 100%;
+     overflow-y: scroll;
+}
+ .mid {
+     height: 100%;
+     overflow-y: scroll;
+}
+ .right {
+     height: 100%;
+     overflow-y: scroll;
+}
+ ::-webkit-scrollbar {
+     width: 0px;
+     background: transparent;
+}
+ .animatedBg {
      background: gray url(https://haxstar.com/resources/images/annimation/wallpaper.png) repeat 0 0;
      width: 100%;
      margin: 0;
@@ -59,54 +78,35 @@ body {
      box-sizing: border-box;
      -webkit-animation: slide 60s linear infinite;
 }
-.form-signin {
-    margin-top: 50px;
+ .form-signin {
+     margin-top: 50px;
 }
-.loginForm {
-    background-color: #fff9e6;
-    z-index: 1;
+ .loginForm {
+     background-color: #fff9e6;
+     z-index: 1;
 }
-.registrationForm {
-    background-color: rgb(255,255,255, 0.8);
-    margin-top: 50px;
-    margin-bottom: 50px;
+ .registrationForm {
+     background-color: rgb(255,255,255, 0.8);
+     margin-top: 50px;
+     margin-bottom: 50px;
 }
-.card-header {
-    background-color: #ffa000;
+ .card-header {
+     background-color: #ffa000;
 }
-.mobile-profile-picture {
-    width: 150px;
-    height: 150px;
+ .mobile-profile-picture {
+     width: 150px;
+     height: 150px;
 }
-.yellowishBgColor {
-    background-color: #ffc107;
+ .yellowishBgColor {
+     background-color: #ffc107;
 }
-.mobile-nav-item {
-  background-color: #ffa000;
+ .mobile-nav-item {
+     background-color: #ffa000;
 }
-.nav-link.active {
-  background-color: #ff5722 !important;
-  border: 1px solid transparent !important;
-  border-color: #ff5722 !important;
-}
-.row-height {
-  height: 100vh;
-}
-.left {
-  height: 100%;
-  overflow-y: scroll;
-}
-.mid {
-  height: 100%;
-  overflow-y: scroll;
-}
-.right {
-  height: 100%;
-  overflow-y: scroll;
-}
-::-webkit-scrollbar {
-    width: 0px;
-    background: transparent;
+ .nav-link.active {
+     background-color: #ff5722 !important;
+     border: 1px solid transparent !important;
+     border-color: #ff5722 !important;
 }
  .floating-duck {
      position: absolute;
