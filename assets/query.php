@@ -238,11 +238,11 @@ function printFeed()
             $insertResult = $conn->query($insertSQL);
             if (!$insertResult) {
                 //the Like is not inserted into the database therefore display the errorInsert alert
-                echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$_SESSION['sessionUsername']}&Alert=errorLike';</script>";
+                echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$_SESSION['sessionUsername']}';</script>";
             }
             if ($insertResult) {
                 //the Quack is inserted into the database therefore display the successfulInsert alert
-                echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$_SESSION['sessionUsername']}&Alert=successLike';</script>";
+                echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$_SESSION['sessionUsername']}';</script>";
             }
         }
 
@@ -251,11 +251,11 @@ function printFeed()
             $deleteResult = $conn->query($deletesql);
             if (!$deleteResult) {
                 //the Quack is not inserted into the database therefore display the errorInsert alert
-                echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$_SESSION['sessionUsername']}&Alert=errorLike';</script>";
+                echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$_SESSION['sessionUsername']}';</script>";
             }
             if ($deleteResult) {
                 //the Quack is inserted into the database therefore display the successfulInsert alert
-                echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$_SESSION['sessionUsername']}&Alert=successUnlike';</script>";
+                echo "<script>window.location = 'https://www.haxstar.com/pages/feed?Login={$_SESSION['sessionUsername']}';</script>";
             }
         }
 ?>
@@ -580,24 +580,24 @@ function printPost($userID)
             $insertResult    = $conn->query($insertSQL);
             if (!$insertResult) {
                 if (!empty($currentLookup)) {
-                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$currentLookup}&Alert=errorLike';</script>";
+                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$currentLookup}';</script>";
                     exit;
                 }
                 if (empty($currentLookup)) {
                     //the Like is not inserted into the database therefore display the errorLike alert
-                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Alert=errorLike';</script>";
+                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}';</script>";
                     exit;
                 }
             }
             if ($insertResult) {
                 //the Quack is inserted into the database therefore display the successfulLike alert
                 if (!empty($currentLookup)) {
-                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$currentLookup}&Alert=successLike';</script>";
+                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$currentLookup}';</script>";
                     exit;
                 }
                 if (empty($currentLookup)) {
                     //the Like is not inserted into the database therefore display the errorInsert alert
-                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Alert=successLike';</script>";
+                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}';</script>";
                     exit;
                 }
             }
@@ -608,24 +608,24 @@ function printPost($userID)
             if (!$deleteResult) {
                 //the Quack is not inserted into the database therefore display the errorLike alert
                 if (!empty($currentLookup)) {
-                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$currentLookup}&Alert=errorLike';</script>";
+                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$currentLookup}';</script>";
                     exit;
                 }
                 if (empty($currentLookup)) {
                     //the Like is not inserted into the database therefore display the errorInsert alert
-                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Alert=errorLike';</script>";
+                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}';</script>";
                     exit;
                 }
             }
             if ($deleteResult) {
                 //the Quack is inserted into the database therefore display the successfulUnlike alert
                 if (!empty($currentLookup)) {
-                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$currentLookup}&Alert=successUnlike';</script>";
+                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$currentLookup}';</script>";
                     exit;
                 }
                 if (empty($currentLookup)) {
                     //the Like is not inserted into the database therefore display the errorInsert alert
-                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Alert=successUnlike';</script>";
+                    echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}';</script>";
                     exit;
                 }
             }
