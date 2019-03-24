@@ -7,15 +7,15 @@ This project is for SOEN 341 class which is given at Concordia University. The g
 
 ## This team :family: is composed of the following 8 members:
 
-Name | GitHub Username | Email Address | Frontend / Backend
+Name | GitHub Username | Email Address | Frontend / Backend / Debugger
 ------------ | ------------- | ------------- | -------------
 Amanda Kolopanis | Amanda-Kolopa | amandakolopa@gmail.com | Backend
 Hassan Sarhan | H-sarhan | hasoun7772@gmail.com | Frontend
-Loujain Al-Nakeeb | Loujain-Al-Nakeeb | loujain_alnakeeb@hotmail.com | Frontend / Debugger
+Loujain Al-Nakeeb | Loujain-Al-Nakeeb | loujain_alnakeeb@hotmail.com | Frontend + Debugger
 Marc-Andre Lauzier | NodeBeast | lauzier.ma@gmail.com |Frontend
 Mugisha Kakou | MelaninedUnicorn | joycechristiane23@gmail.com | Backend
 Neeham Khalid | Neeham | Neehamk@gmail.com | Backend
-Oussama Zouhadi | Oussamus | Oussamus_84@hotmail.com | Frontend / Debugger
+Oussama Zouhadi | Oussamus | Oussamus_84@hotmail.com | Frontend + Debugger
 Zohal Mir | zohalmir | zohalmir9@gmail.com | Frontend
 
 ## Block Diagram:
