@@ -11,11 +11,11 @@ Name | GitHub Username | Email Address | Frontend / Backend
 ------------ | ------------- | ------------- | -------------
 Amanda Kolopanis | Amanda-Kolopa | amandakolopa@gmail.com | Backend
 Hassan Sarhan | H-sarhan | hasoun7772@gmail.com | Frontend
-Loujain Al-Nakeeb | Loujain-Al-Nakeeb | loujain_alnakeeb@hotmail.com | Frontend
+Loujain Al-Nakeeb | Loujain-Al-Nakeeb | loujain_alnakeeb@hotmail.com | Frontend / Debugger
 Marc-Andre Lauzier | NodeBeast | lauzier.ma@gmail.com |Frontend
 Mugisha Kakou | MelaninedUnicorn | joycechristiane23@gmail.com | Backend
 Neeham Khalid | Neeham | Neehamk@gmail.com | Backend
-Oussama Zouhadi | Oussamus | Oussamus_84@hotmail.com | Frontend
+Oussama Zouhadi | Oussamus | Oussamus_84@hotmail.com | Frontend / Debugger
 Zohal Mir | zohalmir | zohalmir9@gmail.com | Frontend
 
 ## Block Diagram:
