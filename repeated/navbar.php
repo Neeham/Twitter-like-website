@@ -36,7 +36,7 @@
    </nav>
 </div>
 <div class="container-fluid text-center" id="adBlock"> <!-- text to unhide (display) when adblock is detected -->
-   <strong style="color:red">AdBlocker Detected</strong><br> It appears that you are using an <strong>AdBlocker</strong>. Please consider adding an exception to your <strong>AdBlocker</strong> for https://www.haxstar.com <br> Haxstar/Quacker is largely supported by the advertising income. This is why our ducks are able to swim and reunite with their family! Thank you for your support :)
+   <div class="spinner-grow text-danger"></div><strong style="color:red">AdBlocker Detected</strong><div class="spinner-grow text-danger"></div><br> It appears that you are using an <strong>AdBlocker</strong>. Please consider adding an exception to your <strong>AdBlocker</strong> for https://www.haxstar.com <br> Haxstar/Quacker is largely supported by the advertising income. This is why our ducks are able to swim and reunite with their family! Thank you for your support :)
 </div>
 <!-- Search the database for a user profile to visit -->
 <script>
