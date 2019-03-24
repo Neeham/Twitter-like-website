@@ -44,22 +44,34 @@
  textarea {
      resize: none;
 }
- body {
+html, body {
      font-family: "Signika", sans-serif;
-}
- * {
-     -ms-overflow-style: none !important;
-}
- .row-height {
-     height: calc(100vh - 110px);
-}
- .left, .mid, .right {
      height: 100%;
-     overflow-y: scroll;
+     margin: 0;
 }
- ::-webkit-scrollbar {
-     width: 0px;
-     background: transparent;
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+.left, .right, .mid {
+height: 100%;
+overflow-y: scroll;
+float: left;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+.card {
+  background: transparent;
+  border: transparent;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
  .animatedBg {
      background: gray url(https://haxstar.com/resources/images/annimation/wallpaper.png) repeat 0 0;
