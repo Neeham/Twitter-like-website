@@ -1,61 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php
-   require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php'; //Getting the code from navbar.php file.
-   require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php'; //Getting the code from query.php file.
-?>
    <body id="profile">
-      <div class="container-fluid d-none d-lg-block">
-         <div class="row">
-            <div class="col-lg-3">
-                  <div class="card">
-                     <div class="card-header text-center">
-                        <h5>Your Profile</h5>
-                     </div>
-                     <li class="list-group-item profile-card-bg text-center">
-                        <img src="https://www.haxstar.com/resources/images/profilePic/<?php printProfilePage('profilepic'); ?>" class="rounded-circle"/>
-                        <br>
-                        <br>
-                        <h4><?php printProfilePage('name'); ?></h4>
-                        <p><?php printProfilePage('button'); printProfilePage('upload'); ?></p>
-                        <br>
-                        <h6>Email: <?php printProfilePage('email'); ?></h6>
-                        <h6>Following: <?php printProfilePage('followingCount'); ?></h6>
-                        <h6>Followers: <?php printProfilePage('followerCount'); ?></h6>
-                     </li>
+      <?php
+         require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php'; //Getting the code from navbar.php file.
+         require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php'; //Getting the code from query.php file.
+         ?>
+      <div class="container-fluid content d-none d-lg-block">
+         <div class="col-md-3 left">
+            <div class="card">
+               <div class="card-header text-center">
+                  <h5>Your Profile</h5>
                </div>
-            </div>
-            <div class="col-lg-6">
-               <div class="card">
-                  <div class="card-header text-center">
-                     <h5>Your Feed</h5>
-                  </div>
-                  <?php printProfilePage('post'); ?>
-               </div>
-            </div>
-            <div class="col-lg-3">
-                  <div class="card">
-                     <div class="card-header text-center">
-                        <h5>Following</h5>
-                     </div>
-                     <div class="card-text">
-                        <?php printProfilePage('following'); ?>
-                     </div>
-                  </div>
-                  <div class="card">
-                     <div class="card-header text-center">
-                        <h5>Followers</h5>
-                     </div>
-                     <div class="card-text">
-                        <?php printProfilePage('followers'); ?>
-                     </div>
-                  </div>
+               <li class="list-group-item yellowishBgColor text-center">
+                  <img src="https://www.haxstar.com/resources/images/profilePic/<?php printProfilePage('profilepic'); ?>" class="rounded-circle"/>
+                  <br>
+                  <br>
+                  <h4><?php printProfilePage('name'); ?></h4>
+                  <p><?php printProfilePage('button'); printProfilePage('upload'); ?></p>
+                  <br>
+                  <h6>Email: <?php printProfilePage('email'); ?></h6>
+                  <h6>Following: <?php printProfilePage('followingCount'); ?></h6>
+                  <h6>Followers: <?php printProfilePage('followerCount'); ?></h6>
+               </li>
             </div>
          </div>
-      </div>
-      <!-- END: PROPERLY FORMATED AND WORKING WITH DATABASE -->
-      <div class="jumbotron jumbotron-fluid mobile-profile d-lg-none d-block mt-3">
-         <!-- Mobile profile information-->
+         <div class="col-md-6 mid">
+            <div class="card">
+               <div class="card-header text-center">
+                  <h5>Your Feed</h5>
+               </div>
+               <?php printProfilePage('post'); ?>
+            </div>
+         </div>
+         <div class="col-md-3 right">
+            <div class="card">
+               <div class="card-header text-center">
+                  <h5>Following</h5>
+               </div>
+               <div class="card-text">
+                  <?php printProfilePage('following'); ?>
+               </div>
+            </div>
+            <br>
+            <div class="card">
+               <div class="card-header text-center">
+                  <h5>Followers</h5>
+               </div>
+               <div class="card-text">
+                  <?php printProfilePage('followers'); ?>
+               </div>
+            </div>
+         </div>
+      </div> <!-- END: PROPERLY FORMATED AND WORKING WITH DATABASE -->
+      <div class="jumbotron jumbotron-fluid yellowishBgColor mobile-profile d-lg-none d-block"> <!-- Mobile profile information-->
          <div class="container d-flex">
             <div class="mobile-profile-picture">
                <img src="https://www.haxstar.com/resources/images/profilePic/<?php printProfilePage('profilepic'); ?>" class="rounded-circle mobile-profile-picture"/>
@@ -65,25 +62,21 @@
             </div>
          </div>
          <div class="mobile-info ml-3 mt-3">
+            <h4>
+               <?php printProfilePage('upload'); ?>
+            </h4>
             <h4 class="email-mobile">
-               Email:
-               <h6>
-                  <?php printProfilePage('email'); ?>
-               </h6>
+               Email: <?php printProfilePage('email'); ?>
             </h4>
             <h4 class="followers-mobile">
-               Followers:
-               <?php printProfilePage('followerCount'); ?>
+               Followers: <?php printProfilePage('followerCount'); ?>
             </h4>
             <h4 class="following-mobile">
-               Following:
-               <?php printProfilePage('followingCount'); ?>
+               Following: <?php printProfilePage('followingCount'); ?>
             </h4>
          </div>
       </div>
-      <!--End row-->
-      <div class="container d-lg-none d-block">
-         <!-- Mobile feed and following and followers tabs-->
+      <div class="container d-lg-none d-block"> <!-- Mobile feed and following and followers tabs-->
          <div class="card">
             <div class="card-header">
                <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
@@ -98,8 +91,7 @@
                   </li>
                </ul>
             </div>
-            <!-- Tab panes -->
-            <div class="tab-content">
+            <div class="tab-content"> <!-- Tab panes -->
                <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
                   <?php printProfilePage('post'); ?>
                </div>

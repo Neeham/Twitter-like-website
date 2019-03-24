@@ -6,8 +6,8 @@ $_SESSION['sessionActivated']; //Session to check whether or not the user is has
 $_SESSION['sessionLastLoggedIn']; //Session to store the last login time
 $_SESSION['loggedInOrVisitingProfile']; //Stores either the ID of the logged in user or the visiting profile
 require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';  //Getting the code from config.php file.
-require $_SERVER['DOCUMENT_ROOT'] . '/tests/DataObjects.php';
-$testObject = new DataObjects;
+require $_SERVER['DOCUMENT_ROOT'] . '/tests/DataObjects.php'; //Getting the testing methods from DataObjects.php
+$testObject = new DataObjects; //Creating a DataObjects for input testing
 // ################################# VERIFY LOGIN #################################
 //The goal of this method is to verify whether or not the preson can log in.
 if (isset($_POST['login'])) {
@@ -61,9 +61,11 @@ if (isset($_POST['register'])) {
         $pass     = mysql_escape_string($_POST['password']);
         $email    = mysql_escape_string($_POST['email']);
         $hash     = md5(rand(0, 1000));
+  //(Amanda) - $testObject
         $sql      = "SELECT * FROM User WHERE (username = '$username' or email = '$email')";
         $result   = $conn->query($sql);
         if ($row = $result->fetch_assoc()) {
+          //(Amanda) re-enter travis input test here
             if (strcasecmp($username, $row['username']) == 0) { //Checking if username already exists, case insensitive
                 header("Location: https://www.haxstar.com/pages/register?Alert=errorNameExists");
                 exit;
@@ -219,14 +221,18 @@ function verify($password, $hashedPassword) {
 //This method searches the database for all the registered user and let user click on it in order to redirect to their profile.
 if (isset($_POST["searchUser"])) {
     $output = '';
-    $sql    = "SELECT * FROM User WHERE username LIKE '%" . $_POST["searchUser"] . "%'";
-    $result = mysqli_query($conn, $sql);
-    $output = '<ul class="list-unstyled">';
-    while ($row = mysqli_fetch_array($result)) {
-        $output .= '<li>' . $row["username"] . '</li>';
+    $enteredUser = $_POST["searchUser"];
+    $testObject->searchUser((string) $enteredUser);
+    if(strcasecmp($testObject, 'true') == 0) {
+      $sql    = "SELECT * FROM User WHERE username LIKE '%" . $_POST["searchUser"] . "%'";
+      $result = mysqli_query($conn, $sql);
+      $output = '<ul class="list-unstyled">';
+      while ($row = mysqli_fetch_array($result)) {
+          $output .= '<li>' . $row["username"] . '</li>';
+      }
+      $output .= '</ul>';
+      echo $output;
     }
-    $output .= '</ul>';
-    echo $output;
 }
 
 // ################################# Upload Profile Picture ######################################
@@ -263,7 +269,7 @@ function printFeed()
     $result = mysqli_query($conn, $sql);
     while ($row = $result->fetch_assoc()) {
 ?>
-        <li class="list-group-item quack">
+        <li class="list-group-item yellowishBgColor">
         <div class="text-danger"><?php
         echo date_format(date_create($row['date']), 'd M y - g:i A');
 ?></div>
@@ -487,7 +493,7 @@ function printProfile($userID)
 function printUpload()
 {
 ?>
-    <input type="file" name="imageUpload" class="btn" style="width: 120px; color:transparent;" id="imageUpload" />
+    <input type="file" name="imageUpload" class="btn orangeColorButton imageUpload" style="width: 120px; color:transparent;" />
 <?php
 }
 
@@ -558,7 +564,7 @@ function following($userID)
     $result = mysqli_query($conn, $sql);
     while ($row = $result->fetch_assoc()) {
 ?>
-      <li class="list-group-item profile-card-bg">
+      <li class="list-group-item yellowishBgColor">
         <a href="<?php
         echo "https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$row['user']}";
 ?>"><img src="https://haxstar.com/resources/images/profilePic/<?php
@@ -580,8 +586,8 @@ function following($userID)
     }
     if ($totalResult > 2) {
 ?>
-      <li class="list-group-item profile-card-bg text-center">
-          <button type="button" class="btn btn-sm" data-toggle="modal" id="viewAllFollowing">View All</button>
+      <li class="list-group-item yellowishBgColor text-center">
+          <button type="button" class="btn btn-sm orangeColorButton viewAllFollowing" data-toggle="modal">View All</button>
       </li>
 <?php
     }
@@ -594,7 +600,7 @@ function followers($userID)
     $result = mysqli_query($conn, $sql);
     while ($row = $result->fetch_assoc()) {
 ?>
-      <li class="list-group-item profile-card-bg">
+      <li class="list-group-item yellowishBgColor">
         <a href="<?php
         echo "https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$row['user']}";
 ?>"><img src="https://haxstar.com/resources/images/profilePic/<?php
@@ -616,8 +622,8 @@ function followers($userID)
     }
     if ($totalResult > 2) {
 ?>
-      <li class="list-group-item profile-card-bg text-center">
-          <button type="button" class="btn btn-sm" id="viewAllFollower">View All</button>
+      <li class="list-group-item yellowishBgColor text-center">
+          <button type="button" class="btn btn-sm orangeColorButton viewAllFollower">View All</button>
       </li>
 <?php
     }
@@ -633,7 +639,7 @@ function printPost($userID)
 <?php
     while ($row = $result->fetch_assoc()) {
 ?>
-      <li class="list-group-item quack profile-quack-card-bg p-4">
+      <li class="list-group-item yellowishBgColor p-4">
       <div class="text-danger"><?php
         echo date_format(date_create($row['date']), 'd M y - g:i A');
 ?></div>
@@ -792,13 +798,17 @@ if (isset($_POST['viewAllFollower'])) {
 if (isset($_POST['followUser'])) {
     $following = mysql_escape_string($_GET['Lookup']);
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
+    $loggedInUser = $_SESSION['sessionID'];
     $sql    = "SELECT userID FROM User WHERE username = '$following'";
     $result = $conn->query($sql);
     if ($row = $result->fetch_assoc()) {
         $userID = $row['userID'];
-        $sql    = "INSERT INTO Follow (follower,following) VALUES ('{$_SESSION['sessionID']}','$userID')";
-        $result = $conn->query($sql);
-        echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$following}';</script>";
+        $testObject->followUser((int) $loggedInUser, (int) $userID);
+        if(strcasecmp($testObject, 'true') == 0) {
+          $sql    = "INSERT INTO Follow (follower,following) VALUES ('{$_SESSION['sessionID']}','$userID')";
+          $result = $conn->query($sql);
+          echo "<script>window.location = 'https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$following}';</script>";
+        }
     }
 }
 
