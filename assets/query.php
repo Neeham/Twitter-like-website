@@ -61,11 +61,9 @@ if (isset($_POST['register'])) {
         $pass     = mysql_escape_string($_POST['password']);
         $email    = mysql_escape_string($_POST['email']);
         $hash     = md5(rand(0, 1000));
-  //(Amanda) - $testObject
         $sql      = "SELECT * FROM User WHERE (username = '$username' or email = '$email')";
         $result   = $conn->query($sql);
         if ($row = $result->fetch_assoc()) {
-          //(Amanda) re-enter travis input test here
             if (strcasecmp($username, $row['username']) == 0) { //Checking if username already exists, case insensitive
                 header("Location: https://www.haxstar.com/pages/register?Alert=errorNameExists");
                 exit;
@@ -74,6 +72,8 @@ if (isset($_POST['register'])) {
                 exit;
             }
         } else { //Uername does not exists therefore create a new account.
+          $testObject->register((string) $fName, (string) $lName, (string) $username, (string) $pass, (string) $email);
+          if(strcasecmp($testObject, 'true') == 0) {
             $secured_password = generateHash($pass);
             $sql              = "INSERT INTO User (firstName,lastName,username,password,email,hash) VALUES ('$fName','$lName','$username','$secured_password','$email', '$hash')";
             $result           = $conn->query($sql);
@@ -201,7 +201,8 @@ if (isset($_POST['register'])) {
             mail($to, $subject, $message, $headers); //sending email
             header("Location: https://www.haxstar.com/?Alert=verifyEmail");
             exit;
-        }
+          }//end of if (input test)
+    }
 }
 
 //Function to Encrypte a Password
