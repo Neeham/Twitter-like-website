@@ -18,8 +18,15 @@ Neeham Khalid | Neeham | Neehamk@gmail.com | Backend
 Oussama Zouhadi | Oussamus | Oussamus_84@hotmail.com | Frontend
 Zohal Mir | zohalmir | zohalmir9@gmail.com | Frontend
 
-## Block Diagram
+## Block Diagram:
 ![Quack Block Diagram](https://www.haxstar.com/resources/box%20diagram/Block%20Diagram.png)
+
+##Additional Features:
+* Search a user profile
+* Upload profile picture
+* Responsive/Mobile friendly
+* Email verification upon registration
+* Cookies for remember me functionality
 
 ## Languages and tools that will be used:
 * PHP
