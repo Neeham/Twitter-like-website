@@ -1,10 +1,10 @@
 <!DOCTYPE html>
+<?php
+   require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php'; //Getting the code from navbar.php file.
+   require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php'; //Getting the code from query.php file.
+?>
 <html lang="en">
    <body id="profile">
-      <?php
-         require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php'; //Getting the code from navbar.php file.
-         require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php'; //Getting the code from query.php file.
-         ?>
       <div class="container-fluid content d-none d-lg-block">
          <div class="col-md-3 left">
             <div class="card">
@@ -51,7 +51,7 @@
                </div>
             </div>
          </div>
-      </div> <!-- END: PROPERLY FORMATED AND WORKING WITH DATABASE -->
+      </div>
       <div class="jumbotron jumbotron-fluid yellowishBgColor mobile-profile d-lg-none d-block"> <!-- Mobile profile information-->
          <div class="container d-flex">
             <div class="mobile-profile-picture">
@@ -103,8 +103,7 @@
                </div>
             </div>
          </div>
-      </div>
-      <!-- This script tag have to run after the html elements have been loaded -->
+      </div> <!-- This script tag have to run after the html elements have been loaded -->
       <script> tippy(".like");</script>
       <?php require $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php'; ?>
    </body>
