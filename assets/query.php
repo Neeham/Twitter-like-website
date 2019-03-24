@@ -80,6 +80,7 @@ if (isset($_POST['register'])) {
             $to               = $email; //Sending email to user
             $subject          = '=?utf-8?Q?=F0=9F=90=A5_Quacker_-_Signup_=7C_Verification_=F0=9F=90=A5?='; //subject of the email
             $message          = file_get_contents('https://www.haxstar.com/assets/emailSend');
+            $message          = str_replace('$username', $fName, $message);
             $message          = str_replace('$emailAddress', $email, $message);
             $message          = str_replace('$hashKey', $hash, $message);
             $headers          = "MIME-Version: 1.0" . "\r\n";

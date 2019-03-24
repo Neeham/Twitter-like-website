@@ -1,13 +1,13 @@
 <!DOCTYPE html>
+<?php
+   require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php'; //Getting the code from navbar.php file.
+   require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php'; //Getting the code from query.php file.
+   ?>
 <html lang="en">
    <body id="feed-bg">
-      <?php
-         require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php'; //Getting the code from navbar.php file.
-         require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php'; //Getting the code from query.php file.
-         ?>
       <div class="container-fluid content">
-         <div class="col-md-2 d-none d-lg-block left"> <!-- Display ads on the feed page, LEFT column -->
-            <div class="card">
+         <div class="col-md-2 d-none d-lg-block left">
+            <div class="card"> <!-- Display ads on the feed page, LEFT column -->
                <img class="img-fluid w-100" src="https://www.haxstar.com/resources/images/ads/howard-the-duck.jpg" /><br>
                <br><img class="img-fluid w-100" src="https://www.haxstar.com/resources/images/ads/fancyduck.jpg" /><br>
                <br><img class="img-fluid w-100" src="https://www.haxstar.com/resources/images/ads/lucky-duck.jpg" />
@@ -28,8 +28,8 @@
                </div>
             </div>
             <div class="card-header text-center">Your Feed</div>
-            <ul class="list-group" id="quack-list"> <!-- Display Quacks -->
-               <?php printFeed(); ?>
+            <ul class="list-group" id="quack-list">
+               <?php printFeed(); ?> <!-- Display Quacks -->
             </ul>
          </div>
          <div class="col-md-2 d-none d-lg-block right"> <!-- Display ads on the feed page, Right column -->
