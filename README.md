@@ -1,4 +1,4 @@
-# Twitter-like-website   
+# Twitter-like-website - SOEN 341 - UC1
 
 [![Build Status](https://travis-ci.org/Neeham/Twitter-like-website.svg?branch=master)](https://travis-ci.org/Neeham/Twitter-like-website)
 
