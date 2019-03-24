@@ -5,7 +5,8 @@
          require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php'; //Getting the code from navbar.php file.
          require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php'; //Getting the code from query.php file.
          ?>
-      <div class="container-fluid content d-none d-lg-block">
+         <div class="container-fluid content">
+      <div class="container-fluid d-none d-lg-block">
          <div class="col-md-3 left">
             <div class="card">
                <div class="card-header text-center">
@@ -104,6 +105,7 @@
             </div>
          </div>
       </div>
+    </div>
       <!-- This script tag have to run after the html elements have been loaded -->
       <script> tippy(".like");</script>
       <?php require $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php'; ?>
