@@ -1,4 +1,4 @@
-# Twitter-like-website   
+# Twitter-like-website - SOEN 341 - UC1
 
 [![Build Status](https://travis-ci.org/Neeham/Twitter-like-website.svg?branch=master)](https://travis-ci.org/Neeham/Twitter-like-website)
 
@@ -21,7 +21,7 @@ Zohal Mir | zohalmir | zohalmir9@gmail.com | Frontend
 ## Block Diagram:
 ![Quack Block Diagram](https://www.haxstar.com/resources/box%20diagram/Block%20Diagram.png)
 
-##Additional Features:
+## Additional Features:
 * Search a user profile
 * Upload profile picture
 * Responsive/Mobile friendly
