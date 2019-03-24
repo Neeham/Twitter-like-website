@@ -21,7 +21,7 @@ Zohal Mir | zohalmir | zohalmir9@gmail.com | Frontend
 ## Block Diagram:
 ![Quack Block Diagram](https://www.haxstar.com/resources/box%20diagram/Block%20Diagram.png)
 
-##Additional Features:
+## Additional Features:
 * Search a user profile
 * Upload profile picture
 * Responsive/Mobile friendly
