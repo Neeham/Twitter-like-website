@@ -19,7 +19,7 @@
          transform: translateX(0) translateZ(0) scaleY(1);
     }
      50% {
-         transform: translateX(-25%) translateZ(0) scaleY(0.92);
+         transform: translateX(-25%) translateZ(0) scaleY(1);
     }
      100% {
          transform: translateX(-50%) translateZ(0) scaleY(1);
@@ -148,19 +148,31 @@ float: left;
  .bgMiddle {
      opacity: 0.6;
 }
- .wave {
+ .wave1 {
      position: absolute;
-     top: 420px;
+     top: 450px;
      left: 0;
      width: 200%;
      height: 100%;
 }
+.wave {
+    position: absolute;
+    top: 650px;
+    left: 0;
+    width: 200%;
+    height: 100%;
+}
  .waveMiddle {
      background-size: 50% 200px;
 }
- .waveAnimation .waveMiddle {
+
+ .waveAnimation1 .waveMiddle {
      animation: move_wave 25s linear infinite;
      background-image: url(https://haxstar.com/resources/images/annimation/wave-mid.png);
+}
+.waveAnimation .waveMiddle {
+    animation: move_wave 25s linear infinite;
+    background-image: url(https://haxstar.com/resources/images/annimation/wave-mid-full.png);
 }
  .floating-duck {
      width: 270px;
