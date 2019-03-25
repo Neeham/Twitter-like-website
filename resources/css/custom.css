@@ -95,14 +95,14 @@ float: left;
      margin-bottom: 50px;
 }
  .card-header {
-     background-color: #ffa000;
+     background-color: #ffc107;
 }
  .mobile-profile-picture {
      width: 150px;
      height: 150px;
 }
  .yellowishBgColor {
-     background-color: #ffe97e;
+     background-color: #fefec8;
 }
  .mobile-nav-item {
      background-color: #ffa000;
@@ -199,4 +199,8 @@ float: left;
 }
  #userList li {
      padding: 12px;
+}
+::placeholder {
+  color: Gainsboro;
+  font-size: 1.5em;
 }

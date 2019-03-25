@@ -15,10 +15,10 @@
          </div>
          <div class="col-md-8 mid">
             <div class="card">
-               <h2 class="display-4 text-danger">Post a Quack:</h2>
+               <h2 class="display-4 text-danger" align="center" >Post a Quack</h2>
                <div class="form-group">
                   <form class="form-group" action="../assets/query" method="post">
-                     <textarea class="form-control" id="quack-box" oninput = "setCounter()" rows="4" name="tweet" maxlength="255" required placeholder="Quack it"></textarea>
+                     <textarea class="form-control" id="quack-box" oninput = "setCounter()" rows="4" name="tweet" maxlength="255" required placeholder="Quack it ..."></textarea>
                      <br>
                      <span class="my-2" id="quack-limit">0/255</span>
                      <button class="btn float-right quack-btn orangeColorButton" name="postQuackBtn" id="quack-button"
@@ -27,6 +27,7 @@
                   </form>
                </div>
             </div>
+            <br>
             <div class="card-header text-center">Your Feed</div>
             <ul class="list-group" id="quack-list">
                <?php printFeed(); ?> <!-- Display Quacks -->
