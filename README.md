@@ -33,7 +33,7 @@ Zohal Mir | Zohalmir | zohalmir9@gmail.com | Frontend
 * HTML
 * CSS
 * AJAX
-* Travis
+* Travis CI
 * BOOTSTRAP
 * JAVASCRIPT
 * MySQL Database
