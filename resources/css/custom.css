@@ -102,7 +102,7 @@ float: left;
      height: 150px;
 }
  .yellowishBgColor {
-     background-color: #fefec8;
+     background-color: #fffffc;
 }
  .mobile-nav-item {
      background-color: #ffa000;
@@ -191,7 +191,7 @@ float: left;
      color: white;
 }
  #feed-bg, #register, #profile, #login {
-     background-color: #ffffe6;
+     background-color: #deded1;
 }
  #userList ul {
      background-color: #ffffe0;
