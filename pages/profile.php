@@ -78,8 +78,8 @@
       </div>
       <div class="container d-lg-none d-block"> <!-- Mobile feed and following and followers tabs-->
          <div class="card">
-            <div class="card-header">
-               <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+            <div class="card-header text-center">
+               <ul class="nav nav-tabs card-header-tabs nav-justified" id="myTab" role="tablist">
                   <li class="nav-item mobile-nav-item">
                      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Quacks</a>
                   </li>

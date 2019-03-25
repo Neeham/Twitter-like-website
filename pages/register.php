@@ -11,7 +11,7 @@
          <img src="https://haxstar.com/resources/images/logo/Quacker.png" width="140" height="30" class="d-inline-block align-top" alt="">
          </a>
       </nav>
-      <div class ="container-fluid">
+      <div class ="container-fluid content">
          <div class="row">
             <div class="col-md-4 center-block"></div>
             <div class="col-md-4 center-block registrationForm">

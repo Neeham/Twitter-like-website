@@ -25,53 +25,63 @@
          transform: translateX(-50%) translateZ(0) scaleY(1);
     }
 }
- @media only screen and (max-width: 760px) {
+ @media only screen and (max-width: 768px) { /* Anything below an ipad */
      .floating-duck {
-         width: 150px !important;
-         height: 150px !important;
-         top: 370px !important;
-         left: 50% !important;
-    }
-     .wave {
-         top: 470px !important;
          display: none !important;
     }
-     #login {
-         min-height: 500px;
-         margin-bottom: 200px;
+     .wave {
+         display: none !important;
+    }
+     .wave1 {
+         display: none !important;
+    }
+     #login .loginForm {
+         min-height: 450px;
+    }
+     .registrationForm {
+         margin-top: 0px !important;
+         margin-bottom: 0px !important;
+         padding-bottom: 70px;
     }
 }
+/* @media (min-width:961px) { iPad? ensure orientation does not mess up with duck floating.
+}
+ @media (min-width:1025px) { normal desktop?
+}
+ @media (min-width:1281px) { extra big desktop?
+}
+ */
  textarea {
      resize: none;
 }
-html, body {
+ html, body {
      font-family: "Signika", sans-serif;
      height: 100%;
      margin: 0;
 }
-.wrapper {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+ .wrapper {
+     height: 100%;
+     display: flex;
+     flex-direction: column;
 }
-.content {
-  flex: 1;
-  overflow: auto;
+ .content {
+     flex: 1;
+     overflow: auto;
 }
-.left, .right, .mid {
-height: 100%;
-overflow-y: scroll;
-float: left;
+ .left, .right, .mid {
+     height: 100%;
+     overflow-y: scroll;
+     float: left;
 }
-::-webkit-scrollbar {
-    width: 0px;
-    background: transparent;
+ ::-webkit-scrollbar {
+     width: 0px;
+     background: transparent;
 }
-.card {
-  background: transparent;
-  border: transparent;
-  padding-top: 10px;
-  padding-bottom: 10px;
+ .card {
+     background: transparent;
+     border: transparent;
+     padding-top: 10px;
+     padding-bottom: 10px;
 }
  .animatedBg {
      background: gray url(https://haxstar.com/resources/images/annimation/wallpaper.png) repeat 0 0;
@@ -86,7 +96,7 @@ float: left;
      margin-top: 50px;
 }
  .loginForm {
-     background-color: #fff9e6;
+     background-color: transparent;
      z-index: 1;
 }
  .registrationForm {
@@ -95,14 +105,14 @@ float: left;
      margin-bottom: 50px;
 }
  .card-header {
-     background-color: #ffa000;
+     background-color: #ffc107;
 }
  .mobile-profile-picture {
      width: 150px;
      height: 150px;
 }
  .yellowishBgColor {
-     background-color: #ffe97e;
+     background-color: #fffffc;
 }
  .mobile-nav-item {
      background-color: #ffa000;
@@ -128,6 +138,7 @@ float: left;
      will-change: transform;
      -webkit-user-select: none;
      user-select: none;
+     z-index: -1;
 }
  .waveWrapper {
      overflow: hidden;
@@ -155,28 +166,40 @@ float: left;
      width: 200%;
      height: 100%;
 }
-.wave {
-    position: absolute;
-    top: 650px;
-    left: 0;
-    width: 200%;
-    height: 100%;
+ .wave {
+     position: absolute;
+     top: 650px;
+     left: 0;
+     width: 200%;
+     height: 100%;
 }
  .waveMiddle {
      background-size: 50% 200px;
 }
-
  .waveAnimation1 .waveMiddle {
      animation: move_wave 25s linear infinite;
      background-image: url(https://haxstar.com/resources/images/annimation/wave-mid.png);
 }
-.waveAnimation .waveMiddle {
-    animation: move_wave 25s linear infinite;
-    background-image: url(https://haxstar.com/resources/images/annimation/wave-mid-full.png);
+ .waveAnimation .waveMiddle {
+     animation: move_wave 25s linear infinite;
+     background-image: url(https://haxstar.com/resources/images/annimation/wave-mid-full.png);
 }
  .floating-duck {
      width: 270px;
      height: 270px;
+}
+ .orangeColorButton {
+     background-color: #ff5722;
+     color: white;
+}
+ .whitetitles{
+     font-weight: bold;
+     color: white;
+     font-size: 1.5em;
+}
+ ::placeholder {
+     color: Gainsboro;
+     font-size: 1.5em;
 }
  #slogan {
      padding-top: 120px;
@@ -186,12 +209,8 @@ float: left;
      width: 100%;
      background-color:pink;
 }
- .orangeColorButton {
-     background-color: #ff5722;
-     color: white;
-}
  #feed-bg, #register, #profile, #login {
-     background-color: #fff9e6;
+     background-color: #deded1;
 }
  #userList ul {
      background-color: #ffffe0;
@@ -199,4 +218,7 @@ float: left;
 }
  #userList li {
      padding: 12px;
+}
+ #feedtitle{
+     color: #ff5722;
 }
