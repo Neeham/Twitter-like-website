@@ -40,8 +40,13 @@
                <button onclick="location.href = 'https://haxstar.com/pages/register';" class="btn btn-lg btn-warning btn-block" name="register">Register</button><br>
             </div>
          </div>
+         <div class="waveWrapper waveAnimation1">
+            <div class="waveWrapperInner bgMiddle  ">
+               <div class="wave1 waveMiddle"></div>
+            </div>
+         </div>
          <div class="waveWrapper waveAnimation">
-            <div class="waveWrapperInner bgMiddle">
+            <div class="waveWrapperInner bgMiddle  ">
                <div class="wave waveMiddle"></div>
             </div>
          </div>
