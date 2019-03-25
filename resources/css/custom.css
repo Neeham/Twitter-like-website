@@ -95,14 +95,14 @@ float: left;
      margin-bottom: 50px;
 }
  .card-header {
-     background-color: #ffa000;
+     background-color: #ffc107;
 }
  .mobile-profile-picture {
      width: 150px;
      height: 150px;
 }
  .yellowishBgColor {
-     background-color: #ffe97e;
+     background-color: #fffffc;
 }
  .mobile-nav-item {
      background-color: #ffa000;
@@ -191,7 +191,7 @@ float: left;
      color: white;
 }
  #feed-bg, #register, #profile, #login {
-     background-color: #fff9e6;
+     background-color: #deded1;
 }
  #userList ul {
      background-color: #ffffe0;
@@ -199,4 +199,16 @@ float: left;
 }
  #userList li {
      padding: 12px;
+}
+::placeholder {
+  color: Gainsboro;
+  font-size: 1.5em;
+}
+#feedtitle{
+  color: #ff5722;
+}
+.whitetitles{
+  font-weight: bold;
+  color: white;
+  font-size: 1.5em;
 }
