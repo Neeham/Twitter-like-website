@@ -245,7 +245,8 @@ function printFeed()
         }
 ?>
         </div>
-        </li>
+      </li> <br>
+       <!--adding a space between each quack to seperate them-->
 <?php
     } //end of while
 }
@@ -638,7 +639,7 @@ function printPost($userID)
                 }
             }
         }
-        echo "</div></li>";
+        echo "</div></li> <br>";
     }
     echo "</ul>";
 }
