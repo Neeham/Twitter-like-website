@@ -2,7 +2,7 @@
 <?php
    require $_SERVER['DOCUMENT_ROOT'] . '/repeated/navbar.php'; //Getting the code from navbar.php file.
    require $_SERVER['DOCUMENT_ROOT'] . '/assets/query.php'; //Getting the code from query.php file.
-?>
+   ?>
 <html lang="en">
    <body id="profile">
       <div class="container-fluid content d-none d-lg-block">
@@ -52,7 +52,8 @@
             </div>
          </div>
       </div>
-      <div class="jumbotron jumbotron-fluid yellowishBgColor mobile-profile d-lg-none d-block"> <!-- Mobile profile information-->
+      <!-- Mobile User Info View -->
+      <div class="jumbotron jumbotron-fluid yellowishBgColor mobile-profile d-block d-lg-none">
          <div class="container d-flex">
             <div class="mobile-profile-picture">
                <img src="https://www.haxstar.com/resources/images/profilePic/<?php printProfilePage('profilepic'); ?>" class="rounded-circle mobile-profile-picture"/>
@@ -76,7 +77,8 @@
             </h4>
          </div>
       </div>
-      <div class="container d-lg-none d-block"> <!-- Mobile feed and following and followers tabs-->
+      <!-- Mobile feed, following and followers tabs-->
+      <div class="container d-block d-lg-none">
          <div class="card">
             <div class="card-header text-center">
                <ul class="nav nav-tabs card-header-tabs nav-justified" id="myTab" role="tablist">
@@ -91,7 +93,8 @@
                   </li>
                </ul>
             </div>
-            <div class="tab-content"> <!-- Tab panes -->
+            <div class="tab-content">
+               <!-- Tab panes -->
                <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
                   <?php printProfilePage('post'); ?>
                </div>
@@ -103,7 +106,8 @@
                </div>
             </div>
          </div>
-      </div> <!-- This script tag have to run after the html elements have been loaded -->
+      </div>
+      <!-- This script tag have to run after the html elements have been loaded -->
       <script> tippy(".like");</script>
       <?php require $_SERVER['DOCUMENT_ROOT'].'/repeated/footer.php'; ?>
    </body>

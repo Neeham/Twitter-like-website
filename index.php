@@ -19,10 +19,11 @@
          <div class = "row">
             <div class="col-md-7">
                <h1 align="center" id="slogan">Don't be wack, start to quack.</h1>
-               <img class="floating-duck" src="https://haxstar.com/resources/images/logo/duck.png">
+               <img class="floatingDuck" src="https://haxstar.com/resources/images/logo/duck.png">
             </div>
             <div class="col-md-3 loginForm">
-               <form class="form-signin" action="../assets/query" method="post"> <!-- Login form -->
+               <form class="form-signin" action="../assets/query" method="post">
+                  <!-- Login form -->
                   <h2 class="form-signin-heading">Login</h2>
                   <div class="form-group">
                      <input type="text" class="form-control" name="username" placeholder="Username" required="" autofocus>
@@ -40,28 +41,25 @@
                <button onclick="location.href = 'https://haxstar.com/pages/register';" class="btn btn-lg btn-warning btn-block" name="register">Register</button><br>
             </div>
          </div>
-         <div class="waveWrapper waveAnimation1">
-            <div class="waveWrapperInner bgMiddle  ">
-               <div class="wave1 waveMiddle"></div>
-            </div>
-         </div>
          <div class="waveWrapper waveAnimation">
-            <div class="waveWrapperInner bgMiddle  ">
-               <div class="wave waveMiddle"></div>
+            <div class="waveWrapperInner bgMiddle">
+               <div class="wave waveMiddle" style="background-image: url('https://haxstar.com/resources/images/annimation/wave-mid.png')"></div>
+            </div>
+            <div class="waveWrapperInner bgBottom">
+               <div class="wave waveBottom" style="background-image: url('https://haxstar.com/resources/images/annimation/wave-bot.png')"></div>
             </div>
          </div>
-         <div>
-         </div>
-         <nav class="navbar navbar-expand-sm bg-warning fixed-bottom"> <!-- The footer code -->
-            <div class = "container-fluid">
-               <ul class="navbar-nav mr-auto">
-                  <li class="nav-item active">Copyright by the Quack Gang © - <?PHP echo date("Y"); ?></li>
-               </ul>
-               <ul class="navbar-nav">
-                  <li class="nav-item"><img src="https://haxstar.com/resources/images/annimation/Quack.gif" height="35px"/></li>
-               </ul>
-            </div>
-         </nav>
       </div>
+      <nav class="navbar navbar-expand-sm bg-warning fixed-bottom">
+         <!-- The footer code -->
+         <div class = "container-fluid">
+            <ul class="navbar-nav mr-auto">
+               <li class="nav-item active">Copyright by the Quack Gang © - <?PHP echo date("Y"); ?></li>
+            </ul>
+            <ul class="navbar-nav">
+               <li class="nav-item"><img src="https://haxstar.com/resources/images/annimation/Quack.gif" height="35px"/></li>
+            </ul>
+         </div>
+      </nav>
    </body>
 </html>
