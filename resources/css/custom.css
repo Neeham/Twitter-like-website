@@ -1,224 +1,226 @@
-@-webkit-keyframes slide {
-     from {
-         background-position: 0 0;
-    }
-     to {
-         background-position: -400px 0;
-    }
+@keyframes floatingDuck {
+    0% {
+        transform: translateY(-8px);
+   }
+    100% {
+        transform: translateY(60px);
+   }
 }
- @keyframes floating-duck {
-     0% {
-         transform: translateY(-8px);
-    }
-     100% {
-         transform: translateY(10px);
-    }
+@-webkit-keyframes registerSlideWallpaper {
+    from {
+        background-position: 0 0;
+   }
+    to {
+        background-position: -400px 0;
+   }
 }
- @keyframes move_wave {
-     0% {
-         transform: translateX(0) translateZ(0) scaleY(1);
-    }
-     50% {
-         transform: translateX(-25%) translateZ(0) scaleY(1);
-    }
-     100% {
-         transform: translateX(-50%) translateZ(0) scaleY(1);
-    }
+@keyframes movingWater {
+    0% {
+        transform: translateX(0) translateZ(0) scaleY(1)
+   }
+    50% {
+        transform: translateX(-25%) translateZ(0) scaleY(0.55)
+   }
+    100% {
+        transform: translateX(-50%) translateZ(0) scaleY(1)
+   }
 }
- @media only screen and (max-width: 768px) { /* Anything below an ipad */
-     .floating-duck {
-         display: none !important;
-    }
-     .wave {
-         display: none !important;
-    }
-     .wave1 {
-         display: none !important;
-    }
-     #login .loginForm {
-         min-height: 450px;
-    }
-     .registrationForm {
-         margin-top: 0px !important;
-         margin-bottom: 0px !important;
-         padding-bottom: 70px;
-    }
+@media only screen and (max-width: 768px) { /* Anything below an ipad */
+    .floatingDuck {
+        display: none !important;
+   }
+    .wave {
+        display: none !important;
+   }
+    #login .loginForm {
+        min-height: 450px;
+   }
+    .registrationForm {
+        margin-top: 0px !important;
+        margin-bottom: 0px !important;
+        padding-bottom: 70px;
+   }
 }
-/* @media (min-width:961px) { iPad? ensure orientation does not mess up with duck floating.
+/* Portrait iPad 1, 2, Mini and Air */
+@media only screen and (min-device-width: 768px) (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
 }
- @media (min-width:1025px) { normal desktop?
+/* Landscape iPad 1, 2, Mini and Air */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
 }
- @media (min-width:1281px) { extra big desktop?
+/* Portrait iPad 3, 4 and Pro 9.7" */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
 }
- */
- textarea {
-     resize: none;
+/* Landscape iPad 3, 4 and Pro 9.7" */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
 }
- html, body {
-     font-family: "Signika", sans-serif;
-     height: 100%;
-     margin: 0;
+/* Portrait iPad Pro 10.5" */
+@media only screen and (min-device-width: 834px) and (max-device-width: 834px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
 }
- .wrapper {
-     height: 100%;
-     display: flex;
-     flex-direction: column;
+/* Landscape iPad Pro 10.5" */
+@media only screen and (min-device-width: 1112px) and (max-device-width: 1112px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
 }
- .content {
-     flex: 1;
-     overflow: auto;
+/* Portrait iPad Pro 12.9" */
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
 }
- .left, .right, .mid {
-     height: 100%;
-     overflow-y: scroll;
-     float: left;
+/* Landscape iPad Pro 12.9" */
+@media only screen and (min-device-width: 1366px) and (max-device-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
 }
- ::-webkit-scrollbar {
-     width: 0px;
-     background: transparent;
+textarea {
+    resize: none;
 }
- .card {
-     background: transparent;
-     border: transparent;
-     padding-top: 10px;
-     padding-bottom: 10px;
+html, body {
+    font-family: "Signika", sans-serif;
+    height: 100%;
+    margin: 0;
 }
- .animatedBg {
-     background: gray url(https://haxstar.com/resources/images/annimation/wallpaper.png) repeat 0 0;
-     width: 100%;
-     margin: 0;
-     text-align: center;
-     height: 300px;
-     box-sizing: border-box;
-     -webkit-animation: slide 60s linear infinite;
+.wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
- .form-signin {
-     margin-top: 50px;
+.content {
+    flex: 1;
+    overflow: auto;
 }
- .loginForm {
-     background-color: transparent;
-     z-index: 1;
+.left, .right, .mid {
+    height: 100%;
+    overflow-y: scroll;
+    float: left;
 }
- .registrationForm {
-     background-color: rgb(255,255,255, 0.8);
-     margin-top: 50px;
-     margin-bottom: 50px;
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
 }
- .card-header {
-     background-color: #ffc107;
+.card {
+    background: transparent;
+    border: transparent;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
- .mobile-profile-picture {
-     width: 150px;
-     height: 150px;
+.form-signin {
+    margin-top: 50px;
 }
- .yellowishBgColor {
-     background-color: #fffffc;
+.loginForm {
+    background-color: transparent;
+    z-index: 4;
 }
- .mobile-nav-item {
-     background-color: #ffa000;
+.registrationForm {
+    background-color: rgb(255,255,255, 0.8);
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
- .nav-link.active {
-     background-color: #ff5722 !important;
-     border: 1px solid transparent !important;
-     border-color: #ff5722 !important;
+.card-header {
+    background-color: #ffc107;
 }
- .floating-duck {
-     position: absolute;
-     top: 260px;
-     left: calc(50% - 280px);
-     animation: floating-duck 2s alternate ease-in-out infinite;
-     animation-name: floating-duck;
-     animation-duration: 2s;
-     animation-timing-function: ease-in-out;
-     animation-delay: 0s;
-     animation-iteration-count: infinite;
-     animation-direction: alternate;
-     animation-fill-mode: none;
-     animation-play-state: running;
-     will-change: transform;
-     -webkit-user-select: none;
-     user-select: none;
-     z-index: -1;
+.mobile-profile-picture {
+    width: 150px;
+    height: 150px;
 }
- .waveWrapper {
-     overflow: hidden;
-     position: absolute;
-     left: 0;
-     right: 0;
-     bottom: 0;
-     top: 0;
-     margin: auto;
+.yellowishBgColor {
+    background-color: #ffe083;
 }
- .waveWrapperInner {
-     position: absolute;
-     width: 100%;
-     overflow: hidden;
-     height: 100%;
-     bottom: -1px;
+.mobile-nav-item {
+    background-color: #ffa000;
 }
- .bgMiddle {
-     opacity: 0.6;
+.nav-link.active {
+    background-color: #ff5722 !important;
+    border: 1px solid transparent !important;
+    border-color: #ff5722 !important;
 }
- .wave1 {
-     position: absolute;
-     top: 450px;
-     left: 0;
-     width: 200%;
-     height: 100%;
+.floatingDuck {
+    position: absolute;
+    top: 300px;
+    left: calc(50% - 280px);
+    animation: floatingDuck 2s alternate ease-in-out infinite;
+    animation-name: floatingDuck;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-fill-mode: none;
+    animation-play-state: running;
+    will-change: transform;
+    -webkit-user-select: none;
+    user-select: none;
+    width: 270px;
+    height: 270px;
+    z-index: 1;
 }
- .wave {
-     position: absolute;
-     top: 650px;
-     left: 0;
-     width: 200%;
-     height: 100%;
+.animatedBg {
+    background: url(https://haxstar.com/resources/images/annimation/wallpaper.png) repeat 0 0;
+    -webkit-animation: registerSlideWallpaper 60s linear infinite;
 }
- .waveMiddle {
-     background-size: 50% 200px;
+.waveWrapper {
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
 }
- .waveAnimation1 .waveMiddle {
-     animation: move_wave 25s linear infinite;
-     background-image: url(https://haxstar.com/resources/images/annimation/wave-mid.png);
+.waveWrapperInner {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    bottom: -1px;
 }
- .waveAnimation .waveMiddle {
-     animation: move_wave 25s linear infinite;
-     background-image: url(https://haxstar.com/resources/images/annimation/wave-mid-full.png);
+.bgMiddle {
+    z-index: 3;
+    opacity: 0.8;
 }
- .floating-duck {
-     width: 270px;
-     height: 270px;
+.bgBottom {
+    z-index: 2;
+    opacity: 0.6;
 }
- .orangeColorButton {
-     background-color: #ff5722;
-     color: white;
+.wave {
+    position: absolute;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background-repeat: repeat no-repeat;
+    background-position: 0 bottom;
+    transform-origin: center bottom;
 }
- .whitetitles{
-     font-weight: bold;
-     color: white;
-     font-size: 1.5em;
+.waveMiddle {
+    background-size: 50% 275px;
 }
- ::placeholder {
-     color: Gainsboro;
-     font-size: 1.5em;
+.waveAnimation .waveMiddle {
+    animation: movingWater 10s linear infinite;
 }
- #slogan {
-     padding-top: 120px;
+.waveBottom {
+    background-size: 50% 275px;
 }
- #adBlock {
-     display:none;
-     width: 100%;
-     background-color:pink;
+.waveAnimation .waveBottom {
+    animation: movingWater 15s linear infinite;
 }
- #feed-bg, #register, #profile, #login {
-     background-color: #deded1;
+.orangeColorButton {
+    background-color: #ff5722;
+    color: white;
 }
- #userList ul {
-     background-color: #ffffe0;
-     cursor: pointer;
+.titleChange{
+    font-size: 1.5em;
 }
- #userList li {
-     padding: 12px;
+#feedtitle{
+    color: #ff5722;
 }
- #feedtitle{
-     color: #ff5722;
+#slogan {
+    padding-top: 120px;
+}
+#adBlock {
+    display:none;
+    width: 100%;
+    background-color:pink;
+}
+#feed-bg, #register, #profile, #login {
+    background-color: #fff9e6;
+}
+#userList ul {
+    background-color: #ffffe0;
+    cursor: pointer;
+}
+#userList li {
+    padding: 12px;
 }

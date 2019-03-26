@@ -30,7 +30,7 @@
          <div class="col-md-8 mid">
             <div class="card">
                <h2 class="display-4 text-danger" align="center" >
-                 <div  id="feedtitle"> Post a Quack </div>
+                 <div id="feedtitle"> Post a Quack </div>
                  </h2>
                <div class="form-group">
                   <form class="form-group" action="../assets/query" method="post">
@@ -44,7 +44,7 @@
                </div>
             </div>
             <br>
-            <div class="card-header text-center whitetitles">Your Feed</div>
+            <div class="card-header text-center titleChange">Your Feed</div>
             <ul class="list-group" id="quack-list">
                <?php printFeed(); ?> <!-- Display Quacks -->
             </ul>
