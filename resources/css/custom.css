@@ -33,7 +33,7 @@
         display: none !important;
    }
     #login .loginForm {
-        min-height: 450px;
+        min-height: 450px !important;
    }
     .registrationForm {
         margin-top: 0px !important;
