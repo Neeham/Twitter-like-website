@@ -114,13 +114,19 @@
      margin-bottom: 50px;
 }
  .card-header {
-     background-color: #ffc107;
+   border-radius: 5px !important;
+   background-color: #ffc107;
 }
+
+ .lastLoggedIn{
+   margin-top: 8px;
+ }
  .mobile-profile-picture {
      width: 150px;
      height: 150px;
 }
  .yellowishBgColor {
+     border-radius: 5px !important;
      background-color: #ffe083;
 }
  .mobile-nav-item {
@@ -228,4 +234,3 @@
  #userList li {
      padding: 12px;
 }
- 

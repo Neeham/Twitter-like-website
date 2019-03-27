@@ -27,7 +27,7 @@
          <div class="col-md-6 mid">
             <div class="card">
                <div class="card-header text-center">
-                  <h5>Your Feed</h5>
+                  <h5>Quacks</h5>
                </div>
                <?php printProfilePage('post'); ?>
             </div>
