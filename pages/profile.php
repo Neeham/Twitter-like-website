@@ -58,11 +58,14 @@
             <div class="mobile-profile-picture">
                <img src="https://www.haxstar.com/resources/images/profilePic/<?php printProfilePage('profilepic'); ?>" class="rounded-circle mobile-profile-picture"/>
             </div>
-            <div class="display-4 mb-1 name-mobile">
-               <?php printProfilePage('name'); printProfilePage('button'); ?>
+            <div class="mb-1 name-mobile ml-5 mt-5">
+               <?php printProfilePage('button'); ?>
             </div>
          </div>
          <div class="mobile-info ml-3 mt-3">
+           <h4>
+             <?php printProfilePage('name'); ?>
+           </h4>
             <h4>
                <?php printProfilePage('upload'); ?>
             </h4>
