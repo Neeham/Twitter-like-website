@@ -8,6 +8,7 @@ $_SESSION['loggedInOrVisitingProfile']; //Stores either the ID of the logged in 
 require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';  //Getting the code from config.php file.
 require $_SERVER['DOCUMENT_ROOT'] . '/tests/DataObjects.php'; //Getting the testing methods from DataObjects.php
 $testObject = new DataObjects; //Creating a DataObjects for input testing
+
 // ################################# VERIFY LOGIN #################################
 //The goal of this method is to verify whether or not the preson can log in.
 if (isset($_POST['login'])) {
@@ -55,49 +56,42 @@ if (isset($_POST['login'])) {
 // ################################# Register an Account #################################
 //Before registering a user account, it checks whether or not the username and/or email already exists
 if (isset($_POST['register'])) {
-  $RegistrationAllowed = false; //DELETE THIS FOR DEMO
-  if($RegistrationAllowed) { //DELETE THIS FOR DEMO
-        $fName    = mysql_escape_string($_POST['firstname']);
-        $lName    = mysql_escape_string($_POST['lastname']);
-        $username = mysql_escape_string($_POST['username']);
-        $pass     = mysql_escape_string($_POST['password']);
-        $email    = mysql_escape_string($_POST['email']);
-        $hash     = md5(rand(0, 1000));
-        $sql      = "SELECT * FROM User WHERE (username = '$username' or email = '$email')";
-        $result   = $conn->query($sql);
-        if ($row = $result->fetch_assoc()) {
-            if (strcasecmp($username, $row['username']) == 0) { //Checking if username already exists, case insensitive
-                header("Location: https://www.haxstar.com/pages/register?Alert=errorNameExists");
-                exit;
-            } else if (strcasecmp($email, $row['email']) == 0) { //Checking if email already exists, case insensitive
-                header("Location: https://www.haxstar.com/pages/register?Alert=errorEmailExists");
-                exit;
-            }
-        } else { //Uername does not exists therefore create a new account.
-          $testObject->register((string) $fName, (string) $lName, (string) $username, (string) $pass, (string) $email);
-          if(strcasecmp($testObject, 'true') == 0) {
-            $secured_password = generateHash($pass);
-            $sql              = "INSERT INTO User (firstName,lastName,username,password,email,hash) VALUES ('$fName','$lName','$username','$secured_password','$email', '$hash')";
-            $result           = $conn->query($sql);
-            $to               = $email; //Sending email to user
-            $subject          = '=?utf-8?Q?=F0=9F=90=A5_Quacker_-_Signup_=7C_Verification_=F0=9F=90=A5?='; //subject of the email
-            $message          = file_get_contents('https://www.haxstar.com/assets/emailSend');
-            $message          = str_replace('$username', $fName, $message);
-            $message          = str_replace('$emailAddress', $email, $message);
-            $message          = str_replace('$hashKey', $hash, $message);
-            $headers          = "MIME-Version: 1.0" . "\r\n";
-            $headers         .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-            $headers         .= 'From: no-reply@haxstar.com' . "\r\n";
-            mail($to, $subject, $message, $headers); //sending email
-            header("Location: https://www.haxstar.com/?Alert=verifyEmail");
-            exit;
+      $fName    = mysql_escape_string($_POST['firstname']);
+      $lName    = mysql_escape_string($_POST['lastname']);
+      $username = mysql_escape_string($_POST['username']);
+      $pass     = mysql_escape_string($_POST['password']);
+      $email    = mysql_escape_string($_POST['email']);
+      $hash     = md5(rand(0, 1000));
+      $sql      = "SELECT * FROM User WHERE (username = '$username' or email = '$email')";
+      $result   = $conn->query($sql);
+      if ($row = $result->fetch_assoc()) {
+          if (strcasecmp($username, $row['username']) == 0) { //Checking if username already exists, case insensitive
+              header("Location: https://www.haxstar.com/pages/register?Alert=errorNameExists");
+              exit;
+          } else if (strcasecmp($email, $row['email']) == 0) { //Checking if email already exists, case insensitive
+              header("Location: https://www.haxstar.com/pages/register?Alert=errorEmailExists");
+              exit;
           }
+      } else { //Uername does not exists therefore create a new account.
+        $testObject->register((string) $fName, (string) $lName, (string) $username, (string) $pass, (string) $email);
+        if(strcasecmp($testObject, 'true') == 0) {
+          $secured_password = generateHash($pass);
+          $sql              = "INSERT INTO User (firstName,lastName,username,password,email,hash) VALUES ('$fName','$lName','$username','$secured_password','$email', '$hash')";
+          $result           = $conn->query($sql);
+          $to               = $email; //Sending email to user
+          $subject          = '=?utf-8?Q?=F0=9F=90=A5_Quacker_-_Signup_=7C_Verification_=F0=9F=90=A5?='; //subject of the email
+          $message          = file_get_contents('https://www.haxstar.com/assets/emailSend');
+          $message          = str_replace('$username', $fName, $message);
+          $message          = str_replace('$emailAddress', $email, $message);
+          $message          = str_replace('$hashKey', $hash, $message);
+          $headers          = "MIME-Version: 1.0" . "\r\n";
+          $headers         .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+          $headers         .= 'From: no-reply@haxstar.com' . "\r\n";
+          mail($to, $subject, $message, $headers); //sending email
+          header("Location: https://www.haxstar.com/?Alert=verifyEmail");
+          exit;
+        }
     }
-
-  } else { // DELETE THIS FOR DEMO
-    echo "<script> alert('Sorry, registration is currently closed!');
-    window.location.href='https://www.haxstar.com/'; </script>";
-  } //DETELE THIS FOR DEMO
 }
 
 //Function to Encrypte a Password
