@@ -173,7 +173,7 @@ function printFeed()
           <a href="<?php
         echo "https://www.haxstar.com/pages/profile?Login={$_SESSION['sessionUsername']}&Lookup={$row['username']}";
 ?>"><?php
-        echo $row['displayName'];
+        echo "@".$row['username'];
 ?></a>
         </h5>
 <?php
@@ -384,17 +384,19 @@ function printProfile($userID)
 function printUpload()
 {
 ?>
-    <input type="file" name="imageUpload" class="btn orangeColorButton imageUpload" style="width: 120px; color:transparent;" />
+<div class="file btn orangeColorButton" id="outerUploadButton">Upload Image
+    <input type="file" name="imageUpload" class="btn orangeColorButton imageUpload" id="innerUploadButton" />
+  </div>
 <?php
 }
 
 function printName($userID)
 {
     require $_SERVER['DOCUMENT_ROOT'] . '/assets/config.php';
-    $sql    = "SELECT firstName, lastName FROM User WHERE userID = '$userID'";
+    $sql    = "SELECT firstName, lastName, username FROM User WHERE userID = '$userID'";
     $result = mysqli_query($conn, $sql);
     if ($row = $result->fetch_assoc()) {
-        echo $row['firstName'] . " " . $row['lastName'];
+        echo $row['firstName'] . " " . $row['lastName'] . "<br>@". $row['username'];
     }
 }
 
