@@ -55,6 +55,8 @@ if (isset($_POST['login'])) {
 // ################################# Register an Account #################################
 //Before registering a user account, it checks whether or not the username and/or email already exists
 if (isset($_POST['register'])) {
+  $RegistrationAllowed = false; //DELETE THIS FOR DEMO
+  if($RegistrationAllowed) { //DELETE THIS FOR DEMO
         $fName    = mysql_escape_string($_POST['firstname']);
         $lName    = mysql_escape_string($_POST['lastname']);
         $username = mysql_escape_string($_POST['username']);
@@ -91,6 +93,11 @@ if (isset($_POST['register'])) {
             exit;
           }
     }
+
+  } else { // DELETE THIS FOR DEMO
+    echo "<script> alert('Sorry, registration is currently closed!');
+    window.location.href='https://www.haxstar.com/'; </script>";
+  } //DETELE THIS FOR DEMO
 }
 
 //Function to Encrypte a Password
