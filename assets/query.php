@@ -160,9 +160,6 @@ function printFeed()
     while ($row = $result->fetch_assoc()) {
 ?>
         <li class="list-group-item yellowishBgColor">
-        <div class="text-danger"><?php
-        echo date_format(date_create($row['date']), 'd M y - g:i A');
-?></div>
         <div class="media-body mx-2">
         <h5>
           <a href="<?php
@@ -246,6 +243,9 @@ function printFeed()
         }
 ?>
         </div>
+        <div class="text-danger"><?php
+        echo date_format(date_create($row['date']), 'd M y - g:i A');
+?></div>
       </li> <br>
        <!--adding a space between each quack to seperate them-->
 <?php
@@ -534,8 +534,8 @@ function printPost($userID)
 ?>
       <li class="list-group-item yellowishBgColor p-4">
       <div class="text-danger"><?php
-        echo date_format(date_create($row['date']), 'd M y - g:i A');
-?></div>
+      echo date_format(date_create($row['date']), 'd M y - g:i A');
+      ?></div>
 <?php
         echo "<div class=\"mx-2\">";
         echo $row['tweet'];
