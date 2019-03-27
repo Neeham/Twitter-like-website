@@ -213,6 +213,12 @@
  .titleChange{
      font-size: 1.5em;
 }
+
+ .text-danger{
+   padding-top: 10px;
+   padding-left: 7px;
+   font-size: 0.9em;
+ }
  #feedtitle{
      color: #ff5722;
 }
@@ -233,4 +239,16 @@
 }
  #userList li {
      padding: 12px;
+}
+
+#outerUploadButton{
+  position: relative;
+  overflow: hidden;
+}
+
+#innerUploadButton{
+  opacity: 0;
+  right: 0;
+  top: 0;
+  position: absolute;
 }
