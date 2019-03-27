@@ -114,7 +114,8 @@
      margin-bottom: 50px;
 }
  .card-header {
-     background-color: #ffc107;
+   border-radius: 5px !important;
+   background-color: #ffc107;
 }
 
  .lastLoggedIn{
@@ -125,6 +126,7 @@
      height: 150px;
 }
  .yellowishBgColor {
+     border-radius: 5px !important;
      background-color: #ffe083;
 }
  .mobile-nav-item {
