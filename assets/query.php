@@ -384,7 +384,9 @@ function printProfile($userID)
 function printUpload()
 {
 ?>
-    <input type="file" name="imageUpload" class="btn orangeColorButton imageUpload" style="width: 120px; color:transparent;" />
+<div class="file btn orangeColorButton" id="outerUploadButton">Upload Image
+    <input type="file" name="imageUpload" class="btn orangeColorButton imageUpload" id="innerUploadButton" />
+  </div>
 <?php
 }
 
