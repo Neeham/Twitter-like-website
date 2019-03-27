@@ -234,3 +234,15 @@
  #userList li {
      padding: 12px;
 }
+
+#outerUploadButton{
+  position: relative;
+  overflow: hidden;
+}
+
+#innerUploadButton{
+  opacity: 0;
+  right: 0;
+  top: 0;
+  position: absolute;
+}
