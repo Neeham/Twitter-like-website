@@ -533,11 +533,8 @@ function printPost($userID)
     while ($row = $result->fetch_assoc()) {
 ?>
       <li class="list-group-item yellowishBgColor p-4">
-      <div class="text-danger"><?php
-        echo date_format(date_create($row['date']), 'd M y - g:i A');
-?></div>
 <?php
-        echo "<div class=\"mx-2\">";
+        echo "<div class=\"media-box mx-2\">";
         echo $row['tweet'];
         $retrivedTweetID = $row['tweetID'];
         $innerSQL        = "SELECT date FROM Liked WHERE tweetID = $retrivedTweetID AND userID = {$_SESSION['sessionID']}";
@@ -545,7 +542,7 @@ function printPost($userID)
         if ($innerResult->fetch_assoc()) {
 ?>
           <!-- THIS CAN BE ALTERED BASED ON FRONTEND'S DESIGN  -->
-          <form action="" method="post" class="d-inline">   <!-- if you already liked the Quack, it will show unlikeQuack button -->
+          <form action="" method="post">   <!-- if you already liked the Quack, it will show unlikeQuack button -->
           <button class="btn float-right btn-danger like mx-1" name="<?php
             echo $retrivedTweetID . '_profileUnlikeQuackbtn';
 ?>" type="submit" data-tippy-content="<?php
@@ -558,7 +555,7 @@ function printPost($userID)
         } else {
 ?>
           <!-- THIS CAN BE ALTERED BASED ON FRONTEND'S DESIGN  -->
-          <form action="" method="post" class="d-inline">  <!-- if you want to like the Quack, it will show likeQuack button -->
+          <form action="" method="post">  <!-- if you want to like the Quack, it will show likeQuack button -->
           <button class="btn float-right btn-outline-danger like mx-1" name="<?php
             echo $retrivedTweetID . '_profileLikeQuackbtn';
 ?>" type="submit" data-tippy-content="<?php
@@ -642,7 +639,11 @@ function printPost($userID)
                 }
             }
         }
-        echo "</div></li> <br>";
+?>
+</div><div class="text-danger">
+  <?php echo date_format(date_create($row['date']), 'd M y - g:i A'); ?>
+</div></li><br>
+<?
     }
     echo "</ul>";
 }
