@@ -6,8 +6,6 @@
 <div class="wrapper"> <!-- The end tag of this wrapper class is found at the very end of footer.php file-->
 <div class="header">
    <nav class="navbar navbar-expand-sm bg-warning navbar-light navbar-fixed-top"> <!-- Nav Bar -->
-      Last Logged in: <?php echo $_SESSION["sessionLastLoggedIn"]; ?> <!-- Displaying the last time the user logged in -->
-      <div class="container">
          <a class="navbar-brand" href="https://www.haxstar.com/pages/feed?Login=<?php echo $_SESSION["sessionUsername"]; ?>"><img
             src="https://haxstar.com/resources/images/logo/duck.png" height="35px" /></a>
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -24,6 +22,7 @@
                </li>
             </ul>
             <ul class = "navbar-nav ml-auto">
+              <div class="lastLoggedIn"> Logged in: <?php echo $_SESSION["sessionLastLoggedIn"]."&nbsp&nbsp"; ?> </div> <!-- Displaying the last time the user logged in -->
                <li class = "nav-item">
                   <button type="button" class="btn my-2 my-sm-0 orangeColorButton" data-toggle="modal" data-target="#searchUserModal">Search a User</button>
                </li>
@@ -32,7 +31,6 @@
                </li>
             </ul>
          </div>
-      </div>
    </nav>
 </div>
 <div class="container-fluid text-center" id="adBlock"> <!-- text to unhide (display) when adblock is detected -->
