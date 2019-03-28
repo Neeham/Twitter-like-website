@@ -219,8 +219,18 @@
    padding-left: 7px;
    font-size: 0.9em;
  }
+
+ .modalHeadFootBg{
+   background-color: #ffc107;
+ }
+
+ .modalBodyBg{
+   background-color: #ffe083;
+ }
+
  #feedtitle{
      color: #ff5722;
+     font-size: 4em;
 }
  #slogan {
      padding-top: 120px;
