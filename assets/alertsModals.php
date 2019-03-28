@@ -128,17 +128,17 @@
 <div class="modal fade" id="searchUserModal" role="dialog" data-backdrop="static" data-keyboard="false">
    <div class="modal-dialog" role="document">
       <div class="modal-content">
-         <div class="modal-header">
+         <div class="modal-header modalHeadFootBg">
             <h5 class="modal-title">Username Lookup</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
          </div>
-         <div class="modal-body">
+         <div class="modal-body modalBodyBg">
             <input type="text" name="userfields" id="userfields" class="form-control" placeholder="Search User" />
             <div id="userList"></div>
          </div>
-         <div class="modal-footer">
+         <div class="modal-footer modalHeadFootBg">
             <button type="button" class="btn orangeColorButton" data-dismiss="modal">Close</button>
          </div>
       </div>
@@ -148,14 +148,14 @@
 <div id="uploadimageModal" class="modal" role="dialog" data-backdrop="static" data-keyboard="false">
    <div class="modal-dialog">
       <div class="modal-content">
-         <div class="modal-header">
+         <div class="modal-header modalHeadFootBg">
             <h4 class="modal-title-center">Crop & Upload Profile Picture</h4>
             <button type="button" class="close" data-dismiss="modal" onClick="window.location.reload()">&times;</button>
          </div>
-         <div class="modal-body">
+         <div class="modal-body modalBodyBg">
             <div id="imageToCrop"></div>
          </div>
-         <div class="modal-footer">
+         <div class="modal-footer modalHeadFootBg">
             <button class="btn btn-success crop_image">Upload</button>
             <button type="button" class="btn orangeColorButton" data-dismiss="modal" onClick="window.location.reload()">Close</button>
          </div>
@@ -166,13 +166,13 @@
 <div class="modal fade" id="myFollowingModal" role="dialog" data-backdrop="static" data-keyboard="false">
    <div class="modal-dialog modal-sm modal-dialog-scrollable">
       <div class="modal-content">
-         <div class="modal-header">
+         <div class="modal-header modalHeadFootBg">
             <h4 class="modal-title">Following List</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
          </div>
-         <div class="modal-body" id="displayFollowingList">
+         <div class="modal-body modalBodyBg" id="displayFollowingList">
          </div>
-         <div class="modal-footer">
+         <div class="modal-footer modalHeadFootBg">
             <button type="button" class="btn orangeColorButton" data-dismiss="modal">Close</button>
          </div>
       </div>
@@ -182,13 +182,13 @@
 <div class="modal fade" id="myFollowerModal" role="dialog" data-backdrop="static" data-keyboard="false">
    <div class="modal-dialog modal-sm modal-dialog-scrollable">
       <div class="modal-content">
-         <div class="modal-header">
+         <div class="modal-header modalHeadFootBg">
             <h4 class="modal-title">Follower List</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
          </div>
-         <div class="modal-body" id="displayFollowerList">
+         <div class="modal-body modalBodyBg" id="displayFollowerList">
          </div>
-         <div class="modal-footer">
+         <div class="modal-footer modalHeadFootBg">
             <button type="button" class="btn orangeColorButton" data-dismiss="modal">Close</button>
          </div>
       </div>
