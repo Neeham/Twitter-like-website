@@ -1,0 +1,264 @@
+@keyframes floatingDuck {
+     0% {
+         transform: translateY(-8px);
+    }
+     100% {
+         transform: translateY(60px);
+    }
+}
+ @-webkit-keyframes registerSlideWallpaper {
+     from {
+         background-position: 0 0;
+    }
+     to {
+         background-position: -400px 0;
+    }
+}
+ @keyframes movingWater {
+     0% {
+         transform: translateX(0) translateZ(0) scaleY(1)
+    }
+     50% {
+         transform: translateX(-25%) translateZ(0) scaleY(0.55)
+    }
+     100% {
+         transform: translateX(-50%) translateZ(0) scaleY(1)
+    }
+}
+ @media only screen and (max-width: 768px) {
+    /* Anything below an ipad */
+     .floatingDuck {
+         display: none !important;
+    }
+     .wave {
+         display: none !important;
+    }
+     #login .loginForm {
+         min-height: 450px !important;
+    }
+     .registrationForm {
+         margin-top: 0px !important;
+         margin-bottom: 0px !important;
+         padding-bottom: 70px !important;
+    }
+}
+/* Portrait iPad 3, 4, Pro 9.7", iPad 1, 2, Mini and Air */
+ @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+     #slogan {
+         padding-top: 320px !important;
+    }
+     #login .loginForm {
+         padding-top: 190px !important;
+    }
+}
+/* Landscape iPad 3, 4, Pro 9.7", iPad 1, 2, Mini and Air */
+ @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+     .floatingDuck {
+         top: 250px !important;
+    }
+}
+/* Portrait iPad Pro 12.9" */
+ @media only screen and (min-device-width: 1024px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+     .floatingDuck {
+         top: 900px !important;
+    }
+}
+/* Landscape iPad Pro 12.9" */
+ @media only screen and (min-device-width: 1366px) and (max-device-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+     .floatingDuck {
+         top: 550px !important;
+    }
+}
+ textarea {
+     resize: none;
+}
+ html, body {
+     font-family: "Signika", sans-serif;
+     height: 100%;
+     margin: 0;
+}
+ .wrapper {
+     height: 100%;
+     display: flex;
+     flex-direction: column;
+}
+ .content {
+     flex: 1;
+     overflow: auto;
+}
+ .left, .right, .mid {
+     height: 100%;
+     overflow-y: scroll;
+     float: left;
+}
+ ::-webkit-scrollbar {
+     width: 0px;
+     background: transparent;
+}
+ .card {
+     background: transparent;
+     border: transparent;
+     padding-top: 10px;
+     padding-bottom: 10px;
+}
+ .form-signin {
+     margin-top: 50px;
+}
+ .loginForm {
+     background-color: transparent;
+     z-index: 4;
+}
+ .registrationForm {
+     background-color: rgb(255,255,255, 0.8);
+     margin-top: 50px;
+     margin-bottom: 50px;
+}
+ .card-header {
+   border-radius: 5px !important;
+   background-color: #ffc107;
+}
+
+ .lastLoggedIn{
+   margin-top: 8px;
+ }
+ .mobile-profile-picture {
+     width: 150px;
+     height: 150px;
+}
+ .yellowishBgColor {
+     border-radius: 5px !important;
+     background-color: #ffe083;
+}
+ .mobile-nav-item {
+     background-color: #ffa000;
+}
+ .nav-link.active {
+     background-color: #ff5722 !important;
+     border: 1px solid transparent !important;
+     border-color: #ff5722 !important;
+}
+ .floatingDuck {
+     position: absolute;
+     top: 480px;
+     left: calc(50% - 280px);
+     animation: floatingDuck 2s alternate ease-in-out infinite;
+     animation-name: floatingDuck;
+     animation-duration: 2s;
+     animation-timing-function: ease-in-out;
+     animation-delay: 0s;
+     animation-iteration-count: infinite;
+     animation-direction: alternate;
+     animation-fill-mode: none;
+     animation-play-state: running;
+     will-change: transform;
+     -webkit-user-select: none;
+     user-select: none;
+     width: 270px;
+     height: 270px;
+     z-index: 1;
+}
+ .animatedBg {
+     background: url(https://haxstar.com/resources/images/annimation/wallpaper.png) repeat 0 0;
+     -webkit-animation: registerSlideWallpaper 60s linear infinite;
+}
+ .waveWrapper {
+     overflow: hidden;
+     position: absolute;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     top: 0;
+     margin: auto;
+}
+ .waveWrapperInner {
+     position: absolute;
+     width: 100%;
+     overflow: hidden;
+     height: 100%;
+     bottom: -1px;
+}
+ .bgMiddle {
+     z-index: 3;
+     opacity: 0.8;
+}
+ .bgBottom {
+     z-index: 2;
+     opacity: 0.6;
+}
+ .wave {
+     position: absolute;
+     left: 0;
+     width: 200%;
+     height: 100%;
+     background-repeat: repeat no-repeat;
+     background-position: 0 bottom;
+     transform-origin: center bottom;
+}
+ .waveMiddle {
+     background-size: 50% 275px;
+}
+ .waveAnimation .waveMiddle {
+     animation: movingWater 10s linear infinite;
+}
+ .waveBottom {
+     background-size: 50% 275px;
+}
+ .waveAnimation .waveBottom {
+     animation: movingWater 15s linear infinite;
+}
+ .orangeColorButton {
+     background-color: #ff5722;
+     color: white;
+}
+ .titleChange{
+     font-size: 1.5em;
+}
+
+ .text-danger{
+   padding-top: 10px;
+   padding-left: 7px;
+   font-size: 0.9em;
+ }
+
+ .modalHeadFootBg{
+   background-color: #ffc107;
+ }
+
+ .modalBodyBg{
+   background-color: #ffe083;
+ }
+
+ #feedtitle{
+     color: #ff5722;
+     font-size: 4em;
+}
+ #slogan {
+     padding-top: 120px;
+}
+ #adBlock {
+     display:none;
+     width: 100%;
+     background-color:pink;
+}
+ #feed-bg, #register, #profile, #login {
+     background-color: #fff9e6;
+}
+ #userList ul {
+     background-color: #ffffe0;
+     cursor: pointer;
+}
+ #userList li {
+     padding: 12px;
+}
+
+#outerUploadButton{
+  position: relative;
+  overflow: hidden;
+}
+
+#innerUploadButton{
+  opacity: 0;
+  right: 0;
+  top: 0;
+  position: absolute;
+}
