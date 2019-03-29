@@ -19,7 +19,6 @@
          <div class = "row">
             <div class="col-md-7">
                <h1 align="center" id="slogan">Don't be wack, start to quack.</h1>
-               <img class="floatingDuck" src="https://haxstar.com/resources/images/logo/duck.png">
             </div>
             <div class="col-md-3 loginForm">
                <form class="form-signin" action="../assets/query" method="post">
@@ -42,6 +41,7 @@
             </div>
          </div>
          <div class="waveWrapper waveAnimation">
+           <img class="floatingDuck" src="https://haxstar.com/resources/images/logo/duck.png">
             <div class="waveWrapperInner bgMiddle">
                <div class="wave waveMiddle" style="background-image: url('https://haxstar.com/resources/images/annimation/wave-mid.png')"></div>
             </div>
