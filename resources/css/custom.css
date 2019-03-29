@@ -25,8 +25,7 @@
          transform: translateX(-50%) translateZ(0) scaleY(1)
     }
 }
- @media only screen and (max-width: 768px) {
-    /* Anything below an ipad */
+ @media only screen and (max-width: 767px) { /* Anything below an ipad */
      .floatingDuck {
          display: none !important;
     }
@@ -42,31 +41,13 @@
          padding-bottom: 70px !important;
     }
 }
-/* Portrait iPad 3, 4, Pro 9.7", iPad 1, 2, Mini and Air */
+/* Portrait iPad 1, 2, 3, 4, Mini, Air, and Pro 9.7"*/
  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
      #slogan {
          padding-top: 320px !important;
     }
      #login .loginForm {
          padding-top: 190px !important;
-    }
-}
-/* Landscape iPad 3, 4, Pro 9.7", iPad 1, 2, Mini and Air */
- @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
-     .floatingDuck {
-         top: 250px !important;
-    }
-}
-/* Portrait iPad Pro 12.9" */
- @media only screen and (min-device-width: 1024px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-     .floatingDuck {
-         top: 900px !important;
-    }
-}
-/* Landscape iPad Pro 12.9" */
- @media only screen and (min-device-width: 1366px) and (max-device-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
-     .floatingDuck {
-         top: 550px !important;
     }
 }
  textarea {
@@ -139,8 +120,8 @@
 }
  .floatingDuck {
      position: absolute;
-     top: 480px;
-     left: calc(50% - 280px);
+     bottom: 120px !important;
+     margin-left: 200px !important;
      animation: floatingDuck 2s alternate ease-in-out infinite;
      animation-name: floatingDuck;
      animation-duration: 2s;
