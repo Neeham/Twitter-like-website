@@ -15,6 +15,7 @@
          <img src="https://haxstar.com/resources/images/logo/Quacker.png" width="140" height="30" class="d-inline-block align-top" alt="">
          </a>
       </nav>
+      <p style="background-color:Tomato; text-align: center; color: white;"><font size="5">A team project for SOEN 341 course.</font></p>
       <div class = "container-fluid">
          <div class = "row">
             <div class="col-md-7">

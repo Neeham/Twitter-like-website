@@ -7,7 +7,7 @@
    background-color: pink;
    }
 </style>
-<div class="container">
+<div class="container-fluid">
    <div class="spinner-grow text-muted"></div>
    <div class="spinner-grow text-primary"></div>
    <div class="spinner-grow text-success"></div>
@@ -17,7 +17,7 @@
    <div class="spinner-grow text-secondary"></div>
    <div class="spinner-grow text-dark"></div>
    <div class="spinner-grow text-light"></div>
-   <h1 style="color:red;"> Welcome! - Here we will debug our Database :)</h1>
+   <h1 style="color:red;"> Welcome! - Here we will debug our Database visually &#9749;</h1>
    <h2 style="color:blue;">Here are the tables and their content I found on the Database:</h2>
    <?php
       //Variable
