@@ -41,7 +41,7 @@
          echo "<h3> Total Rows: {$row['Total']}</h3>";
       }
 
-      $sql = "SELECT * FROM $table[$j]";
+      $sql = "SELECT @row_number:=@row_number + 1 AS 'Row', s.* FROM $table[$j] s, (SELECT @row_number := 0) r";
       $result = $conn->query($sql);
       ?>
    <table class="table table-dark table-striped table-hover">
