@@ -33,8 +33,13 @@
       //*************************** Printing all the Table and it's data found on the Database ***************************
       $j = 0;
       while ($j < sizeof($table)) {
-      echo "<br>";
-      echo "<h3> Table: {$table[$j]} </h3>";
+      $sqlTableCount = "SELECT COUNT(*) AS Total FROM $table[$j]";
+      $resultCount = $conn->query($sqlTableCount);
+      echo "<br><h3> Table Name: {$table[$j]}</h3>";
+
+      if ($row = $resultCount->fetch_assoc()) {
+         echo "<h3> Total Rows: {$row['Total']}</h3>";
+      }
 
       $sql = "SELECT * FROM $table[$j]";
       $result = $conn->query($sql);
@@ -42,8 +47,7 @@
    <table class="table table-dark table-striped table-hover">
    <?php
       $i = 0;
-      while($row = $result->fetch_assoc())
-      {
+      while($row = $result->fetch_assoc()) {
           if ($i == 0) {
             $i++;
             echo "<tr>";
