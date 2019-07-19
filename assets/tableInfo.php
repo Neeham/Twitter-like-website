@@ -18,8 +18,8 @@
    <div class="spinner-grow text-dark"></div>
    <div class="spinner-grow text-light"></div>
    <h1 style="color:red;"> Welcome! - Here we will debug our Database visually &#9749;</h1>
-   <h1 style="color:purple;"> CLICK <a href="https://haxstar.com/assets/tableInfo.php" target="_blank"> >*>*>HERE<*<*< </a> TO VIEW COLUMNS DESCRIPTION OF ALL THE TABLES</h1>
-   <h2 style="color:blue;">Here are the tables and their content I found on the Database:</h2>
+   <h1 style="color:purple;"> CLICK <a href="https://haxstar.com/assets/debug.php" target="_blank"> >*>*>HERE<*<*< </a> TO VIEW THE TABLE CONTENTS</h1>
+   <h2 style="color:blue;">Here are the full columns of all the tables:</h2>
    <?php
       //Variable
       $table = array(); //Array holding all the tables found in our database
@@ -42,7 +42,7 @@
          echo "<h3> Total Rows: <span style='color:red;'>{$row['Total']}</span></h3>";
       }
 
-      $sql = "SELECT @row_number:=@row_number + 1 AS 'Row', s.* FROM $table[$j] s, (SELECT @row_number := 0) r";
+      $sql = "SHOW FULL COLUMNS FROM $table[$j]";
       $result = $conn->query($sql);
       ?>
    <table class="table table-dark table-striped table-hover">
