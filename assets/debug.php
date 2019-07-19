@@ -35,10 +35,10 @@
       while ($j < sizeof($table)) {
       $sqlTableCount = "SELECT COUNT(*) AS Total FROM $table[$j]";
       $resultCount = $conn->query($sqlTableCount);
-      echo "<br><h3> Table Name: {$table[$j]}</h3>";
+      echo "<br><h3> Table Name: <span style='color:red;'>{$table[$j]}</span></h3>";
 
       if ($row = $resultCount->fetch_assoc()) {
-         echo "<h3> Total Rows: {$row['Total']}</h3>";
+         echo "<h3> Total Rows: <span style='color:red;'>{$row['Total']}</span></h3>";
       }
 
       $sql = "SELECT @row_number:=@row_number + 1 AS 'Row', s.* FROM $table[$j] s, (SELECT @row_number := 0) r";
