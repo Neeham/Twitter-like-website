@@ -19,7 +19,7 @@ Oussama Zouhadi | Oussamus | Oussamus_84@hotmail.com | Frontend + Debugger
 Zohal Mir | Zohalmir | zohalmir9@gmail.com | Frontend
 
 ## Block Diagram:
-![Quack Block Diagram](https://www.haxstar.com/resources/box%20diagram/Block%20Diagram.png)
+![Quack Block Diagram](https://www.quacker.haxstar.com/resources/box%20diagram/Block%20Diagram.png)
 
 ## Additional Features:
 * Search a user profile
