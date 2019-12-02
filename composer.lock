@@ -4,9 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6c69329523d8b603bd3f646d784b4bf0",
-    "packages": [],
-    "packages-dev": [
+    "content-hash": "2856d727ca4baafb4043a59d92e2bd6d",
+    "packages": [
         {
             "name": "pdepend/pdepend",
             "version": "2.5.2",
@@ -228,16 +227,16 @@
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "v3.4.23",
+            "version": "v3.4.35",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "c3dd7b7ea8cd8ec12304a5e222d7dc01cac8fa11"
+                "reference": "0ea4d39ca82409a25a43b61ce828048a90000920"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/c3dd7b7ea8cd8ec12304a5e222d7dc01cac8fa11",
-                "reference": "c3dd7b7ea8cd8ec12304a5e222d7dc01cac8fa11",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/0ea4d39ca82409a25a43b61ce828048a90000920",
+                "reference": "0ea4d39ca82409a25a43b61ce828048a90000920",
                 "shasum": ""
             },
             "require": {
@@ -295,7 +294,7 @@
             ],
             "description": "Symfony DependencyInjection Component",
             "homepage": "https://symfony.com",
-            "time": "2019-02-23T15:06:07+00:00"
+            "time": "2019-11-08T16:18:30+00:00"
         },
         {
             "name": "symfony/filesystem",
@@ -392,7 +391,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "backendtea@gmail.com"
+                    "email": "BackEndTea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
@@ -406,13 +405,14 @@
             "time": "2018-08-06T14:22:27+00:00"
         }
     ],
+    "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "phpmd/phpmd": 0
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=5.6"
+    },
     "platform-dev": []
 }
